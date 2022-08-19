@@ -1,0 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  font-family: "Gilroy", Arial, sans-serif;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: local("Gilroy"), url("@/fonts/Gilroy/Gilroy-Light.otf") format("truetype")
+}
+
+:root {
+  font-size: 13px;
+  font-weight: 400;
+}
+
