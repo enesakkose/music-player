@@ -2,17 +2,19 @@
     display: flex;
     
     &__content{
-        flex: 1;
+        
     }
 
     &__resizer{
-        width: 0.125rem;
-        height: 100%;
-        cursor: col-resize;
-        flex-shrink: 0;
 
-        &:hover{
-            background-color: $earlGray;
+        div{
+            right: 0 !important;
+            width: 0.125rem !important;
+
+            &:hover{
+                background-color: $earlGray;
+            } 
         }
+        
     }
 }

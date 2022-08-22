@@ -6,19 +6,18 @@ function Sidebar() {
   const [ width, setWidth ] = useState(300)
   return (
     <sidebar className='sidebar'>
-      <div className="sidebar__content">
-        Sidebar 
-        </div>
       <Resizable
-      className='eee'
         maxWidth={400}
         defaultSize={{ width }}
         minWidth={200}
         enable={{ right: true }}
+        handleWrapperClass='sidebar__resizer'
         onResizeStop={(d) => {
         setWidth({ width: width + d.width})}}
       >
-        
+        <div className="sidebar__content">
+        Sidebar 
+        </div>
         
       </Resizable>
     </sidebar>
