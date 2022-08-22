@@ -1,0 +1,18 @@
+.sidebar{
+    display: flex;
+    
+    &__content{
+        flex: 1;
+    }
+
+    &__resizer{
+        width: 0.125rem;
+        height: 100%;
+        cursor: col-resize;
+        flex-shrink: 0;
+
+        &:hover{
+            background-color: $earlGray;
+        }
+    }
+}

@@ -14,8 +14,18 @@
   src: local("Gilroy"), url("@/fonts/Gilroy/Gilroy-Light.otf") format("truetype")
 }
 
-body {
-  font-size: 13px;
+body , #root{
+  font-size: 16px;
   font-weight: 400;
+  height: 100vh;
 }
 
+.App{
+  height: 100%;
+}
+
+.container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
