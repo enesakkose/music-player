@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: "Gilroy";
-  src: local("Gilroy"), url("@/fonts/Gilroy/Gilroy-Light.otf") format("truetype")
+  src: local("Gilroy"), url("@/assets/fonts/Gilroy/Gilroy-Light.otf") format("truetype")
 }
 
 body , #root{
@@ -28,4 +28,22 @@ body , #root{
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+h3{
+  font-size: 1.75rem;
+}
+
+h4{
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+a{
+  color: $WHITE;
+}
+
+button{
+  cursor: pointer;
+  background-color: transparent;
 }

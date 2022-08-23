@@ -1,8 +1,114 @@
 .sidebar{
     display: flex;
-    
+    background-color: $BLACK; 
+    color: rgba($WHITE, .6);
+    height: calc(100vh - 100px);
+
     &__content{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: $PL;
         
+        a{
+            display: flex;
+            align-items: center;
+            color: rgba($WHITE, .6);
+            transition: 300ms color ease-in-out;
+
+                &:hover{
+                    color: $WHITE;
+                }
+        }
+
+        h4{
+            padding-bottom: $PM;
+            color: $WHITE;
+        }
+
+        &__logo{
+
+            a{
+              color: $GREEN;
+            } 
+        }
+
+        &__navbar{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+
+            a{
+                flex-direction: column;
+                gap: 0.212rem;
+            }
+
+            /*.active{
+                color: $WHITE;
+            }*/
+        }
+
+        &__library{
+
+            &__links{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                border-bottom: 2px solid rgba($earlGray, .24);
+                
+                a{
+                    letter-spacing: 1px;
+                    gap: 1rem;
+                    padding: $PXS $PM;
+                    border-radius: 1.5rem;
+
+                    &:hover{
+                        background-color: rgba($GREEN, .10);
+                        color: $GREEN;
+                    }
+                    
+                    &:last-child{
+                        margin-bottom: $MS;
+                    }
+                }
+                /*.active{
+                    color: $GREEN;
+                    background-color: rgba($GREEN, .10);
+                }*/
+            }
+        }
+
+        &__playlist{
+            flex: 1;
+            overflow: visible;
+
+            h4{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+
+                .add-btn{
+                    color: #fff;
+                    transition: 300ms color ease-in-out;
+                    height: 1.5rem;
+
+                    &:hover{
+                        color: $GREEN;
+                    }
+                }
+    
+            }
+
+            &__items{
+                overflow: auto;
+                ul{
+                    overflow: scroll;
+                }
+                
+            }
+        }
     }
 
     &__resizer{
@@ -12,9 +118,8 @@
             width: 0.125rem !important;
 
             &:hover{
-                background-color: $earlGray;
+                background-color: rgba($earlGray, .44);
             } 
-        }
-        
+        }  
     }
 }

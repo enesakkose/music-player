@@ -1,9 +1,13 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import { Resizable } from 're-resizable'
-import '@/components/Sidebar/Sidebar.scss'
+import Navbar from '@/components/Sidebar/Navbar'
+import Library from '@/components/Sidebar/Library'
+import Playlist from '@/components/Sidebar/Playlist'
+import Logo from '@/components/Sidebar/Logo'
 
 function Sidebar() {
   const [ width, setWidth ] = useState(300)
+
   return (
     <sidebar className='sidebar'>
       <Resizable
@@ -16,9 +20,11 @@ function Sidebar() {
         setWidth({ width: width + d.width})}}
       >
         <div className="sidebar__content">
-        Sidebar 
+          <Logo/>
+          <Navbar/>
+          <Library/>
+          <Playlist/>
         </div>
-        
       </Resizable>
     </sidebar>
   )
