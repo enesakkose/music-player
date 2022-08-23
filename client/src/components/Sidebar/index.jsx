@@ -11,6 +11,7 @@ function Sidebar() {
   return (
     <sidebar className='sidebar'>
       <Resizable
+        className='resizeable'
         maxWidth={400}
         defaultSize={{ width }}
         minWidth={200}

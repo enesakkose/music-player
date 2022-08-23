@@ -10,11 +10,11 @@ function Playlist() {
   const { playlists } = useSelector(state => state.playlist)
   
   const handleAdd = () => {
-    dispatch(addPlaylist(`${playlists.length + 1}. playlist`))
+    dispatch(addPlaylist(`${playlists.length + 1}. Playlist`))
   }
   console.log(playlists)
   return (
-    <div className="sidebar__content__playlist">
+    <nav className="sidebar__content__playlist">
         <h4>
          YOUR PLAYLIST
          <button onClick={handleAdd} className='add-btn'>
@@ -23,12 +23,14 @@ function Playlist() {
         </h4>
         <ul className="sidebar__content__playlist__items">
           {playlists.map((playlist, index) => (
-            <Link key={index} to='/'>
-              {playlist}
-            </Link>
+            <li>
+              <Link key={index} to='/'>
+                {playlist}
+              </Link>
+            </li>
           ))}
         </ul>
-    </div>
+    </nav>
   )
 }
 
