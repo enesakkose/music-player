@@ -12,7 +12,7 @@ function Playlist() {
   const handleAdd = () => {
     dispatch(addPlaylist(`${playlists.length + 1}. Playlist`))
   }
-  console.log(playlists)
+
   return (
     <nav className="sidebar__content__playlist">
         <h4>
