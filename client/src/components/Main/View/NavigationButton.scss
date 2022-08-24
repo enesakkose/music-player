@@ -1,0 +1,12 @@
+.navigationButton{
+    display: flex;
+    gap: 0.625rem;
+
+    button{
+        color: $WHITE;
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: rgba($BLACK, .7);
+        border-radius: 50%;
+    }
+}
