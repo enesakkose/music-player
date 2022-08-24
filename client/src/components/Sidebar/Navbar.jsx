@@ -10,11 +10,11 @@ function Navbar() {
         <Icon name='Home' size={30}/>
         home
       </NavLink>
-      <NavLink to='/'>
+      <NavLink to='/search'>
         <Icon name='Search' size={30}/>
         search
       </NavLink>
-      <NavLink to='/'>
+      <NavLink to='/library'>
         <Icon name='Book' size={30}/>
         library
       </NavLink>
