@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Icon from '@/components/Icon'
 import { useSelector, useDispatch } from 'react-redux'
 import { addPlaylist } from '@/store/Playlist'
@@ -12,7 +12,7 @@ function Playlist() {
   
   const handleAdd = () => {
     dispatch(addPlaylist({
-      name: `${playlists.length + 1}. Playlist`,
+      name: `My Playlist #${playlists.length + 1}`,
       id : uuidv4()
     }))
   }
@@ -28,9 +28,9 @@ function Playlist() {
         <ul className="sidebar__content__playlist__items">
           {playlists.map((playlist) => (
             <li>
-              <Link key={playlist.id} to='/'>
+              <NavLink key={playlist.id} to={`/collection/${playlist.id}`}>
                 {playlist.name}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

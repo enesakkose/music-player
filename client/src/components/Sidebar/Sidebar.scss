@@ -83,33 +83,15 @@
 
         &__playlist{
             flex: 1;
-            overflow: auto;
-            
-            &::-webkit-scrollbar{
-                width: 15px;
-                position: fixed;
-            }
-
-            &::-webkit-scrollbar-track {
-                background: transparent;
-            }
-                
-            &::-webkit-scrollbar-thumb {
-                background-color: rgba($WHITE, .3);
-
-                &:hover{
-                    background-color: rgba($WHITE, .5);
-                }
-            }
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
             
             h4{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                position: sticky;
-                top: 0;
-                background-color: $BLACK;
-                padding-bottom: 10px;
+                padding-bottom: $PXS;
                 box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
                 margin-right: $ML;
                 
@@ -125,10 +107,33 @@
             }
 
             &__items{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
-                    padding-top: .5rem;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                padding-top: .5rem;
+                overflow: auto;
+
+                .active{
+                    color: $WHITE;
+                }
+            
+                &::-webkit-scrollbar{
+                    width: 15px;
+                    
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                    
+                &::-webkit-scrollbar-thumb {
+                    background-color: rgba($WHITE, .3);
+
+                    &:hover{
+                        background-color: rgba($WHITE, .5);
+                    }
+                }
             }
         }
     }
