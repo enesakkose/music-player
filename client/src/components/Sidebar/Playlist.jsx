@@ -16,7 +16,7 @@ function Playlist() {
       id : uuidv4()
     }))
   }
-  console.log(playlists)
+
   return (
     <nav className="sidebar__content__playlist">
         <h4>
@@ -28,7 +28,7 @@ function Playlist() {
         <ul className="sidebar__content__playlist__items">
           {playlists.map((playlist) => (
             <li>
-              <NavLink key={playlist.id} to={`/collection/${playlist.id}`}>
+              <NavLink key={playlist.id} to={`/playlist/${playlist.id}`}>
                 {playlist.name}
               </NavLink>
             </li>

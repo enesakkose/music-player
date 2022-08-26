@@ -1,12 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-function Collection() {
+function CollectionLayout() {
   return (
     <>
-    <Outlet/>
+     <Outlet/>
     </>
   )
 }
 
-export default Collection
+export default CollectionLayout

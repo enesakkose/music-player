@@ -1,7 +1,7 @@
 .playlist{
 
     &__header{
-        background: linear-gradient(transparent 0,rgba(0,0,0,.5) 100%);
+        background: #4b4b4b;
         height: 30vh;
         min-height: 340px;
         position: absolute;
@@ -48,7 +48,6 @@
         &__info{
             display: flex;
             flex-direction: column;
-            
             gap: .5rem;
 
             h1{
@@ -87,8 +86,7 @@
                         &:hover{
                             background-color: rgba($WHITE, .1);
                         }
-                    }
-                    
+                    } 
                 }
             }
         }

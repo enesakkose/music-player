@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import Icon from '@/components/Icon'
 import DropdownMenu from '@/components/DropDownMenu'
-import '@/Pages/Playlist.scss'
+import '@/Pages/Playlist/Playlist.scss'
 
 
 function Playlist() {
