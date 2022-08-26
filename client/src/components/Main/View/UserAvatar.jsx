@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Icon from '@/components/Icon'
+import DropdownMenu from '@/components/DropDownMenu'
 import { Link } from 'react-router-dom'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import '@/components/Main/View/UserAvatar.scss'
@@ -23,7 +24,7 @@ function UserAvatar() {
       </button>
 
       {openAvatarMenu && 
-        <div className="userAvatar__widgetMenu">
+        <DropdownMenu className="userAvatar__widgetMenu">
           <ul>
             <li>
               <Link to='/'>
@@ -39,8 +40,7 @@ function UserAvatar() {
               <button>Oturumu Kapat</button>
             </li>
           </ul>
-          
-        </div>
+        </DropdownMenu>
       }
     </div>
   )

@@ -1,4 +1,5 @@
 .playlist{
+
     &__header{
         background: linear-gradient(transparent 0,rgba(0,0,0,.5) 100%);
         height: 30vh;
@@ -47,6 +48,7 @@
         &__info{
             display: flex;
             flex-direction: column;
+            
             gap: .5rem;
 
             h1{
@@ -54,9 +56,39 @@
             }
 
             &__userName{
-                
-                &:hover{
+                position: relative;
+                margin-bottom: $MXS;
+                display: flex;
+                align-items: center;
+                gap: 50px;
+
+                a{
+
+                  &:hover{
                     text-decoration: underline;
+                  }  
+                }
+                
+                .playlistAction-btn{
+                    height: 2rem;
+
+                    &:hover{
+                        color: $WHITE;
+                    }
+                }
+
+                .playlistActionMenu{
+                    top: 2.62rem;
+                    
+                    button{
+                        padding: $PS;
+                        color: $WHITE;
+
+                        &:hover{
+                            background-color: rgba($WHITE, .1);
+                        }
+                    }
+                    
                 }
             }
         }

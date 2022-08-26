@@ -1,0 +1,18 @@
+.dropdownMenu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: $darkGray;
+    border-radius: .5rem;
+    min-width: 12.25rem;
+
+    a, button{
+        padding: $PS;
+        display: block;
+    }
+    
+    button{
+        width: 100%;
+        display: flex;
+    }
+}

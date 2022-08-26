@@ -20,25 +20,10 @@
     }
 
     &__widgetMenu{
-        position: absolute;
-        inset: 42px 0 auto auto;
-        display: flex;
-        flex-direction: column;
-        background-color: $darkGray;
-        border-radius: .5rem;
-        min-width: 12.25rem;
-
+        inset: 2.62rem 0 auto auto;
+        
         ul{
             li{
-                a, button{
-                    padding: $PS;
-                    display: block;
-                }
-                
-                button{
-                    width: 100%;
-                    display: flex;
-                }
 
                 &:nth-child(2){
                     border-bottom: 1px solid rgba($WHITE, .1);
