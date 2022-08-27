@@ -1,0 +1,19 @@
+.playBtn{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: $GREEN;
+    color: $BLACK;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover{
+        transform: scale(1.07);
+    }
+
+    &:active{
+        transform: translateY(2px);
+        background-color: rgba($GREEN, .7);
+    }
+}
