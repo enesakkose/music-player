@@ -74,10 +74,11 @@
                         margin-bottom: $MS;
                     }
                 }
-                /*.active{
+                
+                .active{
                     color: $GREEN;
                     background-color: rgba($GREEN, .10);
-                }*/
+                }
             }
         }
 
@@ -150,7 +151,4 @@
         }  
     }
 }
-
-//todo playlist scrollbar cause to of h4 movement
-//todo playlist router will be arrange with uuid
-// todo outles usage will be checked  
+ 

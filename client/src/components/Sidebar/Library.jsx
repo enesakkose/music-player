@@ -9,12 +9,12 @@ function Library() {
         <h4>YOUR LIBRARY</h4>
         <div className="sidebar__content__library__links">
           <NavLink to='/collection/tracks'>
-           <Icon name='Favorite' size={24}/>
-           Favorites
+            <Icon name='Favorite' size={24}/>
+            Favorites
           </NavLink>
           <NavLink to='/'>
-           <Icon name='Music' size={24}/>
-           Sings
+            <Icon name='Music' size={24}/>
+            Sings
           </NavLink>
         </div>
     </div>
