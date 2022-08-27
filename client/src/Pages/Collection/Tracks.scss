@@ -1,5 +1,7 @@
 .favoriteTracks{
-
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     &__header{
         background-color: rgba($GREEN, .10);
         
@@ -8,4 +10,10 @@
         }
     }
     
+    &__main{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import PlaylistHeader from '@/components/PlaylistHeader'
+import EmptyPlaylist from '@/components/EmptyPlaylist'
 import Icon from '@/components/Icon'
 import '@/Pages/Collection/Tracks.scss'
 
@@ -15,9 +16,10 @@ function Tracks() {
           <h1>LIKED SONGS</h1>
         </div>
       </PlaylistHeader>
-      <div className='eee'>
-        eee
+      <div className="favoriteTracks__main">
+        <EmptyPlaylist/>
       </div>
+      
     </div>
   )
 }
