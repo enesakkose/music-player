@@ -4,7 +4,11 @@
     flex-direction: column;
     gap: 2.25rem;
     
-    .find-btn{
+    p{
+        font-weight: bold;
+    }
+
+    &-btn{
         background-color: $WHITE;
         color: $BLACK;
         font-weight: 600;

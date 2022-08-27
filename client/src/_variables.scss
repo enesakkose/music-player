@@ -1,12 +1,14 @@
 //COLOR
 $WHITE: #fff;
-$earlGray: #ddd;
+$earlGray: #3333;
 $BLACK: #000;
 $GRAY: #181818;
 $darkGray: #282828;
-$GREEN: #1DE9B6;
+$GREEN: #1DE760;
+$secondaryColor: #121212; 
 
-
+//TEXT COLOR
+$textGray: #a7a7a7;
 
 //DARK THEME COLOR
 
@@ -26,3 +28,5 @@ $MXXL: 4rem;
 
 //FONT SIZE
 
+//BOX SHADOW
+$cover: rgba(0, 0, 0, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;

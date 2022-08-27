@@ -7,6 +7,7 @@ import Library from '@/Pages/Library'
 import CollectionLayout from '@/Pages/Collection'
 import PlaylistLayout from '@/Pages/Playlist'
 import Playlist from '@/Pages/Playlist/Playlist'
+import Playlists from '@/Pages/Collection/Playlists'
 import Tracks from '@/Pages/Collection/Tracks'
 import { Route, Routes } from 'react-router-dom'
 import '@/components/Main/Main.scss'
@@ -28,6 +29,7 @@ function Main() {
           </Route>
           <Route path='/collection' element={<CollectionLayout/>}>
             <Route path='tracks' element={<Tracks/>}/>
+            <Route path='playlists' element={<Playlists/>}/>
           </Route>
         </Routes>
       </ViewLayout>

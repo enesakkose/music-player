@@ -2,15 +2,14 @@ import React from 'react'
 import Icon from '@/components/Icon'
 import '@/components/EmptyPlaylist.scss'
 
-function EmptyPlaylist() {
+function EmptyPlaylist({title, text, children}) {
   return (
     <div className='emptyPlaylist'>
       <Icon name='Music' size={48}/>
-      <h3>Songs you like will appear here</h3>
-      <h4>Save songs by tapping the heart icon.</h4>
-      <button className="find-btn">Find Songs</button>
+      <h3>{title}</h3>
+      <p>{text}</p>
+      {children}
     </div>
   )
 }
-
 export default EmptyPlaylist

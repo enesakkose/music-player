@@ -1,6 +1,7 @@
 import React from 'react'
 import PlaylistHeader from '@/components/PlaylistHeader'
 import EmptyPlaylist from '@/components/EmptyPlaylist'
+import { Link } from 'react-router-dom'
 import Icon from '@/components/Icon'
 import '@/Pages/Collection/Tracks.scss'
 
@@ -17,7 +18,12 @@ function Tracks() {
         </div>
       </PlaylistHeader>
       <div className="favoriteTracks__main">
-        <EmptyPlaylist/>
+        <EmptyPlaylist 
+          title='Songs you like will appear here'
+          text='Save songs by tapping the heart icon.'
+         >
+          <Link to='/search' className="emptyPlaylist-btn">Find Songs</Link>
+        </EmptyPlaylist>
       </div>
       
     </div>

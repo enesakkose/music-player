@@ -14,7 +14,7 @@ function Navbar() {
         <Icon name='Search' size={30}/>
         search
       </NavLink>
-      <NavLink to='/library'>
+      <NavLink to='/collection/playlists'>
         <Icon name='Book' size={30}/>
         library
       </NavLink>
