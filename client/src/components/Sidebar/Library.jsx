@@ -8,7 +8,11 @@ function Library() {
     <div className="sidebar__content__library">
         <h4>YOUR LIBRARY</h4>
         <div className="sidebar__content__library__links">
-          <NavLink to='/collection/tracks'>
+          <NavLink 
+          className={(favorites) => favorites.isActive 
+          ? 'favoritesActive favorites' : 'favorites'} 
+          to='/collection/tracks'
+          >
             <Icon name='Favorite' size={24}/>
             Favorites
           </NavLink>

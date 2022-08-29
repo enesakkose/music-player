@@ -1,8 +1,8 @@
 .playlists{
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(190px, 1fr));
+    gap: 1.5rem;
+    
 
     &__empty{
         flex: 1;
@@ -11,5 +11,3 @@
         justify-content: center;
     }
 }
-
-//todo playlist page will be edited and find a linear gradient for favorites page 

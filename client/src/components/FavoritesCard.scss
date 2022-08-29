@@ -1,0 +1,40 @@
+.favoritesCard{
+    background-image: $favoritesGradient;
+    grid-column: 1 / 7;
+    border-radius: .5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+
+    &__info{
+        h3{
+            padding-bottom: .5rem;
+        }
+    }
+
+    &__playBtn{
+        display: none;
+        position: absolute;
+        right: 1rem;
+    }
+
+    &:hover &__playBtn{
+        display: flex;
+        bottom: .9rem;
+        animation: btnFade .3s ease-out; 
+    }
+}
+
+@keyframes btnFade {
+    0%{
+        opacity: 0;
+        bottom: .5rem;
+    }
+
+    100%{
+        opacity: 1;
+        bottom: .9rem;
+    }
+}

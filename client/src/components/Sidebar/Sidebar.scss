@@ -79,7 +79,20 @@
                     color: $GREEN;
                     background-color: rgba($GREEN, .10);
                 }
+
+                .favorites{
+                    &:hover{
+                        color: $WHITE;
+                        background-color: rgba($purple, .15);
+                    }
+                }
+                
+                .favoritesActive{
+                    color: $WHITE;
+                    background-color: rgba($purple, .15);
+                }
             }
+
         }
 
         &__playlist{

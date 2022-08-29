@@ -1,11 +1,12 @@
 import React from 'react'
 import EmptyPlaylist from '@/components/EmptyPlaylist'
+import FavoritesCard from '@/components/FavoritesCard'
 import InfoCard from '@/components/InfoCard'
 import '@/Pages/Collection/Playlists.scss'
 
 function Playlists() {
   return (
-    <div className='playlists'>
+    <div className='playlists contentSpacing'>
         {/*<div className="playlists__empty">
         <EmptyPlaylist 
             title='Create your first playlist'
@@ -16,6 +17,33 @@ function Playlists() {
            </button>
         </EmptyPlaylist>  
         </div>*/}
+        <FavoritesCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
+        <InfoCard/>
         <InfoCard/>
     </div>
   )

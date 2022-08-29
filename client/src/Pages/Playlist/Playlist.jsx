@@ -23,7 +23,7 @@ function Playlist() {
 
   return (
     <div className='playlist'>
-      {/*//!  single classnames in child element is coming from PlaylistHeader components//*/}
+      {/*//!  single classnames in child elements is coming from PlaylistHeader components//*/}
         <PlaylistHeader className="playlist__header">
            <div className="playlist__header__cover cover">
             <Icon name='Music' size={75}/>
