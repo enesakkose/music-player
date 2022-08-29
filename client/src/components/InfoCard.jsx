@@ -13,7 +13,6 @@ function InfoCard() {
         <div className="infoCard__info">
             <h4>My Playlist #1</h4>
             <span>By Aaa(username)</span>
-            
         </div>
     </div>
   )
