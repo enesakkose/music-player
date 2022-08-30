@@ -1,7 +1,10 @@
 .playlists{
-    display: grid;
-    grid-template-columns: repeat( auto-fill, minmax(190px, 1fr));
-    gap: 1.5rem;
+    height: 100%;
+    &__cards{
+        display: grid;
+        grid-template-columns: repeat( auto-fill, minmax(190px, 1fr));
+        gap: 1.5rem;
+    }        
     
 
     &__empty{
@@ -9,5 +12,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 100%;
     }
 }

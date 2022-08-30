@@ -10,7 +10,7 @@ $purple: rgba(150,93,233,1);
 
 //TEXT COLOR
 $textGray: #a7a7a7;
-$favoritesGradient: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
+$favoritesGradient: linear-gradient( 83.2deg,  rgba(150,93,233,.7) 10.8%, rgba(99,88,238,.5) 94.3% );
 
 
 //DARK THEME COLOR
@@ -33,3 +33,4 @@ $MXXL: 4rem;
 
 //BOX SHADOW
 $cover: rgba(0, 0, 0, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+$textShadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;

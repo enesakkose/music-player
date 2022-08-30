@@ -3,4 +3,24 @@
     display: flex;
     flex-direction: column;
     overflow: auto;
+    
+
+    &::-webkit-scrollbar{
+        width: 15px;
+        
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+        
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba($WHITE, .3);
+
+        &:hover{
+            background-color: rgba($WHITE, .5);
+        }
+    }
 }
+
+//scrollbarrrrrrr before afterrrrrr

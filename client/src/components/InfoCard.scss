@@ -3,7 +3,7 @@
     border-radius: .5rem;
     background-color: $GRAY;
     transition: .3s all ease-in-out;
- 
+    position: relative;
 
     &:hover{
         background-color: $darkGray;
@@ -25,7 +25,6 @@
             bottom: .5rem;
             right: .5rem;
             display: none !important;
-            
         }
     }
 
@@ -47,6 +46,13 @@
             font-weight: bold;
             padding-bottom: $PS;
         }
+    }
+
+    .perde{
+        position: absolute;
+        content: '';
+        inset: 0;
+        cursor: pointer;
     }
 }
 
