@@ -1,0 +1,32 @@
+.searchInput{
+    flex: 1;
+    margin-left: 1rem;
+    
+    label{
+        background-color: $WHITE;
+        color: $darkGray;
+        border-radius: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        width: 364px;
+        padding: $PXS $PXL $PXS $PS;
+        position: relative;
+        cursor: text;
+
+        input{
+            height: 100%;
+            width: 100%;
+            font-size: .875rem;
+            font-weight: bold;
+            letter-spacing: .5px;
+        }
+    }
+
+    .closeBtn{
+        position: absolute;
+        top: .5rem;
+        right: .875rem;
+        color: black;
+    }
+}
