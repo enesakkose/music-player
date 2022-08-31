@@ -14,7 +14,7 @@ function Sidebar() {
         className='resizeable'
         maxWidth={400}
         defaultSize={{ width }}
-        minWidth={200}
+        minWidth={300}
         enable={{ right: true }}
         handleWrapperClass='sidebar__resizer'
         onResizeStop={(d) => {
