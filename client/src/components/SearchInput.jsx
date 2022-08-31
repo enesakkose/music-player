@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { useFocus } from '@/hooks/useFocus'
 import Icon from '@/components/Icon'
-
 import '@/components/SearchInput.scss'
 
 function SearchInput() {
   const inputRef = useFocus()
   const [ query, setQuery ] = useState('')
   
-
   return (
       <form className='searchInput'>
         <label>
