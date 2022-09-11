@@ -1,6 +1,6 @@
 .playlistHeader{
         height: 30vh;
-        min-height: 340px;
+        min-height: 21.25rem;
         padding: 0 $PL $PM $PL;
         top: 0;
         left: 0;
@@ -9,6 +9,7 @@
         gap: 1.5rem;
         margin-top: -$MXXL;
         align-items: flex-end;
+        
 
         .cover{
             box-shadow: $cover;

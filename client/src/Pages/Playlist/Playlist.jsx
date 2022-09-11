@@ -24,15 +24,15 @@ function Playlist() {
   return (
     <div className='playlist'>
       {/*//!  single classnames in child elements is coming from PlaylistHeader components//*/}
-        <PlaylistHeader className="playlist__header">
-           <div className="playlist__header__cover cover">
+      <PlaylistHeader className="playlist__header">
+          <div className="playlist__header__cover cover">
             <Icon name='Music' size={75}/>
             <span className="playlist__header__cover__action">
                 <Icon name='Pencil' size={48}/>
                 Choose Photo
             </span>
-           </div>
-           <div ref={domNode} className="playlist__header__info info">
+          </div>
+          <div ref={domNode} className="playlist__header__info info">
             <h6>PLAYLIST</h6>
             <h1>{playlistName?.name}</h1>
             <h6 className='playlist__header__info__userName'>
@@ -55,9 +55,11 @@ function Playlist() {
                 </DropdownMenu>}
             </h6>
             
-           </div>
-        </PlaylistHeader>
-        
+          </div>
+      </PlaylistHeader>
+      <div className="playlist__main">
+        <div className="playlist__main__background"/>
+      </div>  
     </div>
   )
 }

@@ -9,4 +9,9 @@
         background-color: rgba($BLACK, .7);
         border-radius: 50%;
     }
+
+    .disabled{
+        opacity: .5;
+        cursor: no-drop;
+    }
 }

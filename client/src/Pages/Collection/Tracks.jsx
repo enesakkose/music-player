@@ -18,10 +18,11 @@ function Tracks() {
         </div>
       </PlaylistHeader>
       <div className="favoriteTracks__main">
+        <div className="favoriteTracks__main__background"/>
         <EmptyPlaylist 
           title='Songs you like will appear here'
           text='Save songs by tapping the heart icon.'
-         >
+        >
           <Link to='/search' className="emptyPlaylist-btn">Find Songs</Link>
         </EmptyPlaylist>
       </div>

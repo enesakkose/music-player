@@ -7,13 +7,16 @@ $darkGray: #282828;
 $GREEN: #1DE760;
 $secondaryColor: #121212; 
 $purple: rgba(150,93,233,1);
+$playlistMainColor: #838383;
 
 //TEXT COLOR
 $textGray: #a7a7a7;
 $favoritesGradient: linear-gradient( 83.2deg,  rgba(150,93,233,.7) 10.8%, rgba(99,88,238,.5) 94.3% );
 
 
-//DARK THEME COLOR
+//LINEAR GRADIENT
+$darkLinear: linear-gradient(rgba(0,0,0,.6) 0,rgba(18,18,18,1) 100%);
+$grayLinear: linear-gradient(transparent 0,rgba(0,0,0,.5) 100%);
 
 
 //PADDING

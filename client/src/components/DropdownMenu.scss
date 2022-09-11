@@ -5,6 +5,16 @@
     background-color: $darkGray;
     border-radius: .5rem;
     min-width: 12.25rem;
+    padding: .250rem;
+
+    ul{
+        li{
+            &:hover{
+                border-radius: .250rem;
+                background-color: rgba($WHITE, .1);
+            }
+        }
+    }
 
     a, button{
         padding: $PS;
