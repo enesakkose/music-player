@@ -21,10 +21,10 @@ function Playlist() {
   return (
     <nav className="sidebar__content__playlist">
         <h4>
-         YOUR PLAYLIST
-         <button onClick={handleAdd} className='add-btn'>
+          YOUR PLAYLIST
+          <button onClick={handleAdd} className='add-btn'>
           <Icon name='Add' size={23}/> 
-         </button>
+          </button>
         </h4>
         <ul className="sidebar__content__playlist__items">
           {playlists.map((playlist) => (

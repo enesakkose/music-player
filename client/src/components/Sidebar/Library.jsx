@@ -16,9 +16,9 @@ function Library() {
             <Icon name='Favorite' size={24}/>
             Favorites
           </NavLink>
-          <NavLink to='/'>
+          <NavLink to='/songs'>
             <Icon name='Music' size={24}/>
-            Sings
+            Songs
           </NavLink>
         </div>
     </div>

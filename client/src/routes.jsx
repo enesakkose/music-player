@@ -7,8 +7,7 @@ import PlaylistLayout from '@/Pages/Playlist'
 import Playlist from '@/Pages/Playlist/Playlist'
 import Playlists from '@/Pages/Collection/Playlists'
 import Tracks from '@/Pages/Collection/Tracks'
-
-//! Suspect tags used for unexpected token error
+import Songs from "@/Pages/Songs";
 
 const routes = [
     {
@@ -46,7 +45,12 @@ const routes = [
                 element: <Suspense><Playlists/></Suspense> 
             }
         ]
+    },
+    {
+        path: 'songs',
+        element: <Suspense><Songs/></Suspense>
     }
+
 ]
 
 export default routes
