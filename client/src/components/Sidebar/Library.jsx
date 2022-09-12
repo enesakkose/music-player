@@ -5,7 +5,7 @@ import '@/components/Sidebar/Sidebar.scss'
 
 function Library() {
   return (
-    <div className="sidebar__content__library">
+    <nav className="sidebar__content__library">
         <h4>YOUR LIBRARY</h4>
         <div className="sidebar__content__library__links">
           <NavLink 
@@ -21,7 +21,7 @@ function Library() {
             Songs
           </NavLink>
         </div>
-    </div>
+    </nav>
   )
 }
 

@@ -1,3 +1,136 @@
 .footer{
     height: 6.25rem;
+    background-color: $GRAY;
+    padding:  0 $PM;
+    color: rgba($WHITE, .6);
+    display: flex;
+    align-items: center;
+
+    &__music__info{
+        display: flex;
+        align-items: center;
+        transform: translateX(0);
+        animation: closeCover .3s ease-in-out;
+        gap: 1.5rem;
+
+        &__cover{
+            width: 3.5rem;
+            height: 3.5rem;
+            background-color: $earlGray;
+            box-shadow: $cover;
+            position: relative;
+            z-index: 1;
+
+            &:hover .expandBtn{
+                opacity: 1;
+            }
+
+            img{
+                width: 100%;
+                height: 100%;
+                opacity: .9;
+            }
+
+            .expandBtn{
+                position: absolute;
+                transform: rotate(90deg);
+                right: .250rem;
+                top: .250rem;
+                z-index: 2;
+                background-color: rgba($BLACK, .4);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: .125rem;
+                border-radius: 50%;
+                opacity: 0;
+                transition: 100ms opacity ease-in-out;
+
+                &:hover{
+                    color: $WHITE;
+                    transform: scale(1.1) rotate(90deg);
+                }
+            }
+        }
+
+        &__text{
+            letter-spacing: .5px;
+            
+            a{
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+
+            &__songName{
+                p{
+                    font-weight: bold;
+                    font-size: 14px; 
+                }
+            }
+
+            &__singerName{
+                color: rgba($WHITE, .6);
+                font-size: 12px;
+            }
+        }
+
+        &__actionBtns{
+            display: flex;
+            align-items: center;
+
+            button{
+                width: 2rem;
+                height: 2rem;
+
+                &:hover{
+                    color: $WHITE;
+                }
+            }
+        }
+    }
+    .openCover{
+        transform: translateX(-5rem);
+        animation: openCover .3s ease-in-out;
+    }
+
+    &__music__player{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__music__tool{
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+
+        &__range{
+            display: flex;
+            align-items: center;
+            gap: .250rem;
+        }
+    }
+}
+
+@keyframes openCover {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-5rem);
+        
+    }
+    
+}
+
+@keyframes closeCover {
+    0%{
+        transform: translateX(-5rem);
+    }
+    100%{
+        transform: translateX(0);
+        
+    }
 }

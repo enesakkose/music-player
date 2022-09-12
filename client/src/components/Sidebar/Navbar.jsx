@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Icon from '@/components/Icon'
-import '@/components/Sidebar/Sidebar.scss'
 
 function Navbar() {
   return (

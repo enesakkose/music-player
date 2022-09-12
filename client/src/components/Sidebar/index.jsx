@@ -4,9 +4,13 @@ import Navbar from '@/components/Sidebar/Navbar'
 import Library from '@/components/Sidebar/Library'
 import Playlist from '@/components/Sidebar/Playlist'
 import Logo from '@/components/Sidebar/Logo'
+import SidebarAlbumCover from '@/components/Sidebar/SidebarAlbumCover'
+import { useSelector } from 'react-redux'
+import '@/components/Sidebar/Sidebar.scss'
 
 function Sidebar() {
   const [ width, setWidth ] = useState(300)
+  const { openCover } = useSelector(state => state.playlist)
 
   return (
     <sidebar className='sidebar'>
@@ -25,6 +29,7 @@ function Sidebar() {
           <Navbar/>
           <Library/>
           <Playlist/>
+          {openCover && <SidebarAlbumCover/>}
         </div>
       </Resizable>
     </sidebar>

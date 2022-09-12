@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  playlists: []
+    playlists: [],
+    openCover: false
 }
 
 export const playlist = createSlice({
@@ -16,9 +17,12 @@ export const playlist = createSlice({
         },
         reset: (state) =>{
             state.playlists = []
+        },
+        setOpenCover: (state, action) => {
+            state.openCover = action.payload
         }
     }
 })
 
-export const { addPlaylist, reset } = playlist.actions
+export const { addPlaylist, reset, setOpenCover } = playlist.actions
 export default playlist.reducer
