@@ -1,0 +1,23 @@
+.rc-slider{
+    &-track{
+        background-color: $WHITE;
+    }
+    
+    &-rail{
+        background-color: rgba($WHITE, .4);
+    }
+    
+    &-handle{
+        cursor: default;
+        opacity: 0;
+    }
+
+    &-handle-dragging{
+        opacity: 1;
+    }
+    
+    &:hover .rc-slider-handle{
+        opacity: 1;
+    }
+}
+

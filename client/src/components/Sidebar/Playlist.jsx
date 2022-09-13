@@ -3,16 +3,17 @@ import { NavLink } from 'react-router-dom'
 import Icon from '@/components/Icon'
 import { useSelector } from 'react-redux'
 import { addPlaylistHandle } from '@/utils'
+import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import '@/components/Sidebar/Sidebar.scss'
 
 
 function Playlist() {
-  
+  const navigate = useNavigate()
   const { playlists } = useSelector(state => state.playlist)
   
   const handleAdd = () => {
-    addPlaylistHandle({
+      addPlaylistHandle({
       name: `My Playlist #${playlists.length + 1}`,
       id : uuidv4()
     })
@@ -22,7 +23,7 @@ function Playlist() {
     <nav className="sidebar__content__playlist">
         <h4>
           YOUR PLAYLIST
-          <button onClick={handleAdd} className='add-btn'>
+          <button onClick={() => handleAdd(playlists)} className='add-btn'>
           <Icon name='Add' size={23}/> 
           </button>
         </h4>

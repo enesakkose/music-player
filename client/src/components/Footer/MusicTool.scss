@@ -1,0 +1,23 @@
+.footer__music__tool{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.2rem;
+
+    button{
+        &:hover{
+            color: $WHITE;
+        }
+    }
+
+    &__range{
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        .range{
+            width: 6.25rem;
+        }
+        
+    }
+}
