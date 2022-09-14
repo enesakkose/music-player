@@ -8,6 +8,7 @@ import Playlist from '@/Pages/Playlist/Playlist'
 import Playlists from '@/Pages/Collection/Playlists'
 import Tracks from '@/Pages/Collection/Tracks'
 import Songs from "@/Pages/Songs";
+import Album from "@/Pages/Album";
 
 const routes = [
     {
@@ -49,6 +50,10 @@ const routes = [
     {
         path: 'songs',
         element: <Suspense><Songs/></Suspense>
+    },
+    {
+        path: 'album/:id',
+        element: <Suspense><Album/></Suspense>
     }
 
 ]

@@ -1,7 +1,7 @@
 import React from 'react'
 import EmptyPlaylist from '@/components/EmptyPlaylist'
 import FavoritesCard from '@/components/FavoritesCard'
-import InfoCard from '@/components/InfoCard'
+import PlaylistInfoCard from '@/components/PlaylistInfoCard'
 import { addPlaylistHandle } from '@/utils'
 import { v4 as uuidv4 } from 'uuid'
 import { useSelector } from 'react-redux'
@@ -35,7 +35,7 @@ function Playlists() {
         : <div className="playlists__cards">
             <FavoritesCard/>
             {playlists.map((playlist) => (
-              <InfoCard key={playlist.id} playlist={playlist} />
+              <PlaylistInfoCard key={playlist.id} playlist={playlist} />
             ))}
           </div>  
       }

@@ -1,4 +1,4 @@
-.infoCard{
+.songCard{
     padding: 1rem;
     border-radius: .5rem;
     background-color: $GRAY;
@@ -20,11 +20,18 @@
         justify-content: center;
         position: relative;
 
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: .25rem;
+        }
+
         &__btn{
             position: absolute;
             bottom: .5rem;
             right: .5rem;
             display: none !important;
+            cursor: default;
         }
     }
 
@@ -39,6 +46,12 @@
         display: flex;
         flex-direction: column;
         gap: .875rem;
+
+        h4{
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
 
         span{
             font-size: .875rem;
@@ -67,5 +80,3 @@
         bottom: .9rem;
     }
 }
-
-//! used of keyframes property because hover property is not working with display 

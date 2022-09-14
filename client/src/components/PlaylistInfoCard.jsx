@@ -2,17 +2,16 @@ import React from 'react'
 import Icon from '@/components/Icon'
 import PlayBtn from '@/components/PlayBtn'
 import { Link } from 'react-router-dom'
-import '@/components/InfoCard.scss'
+import '@/components/playlistInfoCard.scss'
 
-function InfoCard({playlist}) {
-  
+function PlaylistInfoCard({playlist}) {
   return (
-    <div className='infoCard'>
-        <div className="infoCard__img">
+    <div className='playlistInfoCard'>
+        <div className="playlistInfoCard__img">
             <Icon name='Music' size={52}/>
-            <PlayBtn className='infoCard__img__btn'/>
+            <PlayBtn className='playlistInfoCard__img__btn'/>
         </div>
-        <div className="infoCard__info">
+        <div className="playlistInfoCard__info">
             <h4>{playlist.name}</h4>
             <span>By Aaa(username)</span>
         </div>
@@ -20,6 +19,4 @@ function InfoCard({playlist}) {
     </div>
   )
 }
-export default InfoCard
-
-//! A "perde" ELEMENT USED TO PREVENT THE PLAY BUTTON FROM BEING AFFECTED BY THE PUBLIC LINK
+export default PlaylistInfoCard

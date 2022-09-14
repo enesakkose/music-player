@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import Icon from '@/components/Icon'
 import CustomRange from '@/components/CustomRange'
 import '@/components/Footer/MusicTool.scss'
@@ -6,6 +6,7 @@ import '@/components/Footer/MusicTool.scss'
 function MusicTool() {
 
   const [volume, setVolume] = useState(0)
+  
 
   return (
     <div className="footer__music__tool">
@@ -23,8 +24,7 @@ function MusicTool() {
             size={22}
           />
         </button>
-        <CustomRange
-          className='range' 
+        <CustomRange 
           value={volume} 
           onChange={value => setVolume(value)} 
           min={0} 
