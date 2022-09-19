@@ -10,10 +10,10 @@ import '@/Pages/Album.scss'
 function Album() {
   const { id } = useParams()
   const { songs } = useSelector(state => state.song)
-  const [ like, setLike ] = useState(false)
+  const [ like, setLike ] = useState(false)/*!!*/
   const findAlbum = songs?.find(d => d.id == id)
   const findSongs = songs?.filter((song) => song.author === findAlbum.author)
-  console.log(findSongs)
+  
 
   if(songs === null) return '...Loading'
   //componentlere ayır ve useAudioyu incele
@@ -25,7 +25,9 @@ function Album() {
         </div>
         <div className="album__header__info info">
           <h6>SINGLE</h6>
-          <h1>{findAlbum.name.substr(0,15)}</h1>
+          <h1 className="album__header__info__albumName">
+            {findAlbum.name.substr(0,15)}
+          </h1>
           <h6 className='album__header__info__singer'>
             {findAlbum.author.toUpperCase()} •
             <span> {findSongs.length} Songs</span> 

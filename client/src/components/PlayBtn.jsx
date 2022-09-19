@@ -1,13 +1,15 @@
-import React, {useState} from 'react'
+import React  from 'react'
 import Icon from '@/components/Icon'
+import { useSelector } from 'react-redux'
 import '@/components/PlayBtn.scss'
 
-function PlayBtn({className}) {
-  const [ play, setPlay ] = useState(false)
+function PlayBtn({className, playing} ) {
+  
+  
 
   return (
-    <button onClick={() => setPlay(!play)} className={`playBtn ${className}`}>
-        <Icon name={play ? 'Stop' : 'Play'} size={22}/>
+    <button className={`playBtn ${className}`}>
+        <Icon name={playing ? 'Stop' : 'Play'} size={22}/>
     </button>
   )
 }

@@ -1,12 +1,28 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import Icon from '@/components/Icon'
 import CustomRange from '@/components/CustomRange'
+import { debounce } from 'lodash'
 import '@/components/Footer/MusicTool.scss'
 
-function MusicTool() {
-
-  const [volume, setVolume] = useState(0)
+function MusicTool({ controls, state }) {
+  const debouncedVolume = useCallback(
+    debounce(
+      value => updateV(value)
+    , 0),
+    []
+  )
   
+  const updateV = (value) => {
+    controls.unmute()
+    controls.volume(value)
+  }
+  
+  const volumeIcon = useMemo(() => {
+    if(state.volume === 0 || state.muted) return 'Unmute'
+    if(state.volume > 0 && state.volume < .33) return 'VolumeLow'
+    if(state.volume >= .33 && state.volume < .66) return 'Volumemedium'
+    return 'Volumeup'
+  }, [state.volume, state.muted])
 
   return (
     <div className="footer__music__tool">
@@ -17,20 +33,21 @@ function MusicTool() {
         <Icon name='Queue' size={22}/>
       </button>
       <div className="footer__music__tool__range">
-        <button className='volumeBtn'>
+        <button 
+          className='volumeBtn' 
+          onClick={controls[state.muted ? 'unmute' : 'mute']}
+        >
           <Icon 
-            name={volume === 0 ? 'Unmute' 
-            : volume >= .44 ? 'Volumeup' : 'Volumemedium'} 
-            size={22}
+            name={volumeIcon} 
+            size={24}
           />
         </button>
         <CustomRange 
-          value={volume} 
-          onChange={value => setVolume(value)} 
+          value={state.muted ? 0 : state?.volume} 
+          onChange={(value) => debouncedVolume(value)} 
           min={0} 
           max={1} 
           step={0.01} 
-          defaultValue={0.5} 
         />
       </div>
     </div>

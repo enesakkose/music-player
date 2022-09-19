@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom'
 import Icon from '@/components/Icon'
 import '@/components/Footer/MusicInfo.scss'
 
-function MusicInfo() {
+function MusicInfo({current}) {
   const dispatch = useDispatch()
   const { openCover } = useSelector(state => state.playlist)
-
+  
+  
   return (
     <div className={`footer__music__info ${openCover ? 'openCover' : ''}`}>
       <div className='footer__music__info__cover'>
-        <img src="https://i.scdn.co/image/ab67616d000048515ceefb72ace6475e8c0e2ce3" alt="" />
+        <img src={current?.links.images[1].url} alt={current?.name}/>
         <button 
           onClick={() => dispatch(setOpenCover(!openCover))} 
           className="expandBtn"
@@ -25,13 +26,13 @@ function MusicInfo() {
           className='footer__music__info__text__songName' 
           to='/'
         >
-          <p>Çem Vano - Remix</p>
+          <p>{current?.name}</p>
         </Link>
         <Link
           className='footer__music__info__text__singerName' 
           to='/'
         >
-          <span>Mikail Aslan, Alican Özbuğutu</span>
+          <span>{current?.author}</span>
         </Link>
       </div>
       <div className="footer__music__info__actionBtns">

@@ -33,6 +33,16 @@
             display: none !important;
             cursor: default;
         }
+
+        .showBtn{
+            display: block !important;
+            bottom: .9rem;
+            animation: btnFade .3s ease-in-out;
+        }
+
+        .fadeOut{
+            
+        }
     }
 
     &:hover  &__img__btn{

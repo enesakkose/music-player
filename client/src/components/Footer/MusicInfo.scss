@@ -1,6 +1,6 @@
 .footer__music__info{
     display: flex;
-    align-items: center;
+    align-items: center;    
     transform: translateX(0);
     animation: closeCover .3s ease-in-out;
     gap: 1.5rem;
@@ -57,7 +57,10 @@
         &__songName{
             p{
                 font-weight: bold;
-                font-size: 14px; 
+                font-size: 14px;
+                max-width: 18rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
 
@@ -85,6 +88,8 @@
     transform: translateX(-5rem);
     animation: openCover .3s ease-in-out;
 }
+
+
 
 @keyframes openCover {
     0%{

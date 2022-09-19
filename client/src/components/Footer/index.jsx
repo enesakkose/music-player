@@ -2,14 +2,32 @@ import React from 'react'
 import MusicInfo from '@/components/Footer/MusicInfo'
 import MusicPlayer from '@/components/Footer/MusicPlayer'
 import MusicTool from '@/components/Footer/MusicTool'
+import { useAudio } from 'react-use'
+import { useSelector } from 'react-redux'
 import '@/components/Footer/Footer.scss'
 
 function Footer() {
+  const { current, playing, control } = useSelector(state => state.player)
+  
+  const [audio, state, controls, ref] = useAudio({
+    src: current?.url
+  })
+  
+
   return (
     <footer className='footer'>
-      <MusicInfo/>
-      <MusicPlayer/>
-      <MusicTool/>
+      <MusicInfo current={current}/>
+      <MusicPlayer 
+        audio={audio} 
+        state={state}
+        controls={controls} 
+        current={current}
+        control={control}
+      />
+      <MusicTool
+        controls={controls}
+        state={state}
+      />
     </footer>
   )
 }

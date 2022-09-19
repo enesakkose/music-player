@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux'
 import '@/Pages/Songs.scss'
 
 function Songs() {
+  const { playing, controls } = useSelector(state => state.player)
+  
   const { songs } = useSelector(state => state.song)
   if(songs === null) return '...loading'
   

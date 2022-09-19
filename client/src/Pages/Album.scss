@@ -21,6 +21,12 @@
                     color: rgba($WHITE, .7);
                 }
             }
+
+            &__albumName{
+                white-space: nowrap; 
+                overflow: hidden;
+                text-overflow: ellipsis; 
+            }
         }
     }
 

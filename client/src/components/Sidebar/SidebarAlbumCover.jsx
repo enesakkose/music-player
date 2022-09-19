@@ -1,14 +1,15 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setOpenCover } from '@/store/playlist'
 import Icon from '@/components/Icon'
 
 function SidebarAlbumCover() {
   const dispatch = useDispatch()
+  const { current } = useSelector(state => state.player)
     
   return (
     <div className="sidebar__content__music__cover">
-        <img src="https://i.scdn.co/image/ab67616d0000b2735ceefb72ace6475e8c0e2ce3" alt="" />
+        <img src={current?.links.images[1].url} alt={current?.name}/>
         <button 
           className='closeCover' 
           onClick={() => dispatch(setOpenCover(false))}
