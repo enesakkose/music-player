@@ -24,7 +24,7 @@ function SongCard({song}) {
   }
 
   
-  
+  //card play pause button and footer play pause button
   const currentItem = current?.id === song.id
   return (
     <div className='songCard'>

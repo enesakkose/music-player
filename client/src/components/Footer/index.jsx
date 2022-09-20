@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MusicInfo from '@/components/Footer/MusicInfo'
 import MusicPlayer from '@/components/Footer/MusicPlayer'
 import MusicTool from '@/components/Footer/MusicTool'
@@ -13,6 +13,9 @@ function Footer() {
     src: current?.url
   })
   
+  useEffect(() => {
+    controls.play()
+  }, [current])
 
   return (
     <footer className='footer'>
@@ -20,9 +23,7 @@ function Footer() {
       <MusicPlayer 
         audio={audio} 
         state={state}
-        controls={controls} 
-        current={current}
-        control={control}
+        controls={controls}
       />
       <MusicTool
         controls={controls}
@@ -33,3 +34,5 @@ function Footer() {
 }
 
 export default Footer
+
+// find a new audio package and rearrange musicplayer

@@ -44,7 +44,7 @@ function MusicTool({ controls, state }) {
         </button>
         <CustomRange 
           value={state.muted ? 0 : state?.volume} 
-          onChange={(value) => debouncedVolume(value)} 
+          onChange={(value) => updateV(value)} 
           min={0} 
           max={1} 
           step={0.01} 

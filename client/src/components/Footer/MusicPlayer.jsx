@@ -8,18 +8,19 @@ import { setPlaying, setControl, setVolume } from '@/store/player'
 import { debounce } from 'lodash'
 import '@/components/Footer/MusicPlayer.scss'
 
-function MusicPlayer({current, audio, state, controls, control}) {
-  const dispatch = useDispatch()
-  
+function MusicPlayer({ audio, state, controls }) {
 
-  
+  const dispatch = useDispatch()
+  const debouncedSeek = useCallback(
+    debounce(
+      value => controls.seek(value)
+    , 0),
+    []
+  )
   
   const playBtn = () => {
     controls[state?.playing ? 'pause' : 'play']()
   }
-  useEffect(() => {
-    controls.play()
-  }, [current])
 
   useEffect(() => {
     dispatch(setPlaying(state.playing))
@@ -52,7 +53,7 @@ function MusicPlayer({current, audio, state, controls, control}) {
           min={0} 
           max={state?.duration || 1}
           value={state?.time} 
-          /*onChange={(value) => controls.seek(value)}*/
+          onChange={(value) => debouncedSeek(value)}
           />
           <span className='time'>
             {useTimeConvert(state?.duration)}
