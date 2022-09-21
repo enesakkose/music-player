@@ -1,0 +1,20 @@
+.favoriteBtn{
+    .like{
+        fill: $GREEN;
+        transform: translateY(0);
+        animation: like .3s ease-in-out;
+    }
+}
+    
+
+@keyframes like {
+    0%{
+        transform: translateX(5px);
+    }
+    25%{
+        transform: translateX(-5px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
