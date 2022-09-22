@@ -12,6 +12,7 @@
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
     "dayjs": "^1.11.5",
+    "firebase": "^9.10.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "rc-slider": "^10.0.1",
