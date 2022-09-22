@@ -1,13 +1,20 @@
 import Footer from '@/components/Footer'
 import Main from '@/components/Main'
+import { defaultRoutes } from '@/routes'
+import { useRoutes } from 'react-router-dom'
+import { useLocation } from 'react-use'
 
 function App() {
+  const location = useLocation()
+  const path = location.pathname === '/auth'
+  
   return (
     <div className="App">
-      <div className="container">
+      {path && useRoutes(defaultRoutes)}
+      {!path && <div className="container">
         <Main/>
         <Footer/>
-      </div>
+      </div>}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense } from "react"
 import Home from '@/Pages/Home'
 import Search from '@/Pages/Search'
 import Library from '@/Pages/Library'
@@ -7,10 +7,11 @@ import PlaylistLayout from '@/Pages/Playlist'
 import Playlist from '@/Pages/Playlist/Playlist'
 import Playlists from '@/Pages/Collection/Playlists'
 import Tracks from '@/Pages/Collection/Tracks'
-import Songs from "@/Pages/Songs";
-import Album from "@/Pages/Album";
+import Songs from "@/Pages/Songs"
+import Album from "@/Pages/Album"
+import Auth from "@/Pages/Auth"
 
-const routes = [
+export const routes = [
     {
         path: '/',
         element: <Suspense><Home/></Suspense> 
@@ -55,7 +56,11 @@ const routes = [
         path: 'album/:id',
         element: <Suspense><Album/></Suspense>
     }
-
 ]
 
-export default routes
+export const defaultRoutes = [
+    {
+        path: 'auth',
+        element: <Suspense><Auth/></Suspense>
+    }
+]
