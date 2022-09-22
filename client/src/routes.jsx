@@ -61,6 +61,6 @@ export const routes = [
 export const defaultRoutes = [
     {
         path: 'auth',
-        element: <Suspense><Auth/></Suspense>
+        element: <Suspense><Auth/></Suspense>,
     }
 ]

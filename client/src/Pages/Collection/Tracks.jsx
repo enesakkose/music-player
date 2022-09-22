@@ -22,6 +22,7 @@ function Tracks() {
         <div className="favoriteTracks__info info">
           <h6>PLAYLIST</h6>
           <h1>LIKED SONGS</h1>
+          {favorites.length > 0 && <h6>{favorites.length} songs</h6>}
         </div>
       </PlaylistHeader>
       <div 
@@ -48,7 +49,6 @@ function Tracks() {
           </div>
         </div>}
       </div>
-      
     </div>
   )
 }

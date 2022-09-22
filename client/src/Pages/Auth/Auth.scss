@@ -1,0 +1,176 @@
+.auth{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $GRAY;
+    
+    &__content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+        border: 2px solid rgba($GRAY, .5);
+        border-radius: .5rem;
+        padding: $PS $PM;
+        background-color: $brokeWhite;
+
+        a{
+            color: $BLACK;
+        }
+
+        &__googleBtn{
+            color: $GRAY;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid $earlGray;
+            padding: $PXS $PL;
+            border-radius: 1.5rem;
+            min-width: 20.875rem;
+
+            &:active{
+                transform: translateY(.5px);
+            }
+        }
+
+        &__or{
+            width: 100%; 
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+                &::before{
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    flex: 1;
+                    background-color: $earlGray;
+                }
+
+                &::after{
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    background-color: $earlGray;
+                    flex: 1;
+                }
+            
+        }
+
+        &__inputs{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            
+            input{
+                background-color: transparent;
+                border: 2px solid $earlGray;
+                border-radius: .25rem;
+                padding: $PS;
+                font-size: .875rem;
+
+                &:focus{
+                    border-color: $BLACK;
+                }
+            }
+
+            .inputContain{
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+            }
+
+            &__title{
+                font-weight: bold;
+            }
+        }
+
+        &__actionBtns{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &__forgot{
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+
+            &__login{
+                background-color: $GREEN;
+                padding: $PS;
+                border-radius: 1.5rem;
+                font-weight: bold;
+                color: $BLACK;
+                letter-spacing: 1px;
+
+                &:hover{
+                    background-color: rgba($GREEN, .9);
+                }
+            }
+        }
+
+        &__createAccount{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding-top: $PS;
+            border-top: 2px solid $earlGray;
+
+            &__text{
+                font-weight: 700;
+            }
+
+            &__link{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                border: 1px solid $earlGray;
+                padding: $PXS;
+                width: 100%;
+                border-radius: 1rem;
+                background-color: rgba($earlGray, .1);
+                transition: 300ms background-color ease-in-out;
+                color: $BLACK;
+
+                &:hover{
+                    background-color: transparent;
+                }
+            }
+            
+        }
+
+        &__signupBtn{
+            width: 100%;
+            background-color: $GREEN;
+            padding: $PS 0;
+            border-radius: 1.5rem;
+            font-weight: bold;
+            color: $BLACK;
+            letter-spacing: 1px;
+
+            &:hover{
+                background-color: rgba($GREEN, .9);
+            }
+        }
+
+        &__loginContent{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+
+            &__btn{
+                color: $GREEN;
+                font-size: 1rem;
+                font-weight: bold;
+                text-decoration: underline;
+                letter-spacing: 1px;
+            }
+        }
+    }
+}
