@@ -3,7 +3,7 @@ import { Resizable } from 're-resizable'
 import Navbar from '@/components/Sidebar/Navbar'
 import Library from '@/components/Sidebar/Library'
 import Playlist from '@/components/Sidebar/Playlist'
-import Logo from '@/components/Sidebar/Logo'
+import BrandLogo from '@/components/BrandLogo'
 import SidebarAlbumCover from '@/components/Sidebar/SidebarAlbumCover'
 import { useSelector } from 'react-redux'
 import '@/components/Sidebar/Sidebar.scss'
@@ -25,7 +25,7 @@ function Sidebar() {
         setWidth({ width: width + d.width})}}
       >
         <div className="sidebar__content">
-          <Logo/>
+          <BrandLogo size={35}/>
           <Navbar/>
           <Library/>
           <Playlist/>
