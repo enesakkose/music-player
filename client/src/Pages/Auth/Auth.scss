@@ -111,6 +111,7 @@
                     background-color: rgba($GREEN, .9);
                 }
             }
+
         }
 
         &__createAccount{
@@ -120,6 +121,7 @@
             gap: 1rem;
             padding-top: $PS;
             border-top: 2px solid $earlGray;
+            width: 100%;
 
             &__text{
                 font-weight: 700;
