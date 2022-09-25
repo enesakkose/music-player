@@ -6,23 +6,29 @@ import CustomInput from '@/components/CustomInput'
 import { Link } from 'react-router-dom'
 import { loginSchema } from '@/forms/schemas'
 import { Form, Formik } from 'formik'
-import { login } from '@/firebase'
+import { handleLogin, loginWithGoogle } from '@/firebase'
 import { useNavigate } from 'react-router-dom'
+
 
 function Login({changeContent, setChangeContent}) {
 
   const navigate = useNavigate()
-  
+
   const onSubmit = async(values, actions) => {
-    const user = await login(values.username, values.password)
+    const user = await handleLogin(values.username, values.password)
     if(user) return navigate('/', { replace: true })
     {user && actions.resetForm()}
   }
   
+  const continueGoogle = async() => {
+    const user = await loginWithGoogle()
+    if(user) return navigate('/', { replace: true })
+  }
+
   return (
     <div className='auth__content'>
       <BrandLogo size={35}/>
-      <button className='auth__content__googleBtn'>
+      <button onClick={continueGoogle} className='auth__content__googleBtn'>
         <GoogleBtn text='CONTINUE WITH GOOGLE'/>
       </button>
       <Or/>

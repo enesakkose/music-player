@@ -26,9 +26,6 @@ function MusicPlayer({ audio, state, controls }) {
     dispatch(setPlaying(state.playing))
   }, [state?.playing])
   
-  useEffect(() => {
-    dispatch(setControl(controls))
-  }, [])
 
   return (
     <div className="footer__music__player">

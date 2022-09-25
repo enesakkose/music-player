@@ -13,6 +13,14 @@
         &:hover{
             background-color: rgba($BLACK, .35);
         }
+        
+        &__img{
+            img{
+                width: 1.8rem;
+                height: 1.8rem;
+                border-radius: 50%;
+            }
+        }
 
         .rotate{
             transform: rotate(-180deg);
@@ -20,15 +28,9 @@
     }
 
     &__widgetMenu{
-        inset: 2.62rem 0 auto auto;
-        
-        ul{
-            li{
-
-                &:nth-child(2){
-                    border-bottom: 1px solid rgba($WHITE, .1);
-                }
-            }
-        }
+        top: 2.62rem;
+        right: 0;
+        bottom: auto;
+        left: auto;
     }
 }

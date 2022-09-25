@@ -5,21 +5,28 @@ import Or from '@/Pages/Auth/Or'
 import CustomInput from '@/components/CustomInput'
 import { signupSchema } from '@/forms/schemas'
 import { Form, Formik } from 'formik'
-import { login } from '@/firebase'
-
+import { createUser, loginWithGoogle } from '@/firebase'
+import { useNavigate } from 'react-router-dom'
 
 function Signup({changeContent, setChangeContent}) {
+  
+  const navigate = useNavigate()
 
   const onSubmit = async(values, actions) => {
-    console.log(values)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    actions.resetForm()
+    const user = await createUser(values.email, values.password)
+    if(user) return navigate('/', { replace: true })
+    {user && actions.resetForm()}
+  }
+
+  const continueGoogle = async() => {
+    const user = await loginWithGoogle()
+    if(user) return navigate('/', { replace: true })
   }
 
   return (
     <div className='auth__content'>
       <BrandLogo  size={35}/>
-      <button className='auth__content__googleBtn'>
+      <button onClick={continueGoogle} className='auth__content__googleBtn'>
         <GoogleBtn text='SIGNUP WITH GOOGLE'/>
       </button>
       <Or/>
@@ -75,7 +82,7 @@ function Signup({changeContent, setChangeContent}) {
                 Confirm Password
               </span>
             </CustomInput>
-            <button className={`auth__content__signupBtn ${isSubmitting ? 'submittingBtn' : ''}`}>
+            <button type='submit' className={`auth__content__signupBtn ${isSubmitting ? 'submittingBtn' : ''}`}>
               SIGNUP
             </button>
           </Form>

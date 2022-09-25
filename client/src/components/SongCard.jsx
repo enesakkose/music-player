@@ -10,16 +10,6 @@ function SongCard({song}) {
   const { playing, current, control } = useSelector(state => state.player)
   
   const updateCurrent = () => {
-    
-      if(current?.id === song.id){
-        if(playing){
-          control.pause()
-        }else{
-          control.play()
-        }
-      }else{
-        dispatch(setCurrent(song))
-      }
         
   }
 
