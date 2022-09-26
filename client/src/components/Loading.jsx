@@ -1,9 +1,12 @@
 import React from 'react'
 import Icon from '@/components/Icon'
+import '@/components/Loading.scss'
 
 function Loading() {
   return (
-    <Icon name='Logo' size={50}/>
+    <div className='loading'>
+      <Icon className='loading' name='Logo' size={50}/>
+    </div>
   )
 }
 

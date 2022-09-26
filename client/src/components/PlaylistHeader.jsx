@@ -1,11 +1,10 @@
 import React from 'react'
-import Icon from '@/components/Icon'
 import '@/components/PlaylistHeader.scss'
 
-function PlaylistHeader({ className, children }) {
+function PlaylistHeader({ className, children, style}) {
   return (
-    <header className={`playlistHeader ${className}`}>
-       {children}
+    <header className={`playlistHeader ${className}`} style={style}>
+      {children}
     </header>
   )
 }

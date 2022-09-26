@@ -9,7 +9,7 @@ function SidebarAlbumCover() {
     
   return (
     <div className="sidebar__content__music__cover">
-        <img src={current?.links.images[1].url} alt={current?.name}/>
+        <img src={current?.images.coverart} alt={current?.title}/>
         <button 
           className='closeCover' 
           onClick={() => dispatch(setOpenCover(false))}

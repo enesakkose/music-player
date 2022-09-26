@@ -15,8 +15,8 @@ function SongsTableList({children, index, song}) {
       </div>
 
       <h4 className='songsTableListItem__text'>
-        {song.name}
-        <span>{song.author}</span>
+        {song.title}
+        <span>{song.subtitle}</span>
       </h4>
       {children}
       <span className='songsTableListItem__time'>

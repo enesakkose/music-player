@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik'
 import CustomInput from '@/components/CustomInput'
 
 function UserInfoModal({data, outClickRef}) {
-  console.log(data.displayName)
+  
   return (
     <div className='modal__content userInfoModal'>
       <header className='userInfoModal__header'>
@@ -54,7 +54,7 @@ function UserInfoModal({data, outClickRef}) {
                   Email
                 </span>
               </CustomInput>
-              
+
               <button type='submit' className='userInfoModal__form__inputs__submit'>
                 Save
               </button>

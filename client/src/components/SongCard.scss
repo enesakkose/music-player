@@ -39,10 +39,6 @@
             bottom: .9rem;
             animation: btnFade .3s ease-in-out;
         }
-
-        .fadeOut{
-            
-        }
     }
 
     &:hover  &__img__btn{
@@ -57,17 +53,18 @@
         flex-direction: column;
         gap: .875rem;
 
-        h4{
+        &__title, &__subtitle{
             white-space: nowrap; 
             overflow: hidden;
             text-overflow: ellipsis; 
         }
 
-        span{
+        &__subtitle{
             font-size: .875rem;
             color: $textGray;
             font-weight: bold;
             padding-bottom: $PS;
+            letter-spacing: 1px;
         }
     }
 

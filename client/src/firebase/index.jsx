@@ -4,7 +4,8 @@ import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
-    signInWithPopup
+    signInWithPopup,
+    signOut
 } from 'firebase/auth'
 import { login, logout } from "@/store/auth"
 import { store } from "@/store"
@@ -53,5 +54,15 @@ export const loginWithGoogle = async() => {
         return store.dispatch(login(user.providerData[0]))
     } catch (error) {
         toast.error('Something went wrong')
+    }
+}
+
+export const handleLogout = async() => {
+    try {
+        await signOut(auth)
+
+        return store.dispatch(logout())
+    } catch (error) {
+        toast.error('Failed!!!')
     }
 }

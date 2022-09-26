@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    current: null,
-    control: false,
-    playing: false,
-    volume: null,
+    current: {},
+    currentSongs: [],
+    isPlaying: false,
+    isActive: false,
 }
 
 export const player = createSlice({
@@ -12,19 +12,17 @@ export const player = createSlice({
     initialState,
     reducers: {
         setCurrent: (state, action) => {
-            state.current = action.payload
-        },
-        setControl: (state, action) => {
-            state.control = action.payload
+            state.current = action.payload.song
+            state.isActive = true
         },
         setPlaying: (state, action) => {
-            state.playing = action.payload
+            state.isPlaying = action.payload
         },
-        setVolume: (state, action) => {
-            state.volume = action.payload
+        playPause: (state,action) => {
+            state.isPlaying = action.payload
         }
     }
 })
 
-export const { setCurrent, setControl, setPlaying, setVolume } = player.actions
+export const { setCurrent, setPlaying, playPause } = player.actions
 export default player.reducer

@@ -6,15 +6,13 @@ import SongsTableList from '@/components/SongsTableList'
 
 function SongsList({song, index}) {
   const dispatch = useDispatch()
-  const [ like, setLike ] = useState(song.isFavorite)
+  const [ like, setLike ] = useState(false)
   const { favorites } = useSelector(state => state.favorite)
   const addFavorite = () => {
-    setLike(!like)
-    if(!like) return dispatch(setFavorites(song))
-    if(like) return dispatch(deleteFavorites(song))
+
   }
   
-  console.log(favorites)
+
   return (
     <SongsTableList song={song} index={index}>
       <button

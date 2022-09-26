@@ -1,38 +1,56 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import MusicInfo from '@/components/Footer/MusicInfo'
 import MusicPlayer from '@/components/Footer/MusicPlayer'
 import MusicTool from '@/components/Footer/MusicTool'
-import { useAudio } from 'react-use'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { playPause } from '@/store/player'
 import '@/components/Footer/Footer.scss'
 
 function Footer() {
-  const { current, playing, control } = useSelector(state => state.player)
+  const dispatch = useDispatch()
+  const { current, isPlaying, isActive } = useSelector(state => state.player)
+  const [volume, setVolume] = useState(0.3)
+  const [duration, setDuration] = useState(0)
+  const [seekTime, setSeekTime] = useState(0)
+  const [songTime, setSongTime] = useState(0)
   
-  const [audio, state, controls, ref] = useAudio({
-    src: current?.url
-  })
-  
+  const handlePlayPause = () => {
+    if(!isActive) return
+
+    if (isPlaying) {
+      dispatch(playPause(false));
+    } else {
+      dispatch(playPause(true));
+    }
+  }
+
   useEffect(() => {
-    controls.play()
+    dispatch(playPause(true))
   }, [current])
 
   return (
     <footer className='footer'>
       <MusicInfo current={current}/>
       <MusicPlayer 
-        audio={audio} 
-        state={state}
-        controls={controls}
+        isPlaying={isPlaying}
+        isActive={isActive}
+        handlePlayPause={handlePlayPause}
+        songTime={songTime}
+        setSongTime={setSongTime}
+        duration={duration}
+        setDuration={setDuration}
+        seekTime={seekTime}
+        volume={volume}
+        setSeekTime={setSeekTime}
+        value={songTime}
+        current={current}
       />
       <MusicTool
-        controls={controls}
-        state={state}
+        volume={volume}
+        setVolume={setVolume}
       />
     </footer>
   )
 }
 
 export default Footer
-
-// find a new audio package and rearrange musicplayer

@@ -1,41 +1,61 @@
-import React, { useEffect, useMemo, useCallback, useState } from 'react'
+import React, { useEffect, useRef, useMemo } from 'react'
 import Icon from '@/components/Icon'
 import PlayBtn from '@/components/PlayBtn'
 import CustomRange from '@/components/CustomRange'
-import { useSelector, useDispatch } from 'react-redux'
 import { useTimeConvert } from '@/hooks/useTimeConvert'
-import { setPlaying, setControl, setVolume } from '@/store/player'
 import { debounce } from 'lodash'
 import '@/components/Footer/MusicPlayer.scss'
 
-function MusicPlayer({ audio, state, controls }) {
+function MusicPlayer({ 
+  isPlaying, 
+  isActive, 
+  handlePlayPause, 
+  songTime,
+  setSongTime,
+  duration,
+  setDuration,
+  seekTime,
+  volume,
+  setSeekTime,
+  current
+}) {
 
-  const dispatch = useDispatch()
-  const debouncedSeek = useCallback(
-    debounce(
-      value => controls.seek(value)
-    , 0),
-    []
-  )
+  const ref = useRef(null)
+
+    if(ref.current){
+      if(isPlaying) {
+        ref.current.play()
+      }else{
+        ref.current.pause()
+      }
+    }
+
   
-  const playBtn = () => {
-    controls[state?.playing ? 'pause' : 'play']()
-  }
-
+  
   useEffect(() => {
-    dispatch(setPlaying(state.playing))
-  }, [state?.playing])
+    ref.current.volume = volume
+  }, [volume])
+
   
+  useEffect(() => {
+    ref.current.currentTime = seekTime
+  }, [seekTime])
+
 
   return (
     <div className="footer__music__player">
-        {audio}
+        <audio
+          src={current?.hub?.actions[1]?.uri}
+          ref={ref}
+          onTimeUpdate={(e) => setSongTime(e.target.currentTime)}
+          onLoadedData={(e) => setDuration(e.target.duration)}
+        />
         <div className="footer__music__player__actionBtns">
           <button className='footer__previousBtn'>
             <Icon name='Previous' size={36}/>
           </button>
-          <button onClick={playBtn}>
-            <PlayBtn className='footer__playBtn' playing={state?.playing}/>
+          <button onClick={handlePlayPause}>
+            <PlayBtn playPause={isPlaying && isActive} className='footer__playBtn'/>
           </button>
           <button className='footer__nextBtn'>
             <Icon name='Next' size={36}/>
@@ -43,17 +63,17 @@ function MusicPlayer({ audio, state, controls }) {
         </div>
         <div className="footer__music__player__range">
           <span className='time'>
-            {useTimeConvert(state?.time)}
+            {useTimeConvert(songTime)}
           </span>
           <CustomRange
-          className='range'  
-          min={0} 
-          max={state?.duration || 1}
-          value={state?.time} 
-          onChange={(value) => debouncedSeek(value)}
+            className='range'  
+            min={0} 
+            max={duration}
+            value={songTime} 
+            onChange={value => setSeekTime(value)}
           />
           <span className='time'>
-            {useTimeConvert(state?.duration)}
+            {useTimeConvert(duration)}
           </span>
         </div>
     </div>

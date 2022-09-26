@@ -1,10 +1,9 @@
 import React from 'react'
-import Icon from '@/components/Icon'
 import ActionBtns from '@/Pages/Album/Main/ActionBtns'
 import SongsList from '@/Pages/Album/Main/SongsList'
 import SongsTable from '@/components/SongsTable'
 
-function Main({findSongs}) {
+function Main({findSongs, backgroundColor}) {
   return (
     <main className="album__content">
       <ActionBtns/>
@@ -12,11 +11,14 @@ function Main({findSongs}) {
         <SongsTable/>
         <div className="album__content__songs__list">
           {findSongs.map((song, index) => (
-            <SongsList song={song} index={index} key={song.id}/>
+            <SongsList song={song} index={index} key={song.key}/>
           ))}
         </div>
       </div>
-      <div className="album__content__background"/>
+      <div 
+        className="album__content__background" 
+        style={{ backgroundColor: `#${backgroundColor}`}}
+      />
     </main>
   )
 }
