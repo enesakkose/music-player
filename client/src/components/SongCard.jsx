@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PlayBtn from '@/components/PlayBtn'
 import { Link } from 'react-router-dom'
-import { setCurrent, playPause } from '@/store/player'
-import { useDispatch, useSelector } from 'react-redux'
+import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
+import { useDispatch  } from 'react-redux'
 import '@/components/SongCard.scss'
 
-function SongCard({song, current, isPlaying, index}) {
+function SongCard({song, current, isPlaying, index, data}) {
   const dispatch = useDispatch()
-  
+
   const updateCurrent = () => {
-      dispatch(setCurrent({song, index}))
+      dispatch(setCurrent({ song, index }))
       if(current.key === song.key){
         dispatch(playPause(!isPlaying))
       } else{
@@ -17,7 +17,11 @@ function SongCard({song, current, isPlaying, index}) {
       }  
   }
 
-  const isActiveBtn = current.key === song.key && isPlaying
+  useEffect(() => {
+    dispatch(setCurrentSongs(data))
+  }, [])
+
+  const isActiveBtn = current?.key === song?.key && isPlaying
 
   return (
     <div className='songCard'>

@@ -3,12 +3,13 @@ import MusicInfo from '@/components/Footer/MusicInfo'
 import MusicPlayer from '@/components/Footer/MusicPlayer'
 import MusicTool from '@/components/Footer/MusicTool'
 import { useSelector, useDispatch } from 'react-redux'
-import { playPause } from '@/store/player'
+import { playPause, nextSong, prevSong } from '@/store/player'
 import '@/components/Footer/Footer.scss'
 
 function Footer() {
   const dispatch = useDispatch()
-  const { current, isPlaying, isActive } = useSelector(state => state.player)
+  const { current, isPlaying, isActive, currentIndex, currentSongs } = useSelector(state => state.player)
+
   const [volume, setVolume] = useState(0.3)
   const [duration, setDuration] = useState(0)
   const [seekTime, setSeekTime] = useState(0)
@@ -28,6 +29,23 @@ function Footer() {
     dispatch(playPause(true))
   }, [current])
 
+  const handleNextSong = () => {
+    if(currentIndex === currentSongs.length - 1){
+      dispatch(nextSong(0))
+    }else{
+      dispatch(nextSong(currentIndex + 1))
+    }
+  }
+
+  const handlePrevSong = () => {
+    if (currentIndex === 0) {
+      dispatch(prevSong(currentSongs.length - 1))
+    }else{
+      dispatch(prevSong(currentIndex - 1))
+    }
+    
+  }
+
   return (
     <footer className='footer'>
       <MusicInfo current={current}/>
@@ -44,6 +62,8 @@ function Footer() {
         setSeekTime={setSeekTime}
         value={songTime}
         current={current}
+        handleNextSong={handleNextSong}
+        handlePrevSong={handlePrevSong}
       />
       <MusicTool
         volume={volume}
