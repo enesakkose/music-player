@@ -10,6 +10,7 @@ import Tracks from '@/Pages/Collection/Tracks'
 import Songs from "@/Pages/Songs"
 import Album from "@/Pages/Album"
 import Auth from "@/Pages/Auth"
+import Lyrics from "@/Pages/Lyrics"
 
 export const routes = [
     {
@@ -55,6 +56,10 @@ export const routes = [
     {
         path: 'album/:id',
         element: <Suspense><Album/></Suspense>
+    },
+    {
+        path: 'lyrics',
+        element: <Suspense><Lyrics/></Suspense>
     }
 ]
 
