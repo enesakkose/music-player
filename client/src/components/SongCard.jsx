@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import PlayBtn from '@/components/PlayBtn'
 import { Link } from 'react-router-dom'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
@@ -25,20 +25,20 @@ function SongCard({song, current, isPlaying, index, data}) {
 
   return (
     <div className='songCard'>
-        <div className="songCard__img">
-            <img src={song.images.coverart} alt={song.title} />
-            <button 
-              className={`songCard__img__btn ${isActiveBtn ? 'showBtn' : ''}`}
-              onClick={updateCurrent}
-            >
-              <PlayBtn playPause={isPlaying && current?.title === song.title} />
-            </button>
-        </div>
-        <div className="songCard__info">
-            <h4 className='songCard__info__title'>{song.title}</h4>
-            <span className='songCard__info__subtitle'>{song.subtitle}</span>
-        </div>
-        <Link to={`/album/${song.key}`} className='perde'></Link>
+      <div className="songCard__img">
+        <img src={song.images.coverart} alt={song.title} />
+        <button 
+          className={`songCard__img__btn ${isActiveBtn ? 'showBtn' : ''}`}
+          onClick={updateCurrent}
+        >
+          <PlayBtn playPause={isPlaying && current?.title === song.title} />
+        </button>
+      </div>
+      <div className="songCard__info">
+        <h4 className='songCard__info__title'>{song.title}</h4>
+        <span className='songCard__info__subtitle'>{song.subtitle}</span>
+      </div>
+      <Link to={`/album/${song.key}`} className='perde'></Link>
     </div>
   )
 }

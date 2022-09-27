@@ -1,22 +1,11 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import Icon from '@/components/Icon'
 import CustomRange from '@/components/CustomRange'
+import { Link } from 'react-router-dom'
 import { debounce } from 'lodash'
 import '@/components/Footer/MusicTool.scss'
 
 function MusicTool({ volume, setVolume }) {
-  
-  /*const debouncedVolume = useCallback(
-    debounce(
-      value => updateV(value)
-    , 0),
-    []
-  )
-  
-  const updateV = (value) => {
-    controls.unmute()
-    controls.volume(value)
-  }*/
   
   const volumeIcon = useMemo(() => {
     if(volume === 0 ) return 'Unmute'
@@ -27,9 +16,9 @@ function MusicTool({ volume, setVolume }) {
 
   return (
     <div className="footer__music__tool">
-      <button>
+      <Link to='/lyrics' className='footer__music__tool__lyricsBtn'>
         <Icon name='Microphone' size={22}/>
-      </button>
+      </Link>
       <button>
         <Icon name='Queue' size={22}/>
       </button>

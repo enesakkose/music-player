@@ -6,7 +6,7 @@ import SongsTable from '@/components/SongsTable'
 function Main({findSongs, backgroundColor}) {
   return (
     <main className="album__content">
-      <ActionBtns/>
+      <ActionBtns findSongs={findSongs}/>
       <div className="album__content__songs">
         <SongsTable/>
         <div className="album__content__songs__list">

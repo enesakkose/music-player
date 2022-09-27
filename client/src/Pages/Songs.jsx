@@ -12,7 +12,6 @@ function Songs() {
   if(isFetching) return <Loading/>
   if(error) return 'Something went wrong...'
   
-  
   return (
     <div className='songs'>
       {data.map((song, index) => (

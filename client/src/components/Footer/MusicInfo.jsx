@@ -24,13 +24,13 @@ function MusicInfo({current}) {
       <div className="footer__music__info__text">
         <Link 
           className='footer__music__info__text__songName' 
-          to='/'
+          to={`/album/${current?.key}`}
         >
           <p>{current?.title}</p>
         </Link>
         <Link
           className='footer__music__info__text__singerName' 
-          to='/'
+          to={`/album/${current?.key}`}
         >
           <span>{current?.subtitle}</span>
         </Link>

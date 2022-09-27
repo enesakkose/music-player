@@ -10,7 +10,7 @@ function SongsTable({children}) {
         TITLE
       </h4>
       {children}
-      <Icon name='Time' size={22}/>
+      <Icon name='Favorite' size={22}/>
     </div>
   )
 }

@@ -14,7 +14,10 @@ export const musicApi = createApi({
         getTopCharts: builder.query({
             query: () => '/charts/world'
         }),
+        getTrackDetails: builder.query({
+            query: (songId) => `/tracks/details?track_id=${songId}`
+        })
     }),
 })
 
-export const { useGetTopChartsQuery } = musicApi
+export const { useGetTopChartsQuery, useGetTrackDetailsQuery } = musicApi

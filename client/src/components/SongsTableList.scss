@@ -4,11 +4,10 @@
     padding: $PXS $PM;
     cursor: default;
     gap: 1.5rem;
-    
+    border-radius: .250rem;
 
     &:hover{
         background-color: rgba($WHITE, .1);
-        border-radius: .250rem;
     }
 
     &__indexPlay{
@@ -63,6 +62,20 @@
         
     &:hover &__favBtn, .liked{
         opacity: 1;
+    }
+}
+
+.playingListItem{
+    background-color: rgba($WHITE, .1);
+
+    .songsTableListItem__indexPlay{
+        &__index{
+            display: none;
+        }
+    }
+
+    .songsTableListItem__indexPlay__playBtn{
+        display: block;
     }
 }
 

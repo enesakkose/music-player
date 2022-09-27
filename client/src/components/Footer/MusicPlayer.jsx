@@ -50,6 +50,7 @@ function MusicPlayer({
           src={current?.hub?.actions[1]?.uri}
           ref={ref}
           onEnded={handleNextSong}
+          autoPlay={true}
           onTimeUpdate={(e) => setSongTime(e.target.currentTime)}
           onLoadedData={(e) => setDuration(e.target.duration)}
         />

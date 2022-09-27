@@ -4,9 +4,16 @@
     justify-content: flex-end;
     gap: .5rem;
 
-    button{
+    &__lyricsBtn{
+        color: rgba($WHITE, .6);
+    }
+
+    button, &__lyricsBtn{
         width: 1.875rem;
         height: 1.875rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover{
             color: $WHITE;
@@ -20,6 +27,7 @@
 
         .rc-slider{
             width: 6.25rem;
+            height: .75rem;
         }
         
     }

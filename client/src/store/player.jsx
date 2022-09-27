@@ -13,8 +13,8 @@ export const player = createSlice({
     initialState,
     reducers: {
         setCurrent: (state, action) => {
-            state.current = action.payload.song
-            state.currentIndex = action.payload.index
+            state.current = action.payload.song || action.payload
+            state.currentIndex = action.payload.index || 0
             state.isActive = true
         },
         setPlaying: (state, action) => {
