@@ -2,12 +2,13 @@ import React from 'react'
 import Icon from '@/components/Icon'
 import { setCurrent, playPause } from '@/store/player'
 import { useSelector, useDispatch } from 'react-redux'
+import { GENRE } from '@/constants'
 import '@/components/SongsTableList.scss'
 
 function SongsTableList({children, index, song}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
-  
+
   const listPlayBtn = () => {
     dispatch(setCurrent({song}))
 
@@ -17,20 +18,23 @@ function SongsTableList({children, index, song}) {
       dispatch(playPause(true))
     }
   }
+  
+  const validMusic = current.key === song.key && isPlaying
 
   return (
-    <div className={`songsTableListItem 
-      ${current.key === song.key && isPlaying ? 'playingListItem' : ''}`}
+    <div 
+      onDoubleClick={listPlayBtn} 
+      className={`songsTableListItem ${validMusic ? 'playingListItem' : ''}`}
     >
       <div className='songsTableListItem__indexPlay'>
         <span className='songsTableListItem__indexPlay__index'>
           {index + 1}
         </span>
-        <button onClick={listPlayBtn} className='songsTableListItem__indexPlay__playBtn'>
-          <Icon name={current.key === song.key && isPlaying ? 'Stop' : 'Play'}/>
+        <button className='songsTableListItem__indexPlay__playBtn'>
+          <Icon name={validMusic ? 'Stop' : 'Play'}/>
         </button>
       </div>
-
+      
       <h4 className='songsTableListItem__text'>
         {song.title}
         <span>{song.subtitle}</span>
