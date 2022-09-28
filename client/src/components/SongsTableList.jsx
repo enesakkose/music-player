@@ -1,22 +1,19 @@
 import React from 'react'
 import Icon from '@/components/Icon'
-import { setCurrent, playPause } from '@/store/player'
+import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import { useSelector, useDispatch } from 'react-redux'
-import { GENRE } from '@/constants'
 import '@/components/SongsTableList.scss'
 
-function SongsTableList({children, index, song}) {
+function SongsTableList({children, index, song, findSongs}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
 
   const listPlayBtn = () => {
     dispatch(setCurrent({song}))
-
-    if(current.key === song.key){
-      dispatch(playPause(!isPlaying))
-    } else{
-      dispatch(playPause(true))
-    }
+    dispatch(setCurrentSongs(findSongs))
+    
+    if(current.key === song.key) return dispatch(playPause(!isPlaying))
+    if(current.key !== song.key) return dispatch(playPause(true))
   }
   
   const validMusic = current.key === song.key && isPlaying

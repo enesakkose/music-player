@@ -11,12 +11,9 @@ function SongCard({song, current, isPlaying, index, data}) {
   const updateCurrent = () => {
       dispatch(setCurrent({ song, index }))
       dispatch(setCurrentSongs(data))
-      
-      if(current.key === song.key){
-        dispatch(playPause(!isPlaying))
-      } else{
-        dispatch(playPause(true))
-      }  
+
+      if(current.key === song.key) return dispatch(playPause(!isPlaying))
+      if(current.key !== song.key) return dispatch(playPause(true))
   }
 
   const isActiveBtn = current?.key === song?.key && isPlaying
