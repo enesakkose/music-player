@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setFavorites, deleteFavorites } from '@/store/favorite'
 import SongsTableList from '@/components/SongsTableList'
 
-function SongsList({song, index}) {
+function SongsList({song, findSongs, index}) {
   const dispatch = useDispatch()
   const [ like, setLike ] = useState(false)
 
@@ -14,7 +14,7 @@ function SongsList({song, index}) {
   
 
   return (
-    <SongsTableList song={song} index={index}>
+    <SongsTableList song={song} index={index} findSongs={findSongs}>
       <button
         className={`songsTableListItem__favBtn favoriteBtn ${like ? 'liked' : ''}`}
         onClick={addFavorite}

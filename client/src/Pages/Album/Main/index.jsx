@@ -11,7 +11,12 @@ function Main({findSongs, backgroundColor}) {
         <SongsTable/>
         <div className="album__content__songs__list">
           {findSongs.map((song, index) => (
-            <SongsList song={song} index={index} key={song.key}/>
+            <SongsList 
+              song={song} 
+              findSongs={findSongs} 
+              index={index} 
+              key={song.key}
+            />
           ))}
         </div>
       </div>
