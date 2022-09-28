@@ -16,8 +16,15 @@ export const musicApi = createApi({
         }),
         getTrackDetails: builder.query({
             query: (songId) => `/tracks/details?track_id=${songId}`
+        }),
+        getChartsByGenre: builder.query({
+            query: (genre) => `/charts/genre-world?genre_code=${genre}`
         })
     }),
 })
 
-export const { useGetTopChartsQuery, useGetTrackDetailsQuery } = musicApi
+export const { 
+    useGetTopChartsQuery,
+    useGetTrackDetailsQuery,
+    useGetChartsByGenreQuery 
+} = musicApi
