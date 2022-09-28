@@ -1,0 +1,20 @@
+export const GENRES = [
+    {val: "POP", genre: "POP"},
+    {val: "HIP_HOP_RAP", genre: "RAP"},
+    {val: "DANCE", genre: "DANCE"},
+    {val: "ELECTRONIC", genre: "ELECTRONIC"},
+    {val: "SOUL_RNB", genre: "SOUL"},
+    {val: "ROCK", genre: "ROCK"},
+    {val: "LATIN", genre: "LATIN"},
+    {val: "FILM_TV", genre: "FILM"},
+    {val: "COUNTRY", genre: "COUNTRY"},
+    {val: "AFRO_BEATS", genre: "AFRO"},
+    {val: "WORLDWIDE", genre: "WORLDWIDE"},
+    {val: "REGGAE_DANCE_HALL", genre: "REGGAE"},
+    {val: "HOUSE", genre: "HOUSE"},
+    {val: "K_POP", genre: "KPOP"},
+    {val: "FRENCH_POP", genre: "FRENCH"},
+    {val: "REG_MEXICO", genre: "MEXICO"},
+    {val: "ALTERNATIVE", genre: "ALTERNATIVE"},
+    {val: "SINGER_SONGWRITER", genre: "SINGER"}
+]
