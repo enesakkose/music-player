@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 import Icon from '@/components/Icon'
 import '@/components/Footer/MusicInfo.scss'
 
-function MusicInfo({current}) {
+function MusicInfo() {
   const dispatch = useDispatch()
   const { openCover } = useSelector(state => state.playlist)
-  
-  
+  const { current } = useSelector(state => state.player) 
+
   return (
     <div className={`footer__music__info ${openCover ? 'openCover' : ''}`}>
       <div className='footer__music__info__cover'>
