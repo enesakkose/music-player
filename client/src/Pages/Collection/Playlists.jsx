@@ -26,7 +26,7 @@ function Playlists() {
             title='Create your first playlist'
             text="It's easy, we'll help you."
             >
-              <button onClick={handleAdd} className='emptyPlaylist-btn'>
+              <button onClick={handleAdd} className='emptyPlaylistBtn'>
                 Create Playlist
               </button>
             </EmptyPlaylist>  

@@ -2,11 +2,12 @@ import React, { useEffect } from 'react'
 import PlayBtn from '@/components/PlayBtn'
 import { Link } from 'react-router-dom'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
-import { useDispatch  } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import '@/components/SongCard.scss'
 
-function SongCard({song, current, isPlaying, index, data}) {
+function SongCard({song, index, data}) {
   const dispatch = useDispatch()
+  const { current, isPlaying } = useSelector(state => state.player)
 
   const updateCurrent = () => {
       dispatch(setCurrent({ song, index }))

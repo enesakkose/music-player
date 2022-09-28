@@ -1,29 +1,29 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import SongCard from '@/components/SongCard'
 import Loading from '@/components/Loading'
-import { useSelector } from 'react-redux'
-import { useGetTopChartsQuery } from '@/services/music'
+import { useGetChartsByGenreQuery } from '@/services/music'
 import '@/Pages/Songs.scss'
 
 function Songs() {
 
-  const { data, isFetching, error } = useGetTopChartsQuery()
-  const { current, isPlaying } = useSelector(state => state.player)
+  const { data, isFetching, error } = useGetChartsByGenreQuery('POP')
+  
   if(isFetching) return <Loading/>
   if(error) return 'Something went wrong...'
   
   return (
     <div className='songs'>
-      {data.map((song, index) => (
-        <SongCard 
-          key={song.key} 
-          song={song} 
-          current={current} 
-          isPlaying={isPlaying}
-          index={index}
-          data={data}
-        />
-      ))}
+      <h2 className='songs__title'>Top 50</h2>
+      <div className='songs__cards'>
+        {data.map((song, index) => (
+          <SongCard 
+            key={song.key} 
+            song={song} 
+            index={index}
+            data={data}
+          />
+        ))}
+      </div>
     </div>
   )
 }

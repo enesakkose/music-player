@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    songs: null
+    songs: null,
+    genre: 'POP',
 }
 
 export const song = createSlice({
@@ -10,9 +11,12 @@ export const song = createSlice({
     reducers: {
         setSongs: (state,action) => {
             state.songs = action.payload
+        },
+        setGenre: (state,action) => {
+            state.genre = action.payload
         }
     }
 })
 
-export const { setSongs } = song.actions
+export const { setSongs, setGenre } = song.actions
 export default song.reducer
