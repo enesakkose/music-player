@@ -11,6 +11,7 @@ import Songs from "@/Pages/Songs"
 import Album from "@/Pages/Album"
 import Auth from "@/Pages/Auth"
 import Lyric from "@/Pages/Lyric"
+import Genre from "@/Pages/Genre"
 
 export const routes = [
     {
@@ -60,6 +61,10 @@ export const routes = [
     {
         path: 'lyrics',
         element: <Suspense><Lyric/></Suspense>
+    },
+    {
+        path: 'genre/:genre',
+        element: <Suspense><Genre/></Suspense>
     }
 ]
 
