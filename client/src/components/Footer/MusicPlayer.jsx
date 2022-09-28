@@ -17,8 +17,11 @@ function MusicPlayer({volume}) {
   const [songTime, setSongTime] = useState(0)
 
   if(ref.current){
-    if(isPlaying) ref.current.play()
-    if(!isPlaying) ref.current.pause()
+    if(isPlaying) {
+      ref.current.play()
+    } else{
+      ref.current.pause()
+    }
   }
   
   useEffect(() => {
@@ -36,18 +39,18 @@ function MusicPlayer({volume}) {
 
   const handlePlayPause = () => {
     if(!isActive) return
-    if(isPlaying) dispatch(playPause(false))
-    if(!isPlaying) dispatch(playPause(true))
+    if(isPlaying) return dispatch(playPause(false))
+    if(!isPlaying) return dispatch(playPause(true))
   }
 
   const handleNextSong = () => {
-    if(currentIndex === currentSongs.length - 1) dispatch(nextSong(0))
-    if(currentIndex !== currentSongs.length - 1) dispatch(nextSong(currentIndex + 1)) 
+    if(currentIndex === currentSongs.length - 1) return dispatch(nextSong(0))
+    if(currentIndex !== currentSongs.length - 1) return dispatch(nextSong(currentIndex + 1)) 
   }
 
   const handlePrevSong = () => {
-    if (currentIndex === 0) dispatch(prevSong(currentSongs.length - 1)) 
-    if(currentIndex !== 0) dispatch(prevSong(currentIndex - 1))
+    if (currentIndex === 0) return dispatch(prevSong(currentSongs.length - 1)) 
+    if(currentIndex !== 0) return dispatch(prevSong(currentIndex - 1))
   }
 
   return (
