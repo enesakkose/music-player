@@ -16,12 +16,12 @@ function SongCard({song, index, data}) {
       if(current.key === song.key) return dispatch(playPause(!isPlaying))
       if(current.key !== song.key) return dispatch(playPause(true))
   }
-
+  const backgroundColor = song?.images?.joecolor.slice(18,24)
   const isActiveBtn = current?.key === song?.key && isPlaying
-
+  
   return (
     <div className='songCard'>
-      <div className="songCard__img">
+      <div className="songCard__img" style={{ backgroundColor: `#${backgroundColor}`}}>
         <img src={song.images.coverart} alt={song.title} />
         <button 
           className={`songCard__img__btn ${isActiveBtn ? 'showBtn' : ''}`}

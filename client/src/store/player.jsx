@@ -39,5 +39,13 @@ export const player = createSlice({
     }
 })
 
-export const { setCurrent, setPlaying, playPause, nextSong, setCurrentSongs, prevSong } = player.actions
+export const { 
+    setCurrent, 
+    setPlaying, 
+    playPause, 
+    nextSong, 
+    setCurrentSongs, 
+    prevSong 
+} = player.actions
+
 export default player.reducer

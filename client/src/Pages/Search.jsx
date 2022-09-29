@@ -9,10 +9,12 @@ function Search() {
       <h3>CATEGORIES</h3>
       <div className="search__genres">
         {GENRES.map((genre) => (
+          
           <Link 
             key={genre.val} 
             to={`/genre/${genre.val}`} 
             className='search__genres__card'
+            style={{ backgroundColor: `${genre.joeColor}`}}
           >
             <h2 className='search__genres__card__title'>
               {genre.genre}

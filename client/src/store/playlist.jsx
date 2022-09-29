@@ -42,4 +42,5 @@ export const {
     setFavorite, 
     setOpenCover 
 } = playlist.actions
+
 export default playlist.reducer

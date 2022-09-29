@@ -7,12 +7,12 @@ import '@/Pages/Home.scss'
 function Home() {
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.auth)
-  const { current, isPlaying } = useSelector(state => state.player)
+  const { current, isActive } = useSelector(state => state.player)
   const { recentSongs } = useSelector(state => state.song)
   const f = recentSongs?.find(song => song.key === current.key)
-  
+
   useEffect(() => {
-    if(isPlaying && !f) dispatch(setRecentSongs(current)) 
+    if(isActive && !f) dispatch(setRecentSongs(current)) 
   }, [current])
 
   return (

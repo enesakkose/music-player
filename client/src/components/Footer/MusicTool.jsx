@@ -1,12 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import Icon from '@/components/Icon'
 import CustomRange from '@/components/CustomRange'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { debounce } from 'lodash'
 import '@/components/Footer/MusicTool.scss'
 
 function MusicTool({ volume, setVolume }) {
-  
+  const { isActive } = useSelector(state => state.player)
   const volumeIcon = useMemo(() => {
     if(volume === 0 ) return 'Unmute'
     if(volume > 0 && volume < .33) return 'VolumeLow'
@@ -16,12 +17,9 @@ function MusicTool({ volume, setVolume }) {
 
   return (
     <div className="footer__music__tool">
-      <Link to='/lyrics' className='footer__music__tool__lyricsBtn'>
+      {isActive && <Link to='/lyrics' className='footer__music__tool__lyricsBtn'>
         <Icon name='Microphone' size={22}/>
-      </Link>
-      <button>
-        <Icon name='Queue' size={22}/>
-      </button>
+      </Link>}
       <div className="footer__music__tool__range">
         <button 
           className='volumeBtn' 

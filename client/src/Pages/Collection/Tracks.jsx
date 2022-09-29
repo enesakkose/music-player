@@ -3,17 +3,22 @@ import PlaylistHeader from '@/components/PlaylistHeader'
 import EmptyPlaylist from '@/components/EmptyPlaylist'
 import SongsTable from '@/components/SongsTable'
 import SongsTableList from '@/components/SongsTableList'
-import PlayBtn from '@/components/PlayBtn'
+import FavoriteBtn from '@/components/FavoriteBtn'
 import ActionBtns from '@/Pages/Album/Main/ActionBtns'
 import Icon from '@/components/Icon'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { deleteFavorites } from '@/store/playlist'
 import { Link } from 'react-router-dom'
 import '@/Pages/Collection/Tracks.scss'
 
 function Tracks() {
-
+  const dispatch = useDispatch()
   const { favoritesPlaylist } = useSelector(state => state.playlist)
   
+  const removeFavorites = (key) => {
+    dispatch(deleteFavorites(key))
+  }
+
   return (
     <div className='favoriteTracks'>
       <PlaylistHeader className='favoriteTracks__header'>
@@ -49,7 +54,12 @@ function Tracks() {
                   index={index} 
                   song={favorite} 
                   findSongs={favoritesPlaylist}
-                />
+                >
+                  <FavoriteBtn 
+                    thereFavPlaylist={true}
+                    onClick={() => removeFavorites(favorite.key)}
+                  />
+                </SongsTableList>
               ))}
             </div>
           </div>
