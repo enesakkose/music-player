@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     playlists: [],
+    favoritesPlaylist: [],
     openCover: false
 }
 
@@ -15,8 +16,14 @@ export const playlist = createSlice({
                 ...state.playlists
             ]
         },
-        reset: (state) =>{
-            state.playlists = []
+        setFavoritesPlaylist: (state, action) => {
+            state.favoritesPlaylist = [
+                action.payload,
+                ...state.favoritesPlaylist
+            ]
+        },
+        deleteFavorites: (state,action) => {
+            state.favoritesPlaylist = state.favoritesPlaylist.filter(favorite => favorite.key !== action.payload)
         },
         setOpenCover: (state, action) => {
             state.openCover = action.payload
@@ -24,5 +31,5 @@ export const playlist = createSlice({
     }
 })
 
-export const { addPlaylist, reset, setOpenCover } = playlist.actions
+export const { addPlaylist, setFavoritesPlaylist, deleteFavorites, setOpenCover } = playlist.actions
 export default playlist.reducer

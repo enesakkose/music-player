@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function CollectionLayout() {
   return (
     <>
-     <Outlet/>
+      <Outlet/>
     </>
   )
 }

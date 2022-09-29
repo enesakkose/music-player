@@ -4,6 +4,7 @@ import EmptyPlaylist from '@/components/EmptyPlaylist'
 import SongsTable from '@/components/SongsTable'
 import SongsTableList from '@/components/SongsTableList'
 import PlayBtn from '@/components/PlayBtn'
+import ActionBtns from '@/Pages/Album/Main/ActionBtns'
 import Icon from '@/components/Icon'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -11,7 +12,7 @@ import '@/Pages/Collection/Tracks.scss'
 
 function Tracks() {
 
-  const { favorites } = useSelector(state => state.favorite)
+  const { favoritesPlaylist } = useSelector(state => state.playlist)
   
   return (
     <div className='favoriteTracks'>
@@ -22,28 +23,33 @@ function Tracks() {
         <div className="favoriteTracks__info info">
           <h6>PLAYLIST</h6>
           <h1>LIKED SONGS</h1>
-          {favorites.length > 0 && <h6>{favorites.length} songs</h6>}
+          {favoritesPlaylist.length > 0 && <h6>{favoritesPlaylist.length} songs</h6>}
         </div>
       </PlaylistHeader>
       <div 
         className={`favoriteTracks__main 
-        ${favorites.length === 0 ? 'favoriteTracks__empty' : ''}`}
+        ${favoritesPlaylist.length === 0 ? 'favoriteTracks__empty' : ''}`}
       >
         <div className="favoriteTracks__main__background"/>
-        {favorites.length === 0 && 
+        {favoritesPlaylist.length === 0 && 
         <EmptyPlaylist 
           title='Songs you like will appear here'
           text='Save songs by tapping the heart icon.'
         >
           <Link to='/search' className="emptyPlaylistBtn">Find Songs</Link>
         </EmptyPlaylist>}
-        {favorites.length > 0 && <div className="favoriteTracks__main__content">
-          <PlayBtn className='favoriteTracks__main__content__playBtn'/>
+        {favoritesPlaylist.length > 0 && <div className="favoriteTracks__main__content">
+          <ActionBtns findSongs={favoritesPlaylist}/>
           <div className="favoriteTracks__main__content__songs">
             <SongsTable/>
             <div className='favoriteTracks__main__content__songs__list'>
-              {favorites.map((favorite, index) => (
-                <SongsTableList index={index} song={favorite}/>
+              {favoritesPlaylist.map((favorite, index) => (
+                <SongsTableList
+                  key={favorite.key}
+                  index={index} 
+                  song={favorite} 
+                  findSongs={favoritesPlaylist}
+                />
               ))}
             </div>
           </div>

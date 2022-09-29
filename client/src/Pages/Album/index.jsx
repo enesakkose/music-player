@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useGetTopChartsQuery } from '@/services/music'
 import { useGetChartsByGenreQuery } from '@/services/music'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { setGenre } from '@/store/song'
 import AlbumHeader from '@/Pages/Album/AlbumHeader'
 import Main from '@/Pages/Album/Main'
 import Loading from '@/components/Loading'
@@ -18,7 +18,7 @@ function Album() {
 
   const { id } = useParams()
   const findAlbum = data?.find(d => d.key === id)
-  const findSongs = data?.filter((song) => song.subtitle === findAlbum.subtitle)
+  const findSongs = data?.filter((song) => song.subtitle === findAlbum?.subtitle)
   const backgroundColor = findAlbum?.images?.joecolor.slice(18,24)
 
   return (
