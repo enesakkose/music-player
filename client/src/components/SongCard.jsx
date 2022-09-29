@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PlayBtn from '@/components/PlayBtn'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { routes } from '@/routes'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import { useDispatch, useSelector } from 'react-redux'
 import '@/components/SongCard.scss'
 
 function SongCard({song, index, data}) {
+  const location = useLocation()
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
+  const issueRoute = routes.find(route => route.path === location.pathname)
+  // This variable was created in order not to affect client because genre names are different in API
 
   const updateCurrent = () => {
       dispatch(setCurrent({ song, index }))
@@ -34,7 +38,7 @@ function SongCard({song, index, data}) {
         <h4 className='songCard__info__title'>{song.title}</h4>
         <span className='songCard__info__subtitle'>{song.subtitle}</span>
       </div>
-      <Link to={`/album/${song.key}`} className='perde'></Link>
+      {!issueRoute && <Link to={`/album/${song.key}`} className='perde'></Link>}
     </div>
   )
 }
