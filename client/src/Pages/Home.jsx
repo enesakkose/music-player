@@ -22,8 +22,13 @@ function Home() {
           Recent Songs
         </h2>
         <div className='home__recent__songs__cards'>
-          {recentSongs.map((recent) => (
-            <SongCard key={recent.key} song={recent} data={recentSongs} />
+          {recentSongs.map((recent, index) => (
+            <SongCard 
+              key={recent.key} 
+              song={recent} 
+              data={recentSongs}
+              index={index}
+              />
           ))}
         </div>
       </div>}

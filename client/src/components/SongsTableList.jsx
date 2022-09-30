@@ -9,7 +9,7 @@ function SongsTableList({children, index, song, findSongs}) {
   const { current, isPlaying } = useSelector(state => state.player)
 
   const listPlayBtn = () => {
-    dispatch(setCurrent({song}))
+    dispatch(setCurrent({song, index}))
     dispatch(setCurrentSongs(findSongs))
     
     if(current.key === song.key) return dispatch(playPause(!isPlaying))
