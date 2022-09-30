@@ -36,12 +36,9 @@ function MusicInfo() {
           >
             <p>{current?.title}</p>
           </Link>
-          <Link
-            className='footer__music__info__text__singerName' 
-            to={`/album/${current?.key}`}
-          >
-            <span>{current?.subtitle}</span>
-          </Link>
+          <span className='footer__music__info__text__singerName'>
+            {current?.subtitle}
+          </span>
         </div>
         <div className="footer__music__info__actionBtns">
           <FavoriteBtn
