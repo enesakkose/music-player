@@ -20,6 +20,14 @@
         }
     }
 
+    .active{
+        color: $GREEN;
+        //microphone link when active
+        &::hover{
+            color: inherit;
+        }
+    }
+
     &__range{
         display: flex;
         align-items: center;

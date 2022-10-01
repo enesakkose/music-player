@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 import Icon from '@/components/Icon'
 import CustomRange from '@/components/CustomRange'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { debounce } from 'lodash'
 import '@/components/Footer/MusicTool.scss'
 
@@ -17,9 +17,9 @@ function MusicTool({ volume, setVolume }) {
 
   return (
     <div className="footer__music__tool">
-      {isActive && <Link to='/lyrics' className='footer__music__tool__lyricsBtn'>
+      {isActive && <NavLink to='/lyrics' className='footer__music__tool__lyricsBtn'>
         <Icon name='Microphone' size={22}/>
-      </Link>}
+      </NavLink>}
       <div className="footer__music__tool__range">
         <button 
           className='volumeBtn' 

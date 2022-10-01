@@ -13,7 +13,7 @@ function Sidebar() {
   const { openCover } = useSelector(state => state.playlist)
 
   return (
-    <sidebar className='sidebar'>
+    <aside className='sidebar'>
       <Resizable
         className='resizeable'
         maxWidth={400}
@@ -32,7 +32,7 @@ function Sidebar() {
           {openCover && <SidebarAlbumCover/>}
         </div>
       </Resizable>
-    </sidebar>
+    </aside>
   )
 }
 

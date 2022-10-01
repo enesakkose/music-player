@@ -14,9 +14,11 @@ function UserAvatar() {
   const dispatch = useDispatch()
   const [ openAvatarMenu, setOpenAvatarMenu] = useState(false)
   const { user } = useSelector(state => state.auth)
+
   const domNode = useClickOutside(() => { 
     setOpenAvatarMenu(false)
   })
+
   const openUserInfo = () => {
     dispatch(openModal({
       name: 'UserInfoModal',
@@ -24,6 +26,7 @@ function UserAvatar() {
     }))
     setOpenAvatarMenu(false)
   }
+  
   const logout = async() => {
     await new Promise(resolve => setTimeout(resolve, 4000));
     await  handleLogout()
