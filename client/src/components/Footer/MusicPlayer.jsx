@@ -67,9 +67,10 @@ function MusicPlayer({volume}) {
         <button onClick={handlePrevSong} className='footer__previousBtn'>
           <Icon name='Previous' size={36}/>
         </button>
-        <button onClick={handlePlayPause}>
-          <PlayBtn playPause={isPlaying && isActive} className='footer__playBtn'/>
-        </button>
+        <PlayBtn
+          onClick={handlePlayPause} 
+          playPause={isPlaying && isActive} className='footer__playBtn' 
+        />
         <button onClick={handleNextSong} className='footer__nextBtn'>
           <Icon name='Next' size={36}/>
         </button>

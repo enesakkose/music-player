@@ -9,10 +9,11 @@ import '@/components/Sidebar/Sidebar.scss'
 
 function Playlist() {
   const navigate = useNavigate()
-  const { playlists } = useSelector(state => state.playlist)
-  
+  const { playlists, playlistId } = useSelector(state => state.playlist)
+
   const handleAdd = () => {
     addPlaylistHandle(playlists)
+    console.log(playlistId)
   }
 
   return (

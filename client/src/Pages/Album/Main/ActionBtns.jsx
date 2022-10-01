@@ -23,10 +23,11 @@ function ActionBtns({findSongs}) {
 
   return (
     <div className="album__content__actionBtns">
-      <button onClick={playAlbumSong}>
-        <PlayBtn playPause={isPlaying && haveSongs} className='album__content__actionBtns__play'/>
-      </button>
-    
+      <PlayBtn
+        onClick={playAlbumSong}
+        className='album__content__actionBtns__play'
+        playPause={isPlaying && haveSongs}
+      />
       <button onClick={() => setLike(!like)}>
         <Icon name='Favorite' size={44}/>
       </button>

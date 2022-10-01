@@ -27,12 +27,11 @@ function SongCard({song, index, data}) {
     <div className='songCard'>
       <div className="songCard__img" style={{ backgroundColor: `#${backgroundColor}`}}>
         <img src={song.images.coverart} alt={song.title} />
-        <button 
+        <PlayBtn
           className={`songCard__img__btn ${isActiveBtn ? 'showBtn' : ''}`}
           onClick={updateCurrent}
-        >
-          <PlayBtn playPause={isPlaying && current?.title === song.title} />
-        </button>
+          playPause={isPlaying && current?.title === song.title}
+        />
       </div>
       <div className="songCard__info">
         <h4 className='songCard__info__title'>{song.title}</h4>
