@@ -9,6 +9,7 @@
     position: relative;
 
     &__info{
+
         h3{
             padding-bottom: .5rem;
         }
@@ -18,12 +19,26 @@
         display: none;
         position: absolute;
         right: 1rem;
+        bottom: .9rem;
+        animation: btnFade .3s ease-out;
     }
 
-    &:hover &__playBtn{
-        display: flex;
-        bottom: .9rem;
-        animation: btnFade .3s ease-out; 
+    .currentFav{
+        display: block;
+    }
+
+    &:hover .notCurrentFav{
+        display: block;
+    }
+
+    .perde{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        cursor: pointer;
     }
 }
 
