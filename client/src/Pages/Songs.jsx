@@ -13,7 +13,7 @@ function Songs() {
   
   return (
     <div className='songs'>
-      <h2 className='songs__title'>Top 50</h2>
+      <h3 className='songs__title'>Top 50</h3>
       <div className='songs__cards'>
         {data.map((song, index) => (
           <SongCard 

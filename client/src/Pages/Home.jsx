@@ -18,9 +18,9 @@ function Home() {
   return (
     <section className='home'>
       {recentSongs.length > 0 && <div className='home__recent__songs'>
-        <h2 className='home__recent__songs__title'>
+        <h3 className='home__recent__songs__title'>
           Recent Songs
-        </h2>
+        </h3>
         <div className='home__recent__songs__cards'>
           {recentSongs.map((recent, index) => (
             <SongCard 

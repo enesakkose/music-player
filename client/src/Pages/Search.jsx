@@ -16,9 +16,9 @@ function Search() {
             className='search__genres__card'
             style={{ backgroundColor: `${genre.joeColor}`}}
           >
-            <h2 className='search__genres__card__title'>
+            <h3 className='search__genres__card__title'>
               {genre.genre}
-            </h2>
+            </h3>
           </Link>
         ))}
       </div>
