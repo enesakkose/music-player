@@ -5,6 +5,7 @@ const initialState = {
     playlistId: null,
     favoritesPlaylist: [],
     favorite: false,
+    favoritePopup: false,
     openCover: false
 }
 
@@ -31,6 +32,9 @@ export const playlist = createSlice({
         setFavorite: (state,action) => {
             state.favorite = action.payload
         },
+        setFavoritePopup: (state,action) => {
+            state.favoritePopup = action.payload
+        },
         setOpenCover: (state, action) => {
             state.openCover = action.payload
         }
@@ -42,7 +46,8 @@ export const {
     setFavoritesPlaylist, 
     deleteFavorites,
     setFavorite, 
-    setOpenCover 
+    setOpenCover,
+    setFavoritePopup
 } = playlist.actions
 
 export default playlist.reducer

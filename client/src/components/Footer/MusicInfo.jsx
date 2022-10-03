@@ -2,7 +2,6 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setOpenCover } from '@/store/playlist'
 import { Link } from 'react-router-dom'
-import { addFavoriteHandle } from '@/utils'
 import FavoriteBtn from '@/components/FavoriteBtn'
 import Icon from '@/components/Icon'
 import '@/components/Footer/MusicInfo.scss'
@@ -11,11 +10,7 @@ function MusicInfo() {
   const dispatch = useDispatch()
   const { openCover, favoritesPlaylist } = useSelector(state => state.playlist)
   const { current, isActive } = useSelector(state => state.player)
-  const c = favoritesPlaylist.find(f => f.key === current.key)
-
-  const addPlaylistFooter = () => {
-    addFavoriteHandle(c, current)
-  }
+  const thereFavPlaylist = favoritesPlaylist.find(f => f.key === current.key)
 
   return (
     <div>
@@ -42,9 +37,8 @@ function MusicInfo() {
         </div>
         <div className="footer__music__info__actionBtns">
           <FavoriteBtn
-            onClick={addPlaylistFooter}
-            thereFavPlaylist={c}
-            className={`${c ? 'liked': ''}`}
+            song={current}
+            thereFavPlaylist={thereFavPlaylist}
           />
           <button>
             <Icon name='Nested' size={18}/>

@@ -6,18 +6,12 @@ import SongsTableList from '@/components/SongsTableList'
 import FavoriteBtn from '@/components/FavoriteBtn'
 import ActionBtns from '@/Pages/Album/Main/ActionBtns'
 import Icon from '@/components/Icon'
-import { useSelector, useDispatch } from 'react-redux'
-import { deleteFavorites } from '@/store/playlist'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '@/Pages/Collection/Tracks.scss'
 
 function Tracks() {
-  const dispatch = useDispatch()
   const { favoritesPlaylist } = useSelector(state => state.playlist)
-  
-  const removeFavorites = (key) => {
-    dispatch(deleteFavorites(key))
-  }
 
   return (
     <div className='favoriteTracks'>
@@ -57,7 +51,7 @@ function Tracks() {
                 >
                   <FavoriteBtn 
                     thereFavPlaylist={true}
-                    onClick={() => removeFavorites(favorite.key)}
+                    song={favorite}
                   />
                 </SongsTableList>
               ))}
@@ -68,5 +62,6 @@ function Tracks() {
     </div>
   )
 }
-
+//react virtualized
+//playlist store playlist id denedim olmadı
 export default Tracks

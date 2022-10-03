@@ -52,14 +52,7 @@
     &__favBtn{
         opacity: 0;
     }
-    .favoriteBtn{
-        .like{
-            fill: $GREEN;
-            transform: translateY(0);
-            animation: like .3s ease-in-out;
-        }
-    }
-        
+
     &:hover &__favBtn, .liked{
         opacity: 1;
     }
@@ -76,17 +69,5 @@
 
     .songsTableListItem__indexPlay__playBtn{
         display: block;
-    }
-}
-
-@keyframes like {
-    0%{
-        transform: translateX(5px);
-    }
-    25%{
-        transform: translateX(-5px);
-    }
-    100%{
-        transform: translateX(0);
     }
 }
