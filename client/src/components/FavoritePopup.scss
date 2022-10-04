@@ -3,7 +3,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     bottom: 6.25rem;
-    background-color: rgba($purple, .8);
+    background-color: $purple;
     padding: $PS $PL;
     border-radius: .875rem;
 }
