@@ -64,14 +64,22 @@ function MusicPlayer({volume}) {
         onLoadedData={(e) => setDuration(e.target.duration)}
       />
       <div className="footer__music__player__actionBtns">
-        <button onClick={handlePrevSong} className='footer__previousBtn'>
+        <button
+          disabled={!isActive}
+          onClick={handlePrevSong} 
+          className='footer__previousBtn'
+        >
           <Icon name='Previous' size={36}/>
         </button>
         <PlayBtn
           onClick={handlePlayPause} 
           playPause={isPlaying && isActive} className='footer__playBtn' 
         />
-        <button onClick={handleNextSong} className='footer__nextBtn'>
+        <button
+          disabled={!isActive} 
+          onClick={handleNextSong} 
+          className='footer__nextBtn'
+        >
           <Icon name='Next' size={36}/>
         </button>
       </div>
