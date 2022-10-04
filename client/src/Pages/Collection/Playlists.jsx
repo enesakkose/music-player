@@ -3,15 +3,17 @@ import EmptyPlaylist from '@/components/EmptyPlaylist'
 import FavoritesCard from '@/components/FavoritesCard'
 import PlaylistInfoCard from '@/components/PlaylistInfoCard'
 import { addPlaylistHandle } from '@/utils'
+import { v4 as uuidv4 } from 'uuid'
 import { useSelector } from 'react-redux'
 import '@/Pages/Collection/Playlists.scss'
 
 function Playlists() {
-
+  const id = uuidv4()
   const { playlists } = useSelector(state => state.playlist)
 
   const handleAdd = () => {
-    addPlaylistHandle(playlists)
+    addPlaylistHandle(playlists, id)
+    navigate(`/playlist/${id}`)
   }
   
   return (

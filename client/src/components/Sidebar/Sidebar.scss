@@ -122,6 +122,10 @@
                 padding-top: .5rem;
                 overflow: auto;
 
+                a{
+                    transition: none;
+                }
+
                 .active{
                     color: $WHITE;
                 }

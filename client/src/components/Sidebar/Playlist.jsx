@@ -4,16 +4,18 @@ import Icon from '@/components/Icon'
 import { useSelector } from 'react-redux'
 import { addPlaylistHandle } from '@/utils'
 import { useNavigate } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
 import '@/components/Sidebar/Sidebar.scss'
 
 
 function Playlist() {
+  const id = uuidv4()
   const navigate = useNavigate()
-  const { playlists, playlistId } = useSelector(state => state.playlist)
+  const { playlists } = useSelector(state => state.playlist)
 
   const handleAdd = () => {
-    addPlaylistHandle(playlists)
-    console.log(playlistId)
+    addPlaylistHandle(playlists, id)
+    navigate(`/playlist/${id}`)
   }
 
   return (

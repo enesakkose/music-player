@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     playlists: [],
-    playlistId: null,
     favoritesPlaylist: [],
     favorite: false,
     favoritePopup: false,
@@ -17,8 +16,7 @@ export const playlist = createSlice({
             state.playlists = [
                 action.payload,
                 ...state.playlists
-            ],
-            state.playlistId = action.payload.id
+            ]
         },
         setFavoritesPlaylist: (state, action) => {
             state.favoritesPlaylist = [

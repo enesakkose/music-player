@@ -2,12 +2,11 @@ import { useEffect } from "react";
 import  { store } from "@/store";
 import { addPlaylist, deleteFavorites, setFavorite, setFavoritesPlaylist, setFavoritePopup } from '@/store/playlist'
 import { closeModal } from "@/store/modal"
-import { v4 as uuidv4 } from 'uuid'
 
-export const addPlaylistHandle = (playlists) => {
+export const addPlaylistHandle = (playlists, id) => {
     store.dispatch(addPlaylist({
         name: `My Playlist #${playlists.length + 1}`,
-        id : uuidv4()
+        id : id
     }))
 }
 
