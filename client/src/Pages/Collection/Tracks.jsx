@@ -48,12 +48,7 @@ function Tracks() {
                   index={index} 
                   song={favorite} 
                   findSongs={favoritesPlaylist}
-                >
-                  <FavoriteBtn 
-                    thereFavPlaylist={true}
-                    song={favorite}
-                  />
-                </SongsTableList>
+                />
               ))}
             </div>
           </div>

@@ -36,6 +36,11 @@
         }
     }
 
+    &__img{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
     &__text{
         display: flex;
         flex-direction: column;

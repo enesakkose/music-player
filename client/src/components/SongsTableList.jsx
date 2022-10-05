@@ -1,5 +1,6 @@
 import React from 'react'
 import Icon from '@/components/Icon'
+import FavoriteBtn from '@/components/FavoriteBtn'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import { useSelector, useDispatch } from 'react-redux'
 import '@/components/SongsTableList.scss'
@@ -7,6 +8,8 @@ import '@/components/SongsTableList.scss'
 function SongsTableList({children, index, song, findSongs}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
+  const { favoritesPlaylist } = useSelector(state => state.playlist)
+  const thereHavePlaylist = favoritesPlaylist.find(f => f.key === song.key)
 
   const listPlayBtn = () => {
     dispatch(setCurrent({song, index}))
@@ -31,12 +34,15 @@ function SongsTableList({children, index, song, findSongs}) {
           <Icon name={validMusic ? 'Stop' : 'Play'}/>
         </button>
       </div>
-      
+      <img className='songsTableListItem__img' src={song?.images?.coverart} alt="coverart" />
       <h4 className='songsTableListItem__text'>
         {song.title}
         <span>{song.subtitle}</span>
       </h4>
-      {children}
+      <FavoriteBtn 
+        song={song}
+        thereFavPlaylist={thereHavePlaylist}
+      />
     </div>
   )
 }
