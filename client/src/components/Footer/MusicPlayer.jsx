@@ -53,6 +53,10 @@ function MusicPlayer({volume}) {
     if(currentIndex !== 0) return dispatch(prevSong(currentIndex - 1))
   }
 
+  const onc = debounce((value) => {
+    setSeekTime(value)
+  }, 10)
+
   return (
     <div className="footer__music__player">
       <audio
@@ -92,7 +96,7 @@ function MusicPlayer({volume}) {
           min={0} 
           max={duration}
           value={songTime} 
-          onChange={value => setSeekTime(value)}
+          onChange={value => onc(value)}
         />
         <span className='time'>
           {useTimeConvert(duration)}
