@@ -4,16 +4,18 @@ import SongsList from '@/Pages/Album/Main/SongsList'
 import SongsTableHeader from '@/components/SongsTableHeader'
 
 function Main({findSongs, backgroundColor}) {
+  const filterFindSongs = findSongs.filter(f => f.hub.actions)
+  
   return (
     <main className="album__content">
       <ActionBtns findSongs={findSongs}/>
       <div className="album__content__songs">
         <SongsTableHeader/>
         <div className="album__content__songs__list">
-          {findSongs.map((song, index) => (
+          {filterFindSongs.map((song, index) => (
             <SongsList 
               song={song} 
-              findSongs={findSongs} 
+              findSongs={filterFindSongs} 
               index={index} 
               key={song.key}
             />
