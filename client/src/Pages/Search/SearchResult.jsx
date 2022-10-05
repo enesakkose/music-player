@@ -6,8 +6,6 @@ import '@/Pages/Search/SearchResult.scss'
 
 function SearchResult({data}) {
 
-
-  
   
 
   return (

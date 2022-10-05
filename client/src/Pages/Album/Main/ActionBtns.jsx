@@ -8,7 +8,7 @@ function ActionBtns({findSongs}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
   const [ like, setLike ] = useState(false)
-  const haveSongs = findSongs.some(f => f.subtitle === current.subtitle)
+  const haveSongs = findSongs.some(f => f.key === current.key)
 
   const playAlbumSong = () => {
     if(current.key !== findSongs[0].key && haveSongs) 

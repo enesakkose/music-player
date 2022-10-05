@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetChartsByGenreQuery } from '@/services/music'
 import { useDispatch } from 'react-redux'
-import { setGenre } from '@/store/song'
 import { GENRES } from '@/constants'
 import SongCard from '@/components/SongCard'
 import Loading from '@/components/Loading'
@@ -14,10 +13,6 @@ function Genre() {
   const { data, isFetching, error } = useGetChartsByGenreQuery(genre)
   const findGenres = GENRES.find(g => g.val === genre)
   //This variable created via constants.jsx for the title property which isn't in api
-
-  useEffect(() => {
-    dispatch(setGenre(genre))
-  }, [genre])
   
   if(isFetching) return <Loading/>
   if(error) return 'Something went wrong...'
