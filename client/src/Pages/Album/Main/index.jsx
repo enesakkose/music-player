@@ -1,14 +1,14 @@
 import React from 'react'
 import ActionBtns from '@/Pages/Album/Main/ActionBtns'
 import SongsList from '@/Pages/Album/Main/SongsList'
-import SongsTable from '@/components/SongsTable'
+import SongsTableHeader from '@/components/SongsTableHeader'
 
 function Main({findSongs, backgroundColor}) {
   return (
     <main className="album__content">
       <ActionBtns findSongs={findSongs}/>
       <div className="album__content__songs">
-        <SongsTable/>
+        <SongsTableHeader/>
         <div className="album__content__songs__list">
           {findSongs.map((song, index) => (
             <SongsList 

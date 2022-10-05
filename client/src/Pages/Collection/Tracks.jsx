@@ -1,7 +1,7 @@
 import React from 'react'
 import PlaylistHeader from '@/components/PlaylistHeader'
 import EmptyPlaylist from '@/components/EmptyPlaylist'
-import SongsTable from '@/components/SongsTable'
+import SongsTableHeader from '@/components/SongsTableHeader'
 import SongsTableList from '@/components/SongsTableList'
 import FavoriteBtn from '@/components/FavoriteBtn'
 import ActionBtns from '@/Pages/Album/Main/ActionBtns'
@@ -40,7 +40,7 @@ function Tracks() {
         {favoritesPlaylist.length > 0 && <div className="favoriteTracks__main__content">
           <ActionBtns findSongs={favoritesPlaylist}/>
           <div className="favoriteTracks__main__content__songs">
-            <SongsTable/>
+            <SongsTableHeader/>
             <div className='favoriteTracks__main__content__songs__list'>
               {favoritesPlaylist.map((favorite, index) => (
                 <SongsTableList
