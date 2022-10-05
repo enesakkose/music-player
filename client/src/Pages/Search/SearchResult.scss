@@ -1,0 +1,15 @@
+.searchResult{
+
+    .songsTableTitle{
+        position: sticky;
+        top: 64px;
+        background-color: $secondaryColor;
+    }
+
+    &__songs__list{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: $PM 0;
+    }
+}
