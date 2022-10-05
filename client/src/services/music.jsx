@@ -22,6 +22,9 @@ export const musicApi = createApi({
         }),
         getSearchSongs: builder.query({
             query: (value) => `/search/multi?offset=0&query=${value}&search_type=SONGS`
+        }),
+        getRelatedSongs: builder.query({
+            query: (songId) => `/tracks/related?track_id=${songId}`
         })
     }),
 })
@@ -30,5 +33,6 @@ export const {
     useGetTopChartsQuery,
     useGetTrackDetailsQuery,
     useGetChartsByGenreQuery,
-    useGetSearchSongsQuery
+    useGetSearchSongsQuery,
+    useGetRelatedSongsQuery
 } = musicApi
