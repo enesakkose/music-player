@@ -15,7 +15,7 @@ function Album() {
   if(isFetching) return <Loading/>
   if(error) return 'Something went wrong'
 
-  const backgroundColor = data[0]?.images?.joecolor.slice(18,24)
+  const backgroundColor = data[0]?.images?.joecolor?.slice(18,24)
 
   return (
     <div className='album'>

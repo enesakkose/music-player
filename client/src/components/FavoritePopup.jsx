@@ -9,7 +9,7 @@ function FavoritePopup() {
   return (
     <div className='favoritePopup'>
       <h4 className='favoritePopup__text'>
-        {favorite ? 'Added to' : 'Remove from'} your favorite songs
+        {favorite ? 'Added to' : 'Removed from'} your favorite songs
       </h4>
     </div>
   )

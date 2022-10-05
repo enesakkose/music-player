@@ -42,6 +42,7 @@ function SongsTableList({children, index, song, findSongs}) {
       <FavoriteBtn 
         song={song}
         thereFavPlaylist={thereHavePlaylist}
+        className={`songsTableListItem__favBtn ${thereHavePlaylist ? 'liked' : ''}`}
       />
     </div>
   )
