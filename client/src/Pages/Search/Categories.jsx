@@ -1,22 +1,21 @@
 import React from 'react'
 import { GENRES } from '@/constants'
 import { Link } from 'react-router-dom'
-import '@/Pages/Search.scss'
+import '@/Pages/Search/Categories.scss'
 
-function Search() {
+function Categories() {
   return (
-    <div className='search'>
+    <div className='categories'>
       <h3>CATEGORIES</h3>
-      <div className="search__genres">
+      <div className="categories__list">
         {GENRES.map((genre) => (
-          
           <Link 
             key={genre.val} 
             to={`/genre/${genre.val}`} 
-            className='search__genres__card'
+            className='categories__list__card'
             style={{ backgroundColor: `${genre.joeColor}`}}
           >
-            <h3 className='search__genres__card__title'>
+            <h3 className='categories__list__card__title'>
               {genre.genre}
             </h3>
           </Link>
@@ -26,4 +25,4 @@ function Search() {
   )
 }
 
-export default Search
+export default Categories

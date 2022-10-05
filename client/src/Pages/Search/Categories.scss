@@ -1,8 +1,5 @@
-.search{
-    flex: 1;
-    padding: $PL;
-
-    &__genres{
+.categories{
+    &__list{
         height: 100%;
         padding: $PL 0;
         display: grid;
