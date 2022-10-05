@@ -21,12 +21,12 @@ export const player = createSlice({
             state.isPlaying = action.payload
         },
         nextSong: (state, action) => {
+            state.current = state.currentSongs[action.payload].track || state.currentSongs[action.payload]
             state.currentIndex = action.payload;
-            state.current = state.currentSongs[action.payload]
             state.isActive = true;
         },
         prevSong: (state, action) => {
-            state.current = state.currentSongs[action.payload]
+            state.current = state.currentSongs[action.payload].track || state.currentSongs[action.payload]
             state.currentIndex = action.payload;
             state.isActive = true;
         },
