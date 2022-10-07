@@ -6,9 +6,10 @@ function ViewLayout({children}) {
 
   return (
     <section className='viewLayout'>
-        <ViewLayoutHeader/>
-        {children}
+      <ViewLayoutHeader/>
+      {children}
     </section>
   )
 }
+
 export default ViewLayout
