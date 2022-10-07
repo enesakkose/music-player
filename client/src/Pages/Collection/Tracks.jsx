@@ -57,6 +57,5 @@ function Tracks() {
     </div>
   )
 }
-//react virtualized
-//playlist store playlist id denedim olmadı
+
 export default Tracks
