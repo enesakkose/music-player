@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useCallback, useDeferredValue } from 'react'
+import React, { useEffect, useMemo, useCallback, useDeferredValue, useState } from 'react'
 import { useFocus } from '@/hooks/useFocus'
 import { useDispatch, useSelector } from 'react-redux'
 import { setQuerySongs } from '@/store/song'
@@ -9,14 +9,32 @@ import '@/Pages/Search/SearchInput.scss'
 
 function SearchInput() {
   const dispatch = useDispatch()
+  const [searchParams, setSearchParams] = useSearchParams()
   const { querySongs } = useSelector(state => state.song)
-  console.log(querySongs)
+  
+  useEffect(() => {
+    dispatch(setQuerySongs(searchParams.get('') || ''))
+  }, [searchParams])
+
   const handleQueryChange = debounce((e) => {
     dispatch(setQuerySongs(e.target.value))
+
+    if(e.target.value.length === 0){
+      searchParams.delete('')
+      setSearchParams(searchParams, { replace: true })
+    }else{
+      searchParams.set('', e.target.value)
+      setSearchParams(searchParams, {
+        replace: true
+      })
+    }
   }, 300)
 
+
+
   const cc = () => {
-    dispatch(setQuerySongs(''))
+    //todo buraya bak 
+
   }
 
   return (
@@ -25,6 +43,7 @@ function SearchInput() {
         <Icon className='searchIcon' name='Search' size={24}/>
         <input
           type="text"
+          defaultValue={searchParams.get('') || ''}
           onChange={handleQueryChange}
           placeholder='What do you want to listen to ?'
         />
