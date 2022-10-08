@@ -34,7 +34,7 @@ function SongsTableList({children, index, song, findSongs}) {
           <Icon name={validMusic ? 'Stop' : 'Play'}/>
         </button>
       </div>
-      <img className='songsTableListItem__img' src={song?.images?.coverart} alt="coverart" />
+      <img className='songsTableListItem__img' src={song?.images?.coverart} alt="cover" />
       <h4 className='songsTableListItem__text'>
         {song.title}
         <span>{song.subtitle}</span>
