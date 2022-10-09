@@ -17,7 +17,7 @@ function FavoriteBtn({thereFavPlaylist, className, song}) {
   useEffect(() => {
     const t = setTimeout(() => {
       dispatch(setFavoritePopup(false))
-    }, 1000);
+    }, 2500);
 
     return () => {
       clearTimeout(t)

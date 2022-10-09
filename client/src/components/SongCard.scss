@@ -42,9 +42,9 @@
     }
 
     &:hover  &__img__btn{
-        display: flex !important;
+        display: block !important;
         bottom: .9rem;
-        animation: btnFade .3s ease-out; 
+        animation: btnFade .3s ease-out;
     }
 
     &__info{

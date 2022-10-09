@@ -24,17 +24,12 @@ function SearchInput() {
       setSearchParams(searchParams, { replace: true })
     }else{
       searchParams.set('', e.target.value)
-      setSearchParams(searchParams, {
-        replace: true
-      })
+      setSearchParams(searchParams, { replace: true })
     }
   }, 300)
 
-
-
   const cc = () => {
     //todo buraya bak 
-
   }
 
   return (
