@@ -9,8 +9,9 @@ import '@/Pages/Search/Search.scss'
 function Search() {
   const { querySongs } = useSelector(state => state.song)
   const { data, isFetching, error } = useGetSearchSongsQuery(querySongs.length > 1 && querySongs)
-  if(error) return 'Something went wrong'
+
   if(isFetching) return <Loading/>
+  if(error) return 'Something went wrong'
   
   return (
     <div className='search'>

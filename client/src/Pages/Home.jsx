@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setRecentSongs } from '@/store/song'
 import SongCard from '@/components/SongCard'
 import '@/Pages/Home.scss'
 
@@ -9,15 +8,12 @@ function Home() {
   const { user } = useSelector(state => state.auth)
   const { current, isActive } = useSelector(state => state.player)
   const { recentSongs } = useSelector(state => state.song)
-  const f = recentSongs?.find(song => song.key === current.key)
+  //todo recentSongsa bak
 
-  useEffect(() => {
-    if(isActive && !f) dispatch(setRecentSongs(current)) 
-  }, [current])
-
+  
   return (
     <section className='home'>
-      {recentSongs.length > 0 && <div className='home__recent__songs'>
+      {/*recentSongs.length > 0 && <div className='home__recent__songs'>
         <h3 className='home__recent__songs__title'>
           Recent Songs
         </h3>
@@ -28,10 +24,10 @@ function Home() {
               song={recent} 
               data={recentSongs}
               index={index}
-              />
+            />
           ))}
         </div>
-      </div>}
+          </div>*/}
     </section>
   )
 }

@@ -5,6 +5,7 @@ import CustomRange from '@/components/CustomRange'
 import { useTimeConvert } from '@/hooks/useTimeConvert'
 import { useSelector, useDispatch } from 'react-redux'
 import { playPause, nextSong, prevSong } from '@/store/player'
+import { setRecentSongs } from '@/store/song'
 import { debounce } from 'lodash'
 import '@/components/Footer/MusicPlayer.scss'
 
@@ -26,6 +27,7 @@ function MusicPlayer({volume}) {
   
   useEffect(() => {
     dispatch(playPause(true))
+    if(isActive) dispatch(setRecentSongs(current))
   }, [current])
 
   useEffect(() => {

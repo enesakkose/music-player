@@ -7,7 +7,7 @@ import { useLocation } from 'react-use'
 function App() {
   const location = useLocation()
   const path = location.pathname === '/auth'
-  
+  //some ile dene
   return (
     <div className="App">
       {path && useRoutes(defaultRoutes)}
