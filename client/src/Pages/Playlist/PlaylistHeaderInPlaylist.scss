@@ -1,0 +1,65 @@
+.playlistHeaderInPlaylist{
+    background: $playlistMainColor;
+    background-image: $grayLinear;
+
+    &__cover{
+        background-color: $darkGray;
+        position: relative;
+
+        &__action{
+            display: none;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        &:hover{
+            span{
+                display: flex;
+                position: absolute;
+                inset: 0;
+                background-color: rgba(0, 0, 0, 0.3);
+                //todo will be arranged according to image
+                font-weight: 600;
+                
+            }
+        }
+        
+    }
+
+    &__info{
+
+        &__userName{
+            position: relative;
+            margin-bottom: $MXS;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+
+            a{
+
+                &:hover{
+                    text-decoration: underline;
+                }  
+            }
+            
+            .playlistAction-btn{
+                height: 2rem;
+
+                &:hover{
+                    color: $WHITE;
+                }
+            }
+
+            .playlistActionMenu{
+                top: 2.62rem;
+                z-index: 2; 
+                
+                button{
+                    padding: $PS;
+                    color: $WHITE;
+                } 
+            }
+        }
+    }
+}
