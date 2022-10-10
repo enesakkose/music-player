@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import Icon from '@/components/Icon'
 import PlayBtn from '@/components/PlayBtn'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
+import '@/components/ActionBtns.scss'
 
 function ActionBtns({findSongs}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
-  const [ like, setLike ] = useState(false)
   const haveSongs = findSongs.some(f => f.key === current.key)
 
   const playAlbumSong = () => {
@@ -22,15 +21,12 @@ function ActionBtns({findSongs}) {
   }
 
   return (
-    <div className="album__content__actionBtns">
+    <div className="actionBtns">
       <PlayBtn
         onClick={playAlbumSong}
-        className='album__content__actionBtns__play'
+        className='actionBtns__play'
         playPause={isPlaying && haveSongs}
       />
-      <button onClick={() => setLike(!like)}>
-        <Icon name='Favorite' size={44}/>
-      </button>
     </div>
   )
 }
