@@ -12,6 +12,7 @@ import Album from "@/Pages/Album"
 import Auth from "@/Pages/Auth"
 import Lyric from "@/Pages/Lyric"
 import Genre from "@/Pages/Genre"
+import App404 from "@/Pages/404"
 
 export const routes = [
     {
@@ -72,5 +73,9 @@ export const defaultRoutes = [
     {
         path: 'auth',
         element: <Suspense><Auth/></Suspense>,
+    },
+    {
+        path: '404',
+        element: <Suspense><App404/></Suspense>
     }
 ]
