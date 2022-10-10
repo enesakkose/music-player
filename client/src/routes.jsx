@@ -32,7 +32,7 @@ export const routes = [
         element: <Suspense><PlaylistLayout/></Suspense>,
         children: [
             {
-                path: ':id',
+                path: ':playlistId',
                 element: <Suspense><Playlist/></Suspense> 
             }
         ]
