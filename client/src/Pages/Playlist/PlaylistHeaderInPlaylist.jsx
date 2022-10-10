@@ -18,19 +18,19 @@ function PlaylistHeaderInPlaylist({playlistId}) {
   })
 
   return (        
-    <PlaylistHeader className="playlistHeaderInPlaylist">
+    <PlaylistHeader className="playlist__headerInPlaylist">
       {/*//!  single classnames in child elements is coming from PlaylistHeader components//*/}
-      <div className="playlistHeaderInPlaylist__cover cover">
+      <div className="playlist__headerInPlaylist__cover cover">
         <Icon name='Music' size={75}/>
-        <span className="playlistHeaderInPlaylist__cover__action">
+        <span className="playlist__headerInPlaylist__cover__action">
           <Icon name='Pencil' size={48}/>
           Choose Photo
         </span>
       </div>
-      <div ref={domNode} className="playlistHeaderInPlaylist__info info">
+      <div ref={domNode} className="playlist__headerInPlaylist__info info">
         <h6>PLAYLIST</h6>
         <h1>{playlistName?.name}</h1>
-        <h6 className='playlistHeaderInPlaylist__info__userName'>
+        <h6 className='playlist__headerInPlaylist__info__userName'>
           <Link to='/'>
             Aaa(username)
           </Link>

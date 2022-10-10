@@ -52,18 +52,6 @@
             z-index: -1;
         }
 
-        &__actionBtns{
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            padding-bottom: $PL;
-
-            &__play{
-                width: 3.5rem;
-                height: 3.5rem;
-            }
-        }
-
         &__songs{
 
             &__list{
