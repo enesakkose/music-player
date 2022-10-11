@@ -6,4 +6,5 @@
     display: grid;
     grid-template-columns: 1.5fr 2fr 1.5fr;
     z-index: 10;
+    border-top: 1px solid $darkGray;
 }
