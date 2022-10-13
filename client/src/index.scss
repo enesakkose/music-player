@@ -14,6 +14,10 @@
   src: local("Gilroy"), url("@/assets/fonts/Gilroy/Gilroy-Light.otf") format("truetype")
 }
 
+html{
+  height: 100%;
+}
+
 body , #root{
   font-size: 16px;
   font-weight: 400;

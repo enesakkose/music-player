@@ -15,7 +15,7 @@ function Playlist() {
 
   const handleAdd = () => {
     addPlaylistHandle(playlists, id)
-    navigate(`/playlist/${id}`)
+    navigate(`/playlist/${id}`, {replace: true})
   }
 
   return (
