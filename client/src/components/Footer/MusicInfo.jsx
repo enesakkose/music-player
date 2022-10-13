@@ -40,9 +40,6 @@ function MusicInfo() {
             song={current}
             thereFavPlaylist={thereFavPlaylist}
           />
-          <button>
-            <Icon name='Nested' size={18}/>
-          </button>
         </div>
     </div>}
     </div>
