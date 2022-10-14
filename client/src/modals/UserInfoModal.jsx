@@ -3,6 +3,7 @@ import Icon from '@/components/Icon'
 import { closeModalHandle } from '@/utils'
 import { Form, Formik } from 'formik'
 import CustomInput from '@/components/CustomInput'
+import '@/modals/UserInfoModal.scss'
 
 function UserInfoModal({data, outClickRef}) {
   

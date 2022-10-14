@@ -1,0 +1,64 @@
+.userInfoModal{
+
+    &__header{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    &__form{
+        padding-top: $PM;
+        display: grid;
+        grid-template-columns: 11.5rem 17.5rem;
+        gap: 2rem;
+
+        &__img{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: $cover;
+        }
+        &__inputs{
+            display: flex;
+            flex-direction: column;
+            gap: .875rem;
+        
+            &__input{
+                display: flex;
+                flex-direction: column;
+                gap: .25rem;
+
+                input{
+                    background-color: transparent;
+                    padding: $PXS;
+                    border: 2px solid $darkGray;
+                    border-radius: .25rem;
+                    color: rgba($WHITE, .6);
+                    width: 100%;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                }
+
+                &__span{
+                    font-weight: bold;
+                    color: rgba($WHITE, .8);
+                }
+                
+            }
+
+            &__submit{
+                padding: $PXS;
+                background-color: rgba($WHITE, .9);
+                color: $BLACK;
+                font-weight: bold;
+                font-size: 14px;
+                border-radius: .5rem;
+                
+                &:active{
+                    transform: translateY(.5px);
+                }
+            }
+        }
+    }
+}
