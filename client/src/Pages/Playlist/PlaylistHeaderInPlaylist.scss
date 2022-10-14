@@ -1,6 +1,7 @@
 .playlist__headerInPlaylist{
     background: $playlistMainColor;
     background-image: $grayLinear;
+    transition: .5s background ease-in-out;
 
     &__cover{
         background-color: $darkGray;

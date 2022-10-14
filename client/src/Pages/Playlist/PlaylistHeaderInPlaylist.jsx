@@ -7,7 +7,7 @@ import Icon from '@/components/Icon'
 import DropdownMenu from '@/components/DropdownMenu'
 import '@/Pages/Playlist/PlaylistHeaderInPlaylist.scss'
 
-function PlaylistHeaderInPlaylist({playlistId}) {
+function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
 
   const { playlists } = useSelector(state => state.playlist)
   const playlistName = playlists.find((playlist) => playlist.id === playlistId)
@@ -18,7 +18,7 @@ function PlaylistHeaderInPlaylist({playlistId}) {
   })
 
   return (        
-    <PlaylistHeader className="playlist__headerInPlaylist">
+    <PlaylistHeader className="playlist__headerInPlaylist" style={{ backgroundColor: `#${bgColor}`}}>
       {/*//!  single classnames in child elements is coming from PlaylistHeader components//*/}
       <div className="playlist__headerInPlaylist__cover cover">
         <Icon name='Music' size={75}/>

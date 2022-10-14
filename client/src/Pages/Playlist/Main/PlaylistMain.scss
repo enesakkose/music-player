@@ -1,0 +1,167 @@
+.playlist__main{
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    
+    &__content{
+        padding: $PM $PL;
+        height: 100%;
+        overflow: overlay;
+
+        &::-webkit-scrollbar{
+            width: 15px;
+            
+        }
+    
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+            
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba($WHITE, .3);
+    
+            &:hover{
+                background-color: rgba($WHITE, .5);
+            }
+        }
+
+        &__songsList{
+        
+            &__items{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem 0 3.5rem;
+            
+                &__item{
+                    
+                }
+            }
+        }
+
+        &__searchSongs{
+            bottom: 6rem; //this value is assigned for animation 
+            z-index: 100;
+            background-color: transparent;
+            
+            &__head{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: $PM 0;
+                border-top: 1px solid rgba($WHITE, .1);
+
+
+                &__input{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+
+                    label{
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        
+                        input{
+                            background-color: rgba($WHITE, .1);
+                            height: 3rem;
+                            border-radius: .25rem;
+                            color: rgba($WHITE, .8);
+                            width: 100%;
+                            padding: 0 $PL;
+                            
+                            font-size: 1rem;
+                            letter-spacing: 1px;
+                            
+                            &::placeholder{
+                                color: rgba($WHITE, .8);
+                                font-size: .875rem;
+                            }
+                        }
+    
+                        .searchIcon{
+                            position: absolute;
+                            left: .625rem;
+                            cursor: text;
+                        }
+                        .closeBtn{
+                            position: absolute;
+                            right: .625rem;
+                        }
+                    }
+                }
+            }
+
+            .hideHead{
+                align-items: inherit;
+                border-top: 0;
+            }
+
+            &__list{
+                min-height: 30vh;
+                
+
+                &__items{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+
+                    &__item{
+                        
+                    }
+                }
+            }
+
+            .hideSongsList{
+                min-height: 0;
+            }
+        }
+
+        .hide{
+            position: absolute;
+            right: 0;
+            left: 0;
+            bottom: -4.6rem;
+            padding: 0 $PL;
+            border-top-right-radius: 4.688rem;
+            border-top-left-radius: 4.688rem;
+            border-top: 1px solid rgba($WHITE, .15);
+            transition: .3s bottom ease-in-out;
+            background-color: $secondaryColor;
+
+        }
+
+        .c{
+            //this class created for when list data in songlist class
+            transform: translateY(90%);
+            bottom: -1rem;
+        }
+    }
+    
+    &__background{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 40vh;
+        background-image: $darkLinear;
+        background-color: $playlistMainColor;
+        z-index: -1;
+        transition: .5s background-color ease-in-out;
+    }
+
+    .addOrRemove{
+        border: 1px solid rgba($WHITE, .6);
+        border-radius: .875rem;
+        padding: $PXS $PS;
+        color: $WHITE;
+        
+        &:active{
+            transform: translateY(1px);
+        }
+
+        &:hover{
+            border-color: $WHITE;
+        }
+    }
+}
