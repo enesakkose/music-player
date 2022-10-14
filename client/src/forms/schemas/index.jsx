@@ -42,3 +42,9 @@ export const signupSchema = yup.object().shape({
       .string()
       .oneOf([yup.ref('password'), null], "Passwords must match")
 })
+
+export const playlistInfoSchema = yup.object().shape({
+  playlistName: yup
+    .string()
+    .required('Playlist name is required')
+})
