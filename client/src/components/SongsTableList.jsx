@@ -39,12 +39,12 @@ function SongsTableList({children, index, song, findSongs}) {
         {song.title}
         <span>{song.subtitle}</span>
       </h4>
+      {children}
       <FavoriteBtn 
         song={song}
         thereFavPlaylist={thereHavePlaylist}
         className={`songsTableListItem__favBtn ${thereHavePlaylist ? 'liked' : ''}`}
       />
-      {children}
     </div>
   )
 }
