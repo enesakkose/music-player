@@ -7,7 +7,8 @@ function FavoritePopup() {
   const { favorite } = useSelector(state => state.playlist)
 
   return (
-    <div className='favoritePopup'>
+    //key added, React will mount component and in this way refresh animation time in css 
+    <div key={favorite} className='favoritePopup'>
       <h4 className='favoritePopup__text'>
         {favorite ? 'Added to' : 'Removed from'} your favorite songs
       </h4>
