@@ -6,6 +6,7 @@
     &__cover{
         background-color: $darkGray;
         position: relative;
+        cursor: pointer;
 
         &__action{
             display: none;
