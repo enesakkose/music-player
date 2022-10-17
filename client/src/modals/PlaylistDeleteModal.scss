@@ -7,12 +7,12 @@
     &__actionBtns{
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        gap: 1.5rem;
         padding-top: $PM;
         
         button{
             color: $BLACK;
-            padding: $PS $PM;
+            padding: $PS $PL;
             border-radius: 1.5rem;
             font-weight: bold;
             font-size: 1rem;

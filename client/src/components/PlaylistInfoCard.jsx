@@ -12,7 +12,7 @@ function PlaylistInfoCard({playlist}) {
             <PlayBtn className='playlistInfoCard__img__btn'/>
         </div>
         <div className="playlistInfoCard__info">
-            <h4>{playlist.name}</h4>
+            <h5>{playlist.name}</h5>
             <span>By Aaa(username)</span>
         </div>
         <Link to={`/playlist/${playlist.id}`} className='perde'></Link>

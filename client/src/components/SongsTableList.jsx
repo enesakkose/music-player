@@ -35,10 +35,10 @@ function SongsTableList({children, index, song, findSongs}) {
         </button>
       </div>
       <img className='songsTableListItem__img' src={song?.images?.coverart} alt="cover" />
-      <h4 className='songsTableListItem__text'>
+      <h5 className='songsTableListItem__text'>
         {song.title}
         <span>{song.subtitle}</span>
-      </h4>
+      </h5>
       {children}
       <FavoriteBtn 
         song={song}

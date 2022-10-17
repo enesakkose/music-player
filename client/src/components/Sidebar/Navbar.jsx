@@ -17,7 +17,7 @@ function Navbar() {
         <Icon name='Book' size={30}/>
         library
       </NavLink>
-  </nav>
+    </nav>
   )
 }
 

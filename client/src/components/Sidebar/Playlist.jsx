@@ -20,12 +20,12 @@ function Playlist() {
 
   return (
     <nav className="sidebar__content__playlist">
-      <h4>
+      <h5 className='sidebar__content__playlist__title'>
         YOUR PLAYLIST
         <button onClick={handleAdd} className='add-btn'>
-          <Icon name='Add' size={23}/> 
+          <Icon name='Add' size={24}/> 
         </button>
-      </h4>
+      </h5>
       <ul className="sidebar__content__playlist__items">
         {playlists.map((playlist) => (
           <li key={playlist.id}>

@@ -9,9 +9,9 @@ function FavoritePopup() {
   return (
     //key added, React will mount component and in this way refresh animation time in css 
     <div key={favorite} className='favoritePopup'>
-      <h4 className='favoritePopup__text'>
+      <h5 className='favoritePopup__text'>
         {favorite ? 'Added to' : 'Removed from'} your favorite songs
-      </h4>
+      </h5>
     </div>
   )
 }

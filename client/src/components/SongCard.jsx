@@ -34,7 +34,7 @@ function SongCard({song, index, data}) {
         />
       </div>
       <div className="songCard__info">
-        <h4 className='songCard__info__title'>{song.title}</h4>
+        <h5 className='songCard__info__title'>{song.title}</h5>
         <span className='songCard__info__subtitle'>{song.subtitle}</span>
       </div>
       {!issueRoute && <Link to={`/album/${song.key}`} className='perde'></Link>}

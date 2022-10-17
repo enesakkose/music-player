@@ -18,9 +18,9 @@ function PlaylistDeleteModal({data: playlistInfo, outClickRef}) {
   
   return (
     <div ref={outClickRef} className='playlistDeleteModal'>
-      <h3 className='playlistDeleteModal__title'>
+      <h4 className='playlistDeleteModal__title'>
         Delete {playlistInfo.name}?
-      </h3>
+      </h4>
       <div className="playlistDeleteModal__actionBtns">
         <button onClick={() => closeModalHandle()} className='cancel'>
           CANCEL
