@@ -1,22 +1,30 @@
-import React, { useDeferredValue, useMemo } from 'react'
+import React, { useDeferredValue, useMemo, useState, useEffect } from 'react'
 import Categories from '@/Pages/Search/Categories'
 import SearchResult from '@/Pages/Search/SearchResult'
+import Loading from '@/components/Loading'
+import SearchError from '@/components/SearchError'
+import { useDebounceValue } from '@/hooks/useDebounceValue'
 import { useSelector } from 'react-redux'
 import { useGetSearchSongsQuery } from '@/services/music'
-import Loading from '@/components/Loading'
 import '@/Pages/Search/Search.scss'
 
 function Search() {
   const { querySongs } = useSelector(state => state.song)
-  const { data, isFetching, error } = useGetSearchSongsQuery(querySongs.length > 1 && querySongs)
+  const debouncedSearch = useDebounceValue(querySongs, 600)
+  const [skip, setSkip] = useState(true)//this state was used to for not send request when page first render 
+  const { data, isFetching, isSuccess, error } = useGetSearchSongsQuery(debouncedSearch, {skip})
+
+  useEffect(() => {
+    setSkip(querySongs.length > 1 ? false : true)
+  }, [querySongs])
 
   if(isFetching) return <Loading/>
-  if(error) return 'Something went wrong'
+  if(error) return <SearchError text={querySongs} status={error.status} />
   
   return (
     <div className='search'>
       {querySongs.length < 2 && <Categories/>}
-      {querySongs.length > 1  && <SearchResult data={data.tracks.hits}/>}
+      {isSuccess && !isFetching && <SearchResult songs={data.tracks.hits}/>}
     </div>
   )
 }
