@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useClickOutside } from '@/hooks/useClickOutside'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { openModal } from '@/store/modal'
 import PlaylistHeader from '@/components/PlaylistHeader'
 import Icon from '@/components/Icon'
 import DropdownMenu from '@/components/DropdownMenu'
 import '@/Pages/Playlist/PlaylistHeaderInPlaylist.scss'
 
 function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
-
+  const dispatch = useDispatch()
   const { playlists } = useSelector(state => state.playlist)
   const playlistName = playlists.find((playlist) => playlist.id === playlistId)
   const [ open, setOpen ] = useState(false)
@@ -17,10 +18,26 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
     setOpen(false)
   })
 
+  const openPlaylistInfoModal = () => {
+    dispatch(openModal({
+      name: 'PlaylistInfoModal',
+      data: playlistName
+    }))
+    setOpen(false)
+  }
+
+  const openPlaylistDeleteModal = () => {
+    dispatch(openModal({
+      name: 'PlaylistDeleteModal',
+      data: playlistName
+    }))
+    setOpen(false)
+  }
+
   return (        
     <PlaylistHeader className="playlist__headerInPlaylist" style={{ backgroundColor: `#${bgColor}`}}>
       {/*//!  single classnames in child elements is coming from PlaylistHeader components//*/}
-      <div className="playlist__headerInPlaylist__cover cover">
+      <div onClick={() => openPlaylistInfoModal()} className="playlist__headerInPlaylist__cover cover">
         <Icon name='Music' size={75}/>
         <span className="playlist__headerInPlaylist__cover__action">
           <Icon name='Pencil' size={48}/>
@@ -41,10 +58,14 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
             <DropdownMenu  className='playlistActionMenu'>
               <ul>
                 <li>
-                  <button>Edit Details</button>
+                  <button onClick={openPlaylistInfoModal}>
+                    Edit Details
+                  </button>
                 </li>
                 <li>
-                  <button>Delete</button>
+                  <button onClick={openPlaylistDeleteModal}>
+                    Delete
+                  </button>
                 </li>
               </ul>
             </DropdownMenu>

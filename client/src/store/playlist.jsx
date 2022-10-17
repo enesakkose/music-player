@@ -42,6 +42,9 @@ export const playlist = createSlice({
                 ...state.playlist,
                 action.payload
             ]
+        },
+        deletePlaylist: (state,action) => {
+            state.playlists = state.playlists.filter(playlist => playlist.id !== action.payload)
         }
     }
 })
@@ -53,7 +56,8 @@ export const {
     setFavorite, 
     setOpenCover,
     setFavoritePopup,
-    setPlaylist
+    setPlaylist,
+    deletePlaylist
 } = playlist.actions
 
 export default playlist.reducer

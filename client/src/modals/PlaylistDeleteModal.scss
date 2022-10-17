@@ -1,0 +1,34 @@
+.playlistDeleteModal{
+    background-color: $WHITE;
+    color: $BLACK;
+    padding: $PS $PM;
+    border-radius: .5rem;
+
+    &__actionBtns{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: $PM;
+        
+        button{
+            color: $BLACK;
+            padding: $PS $PM;
+            border-radius: 1.5rem;
+            font-weight: bold;
+            font-size: 1rem;
+            background-color: $GREEN;
+
+            &:hover{
+                transform: scale(1.05);
+            }
+
+            &:active{
+                transform: translateY(1px);
+            }
+        }
+
+        .cancel{
+            background-color: $WHITE;
+        }
+    }
+}
