@@ -1,6 +1,6 @@
 import React from 'react'
 import Icon from '@/components/Icon'
-import '@/components/SongsTable.scss'
+import '@/components/SongsTableHeader.scss'
 
 function SongsTableHeader({children}) {
   return (
