@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect, useRef } from 'react'
 import Icon from '@/components/Icon'
 import Loading from '@/components/Loading'
 import SongsTableList from '@/components/SongsTableList'
+import SearchError from '@/components/SearchError'
 import { useGetSearchSongsQuery } from '@/services/music'
 import { useDispatch } from 'react-redux'
 import { setPlaylist } from '@/store/playlist'
@@ -18,8 +19,6 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
     setSearch(e.target.value)
     setSkip(e.target.value.length > 1 ? false : true)
   }
-  
-  //todo useDebouncu searchede uygula remove add buttonlarını işlevselleştir edit detailst modelini yap errora neden düşüyor onu incele actions btnslara ekle popup sorunu var çö
 
   const addPlaylist = (song) => {
     dispatch(setPlaylist({
@@ -74,7 +73,7 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
       </div>
         <div className={`playlist__main__content__searchSongs__list ${show ? 'hideSongsList' : ''}`}>
           {isFetching && <Loading/>}
-          {error && 'Something went wrong'}
+          {error && <SearchError text={search} status={error.status}/>}
           <ul className='playlist__main__content__searchSongs__list__items'>
             {isSuccess && !isFetching && searchSong.map((song,index) => (
               <li
