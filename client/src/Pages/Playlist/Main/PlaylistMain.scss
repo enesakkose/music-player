@@ -35,7 +35,15 @@
             padding: 1rem 0 3.5rem;
             
                 &__item{
-                    
+                    .remove{
+                        opacity: 0;
+                    }
+
+                    &:hover{
+                        .remove{
+                            opacity: 1;
+                        }
+                    }
                 }
             }
         }
@@ -108,7 +116,9 @@
                     gap: 1rem;
 
                     &__item{
-                        
+                        .songsTableListItem__favBtn{
+                            display: none;
+                        }
                     }
                 }
             }

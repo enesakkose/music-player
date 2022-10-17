@@ -9,8 +9,8 @@ function SongsTableHeader({children}) {
       <h5 className='songsTableTitle__head'>
         TITLE
       </h5>
-      {children}
       <Icon name='Favorite' size={22}/>
+      {children}
     </div>
   )
 }
