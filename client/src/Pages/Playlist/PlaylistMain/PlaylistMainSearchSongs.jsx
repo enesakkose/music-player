@@ -72,8 +72,7 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
         </button>
       </div>
         <div className={`playlist__main__content__searchSongs__list ${show ? 'hideSongsList' : ''}`}>
-          {isFetching && <Loading/>}
-          {error && <SearchError text={search} status={error.status}/>}
+          {isFetching  || error  && <SearchError text={search} status={error.status}/>}
           <ul className='playlist__main__content__searchSongs__list__items'>
             {isSuccess && !isFetching && searchSong.map((song,index) => (
               <li
@@ -100,5 +99,5 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
     </>
   )
 }
-
+//todo 75.satıra bak
 export default PlaylistMainSearchSongs
