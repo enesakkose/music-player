@@ -10,7 +10,7 @@ function PlaylistDeleteModal({data: playlistInfo, outClickRef}) {
   const navigate = useNavigate()
 
   const deletePlaylistHandle = async() => {
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 100));
     dispatch(deletePlaylist(playlistInfo.id))
     navigate('collection/playlists', { replace: true })
     closeModalHandle()

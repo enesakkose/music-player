@@ -28,10 +28,8 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
     }))
   }
   useEffect(() => {
-    if(!show) {
       setSkip(true)
       setSearch('')
-    }
   }, [show])
 
   const searchSong = data?.tracks?.hits?.slice(1,11)

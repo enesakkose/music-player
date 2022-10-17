@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 import SearchInput from '@/Pages/Search/SearchInput'
 import '@/components/Main/View/ViewLayoutHeader.scss'
 
-
 function ViewLayoutHeader() {
   const location = useLocation()
   const { user } = useSelector(state => state.auth)
