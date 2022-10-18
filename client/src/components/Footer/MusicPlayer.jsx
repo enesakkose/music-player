@@ -6,37 +6,44 @@ import { useTimeConvert } from '@/hooks/useTimeConvert'
 import { useSelector, useDispatch } from 'react-redux'
 import { playPause, nextSong, prevSong } from '@/store/player'
 import { setRecentSongs } from '@/store/song'
-import { debounce } from 'lodash'
+import { setPlaying } from '@/store/player'
+import { useDebounceValue } from '@/hooks/useDebounceValue'
 import '@/components/Footer/MusicPlayer.scss'
 
-function MusicPlayer({volume}) {
-  const ref = useRef(null)
+function MusicPlayer({volume, muted}) {
+  const audioRef = useRef(null)
   const dispatch = useDispatch()
   const { current, isPlaying, isActive, currentIndex, currentSongs } = useSelector(state => state.player)
   const [duration, setDuration] = useState(0)
   const [seekTime, setSeekTime] = useState(0)
   const [songTime, setSongTime] = useState(0)
 
-  if(ref.current){
+  if(audioRef.current){
     if(isPlaying) {
-      ref.current.play()
+      audioRef.current.play()
     } else{
-      ref.current.pause()
+      audioRef.current.pause()
     }
   }
   
   useEffect(() => {
     dispatch(playPause(true))
-    if(isActive) dispatch(setRecentSongs(current))
   }, [current])
 
   useEffect(() => {
-    ref.current.volume = volume
+    audioRef.current.volume = volume
   }, [volume])
 
-  
   useEffect(() => {
-    ref.current.currentTime = seekTime
+    audioRef.current.currentTime = seekTime
+
+    const t = setTimeout(() => {
+      audioRef.current.muted = false
+    }, 500);
+
+    return () => {
+      clearTimeout(t)
+    }
   }, [seekTime])
 
   const handlePlayPause = () => {
@@ -55,16 +62,18 @@ function MusicPlayer({volume}) {
     if(currentIndex !== 0) return dispatch(prevSong(currentIndex - 1))
   }
 
-  const onc = debounce((value) => {
+  const anc = (value) => {
+    audioRef.current.muted = true
     setSeekTime(value)
-  }, 10)
+  }
 
   return (
     <div className="footer__music__player">
       <audio
         src={current?.hub?.actions[1]?.uri}
-        ref={ref}
+        ref={audioRef}
         onEnded={handleNextSong}
+        muted={muted}
         autoPlay={true}
         onTimeUpdate={(e) => setSongTime(e.target.currentTime)}
         onLoadedData={(e) => setDuration(e.target.duration)}
@@ -98,7 +107,7 @@ function MusicPlayer({volume}) {
           min={0} 
           max={duration}
           value={songTime} 
-          onChange={value => onc(value)}
+          onChange={value => anc(value)}
         />
         <span className='time'>
           {useTimeConvert(duration)}
