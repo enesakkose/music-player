@@ -17,8 +17,9 @@ function MusicTool({ volume, setVolume, muted, setMuted }) {
   }, [volume, muted])
   //useMemo used for don't re-render icons when volume changes 
 
+
   const handleChangeVolume = (value) => {
-    if(!muted) setMuted(false) //to switch back to volume state when handle change
+    if(!muted) setMuted(false)//to switch back to volume state  when handle change
     setVolume(value)
   }
   const handleVolumeBtn = () => {
@@ -26,7 +27,6 @@ function MusicTool({ volume, setVolume, muted, setMuted }) {
     setMuted(!muted)
     setMutedVolume(0)
   }
-
   return (
     <div className="footer__music__tool">
       {isActive && <NavLink to='/lyrics' className='footer__music__tool__lyricsBtn'>
