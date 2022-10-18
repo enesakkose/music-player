@@ -23,9 +23,10 @@
     .active{
         color: $GREEN;
         //microphone link when active
-        &::hover{
-            color: inherit;
+        &:hover{
+            color: $GREEN;
         }
+        
     }
 
     &__range{
