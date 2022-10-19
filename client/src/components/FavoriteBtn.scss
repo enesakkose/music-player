@@ -1,5 +1,5 @@
 .favoriteBtn{
-    
+
     .like{
         fill: $GREEN;
     }
@@ -18,10 +18,8 @@
     0%{
         transform: translateX(5px);
     }
-    25%{
+    80%{
         transform: translateX(-5px);
     }
-    100%{
-        transform: translateX(0);
-    }
+
 }
