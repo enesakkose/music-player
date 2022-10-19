@@ -18,7 +18,7 @@ function MusicTool({ volume, setVolume, muted, setMuted }) {
   //useMemo used for don't re-render icons when volume changes 
 
   const handleChangeVolume = (value) => {
-    if(!muted) setMuted(false)//to switch back to volume state  when handle change
+    if(muted === true) setMuted(false)//to switch back to volume state  when handle change
     setVolume(value)
   }
   const handleVolumeBtn = () => {

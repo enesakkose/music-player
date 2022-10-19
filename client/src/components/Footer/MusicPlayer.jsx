@@ -5,9 +5,6 @@ import CustomRange from '@/components/CustomRange'
 import { useTimeConvert } from '@/hooks/useTimeConvert'
 import { useSelector, useDispatch } from 'react-redux'
 import { playPause, nextSong, prevSong } from '@/store/player'
-import { setRecentSongs } from '@/store/song'
-import { setPlaying } from '@/store/player'
-import { useDebounceValue } from '@/hooks/useDebounceValue'
 import '@/components/Footer/MusicPlayer.scss'
 
 function MusicPlayer({volume, muted}) {
@@ -25,7 +22,7 @@ function MusicPlayer({volume, muted}) {
       audioRef.current.pause()
     }
   }
-  
+
   useEffect(() => {
     dispatch(playPause(true))
   }, [current])
@@ -116,5 +113,5 @@ function MusicPlayer({volume, muted}) {
     </div>
   )
 }
-
+//todo most performance
 export default MusicPlayer

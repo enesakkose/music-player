@@ -30,7 +30,7 @@ function SongsTableList({children, index, song, findSongs}) {
         <span className='songsTableListItem__indexPlay__index'>
           {index + 1}
         </span>
-        <button className='songsTableListItem__indexPlay__playBtn'>
+        <button onClick={listPlayBtn} className='songsTableListItem__indexPlay__playBtn'>
           <Icon name={validMusic ? 'Stop' : 'Play'}/>
         </button>
       </div>
