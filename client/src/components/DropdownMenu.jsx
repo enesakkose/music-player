@@ -1,10 +1,11 @@
 import React from 'react'
+import clsx from 'clsx'
 import '@/components/DropdownMenu.scss'
 
 function DropdownMenu({ children, className }) {
   return (
-    <div className={`dropdownMenu ${className}`}>
-        {children}
+    <div className={clsx('dropdownMenu', className)}>
+      {children}
     </div>
   )
 }

@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import Icon from '@/components/Icon'
-import { useDispatch } from 'react-redux'
+import clsx from 'clsx'
+import { useDispatch, useSelector } from 'react-redux'
 import { setFavoritePopup, deleteFavorites } from '@/store/playlist'
 import { addFavoriteHandle } from '@/utils'
 import '@/components/FavoriteBtn.scss'
 
 function FavoriteBtn({thereFavPlaylist, className, song}) {
   const dispatch = useDispatch()
-
+  const { favoritesPlaylist } = useSelector(state => state.playlist)
+  // for popup dependency 
   const addOrDeleteFavorite = () => {
     if(thereFavPlaylist === true) return dispatch(deleteFavorites(song.key))
     //this true value coming from collection/tracks route because there is no add favorite situation there
@@ -22,10 +24,10 @@ function FavoriteBtn({thereFavPlaylist, className, song}) {
     return () => {
       clearTimeout(t)
     }
-  }, [addOrDeleteFavorite])
+  }, [favoritesPlaylist])
 
   return (
-    <button onClick={addOrDeleteFavorite} className={`${className} favoriteBtn`}>
+    <button onClick={addOrDeleteFavorite} className={clsx('favoriteBtn', className)}>
       <Icon
         className={`${thereFavPlaylist ? 'like' : 'unlike'} ${thereFavPlaylist ? 'liked': ''}`}
         name={thereFavPlaylist ? 'FillFavorite' : 'Favorite' } 
