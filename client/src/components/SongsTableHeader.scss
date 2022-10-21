@@ -1,13 +1,19 @@
 .songsTableTitle{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1.5rem;
     color: rgba($WHITE, .7);
     padding: $PS $PM;
     border-bottom: 1px solid rgba($WHITE, .1);
     
-    &__head{
+    h5{
         font-weight: 400;
-        flex: 1;
+    }
+
+    &__head{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
     }
 }
