@@ -1,11 +1,12 @@
 import React from 'react'
 import Icon from '@/components/Icon'
 import FavoriteBtn from '@/components/FavoriteBtn'
+import clsx from 'clsx'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import { useSelector, useDispatch } from 'react-redux'
 import '@/components/SongsTableList.scss'
 
-function SongsTableList({children, index, song, findSongs}) {
+function SongsTableList({children, className, index, song, findSongs}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
   const { favoritesPlaylist } = useSelector(state => state.playlist)
@@ -24,27 +25,30 @@ function SongsTableList({children, index, song, findSongs}) {
   return (
     <div 
       onDoubleClick={listPlayBtn} 
-      className={`songsTableListItem ${validMusic ? 'playingListItem' : ''}`}
+      className={clsx('songsTableListItem', validMusic ? 'playingListItem' : '', className)}
     >
-      <div className='songsTableListItem__indexPlay'>
-        <span className='songsTableListItem__indexPlay__index'>
-          {index + 1}
-        </span>
-        <button onClick={listPlayBtn} className='songsTableListItem__indexPlay__playBtn'>
-          <Icon name={validMusic ? 'Stop' : 'Play'}/>
-        </button>
+      
+      <div className='songsTableListItem__music'>
+        <div className='songsTableListItem__indexPlay'>
+          <span className='songsTableListItem__indexPlay__index'>
+            {index + 1}
+          </span>
+          <button onClick={listPlayBtn} className='songsTableListItem__indexPlay__playBtn'>
+            <Icon name={validMusic ? 'Stop' : 'Play'}/>
+          </button>
+        </div>
+          <img className='songsTableListItem__img' src={song?.images?.coverart} alt="cover" />
+          <h5 className='songsTableListItem__text'>
+            {song.title}
+            <span>{song.subtitle}</span>
+          </h5>
       </div>
-      <img className='songsTableListItem__img' src={song?.images?.coverart} alt="cover" />
-      <h5 className='songsTableListItem__text'>
-        {song.title}
-        <span>{song.subtitle}</span>
-      </h5>
+      {children}
       <FavoriteBtn 
         song={song}
         thereFavPlaylist={thereHavePlaylist}
         className={`songsTableListItem__favBtn ${thereHavePlaylist ? 'liked' : ''}`}
       />
-      {children}
     </div>
   )
 }

@@ -23,7 +23,8 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
   const addPlaylist = (song) => {
     dispatch(setPlaylist({
       id: playlistId,
-      track: song 
+      track: song,
+      createdAt: new Date().toISOString()
     }))
   }
   useEffect(() => {

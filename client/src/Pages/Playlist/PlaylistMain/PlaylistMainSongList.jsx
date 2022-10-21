@@ -3,6 +3,7 @@ import ActionBtns from '@/components/ActionBtns'
 import SongsTableHeader from '@/components/SongsTableHeader'
 import SongsTableList from '@/components/SongsTableList'
 import Icon from '@/components/Icon'
+import moment from 'moment'
 import { setPlaylist, removePlaylist } from '@/store/playlist'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -11,9 +12,9 @@ function PlaylistMainSongList({ show, playlistId }) {
   const { playlist } = useSelector(state => state.playlist)
   const havePlaylist = playlist.filter(song => song.id === playlistId)
   const onlyTracks = havePlaylist.map((a => a.track))
-  console.log(playlist)
+  
+  
   const removeSong = (key) => {
-    console.log(key)
     dispatch(removePlaylist(key))
   }
 
@@ -24,7 +25,7 @@ function PlaylistMainSongList({ show, playlistId }) {
     {showPlaylist && <div className="playlist__main__content__songsList">
       <ActionBtns findSongs={onlyTracks}/>
       <SongsTableHeader className='playlist__main__content__songsList__header'>
-        <Icon name='Remove' size={22}/>
+        <h5>Date Added</h5>
       </SongsTableHeader>
       <ul className='playlist__main__content__songsList__items'>
         {havePlaylist.map((song, index) => (
@@ -33,13 +34,17 @@ function PlaylistMainSongList({ show, playlistId }) {
               index={index}
               song={song.track}
               findSongs={playlist}
+              className='playlist__main__content__songsList__items__item__content'
             >
-              <button 
-                onClick={() => removeSong(song.track.key)} 
-                className='remove'
-              >
-                <Icon name='Remove' size={21}/>
-              </button>
+              <div className='playlist__main__content__songsList__items__item__content__dateAdded'>
+                <span>{moment(song.createdAt).fromNow()}</span>
+                <button 
+                  onClick={() => removeSong(song.track.key)} 
+                  className='remove'
+                >
+                  <Icon name='Remove' size={21}/>
+                </button>
+              </div>
             </SongsTableList>
           </li>
         ))}

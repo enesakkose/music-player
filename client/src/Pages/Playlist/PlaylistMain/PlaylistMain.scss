@@ -32,16 +32,32 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            padding: 1rem 0 3.5rem;
+            padding: $PS 0 $PXXL;
             
                 &__item{
-                    .remove{
-                        opacity: 0;
-                    }
 
-                    &:hover{
-                        .remove{
-                            opacity: 1;
+                    &__content{
+                        display: grid;
+                        grid-template-columns: 2.95fr 3fr 22px;
+
+                        &__dateAdded{
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            
+                            .remove{
+                                opacity: 0;
+                            }
+
+                            span{
+                                color: rgba($WHITE, .6);
+                            }
+                        }
+    
+                        &:hover{
+                            .remove{
+                                opacity: 1;
+                            }
                         }
                     }
                 }
