@@ -3,6 +3,7 @@ import BrandLogo from '@/components/BrandLogo'
 import GoogleBtn from '@/Pages/Auth/GoogleBtn'
 import Or from '@/Pages/Auth/Or'
 import CustomInput from '@/components/CustomInput'
+import PasswordInput from '@/components/PasswordInput'
 import { signupSchema } from '@/forms/schemas'
 import { Form, Formik } from 'formik'
 import { createUser, loginWithGoogle } from '@/firebase'
@@ -62,26 +63,15 @@ function Signup({changeContent, setChangeContent}) {
                 Username
               </span>
             </CustomInput>
-            <CustomInput
-              labelClassName='auth__content__username inputContain'
-              type='password'
-              name='password'
+            <PasswordInput 
+              title='Create a Password' 
               placeholder='Create a password'
-            >
-              <span className='auth__content__input__title'>
-                Password
-              </span>
-            </CustomInput>
-            <CustomInput
-              labelClassName='auth__content__username inputContain'
-              type='password'
-              name='confirmPassword'
+            />
+            <PasswordInput 
+              title='Confirm Password' 
+              name='confirmPassword' 
               placeholder='Confirm password'
-            >
-              <span className='auth__content__input__title'>
-                Confirm Password
-              </span>
-            </CustomInput>
+            />
             <button type='submit' className={`auth__content__signupBtn ${isSubmitting ? 'submittingBtn' : ''}`}>
               SIGNUP
             </button>

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import BrandLogo from '@/components/BrandLogo'
 import Or from '@/Pages/Auth/Or'
 import GoogleBtn from '@/Pages/Auth/GoogleBtn'
 import CustomInput from '@/components/CustomInput'
+import PasswordInput from '@/components/PasswordInput'
 import { Link } from 'react-router-dom'
 import { loginSchema } from '@/forms/schemas'
 import { Form, Formik } from 'formik'
@@ -11,7 +12,6 @@ import { useNavigate } from 'react-router-dom'
 
 
 function Login({changeContent, setChangeContent}) {
-
   const navigate = useNavigate()
 
   const onSubmit = async(values, actions) => {
@@ -49,16 +49,7 @@ function Login({changeContent, setChangeContent}) {
                 Email address or username
               </span>
             </CustomInput>
-            <CustomInput
-              labelClassName='auth__content__password inputContain'
-              type='password'
-              name='password'
-              placeholder='Password'
-            >
-              <span className='auth__content__input__title'>
-                Password
-              </span>
-            </CustomInput>
+            <PasswordInput title='Password' placeholder='Password'/>
             <div className='auth__content__actionBtns'>
               <Link className='auth__content__actionBtns__forgot' to='/'>
                 Forgot your password?
