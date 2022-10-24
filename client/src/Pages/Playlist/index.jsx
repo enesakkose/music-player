@@ -7,8 +7,8 @@ import '@/Pages/Playlist/Playlist.scss'
 
 function Playlist() {
   const { playlistId } = useParams()
-  const { playlist } = useSelector(state => state.playlist)
-  const bgColor = playlist[0]?.track?.images?.joecolor?.slice(18, 24)
+  const { songPlaylist } = useSelector(state => state.playlist)
+  const bgColor = songPlaylist[0]?.track?.images?.joecolor?.slice(18, 24)
 
   return (
     <div key={playlistId} className='playlist'>
