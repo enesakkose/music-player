@@ -22,7 +22,7 @@ function MusicPlayer({volume, muted}) {
       audioRef.current.pause()
     }
   }
-  //cors
+
   useEffect(() => {
     dispatch(playPause(true))
   }, [current])
