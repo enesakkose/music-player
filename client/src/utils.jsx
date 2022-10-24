@@ -1,6 +1,11 @@
-import { useEffect } from "react";
-import  { store } from "@/store";
-import { addPlaylist, deleteFavorites, setFavorite, setFavoritesPlaylist, setFavoritePopup } from '@/store/playlist'
+import { useEffect } from "react"
+import  { store } from "@/store"
+import { 
+    addPlaylist, 
+    deleteFavorites, 
+    setFavorite, 
+    setFavoritesPlaylist } from '@/store/playlist'
+import { setOpenPopup } from "@/store/popup"
 import { closeModal } from "@/store/modal"
 
 export const addPlaylistHandle = (playlists, id) => {
@@ -8,6 +13,7 @@ export const addPlaylistHandle = (playlists, id) => {
         name: `My Playlist #${playlists.length + 1}`,
         id : id
     }))
+    store.dispatch(setOpenPopup({ open: true, name: 'AddPlaylistPopup' }))
 }
 
 export const closeModalHandle = () => {
@@ -18,11 +24,11 @@ export const addFavoriteHandle = (thereFavPlaylist, song) => {
     if(thereFavPlaylist){
         store.dispatch(setFavorite(false))
         store.dispatch(deleteFavorites(song.key))
-        store.dispatch(setFavoritePopup(true))
+        store.dispatch(setOpenPopup({ open: true, name: 'FavoritePopup' }))
         //THIS VALUE OPEN FOR EVERY SITUATION 
     }else{
         store.dispatch(setFavorite(true))
         store.dispatch(setFavoritesPlaylist(song))
-        store.dispatch(setFavoritePopup(true))
+        store.dispatch(setOpenPopup({ open: true, name: 'FavoritePopup' }))
     }
 }
