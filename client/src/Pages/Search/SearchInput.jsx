@@ -7,7 +7,7 @@ import Icon from '@/components/Icon'
 import '@/Pages/Search/SearchInput.scss'
 
 function SearchInput() {
-  const inputFocus = useFocus()
+
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
   const { querySongs } = useSelector(state => state.song)
@@ -38,7 +38,7 @@ function SearchInput() {
       <label>
         <Icon className='searchIcon' name='Search' size={24}/>
         <input
-          ref={inputFocus}
+          autoFocus={true}
           type="text"
           onChange={handleQueryChange}
           value={querySongs}
