@@ -8,11 +8,14 @@
 // recent songs 
 // route next prevent button
 // playlist search will be hide when closing
-// album route will be change with recentSongs
+// album route will be change with relatedSongs
 // 404 page fix
 // private routes will decided
 // database with firebase
 // responsive design
 //auth route show password
 // history scroll,
-// Main layout.jsx var bak
+//playlist silindikten sonra şarkı playlist storede kalıyor ona bak
+// songstabletitle css editle
+//global popup create,fav,add song
+// playlist/... routunda bgColor 
