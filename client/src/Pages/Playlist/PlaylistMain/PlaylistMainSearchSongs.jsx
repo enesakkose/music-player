@@ -5,7 +5,8 @@ import SongsTableList from '@/components/SongsTableList'
 import SearchError from '@/components/SearchError'
 import { useGetSearchSongsQuery } from '@/services/music'
 import { useDispatch } from 'react-redux'
-import { setPlaylist } from '@/store/playlist'
+import { addSongToPlaylist } from '@/store/playlist'
+import { setOpenPopup } from '@/store/popup'
 import { useDebounceValue } from '@/hooks/useDebounceValue'
 
 function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
@@ -21,11 +22,12 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
   }
 
   const addPlaylist = (song) => {
-    dispatch(setPlaylist({
+    dispatch(addSongToPlaylist({
       id: playlistId,
       track: song,
       createdAt: new Date().toISOString()
     }))
+    dispatch(setOpenPopup({ open: true, name: 'AddSongPopup' }))
   }
   useEffect(() => {
       setSkip(true)

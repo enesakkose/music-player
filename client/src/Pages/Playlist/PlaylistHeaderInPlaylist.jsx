@@ -13,7 +13,7 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
   const { playlists } = useSelector(state => state.playlist)
   const playlistName = playlists.find((playlist) => playlist.id === playlistId)
   const [ open, setOpen ] = useState(false)
-  
+
   const domNode = useClickOutside(() => { 
     setOpen(false)
   })
@@ -37,7 +37,7 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
   return (        
     <PlaylistHeader className="playlist__headerInPlaylist" style={{ backgroundColor: `#${bgColor}`}}>
       {/*//!  single classnames in child elements is coming from PlaylistHeader components//*/}
-      <div onClick={() => openPlaylistInfoModal()} className="playlist__headerInPlaylist__cover cover">
+      <div onClick={openPlaylistInfoModal} className="playlist__headerInPlaylist__cover cover">
         <Icon name='Music' size={75}/>
         <span className="playlist__headerInPlaylist__cover__action">
           <Icon name='Pencil' size={48}/>

@@ -4,9 +4,8 @@ const initialState = {
     playlists: [],
     favoritesPlaylist: [],
     favorite: false,
-    favoritePopup: false,
     openCover: false,
-    playlist: []
+    songPlaylist: []
 }
 
 export const playlist = createSlice({
@@ -31,20 +30,17 @@ export const playlist = createSlice({
         setFavorite: (state,action) => {
             state.favorite = action.payload
         },
-        setFavoritePopup: (state,action) => {
-            state.favoritePopup = action.payload
-        },
         setOpenCover: (state, action) => {
             state.openCover = action.payload
         },
-        setPlaylist: (state, action) => {
-            state.playlist = [
-                ...state.playlist,
+        addSongToPlaylist: (state, action) => {
+            state.songPlaylist = [
+                ...state.songPlaylist,
                 action.payload
             ]
         },
-        removePlaylist: (state, action) => {
-            state.playlist = state.playlist.filter(song => song.track.key !== action.payload)
+        removeSongPlaylist: (state, action) => {
+            state.songPlaylist = state.songPlaylist.filter(song => song.track.key !== action.payload)
         },
         deletePlaylist: (state,action) => {
             state.playlists = state.playlists.filter(playlist => playlist.id !== action.payload)
@@ -58,10 +54,9 @@ export const {
     deleteFavorites,
     setFavorite, 
     setOpenCover,
-    setFavoritePopup,
-    setPlaylist,
+    addSongToPlaylist,
     deletePlaylist,
-    removePlaylist
+    removeSongPlaylist
 } = playlist.actions
 
 export default playlist.reducer

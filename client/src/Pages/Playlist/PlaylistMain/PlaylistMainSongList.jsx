@@ -4,18 +4,18 @@ import SongsTableHeader from '@/components/SongsTableHeader'
 import SongsTableList from '@/components/SongsTableList'
 import Icon from '@/components/Icon'
 import moment from 'moment'
-import { setPlaylist, removePlaylist } from '@/store/playlist'
+import { removeSongPlaylist } from '@/store/playlist'
 import { useSelector, useDispatch } from 'react-redux'
 
 function PlaylistMainSongList({ show, playlistId }) {
   const dispatch = useDispatch()
-  const { playlist } = useSelector(state => state.playlist)
-  const havePlaylist = playlist.filter(song => song.id === playlistId)
+  const { songPlaylist } = useSelector(state => state.playlist)
+  const havePlaylist = songPlaylist.filter(song => song.id === playlistId)
   const onlyTracks = havePlaylist.map((a => a.track))
   
   
   const removeSong = (key) => {
-    dispatch(removePlaylist(key))
+    dispatch(removeSongPlaylist(key))
   }
 
   const showPlaylist = havePlaylist.length > 0 && show
@@ -33,7 +33,7 @@ function PlaylistMainSongList({ show, playlistId }) {
             <SongsTableList
               index={index}
               song={song.track}
-              findSongs={playlist}
+              findSongs={songPlaylist}
               className='playlist__main__content__songsList__items__item__content'
             >
               <div className='playlist__main__content__songsList__items__item__content__dateAdded'>

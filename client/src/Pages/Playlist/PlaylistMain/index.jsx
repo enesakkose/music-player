@@ -4,10 +4,8 @@ import PlaylistMainSearchSongs from '@/Pages/Playlist/PlaylistMain/PlaylistMainS
 import { useSelector } from 'react-redux'
 import '@/Pages/Playlist/PlaylistMain/PlaylistMain.scss'
 
-function PlaylistMain({ playlistId }) {
+function PlaylistMain({ playlistId, bgColor }) {
   const [show, setShow] = useState(true)
-  const { playlist } = useSelector(state => state.playlist)
-  const bgColor = playlist[0]?.track?.images?.joecolor?.slice(18, 24)
 
   return (
     <section className={`playlist__main`}>
