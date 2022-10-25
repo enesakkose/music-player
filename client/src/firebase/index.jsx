@@ -10,7 +10,7 @@ import {
 import { login, logout } from "@/store/auth"
 import { store } from "@/store"
 import toast from "react-hot-toast"
-
+console.log('newnewnewnewnew')
 console.log('conflict1')
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
