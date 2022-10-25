@@ -24,7 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 const provider = new GoogleAuthProvider()
-
+console.log('features bitti')
 export const handleLogin = async(username, password) => {
     try {
         const { user } = await signInWithEmailAndPassword(auth, username, password)
