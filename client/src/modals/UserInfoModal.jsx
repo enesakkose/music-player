@@ -8,7 +8,7 @@ import '@/modals/UserInfoModal.scss'
 function UserInfoModal({data, outClickRef}) {
   
   return (
-    <div className='modal__content userInfoModal'>
+    <div ref={outClickRef} className='modal__content userInfoModal'>
       <header className='userInfoModal__header'>
         <h3 className='userInfoModal__header__title'>
           User Details
@@ -25,7 +25,7 @@ function UserInfoModal({data, outClickRef}) {
         initialValues={{ displayName: data.displayName, email: data.email}}
       >
         {({isSubmitting}) => (
-          <Form ref={outClickRef} className='userInfoModal__form'>
+          <Form className='userInfoModal__form'>
             <img 
               className='userInfoModal__form__img'  
               src={data.photoURL} 
