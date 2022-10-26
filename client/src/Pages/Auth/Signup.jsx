@@ -6,7 +6,7 @@ import CustomInput from '@/components/CustomInput'
 import PasswordInput from '@/components/PasswordInput'
 import { signupSchema } from '@/forms/schemas'
 import { Form, Formik } from 'formik'
-import { createUser, loginWithGoogle } from '@/firebase'
+import { createUser, loginWithGoogle } from '@/firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
 function Signup({changeContent, setChangeContent}) {

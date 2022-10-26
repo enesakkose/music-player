@@ -5,7 +5,7 @@ import { useClickOutside } from '@/hooks/useClickOutside'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { openModal } from '@/store/modal'
-import { handleLogout } from '@/firebase'
+import { handleLogout } from '@/firebase/auth'
 import '@/components/Main/View/UserAvatar.scss'
 
 
