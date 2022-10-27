@@ -1,4 +1,3 @@
-import { parseTwoDigitYear } from 'moment/moment'
 import * as yup from 'yup'
 
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/
