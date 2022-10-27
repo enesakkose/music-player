@@ -15,7 +15,7 @@ function PasswordInput({title, name='password', ...rest}) {
       className='passwordInput__label__input'
       {...rest}
     >
-      <span className='auth__content__input__title'>
+      <span className='passwordInput__label__title'>
         {title}
       </span>
       <span type="button" onClick={() => setShowPassword(!showPassword)} className='eyeBtn'>
