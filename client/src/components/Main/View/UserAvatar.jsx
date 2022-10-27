@@ -14,7 +14,7 @@ function UserAvatar() {
   const dispatch = useDispatch()
   const [ openAvatarMenu, setOpenAvatarMenu] = useState(false)
   const { user } = useSelector(state => state.auth)
-
+  
   const domNode = useClickOutside(() => { 
     setOpenAvatarMenu(false)
   })
@@ -23,6 +23,13 @@ function UserAvatar() {
     dispatch(openModal({
       name: 'UserInfoModal',
       data: user
+    }))
+    setOpenAvatarMenu(false)
+  }
+
+  const openPasswordChangeModal = () => {
+    dispatch(openModal({ 
+      name: 'PasswordChangeModal'
     }))
     setOpenAvatarMenu(false)
   }
@@ -39,8 +46,8 @@ function UserAvatar() {
         onClick={() => setOpenAvatarMenu(!openAvatarMenu)} className='avatar__btn'
       >
         <div className="avatar__btn__img">
-          <img src={user.photoURL} alt="profile"/>
-          {!user.photoURL && <Icon name='Avatar' size={28} style={{ color: 'gray'}}/>}
+          {user.photoURL !== null && <img src={user.photoURL} alt="profile"/>}
+          {user.photoURL === null && <Icon name='Avatar' size={28} style={{ color: 'gray'}}/>}
         </div>
       </button>
 
@@ -49,12 +56,17 @@ function UserAvatar() {
           <ul>
             <li>
               <button onClick={openUserInfo}>
-                Hesap
+                Account
+              </button>
+            </li>
+            <li>
+              <button onClick={openPasswordChangeModal}>
+                Password Change
               </button>
             </li>
             <li>
               <button onClick={logout}>
-                Oturumu Kapat
+                Logout
               </button>
             </li>
           </ul>
@@ -65,4 +77,3 @@ function UserAvatar() {
 }
 
 export default UserAvatar
-//genel bir elden geçir

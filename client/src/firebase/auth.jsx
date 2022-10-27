@@ -1,25 +1,31 @@
+import { app } from '@/firebase'
 import { 
     getAuth, 
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
     signInWithPopup,
+    onAuthStateChanged,
+    updateProfile,
+    updateEmail,
+    updatePassword,
+    reauthenticateWithCredential,
+    EmailAuthProvider,
     signOut
 } from 'firebase/auth'
 import { store } from "@/store"
 import { login, logout } from "@/store/auth"
-import { app } from '@/firebase'
 import toast from "react-hot-toast"
 
 
 const provider = new GoogleAuthProvider()
-const auth = getAuth(app)
+export const auth = getAuth(app)
 
 export const handleLogin = async(username, password) => {
     try {
-        const { user } = await signInWithEmailAndPassword(auth, username, password)
+        return await signInWithEmailAndPassword(auth, username, password)
 
-        return store.dispatch(login(user.providerData[0]))
+        
     } catch (error) {
         toast.error('Invalid username or password')        
     }
@@ -27,9 +33,8 @@ export const handleLogin = async(username, password) => {
 
 export const createUser = async(username, password) => {
     try {
-        const { user } = await createUserWithEmailAndPassword(auth, username, password)
+        return await createUserWithEmailAndPassword(auth, username, password)
 
-        return store.dispatch(login(user.providerData[0]))
     } catch (error) {
         toast.error('This email already using!')
     }
@@ -37,9 +42,8 @@ export const createUser = async(username, password) => {
 
 export const loginWithGoogle = async() => {
     try {
-        const { user } = await signInWithPopup(auth, provider)
-
-        return store.dispatch(login(user.providerData[0]))
+        return await signInWithPopup(auth, provider)
+        
     } catch (error) {
         toast.error('Something went wrong')
     }
@@ -47,9 +51,60 @@ export const loginWithGoogle = async() => {
 
 export const handleLogout = async() => {
     try {
-        await signOut(auth)
+        return await signOut(auth)
 
-        return store.dispatch(logout())
+    } catch (error) {
+        toast.error('Failed!!!')
+    }
+}
+
+onAuthStateChanged(auth, (user) => {
+    if(user){
+        store.dispatch(login({
+            displayName: user.displayName,
+            email: user.email,
+            emailVerified: user.emailVerified,
+            photoURL: user.photoURL,
+            uid: user.uid
+        }))
+    }else{
+        store.dispatch(logout())
+    }
+})
+
+export const updateUser = async(data) => {
+    try {
+        await updateProfile(auth.currentUser, data)
+        toast.success('Profile updated')
+        return true
+    } catch (error) {
+        toast.error('Failed!!!')
+    }
+}
+
+export const updateMail = async(password, newEmail) => {
+    try {
+        const credential = EmailAuthProvider.credential(
+            auth.currentUser.email,
+            password
+        )
+        await reauthenticateWithCredential(auth.currentUser, credential)
+        await updateEmail(auth.currentUser, newEmail)
+        return toast.success('Succes')
+    } catch (error) {
+        toast.error('Failed!!!')
+    }
+}
+
+export const updateUserPassword = async(currentPassword,password) => {
+    try {
+        const credential = EmailAuthProvider.credential(
+            auth.currentUser.email,
+            currentPassword
+        )
+        await reauthenticateWithCredential(auth.currentUser, credential)
+        await updatePassword(auth.currentUser, password)
+        return toast.success('Succes')
     } catch (error) {
         toast.error('Failed!!!')
     }

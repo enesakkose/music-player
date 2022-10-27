@@ -6,6 +6,7 @@ import { openModal } from '@/store/modal'
 import PlaylistHeader from '@/components/PlaylistHeader'
 import Icon from '@/components/Icon'
 import DropdownMenu from '@/components/DropdownMenu'
+import Loading from '@/components/Loading'
 import '@/Pages/Playlist/PlaylistHeaderInPlaylist.scss'
 
 function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
@@ -13,6 +14,8 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
   const { playlists } = useSelector(state => state.playlist)
   const playlistName = playlists.find((playlist) => playlist.id === playlistId)
   const [ open, setOpen ] = useState(false)
+
+  
 
   const domNode = useClickOutside(() => { 
     setOpen(false)
@@ -34,6 +37,8 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
     setOpen(false)
   }
 
+  if(playlistName === undefined) return <Loading/>
+
   return (        
     <PlaylistHeader className="playlist__headerInPlaylist" style={{ backgroundColor: `#${bgColor}`}}>
       {/*//!  single classnames in child elements is coming from PlaylistHeader components//*/}
@@ -46,7 +51,7 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
       </div>
       <div ref={domNode} className="playlist__headerInPlaylist__info info">
         <h6>PLAYLIST</h6>
-        <h1>{playlistName?.name}</h1>
+        <h1>{playlistName.name}</h1>
         <h6 className='playlist__headerInPlaylist__info__userName'>
           <Link to='/'>
             Aaa(username)

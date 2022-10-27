@@ -8,14 +8,6 @@ import {
 import { setOpenPopup } from "@/store/popup"
 import { closeModal } from "@/store/modal"
 
-export const addPlaylistHandle = (playlists, id) => {
-    store.dispatch(addPlaylist({
-        name: `My Playlist #${playlists.length + 1}`,
-        id : id
-    }))
-    store.dispatch(setOpenPopup({ open: true, name: 'AddPlaylistPopup' }))
-}
-
 export const closeModalHandle = () => {
     store.dispatch(closeModal())
 }

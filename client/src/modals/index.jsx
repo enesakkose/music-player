@@ -1,6 +1,7 @@
 import UserInfoModal from "@/modals/UserInfoModal"
 import PlaylistInfoModal from "@/modals/PlaylistInfoModal"
 import PlaylistDeleteModal from "@/modals/PlaylistDeleteModal"
+import PasswordChangeModal from "@/modals/PasswordChangeModal"
 
 const modals = [
     {   
@@ -14,6 +15,10 @@ const modals = [
     {
         name: 'PlaylistDeleteModal',
         element: PlaylistDeleteModal
+    },
+    {
+        name: 'PasswordChangeModal',
+        element: PasswordChangeModal
     }
 ]
 

@@ -13,10 +13,7 @@ export const playlist = createSlice({
     initialState,
     reducers: {
         addPlaylist: (state, action) => {
-            state.playlists = [
-                action.payload,
-                ...state.playlists
-            ]
+            state.playlists = action.payload
         },
         setFavoritesPlaylist: (state, action) => {
             state.favoritesPlaylist = [

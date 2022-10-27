@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app"
-import { getFirestore } from "firebase/firestore"
 import { store } from "@/store"
 import toast from "react-hot-toast"
 
@@ -14,6 +13,5 @@ const firebaseConfig = {
 }
 
 export const app = initializeApp(firebaseConfig)
-export const db = getFirestore(app)
 
 /*1.13 128 => action.payload olarak 147*/
