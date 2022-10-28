@@ -1,5 +1,6 @@
 import React from 'react'
 import { useField } from 'formik'
+import clsx from 'clsx'
 import '@/components/CustomInput.scss'
 
 function CustomInput({labelClassName, children, ...props}) {
@@ -8,7 +9,7 @@ function CustomInput({labelClassName, children, ...props}) {
     
   return (
     <>
-      <label className={labelClassName}>
+      <label className={clsx('customInputLabel',labelClassName)}>
         {children}
         <input 
           {...field} 

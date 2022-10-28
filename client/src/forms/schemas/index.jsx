@@ -65,7 +65,7 @@ export const userInfoSchema = yup.object().shape({
 export const passwordChangeSchema = yup.object().shape({
   password: yup
     .string()
-    .min(8,'Password must be at least 6 characters'),
+    .min(8,'Min 8 characters'),
   newPassword: yup
     .string()
     .min(8,'')
