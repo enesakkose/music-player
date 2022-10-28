@@ -6,16 +6,19 @@ import PasswordInput from '@/components/PasswordInput'
 import { updateUserPassword, updateMail } from '@/firebase/auth'
 import { passwordChangeSchema, emailChangeSchema } from '@/forms/schemas'
 import { auth } from '@/firebase/auth'
+import { closeModalHandle } from '@/utils'
 import { Formik, Form } from 'formik'
 import '@/modals/PasswordChangeModal.scss'
 
 function PasswordChangeModal({ outClickRef }) {
 
   const passwordChange = async(values) => {
-    await updateUserPassword(values.password, values.newPassword)
+    const update = await updateUserPassword(values.password, values.newPassword)
+    {update && closeModalHandle()}
   }
   const emailChange = async(values) => {
-    await updateMail(values.confirmPassword, values.newEmail)
+    const update = await updateMail(values.confirmPassword, values.newEmail)
+    {update && closeModalHandle()}
   }
 
   return (

@@ -37,7 +37,7 @@ function UserAvatar() {
   const logout = async() => {
     await new Promise(resolve => setTimeout(resolve, 4000));
     await  handleLogout()
-    navigate('/', { replace: true })
+    navigate('/auth', { replace: true })
   }
 
   return (

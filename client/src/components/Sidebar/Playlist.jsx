@@ -2,19 +2,19 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Icon from '@/components/Icon'
 import { useSelector } from 'react-redux'
-import { addPlaylistHandle } from '@/utils'
+import { addPlaylistHandle } from '@/firebase/db'
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import '@/components/Sidebar/Sidebar.scss'
-
 
 function Playlist() {
   const id = uuidv4()
   const navigate = useNavigate()
   const { playlists } = useSelector(state => state.playlist)
+  const { user } = useSelector(state => state.auth)
 
   const handleAdd = () => {
-    addPlaylistHandle(playlists, id)
+    addPlaylistHandle(playlists, id, user.uid)
     navigate(`/playlist/${id}`, {replace: true})
   }
 
