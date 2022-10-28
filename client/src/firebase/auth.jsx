@@ -15,6 +15,7 @@ import {
 } from 'firebase/auth'
 import { store } from "@/store"
 import { login, logout } from "@/store/auth"
+import { user as currentUser } from '@/utils'
 import toast from "react-hot-toast"
 
 
@@ -23,9 +24,7 @@ export const auth = getAuth(app)
 
 export const handleLogin = async(username, password) => {
     try {
-        return await signInWithEmailAndPassword(auth, username, password)
-
-        
+        await signInWithEmailAndPassword(auth, username, password)
     } catch (error) {
         toast.error('Invalid username or password')        
     }
@@ -33,8 +32,7 @@ export const handleLogin = async(username, password) => {
 
 export const createUser = async(username, password) => {
     try {
-        return await createUserWithEmailAndPassword(auth, username, password)
-
+        await createUserWithEmailAndPassword(auth, username, password)
     } catch (error) {
         toast.error('This email already using!')
     }
@@ -42,8 +40,7 @@ export const createUser = async(username, password) => {
 
 export const loginWithGoogle = async() => {
     try {
-        return await signInWithPopup(auth, provider)
-        
+        await signInWithPopup(auth, provider)
     } catch (error) {
         toast.error('Something went wrong')
     }
@@ -51,8 +48,7 @@ export const loginWithGoogle = async() => {
 
 export const handleLogout = async() => {
     try {
-        return await signOut(auth)
-
+        await signOut(auth)
     } catch (error) {
         toast.error('Failed!!!')
     }
@@ -60,13 +56,7 @@ export const handleLogout = async() => {
 
 onAuthStateChanged(auth, (user) => {
     if(user){
-        store.dispatch(login({
-            displayName: user.displayName,
-            email: user.email,
-            emailVerified: user.emailVerified,
-            photoURL: user.photoURL,
-            uid: user.uid
-        }))
+        currentUser()
     }else{
         store.dispatch(logout())
     }
@@ -90,7 +80,8 @@ export const updateMail = async(password, newEmail) => {
         )
         await reauthenticateWithCredential(auth.currentUser, credential)
         await updateEmail(auth.currentUser, newEmail)
-        return toast.success('Succes')
+        toast.success('Succes')
+        return true
     } catch (error) {
         toast.error('Failed!!!')
     }
@@ -104,7 +95,8 @@ export const updateUserPassword = async(currentPassword,password) => {
         )
         await reauthenticateWithCredential(auth.currentUser, credential)
         await updatePassword(auth.currentUser, password)
-        return toast.success('Succes')
+        toast.success('Succes')
+        return true
     } catch (error) {
         toast.error('Failed!!!')
     }

@@ -6,26 +6,18 @@ import ModalCloseBtn from '@/modals/ModalCloseBtn'
 import { Form, Formik } from 'formik'
 import { updateUser, auth } from '@/firebase/auth'
 import { userInfoSchema } from '@/forms/schemas'
-import { useDispatch } from 'react-redux'
-import { login } from '@/store/auth'
+import { user } from '@/utils'
 import { closeModalHandle } from '@/utils'
 import '@/modals/UserInfoModal.scss'
 
 function UserInfoModal({data, outClickRef}) {
-  const dispatch = useDispatch()
+
   const onSubmit = async(values, action) => {
     const update = await updateUser({
       displayName: values.displayName, 
       photoURL: values.avatar
     })
-    
-    dispatch(login({
-      displayName: auth.currentUser.displayName,
-      email: auth.currentUser.email,
-      emailVerified: auth.currentUser.emailVerified,
-      photoURL: auth.currentUser.photoURL,
-      uid: auth.currentUser.uid
-    }))
+    user()
     {update && closeModalHandle()}
   }
 
