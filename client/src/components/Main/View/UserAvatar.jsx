@@ -2,35 +2,29 @@ import React, { useState } from 'react'
 import Icon from '@/components/Icon'
 import DropdownMenu from '@/components/DropDownMenu'
 import { useClickOutside } from '@/hooks/useClickOutside'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { openModal } from '@/store/modal'
+import { modal } from '@/utils'
 import { handleLogout } from '@/firebase/auth'
 import '@/components/Main/View/UserAvatar.scss'
 
 
 function UserAvatar() {
   const navigate= useNavigate()
-  const dispatch = useDispatch()
-  const [ openAvatarMenu, setOpenAvatarMenu] = useState(false)
   const { user } = useSelector(state => state.auth)
+  const [ openAvatarMenu, setOpenAvatarMenu] = useState(false)
   
   const domNode = useClickOutside(() => { 
     setOpenAvatarMenu(false)
   })
 
   const openUserInfo = () => {
-    dispatch(openModal({
-      name: 'UserInfoModal',
-      data: user
-    }))
+    modal('UserInfoModal', user)
     setOpenAvatarMenu(false)
   }
 
   const openPasswordChangeModal = () => {
-    dispatch(openModal({ 
-      name: 'PasswordChangeModal'
-    }))
+    modal('PasswordChangeModal')
     setOpenAvatarMenu(false)
   }
   
