@@ -16,3 +16,10 @@
 // history scroll,
 //playlist silindikten sonra şarkı playlist storede kalıyor ona bak
 // playlist/... routunda bgColor 
+//Cannot access 'Home' before initialization
+//userinfomodal yup schema
+//formlardaki buttonları componente çevir
+//favorites ve crud
+//playlists crud
+//son çalınan şarkı ses durumunu localStoraga kaydet
+// and comment area in playlist firebase rules check
