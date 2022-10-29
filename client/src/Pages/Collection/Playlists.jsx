@@ -5,15 +5,18 @@ import PlaylistInfoCard from '@/components/PlaylistInfoCard'
 import { addPlaylistHandle } from '@/firebase/db'
 import { v4 as uuidv4 } from 'uuid'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import '@/Pages/Collection/Playlists.scss'
 
 function Playlists() {
   const id = uuidv4()
+  const navigate = useNavigate()
   const { playlists } = useSelector(state => state.playlist)
+  const { user } = useSelector(state => state.auth)
 
-  const handleAdd = () => {
-    addPlaylistHandle(playlists, id)
-    navigate(`/playlist/${id}`)
+  const handleAdd = async() => {
+    await addPlaylistHandle(playlists, id, user.uid)
+    navigate(`/playlist/${id}`, {replace: true})
   }
   
   return (
