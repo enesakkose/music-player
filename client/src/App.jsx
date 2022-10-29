@@ -3,6 +3,7 @@ import Main from '@/components/Main'
 import { defaultRoutes } from '@/routes'
 import { useRoutes } from 'react-router-dom'
 import { useLocation } from 'react-use'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   const location = useLocation()
@@ -10,6 +11,7 @@ function App() {
 
   return (
     <div className="App">
+      <Toaster/>
       {path && useRoutes(defaultRoutes)}
       {!path && <div className="container">
         <Main/>

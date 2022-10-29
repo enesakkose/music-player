@@ -7,7 +7,7 @@ import PasswordInput from '@/components/PasswordInput'
 import { Link } from 'react-router-dom'
 import { loginSchema } from '@/forms/schemas'
 import { Form, Formik } from 'formik'
-import { handleLogin, loginWithGoogle } from '@/firebase'
+import { handleLogin, loginWithGoogle } from '@/firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
 

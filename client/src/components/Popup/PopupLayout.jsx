@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { setOpenPopup } from '@/store/popup'
+import { popup } from '@/utils'
 import { v4 as uuidv4 } from 'uuid'
 import '@/components/Popup/PopupLayout.scss'
 
 function PopupLayout({text, dep}) {
-  const dispatch = useDispatch()
   
   useEffect(() => {
     const t = setTimeout(() => {
-      dispatch(setOpenPopup({ open: false }))
+      popup(false)
     }, 2500);
 
     return () => {

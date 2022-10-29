@@ -1,12 +1,11 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Icon from '@/components/Icon'
-import Loading from '@/components/Loading'
 import SongsTableList from '@/components/SongsTableList'
 import SearchError from '@/components/SearchError'
 import { useGetSearchSongsQuery } from '@/services/music'
 import { useDispatch } from 'react-redux'
 import { addSongToPlaylist } from '@/store/playlist'
-import { setOpenPopup } from '@/store/popup'
+import { popup } from '@/utils'
 import { useDebounceValue } from '@/hooks/useDebounceValue'
 
 function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
@@ -27,7 +26,7 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
       track: song,
       createdAt: new Date().toISOString()
     }))
-    dispatch(setOpenPopup({ open: true, name: 'AddSongPopup' }))
+    popup(true, 'AddSongPopup')
   }
   useEffect(() => {
       setSkip(true)

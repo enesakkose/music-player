@@ -1,19 +1,17 @@
 import React from 'react'
 import { closeModalHandle } from '@/utils'
-import { deletePlaylist } from '@/store/playlist'
+import { deletePlaylist } from '@/firebase/db'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import '@/modals/PlaylistDeleteModal.scss'
 
 function PlaylistDeleteModal({data: playlistInfo, outClickRef}) {
-  const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const deletePlaylistHandle = async() => {
-    await new Promise(resolve => setTimeout(resolve, 100));
-    dispatch(deletePlaylist(playlistInfo.id))
-    navigate('collection/playlists', { replace: true })
+  const deletePlaylistHandle = async(id) => {
+    await deletePlaylist(id)
     closeModalHandle()
+    navigate('collection/playlists', { replace: true })
   }
   
   return (
@@ -25,7 +23,7 @@ function PlaylistDeleteModal({data: playlistInfo, outClickRef}) {
         <button onClick={() => closeModalHandle()} className='cancel'>
           CANCEL
         </button>
-        <button onClick={deletePlaylistHandle} className='delete'>
+        <button onClick={() => deletePlaylistHandle(playlistInfo.id)} className='delete'>
           DELETE
         </button>
       </div>

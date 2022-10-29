@@ -1,16 +1,20 @@
 import React from 'react'
-import { Form, Formik } from 'formik'
 import CustomInput from '@/components/CustomInput'
 import Icon from '@/components/Icon'
+import ModalCloseBtn from '@/modals/ModalCloseBtn'
 import { closeModalHandle } from '@/utils'
+import { updatePlaylist } from '@/firebase/db'
+import { Form, Formik } from 'formik'
 import { playlistInfoSchema } from '@/forms/schemas'
 import '@/modals/PlaylistInfoModal.scss'
 
 function PlaylistInfoModal({data, outClickRef}) {
 
   const onSubmit = async(values) => {
-    await new Promise(resolve => setTimeout(resolve, 4000));
-    return console.log(values.playlistName)
+    const updatePlaylistProcess = await updatePlaylist(data.id, {
+      name: values.playlistName
+    })
+    {updatePlaylistProcess && closeModalHandle()}
   }
 
   return (
@@ -19,12 +23,7 @@ function PlaylistInfoModal({data, outClickRef}) {
         <h3 className='playlistInfoModal__header__title'>
           Edit Details
         </h3>
-        <button
-          className='playlistInfoModal__header__closeBtn' 
-          onClick={() => closeModalHandle()}
-        >
-          <Icon name='Close' size={33}/>
-        </button>
+        <ModalCloseBtn/>
       </header>
       <Formik 
         initialValues={{ playlistName: data?.name }}

@@ -1,36 +1,51 @@
 import React from 'react'
+import clsx from 'clsx'
 import Icon from '@/components/Icon'
-import { closeModalHandle } from '@/utils'
-import { Form, Formik } from 'formik'
 import CustomInput from '@/components/CustomInput'
+import ModalCloseBtn from '@/modals/ModalCloseBtn'
+import { Form, Formik } from 'formik'
+import { updateUser, auth } from '@/firebase/auth'
+import { userInfoSchema } from '@/forms/schemas'
+import { user } from '@/utils'
+import { closeModalHandle } from '@/utils'
 import '@/modals/UserInfoModal.scss'
 
 function UserInfoModal({data, outClickRef}) {
-  
+
+  const onSubmit = async(values, action) => {
+    const update = await updateUser({
+      displayName: values.displayName, 
+      photoURL: values.avatar
+    })
+    user()
+    {update && closeModalHandle()}
+  }
+
   return (
-    <div className='modal__content userInfoModal'>
+    <div ref={outClickRef} className='modal__content userInfoModal'>
       <header className='userInfoModal__header'>
         <h3 className='userInfoModal__header__title'>
           User Details
         </h3>
-        <button 
-          className='userInfoModal__header__closeBtn' 
-          onClick={() => closeModalHandle()}
-        >
-          <Icon name='Close' size={25}/>
-        </button>
+        <ModalCloseBtn/>
       </header>
       
       <Formik
-        initialValues={{ displayName: data.displayName, email: data.email}}
+        initialValues={{ 
+          displayName: data.displayName,
+          avatar: data.photoURL
+        }}
+        onSubmit={onSubmit}
+        validationSchema={userInfoSchema}
       >
         {({isSubmitting}) => (
-          <Form ref={outClickRef} className='userInfoModal__form'>
-            <img 
+          <Form className='userInfoModal__form'>
+            {auth.currentUser.photoURL !== null && <img 
               className='userInfoModal__form__img'  
-              src={data.photoURL} 
+              src={auth.currentUser.photoURL} 
               alt="userPhoto" 
-            />
+            />}
+            {auth.currentUser.photoURL === null && <Icon name='Avatar' size='100%' style={{ color: 'gray'}}/>}
             <div className="userInfoModal__form__inputs">
               <CustomInput
                 labelClassName='userInfoModal__form__inputs__input'
@@ -46,17 +61,19 @@ function UserInfoModal({data, outClickRef}) {
 
               <CustomInput
                 labelClassName='userInfoModal__form__inputs__input'
-                type='email'
-                name='email'
-                placeholder='Email'
+                type='text'
+                name='avatar'
+                placeholder='Photo URL'
                 autoComplete='off'
               >
                 <span className='userInfoModal__form__inputs__input__span'>
-                  Email
+                  Photo Url
                 </span>
               </CustomInput>
 
-              <button type='submit' className='userInfoModal__form__inputs__submit'>
+              <button type='submit' 
+                className={clsx('userInfoModal__form__inputs__submit', isSubmitting ? 'submittingBtn' : '')}
+              >
                 Save
               </button>
             </div>

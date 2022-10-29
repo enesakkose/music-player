@@ -1,13 +1,4 @@
 import { initializeApp } from "firebase/app"
-import { 
-    getAuth, 
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    GoogleAuthProvider,
-    signInWithPopup,
-    signOut
-} from 'firebase/auth'
-import { login, logout } from "@/store/auth"
 import { store } from "@/store"
 import toast from "react-hot-toast"
 
@@ -21,46 +12,6 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_APP_FIREBASE_MEASUREMENT_ID
 }
 
-const app = initializeApp(firebaseConfig)
-const auth = getAuth(app)
-const provider = new GoogleAuthProvider()
-console.log('features bitti')
-export const handleLogin = async(username, password) => {
-    try {
-        const { user } = await signInWithEmailAndPassword(auth, username, password)
+export const app = initializeApp(firebaseConfig)
 
-        return store.dispatch(login(user.providerData[0]))
-    } catch (error) {
-        toast.error('Invalid username or password')        
-    }
-}
-
-export const createUser = async(username, password) => {
-    try {
-        const { user } = await createUserWithEmailAndPassword(auth, username, password)
-
-        return store.dispatch(login(user.providerData[0]))
-    } catch (error) {
-        toast.error('This email already using!')
-    }
-}
-
-export const loginWithGoogle = async() => {
-    try {
-        const { user } = await signInWithPopup(auth, provider)
-
-        return store.dispatch(login(user.providerData[0]))
-    } catch (error) {
-        toast.error('Something went wrong')
-    }
-}
-
-export const handleLogout = async() => {
-    try {
-        await signOut(auth)
-
-        return store.dispatch(logout())
-    } catch (error) {
-        toast.error('Failed!!!')
-    }
-}
+/*1.13 128 => action.payload olarak 147*/

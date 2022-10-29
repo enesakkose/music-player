@@ -2,6 +2,7 @@ import * as yup from 'yup'
 
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/
 //min 8 characters, 1 upperCase, 1 lowerCase, 1 number
+
 const passwordRules =  
     <>
     * Least 8 characters
@@ -13,6 +14,9 @@ const passwordRules =
     * 1 numeric digit
     <br/>
     </>
+
+const passwordChangeRules = 
+<>* Least 8 characters, * 1 upper case, * 1 lower case, * 1 numeric digit</>
 
 export const loginSchema = yup.object().shape({
     username: yup
@@ -47,4 +51,38 @@ export const playlistInfoSchema = yup.object().shape({
   playlistName: yup
     .string()
     .required('Playlist name is required')
+})
+
+export const userInfoSchema = yup.object().shape({
+  displayName: yup
+    .string()
+    .required('Display Name is required'),
+  avatar: yup
+    .string()
+    .url('Please enter validate url')
+})
+
+export const passwordChangeSchema = yup.object().shape({
+  password: yup
+    .string()
+    .min(8,'Min 8 characters'),
+  newPassword: yup
+    .string()
+    .min(8,'')
+    .matches(passwordRegex, {message: passwordRules})
+    .required(passwordRules),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('newPassword'), null], "Passwords must match")
+})
+
+export const emailChangeSchema = yup.object().shape({
+  newEmail: yup
+    .string()
+    .email('Please enter a valid email')
+    .required("Please enter a valid email"),
+  confirmPassword: yup
+    .string()
+    .min(8,'')
+    .required('Min 8 characters')
 })

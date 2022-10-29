@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useClickOutside } from '@/hooks/useClickOutside'
-import { useSelector, useDispatch } from 'react-redux'
-import { openModal } from '@/store/modal'
+import { useSelector } from 'react-redux'
+import { modal } from '@/utils'
 import PlaylistHeader from '@/components/PlaylistHeader'
 import Icon from '@/components/Icon'
 import DropdownMenu from '@/components/DropdownMenu'
+import Loading from '@/components/Loading'
 import '@/Pages/Playlist/PlaylistHeaderInPlaylist.scss'
 
 function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
-  const dispatch = useDispatch()
   const { playlists } = useSelector(state => state.playlist)
   const playlistName = playlists.find((playlist) => playlist.id === playlistId)
   const [ open, setOpen ] = useState(false)
@@ -19,20 +19,16 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
   })
 
   const openPlaylistInfoModal = () => {
-    dispatch(openModal({
-      name: 'PlaylistInfoModal',
-      data: playlistName
-    }))
+    modal('PlaylistInfoModal', playlistName)
     setOpen(false)
   }
 
   const openPlaylistDeleteModal = () => {
-    dispatch(openModal({
-      name: 'PlaylistDeleteModal',
-      data: playlistName
-    }))
+    modal('PlaylistDeleteModal', playlistName)
     setOpen(false)
   }
+
+  if(playlistName === undefined) return <Loading/>
 
   return (        
     <PlaylistHeader className="playlist__headerInPlaylist" style={{ backgroundColor: `#${bgColor}`}}>
@@ -46,7 +42,7 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
       </div>
       <div ref={domNode} className="playlist__headerInPlaylist__info info">
         <h6>PLAYLIST</h6>
-        <h1>{playlistName?.name}</h1>
+        <h1>{playlistName.name}</h1>
         <h6 className='playlist__headerInPlaylist__info__userName'>
           <Link to='/'>
             Aaa(username)
