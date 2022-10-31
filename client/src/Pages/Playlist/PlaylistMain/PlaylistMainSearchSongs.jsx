@@ -4,7 +4,7 @@ import SongsTableList from '@/components/SongsTableList'
 import SearchError from '@/components/SearchError'
 import { useGetSearchSongsQuery } from '@/services/music'
 import { useDispatch } from 'react-redux'
-import { addSongToPlaylist } from '@/store/playlist'
+import { addSongToPlaylist } from '@/firebase/db'
 import { popup } from '@/utils'
 import { useDebounceValue } from '@/hooks/useDebounceValue'
 
@@ -21,11 +21,11 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
   }
 
   const addPlaylist = (song) => {
-    dispatch(addSongToPlaylist({
-      id: playlistId,
+    addSongToPlaylist(playlistId, {
+      id: song.key,
       track: song,
       createdAt: new Date().toISOString()
-    }))
+    })
     popup(true, 'AddSongPopup')
   }
   useEffect(() => {

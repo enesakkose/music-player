@@ -7,12 +7,13 @@ import '@/Pages/Playlist/Playlist.scss'
 
 function Playlist() {
   const { playlistId } = useParams()
-  const { songPlaylist } = useSelector(state => state.playlist)
-  const bgColor = songPlaylist[0]?.track?.images?.joecolor?.slice(18, 24)
+  const { playlists } = useSelector(state => state.playlist)
+  const findPlaylist = playlists.find(playlist => playlist.id === playlistId)
+  const bgColor = findPlaylist?.addedSongs[0]?.track?.images?.joecolor?.slice(18, 24)
 
   return (
     <div key={playlistId} className='playlist'>
-      <PlaylistHeaderInPlaylist playlistId={playlistId} bgColor={bgColor} />
+      <PlaylistHeaderInPlaylist playlistId={playlistId} bgColor={bgColor}/>
       <PlaylistMain playlistId={playlistId} bgColor={bgColor} />
     </div>
   )

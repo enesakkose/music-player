@@ -1,24 +1,24 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import ActionBtns from '@/components/ActionBtns'
 import SongsTableHeader from '@/components/SongsTableHeader'
 import SongsTableList from '@/components/SongsTableList'
 import Icon from '@/components/Icon'
+import Loading from '@/components/Loading'
 import moment from 'moment'
-import { removeSongPlaylist } from '@/store/playlist'
+import { removeSongToPlaylist } from '@/firebase/db'
 import { useSelector, useDispatch } from 'react-redux'
 
 function PlaylistMainSongList({ show, playlistId }) {
-  const dispatch = useDispatch()
-  const { songPlaylist } = useSelector(state => state.playlist)
-  const havePlaylist = songPlaylist.filter(song => song.id === playlistId)
-  const onlyTracks = havePlaylist.map((a => a.track))
-  
-  
-  const removeSong = (key) => {
-    dispatch(removeSongPlaylist(key))
-  }
+  const { playlists } = useSelector(state => state.playlist)
+  if(playlists.length < 1) return <Loading/>
 
-  const showPlaylist = havePlaylist.length > 0 && show
+  const findPlaylist = playlists.find(playlist => playlist.id === playlistId)
+  const showPlaylist = findPlaylist?.addedSongs?.length > 0 && show
+  const onlyTracks = findPlaylist?.addedSongs?.length > 0 && findPlaylist.addedSongs.map((a => a.track))
+
+  const removeSong = async(key) => {
+    await removeSongToPlaylist(playlistId, key, findPlaylist?.addedSongs)
+  }
   
   return (
     <>
@@ -28,12 +28,12 @@ function PlaylistMainSongList({ show, playlistId }) {
         <h5>Date Added</h5>
       </SongsTableHeader>
       <ul className='playlist__main__content__songsList__items'>
-        {havePlaylist.map((song, index) => (
+        {findPlaylist.addedSongs.map((song, index) => (
           <li key={song.track.key} className='playlist__main__content__songsList__items__item'>
             <SongsTableList
               index={index}
               song={song.track}
-              findSongs={songPlaylist}
+              findSongs={findPlaylist.addedSongs}
               className='playlist__main__content__songsList__items__item__content'
             >
               <div className='playlist__main__content__songsList__items__item__content__dateAdded'>
