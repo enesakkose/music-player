@@ -3,7 +3,6 @@ import PlaylistHeader from '@/components/PlaylistHeader'
 import Icon from '@/components/Icon'
 import DropdownMenu from '@/components/DropdownMenu'
 import Loading from '@/components/Loading'
-import MusicIcon from '@/icons/Music.svg'
 import { Link } from 'react-router-dom'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useSelector } from 'react-redux'
@@ -13,24 +12,25 @@ import '@/Pages/Playlist/PlaylistHeaderInPlaylist.scss'
 function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
   const { playlists } = useSelector(state => state.playlist)
   const { user } = useSelector(state => state.auth)
-  const playlistName = playlists.find((playlist) => playlist.id === playlistId)
+  const findPlaylist = playlists.find((playlist) => playlist.id === playlistId)
   const [ open, setOpen ] = useState(false)
-  
+  const coverImage = findPlaylist.addedSongs[0]?.track?.images?.coverart
+
   const domNode = useClickOutside(() => { 
     setOpen(false)
   })
 
   const openPlaylistInfoModal = () => {
-    modal('PlaylistInfoModal', playlistName)
+    modal('PlaylistInfoModal', findPlaylist)
     setOpen(false)
   }
 
   const openPlaylistDeleteModal = () => {
-    modal('PlaylistDeleteModal', playlistName)
+    modal('PlaylistDeleteModal', findPlaylist)
     setOpen(false)
   }
 
-  if(playlistName === undefined) return <Loading/>
+  if(findPlaylist === undefined) return <Loading/>
 
   return (        
     <PlaylistHeader 
@@ -38,7 +38,8 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
       style={{ backgroundColor: `#${bgColor}`}}
       onClick={openPlaylistInfoModal}
       infoTitle='PLAYLIST'
-      infoHeader={playlistName.name}
+      img={findPlaylist.addedSongs.length > 0  ? coverImage : null}
+      infoHeader={findPlaylist.name}
     >
       <h6 ref={domNode}  className='playlist__headerInPlaylist__action'>
         <Link to={`/profile/${user.uid}`}>
@@ -48,7 +49,7 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
           <Icon name='ThreeDots' size={32}/>
         </button>
         {open && 
-          <DropdownMenu  className='playlistActionMenu'>
+          <DropdownMenu className='playlistActionMenu'>
             <ul>
               <li>
                 <button onClick={openPlaylistInfoModal}>
