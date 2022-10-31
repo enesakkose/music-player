@@ -7,8 +7,20 @@
         background-color: $purple;
         background-image: $grayLinear;
         
-        &__cover{
-            background-color: rgba($WHITE, .10);
+        button{
+            pointer-events: none;
+            width: 14.5rem;
+            height: 14.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: $cover;
+
+            .cover{
+                box-shadow: none;
+                width: 4.688rem;
+                height: 4.688rem;
+            }
         }
     }
     
