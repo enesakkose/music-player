@@ -14,7 +14,7 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
   const { user } = useSelector(state => state.auth)
   const findPlaylist = playlists.find((playlist) => playlist.id === playlistId)
   const [ open, setOpen ] = useState(false)
-  const coverImage = findPlaylist.addedSongs[0]?.track?.images?.coverart
+  const coverImage = findPlaylist?.addedSongs[0]?.track?.images?.coverart
 
   const domNode = useClickOutside(() => { 
     setOpen(false)
@@ -38,7 +38,7 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
       style={{ backgroundColor: `#${bgColor}`}}
       onClick={openPlaylistInfoModal}
       infoTitle='PLAYLIST'
-      img={findPlaylist.addedSongs.length > 0  ? coverImage : null}
+      img={findPlaylist.coverURL !== null ? findPlaylist.coverURL : findPlaylist.addedSongs.length > 0  ? coverImage : null}
       infoHeader={findPlaylist.name}
     >
       <h6 ref={domNode}  className='playlist__headerInPlaylist__action'>

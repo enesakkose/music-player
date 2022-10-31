@@ -48,42 +48,45 @@ export const signupSchema = yup.object().shape({
 })
 
 export const playlistInfoSchema = yup.object().shape({
-  playlistName: yup
-    .string()
-    .max(14, 'Max 14 characters')
-    .required('Playlist name is required')
+    playlistName: yup
+      .string()
+      .max(14, 'Max 14 characters')
+      .required('Playlist name is required'),
+    coverURL: yup
+      .string()
+      .url('Please enter validate url')
 })
 
 export const userInfoSchema = yup.object().shape({
-  displayName: yup
-    .string()
-    .required('Display Name is required'),
-  avatar: yup
-    .string()
-    .url('Please enter validate url')
+    displayName: yup
+      .string()
+      .required('Display Name is required'),
+    avatar: yup
+      .string()
+      .url('Please enter validate url')
 })
 
 export const passwordChangeSchema = yup.object().shape({
-  password: yup
-    .string()
-    .min(8,'Min 8 characters'),
-  newPassword: yup
-    .string()
-    .min(8,'')
-    .matches(passwordRegex, {message: passwordRules})
-    .required(passwordRules),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref('newPassword'), null], "Passwords must match")
+    password: yup
+      .string()
+      .min(8,'Min 8 characters'),
+    newPassword: yup
+      .string()
+      .min(8,'')
+      .matches(passwordRegex, {message: passwordRules})
+      .required(passwordRules),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('newPassword'), null], "Passwords must match")
 })
 
 export const emailChangeSchema = yup.object().shape({
-  newEmail: yup
-    .string()
-    .email('Please enter a valid email')
-    .required("Please enter a valid email"),
-  confirmPassword: yup
-    .string()
-    .min(8,'')
-    .required('Min 8 characters')
+    newEmail: yup
+      .string()
+      .email('Please enter a valid email')
+      .required("Please enter a valid email"),
+    confirmPassword: yup
+      .string()
+      .min(8,'')
+      .required('Min 8 characters')
 })

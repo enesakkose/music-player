@@ -12,7 +12,7 @@ import '@/modals/UserInfoModal.scss'
 
 function UserInfoModal({data, outClickRef}) {
 
-  const onSubmit = async(values, action) => {
+  const onSubmit = async(values) => {
     const update = await updateUser({
       displayName: values.displayName, 
       photoURL: values.avatar

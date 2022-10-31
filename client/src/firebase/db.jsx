@@ -28,7 +28,7 @@ onAuthStateChanged(auth, (user) => {
             addPlaylist(
                 doc.docs.reduce((playlists, playlist) => [...playlists, playlist.data()], [])
             )
-            )
+        )
     })
 })
 
@@ -38,6 +38,7 @@ export const addPlaylistHandle = async(playlists, id, userId) => {
         id : id,
         uid: userId,
         addedSongs: [],
+        coverURL: null,
         createdAt: new Date().toISOString()
     })
     popup(true, 'AddPlaylistPopup')
