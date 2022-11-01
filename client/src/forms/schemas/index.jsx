@@ -60,6 +60,7 @@ export const playlistInfoSchema = yup.object().shape({
 export const userInfoSchema = yup.object().shape({
     displayName: yup
       .string()
+      .max(14, 'Max 14 characters')
       .required('Display Name is required'),
     avatar: yup
       .string()

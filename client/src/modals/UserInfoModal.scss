@@ -30,11 +30,6 @@
                 flex-direction: column;
                 gap: .25rem;
 
-                .inputError{
-                    border-color: rgba($WHITE, .1) !important;
-                    border-bottom-color: red !important;
-                }
-
                 &__span{
                     font-weight: bold;
                     color: rgba($WHITE, .8);
