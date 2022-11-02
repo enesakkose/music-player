@@ -21,13 +21,12 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
     setSkip(e.target.value.length > 1 ? false : true)
   }
 
-  const addPlaylist = (song) => {
+  const addOrRemove = (song) => {
     addOrRemoveAddedSongs(playlistId, {
       id: song.key,
       track: song,
       createdAt: new Date().toISOString()
     }, findPlaylist?.addedSongs)
-    popup(true, 'AddSongPopup')
   }
 
   useEffect(() => {
@@ -89,7 +88,7 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
                   findSongs={searchSong}
                 >
                   <AddOrRemoveBtn 
-                    onClick={() => addPlaylist(song.track)}
+                    onClick={() => addOrRemove(song.track)}
                     id={song.track.key}
                     playlistId={playlistId}
                     className='addOrRemove'

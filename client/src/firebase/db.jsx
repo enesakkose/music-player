@@ -68,11 +68,16 @@ export const addOrRemoveAddedSongs = async(playlistId, data, addedSongs) => {
     try {
         const playlistRef = doc(db, 'playlists', playlistId)
         const findInAddedSongs = addedSongs.some(song => song.id === data.id)
+
         await updateDoc(playlistRef, {
             addedSongs: findInAddedSongs
             ? addedSongs.filter(song => song.id !== data.id)
             : arrayUnion(data)
         })
+        
+        return findInAddedSongs 
+            ? popup(true, 'RemoveSongPopup') 
+            : popup(true, 'AddSongPopup')
     } catch (error) {
         toast.error(error.message)
     }
