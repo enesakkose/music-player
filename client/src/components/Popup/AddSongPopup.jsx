@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux'
 import PopupLayout from '@/components/Popup/PopupLayout'
 
 function AddSongPopup() {
-  const { songPlaylist } = useSelector(state => state.playlist)
+  const { playlists } = useSelector(state => state.playlist)
 
   return (
-    <PopupLayout dep={songPlaylist} text='Added song to playlist'/>
+    <PopupLayout dep={playlists[0].addedSongs} text='Added song to playlist'/>
   )
 }
 

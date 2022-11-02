@@ -64,23 +64,14 @@ export const deletePlaylist = async(id) => {
     }
 }
 
-
-export const addSongToPlaylist = async(id,data) => {
+export const addOrRemoveAddedSongs = async(playlistId, data, addedSongs) => {
     try {
-        const playlistRef = doc(db, 'playlists', id)
+        const playlistRef = doc(db, 'playlists', playlistId)
+        const findInAddedSongs = addedSongs.some(song => song.id === data.id)
         await updateDoc(playlistRef, {
-            addedSongs: arrayUnion(data)
-        })
-    } catch (error) {
-        toast.error('Failed!!!')
-    }
-}
-
-export const removeSongToPlaylist = async(id, songId, addedSongs) => {
-    try {
-        const playlistRef = doc(db, 'playlists', id)
-        await updateDoc(playlistRef, {
-            addedSongs: addedSongs.filter(song => song.id !== songId)
+            addedSongs: findInAddedSongs
+            ? addedSongs.filter(song => song.id !== data.id)
+            : arrayUnion(data)
         })
     } catch (error) {
         toast.error(error.message)

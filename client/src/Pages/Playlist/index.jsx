@@ -1,14 +1,13 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import PlaylistHeaderInPlaylist from '@/Pages/Playlist/PlaylistHeaderInPlaylist'
 import PlaylistMain from '@/Pages/Playlist/PlaylistMain'
+import { useFindPlaylist } from '@/hooks/useFindPlaylist'
+import { useParams } from 'react-router-dom'
 import '@/Pages/Playlist/Playlist.scss'
 
 function Playlist() {
   const { playlistId } = useParams()
-  const { playlists } = useSelector(state => state.playlist)
-  const findPlaylist = playlists.find(playlist => playlist.id === playlistId)
+  const findPlaylist = useFindPlaylist(playlistId)
   const bgColor = findPlaylist?.addedSongs[0]?.track?.images?.joecolor?.slice(18, 24)
 
   return (

@@ -3,6 +3,7 @@ import PlaylistHeader from '@/components/PlaylistHeader'
 import Icon from '@/components/Icon'
 import DropdownMenu from '@/components/DropdownMenu'
 import Loading from '@/components/Loading'
+import { useFindPlaylist } from '@/hooks/useFindPlaylist'
 import { Link } from 'react-router-dom'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useSelector } from 'react-redux'
@@ -10,9 +11,8 @@ import { modal } from '@/utils'
 import '@/Pages/Playlist/PlaylistHeaderInPlaylist.scss'
 
 function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
-  const { playlists } = useSelector(state => state.playlist)
+  const findPlaylist = useFindPlaylist(playlistId)
   const { user } = useSelector(state => state.auth)
-  const findPlaylist = playlists.find((playlist) => playlist.id === playlistId)
   const [ open, setOpen ] = useState(false)
   const coverImage = findPlaylist?.addedSongs[0]?.track?.images?.coverart
 

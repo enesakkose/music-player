@@ -2,18 +2,19 @@ import React, { useState, useEffect } from 'react'
 import Icon from '@/components/Icon'
 import SongsTableList from '@/components/SongsTableList'
 import SearchError from '@/components/SearchError'
+import AddOrRemoveBtn from '@/Pages/Playlist/PlaylistMain/AddOrRemoveBtn'
 import { useGetSearchSongsQuery } from '@/services/music'
-import { useDispatch } from 'react-redux'
-import { addSongToPlaylist } from '@/firebase/db'
+import { useFindPlaylist } from '@/hooks/useFindPlaylist'
+import { addOrRemoveAddedSongs } from '@/firebase/db'
 import { popup } from '@/utils'
 import { useDebounceValue } from '@/hooks/useDebounceValue'
 
 function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
-  const dispatch = useDispatch()
   const [skip, setSkip] = useState(true)//this state was used to for not send request when page first render 
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounceValue(search, 600)
   const {data, isFetching, error, isSuccess} = useGetSearchSongsQuery(debouncedSearch, { skip })
+  const findPlaylist = useFindPlaylist(playlistId)
 
   const handleSearch = (e) => {
     setSearch(e.target.value)
@@ -21,13 +22,14 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
   }
 
   const addPlaylist = (song) => {
-    addSongToPlaylist(playlistId, {
+    addOrRemoveAddedSongs(playlistId, {
       id: song.key,
       track: song,
       createdAt: new Date().toISOString()
-    })
+    }, findPlaylist?.addedSongs)
     popup(true, 'AddSongPopup')
   }
+
   useEffect(() => {
       setSkip(true)
       setSearch('')
@@ -86,12 +88,12 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
                   song={song.track}
                   findSongs={searchSong}
                 >
-                  <button 
-                    onClick={() => addPlaylist(song.track)} 
+                  <AddOrRemoveBtn 
+                    onClick={() => addPlaylist(song.track)}
+                    id={song.track.key}
+                    playlistId={playlistId}
                     className='addOrRemove'
-                  >
-                    Add
-                  </button>
+                  />
                 </SongsTableList>
               </li>
             ))}
