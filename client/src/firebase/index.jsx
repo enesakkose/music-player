@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app"
 import { store } from "@/store"
-import toast from "react-hot-toast"
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
@@ -13,5 +12,3 @@ const firebaseConfig = {
 }
 
 export const app = initializeApp(firebaseConfig)
-
-/*1.13 128 => action.payload olarak 147*/

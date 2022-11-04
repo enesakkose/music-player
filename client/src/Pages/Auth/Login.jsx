@@ -14,15 +14,14 @@ import { useNavigate } from 'react-router-dom'
 function Login({changeContent, setChangeContent}) {
   const navigate = useNavigate()
 
-  const onSubmit = async(values, actions) => {
-    const user = await handleLogin(values.username, values.password)
-    if(user) return navigate('/', { replace: true })
-    {user && actions.resetForm()}
+  const onSubmit = async(values) => {
+    await handleLogin(values.username, values.password)
+    navigate('/', { replace: true })
   }
   
   const continueGoogle = async() => {
-    const user = await loginWithGoogle()
-    if(user) return navigate('/', { replace: true })
+    await loginWithGoogle()
+    navigate('/', { replace: true })
   }
 
   return (

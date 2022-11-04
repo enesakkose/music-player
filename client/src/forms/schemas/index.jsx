@@ -54,6 +54,7 @@ export const playlistInfoSchema = yup.object().shape({
       .required('Playlist name is required'),
     coverURL: yup
       .string()
+      .nullable()
       .url('Please enter validate url')
 })
 
@@ -64,6 +65,7 @@ export const userInfoSchema = yup.object().shape({
       .required('Display Name is required'),
     avatar: yup
       .string()
+      .nullable()
       .url('Please enter validate url')
 })
 
