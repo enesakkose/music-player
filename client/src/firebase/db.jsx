@@ -113,3 +113,18 @@ export const addSongToRecentSong = async(data) => {
         toast.error(error.message)
     }
 }
+
+export const addOrRemoveFavoriteSongs = async(data, favoriteSongs) => {
+    try {
+        const favoriteSongsRef = doc(db, 'users', auth.currentUser.uid)
+        const findSameSong = favoriteSongs.some(song => song.key === data.key)
+        
+        await updateDoc(favoriteSongsRef, {
+            favoriteSongs: findSameSong
+            ? favoriteSongs.filter(song => song.key !== data.key) 
+            : arrayUnion(data)
+        })
+    } catch (error) {
+        toast.error(error.message)
+    }
+}

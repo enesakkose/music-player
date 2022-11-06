@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     playlists: [],
     favoritesPlaylist: [],
-    defaultPlaylists: [],
+    defaultPlaylists: null,
     favorite: false,
     openCover: false
 }

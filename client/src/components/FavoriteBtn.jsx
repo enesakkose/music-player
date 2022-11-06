@@ -1,24 +1,29 @@
 import React, { useEffect, useMemo } from 'react'
 import Icon from '@/components/Icon'
 import clsx from 'clsx'
-import { useDispatch } from 'react-redux'
-import { deleteFavorites } from '@/store/playlist'
-import { addFavoriteHandle } from '@/utils'
+import { useSelector } from 'react-redux'
+import { addOrRemoveFavoriteSongs } from '@/firebase/db'
 import '@/components/FavoriteBtn.scss'
 
-function FavoriteBtn({thereFavPlaylist, className, song}) {
-  const dispatch = useDispatch()
+function FavoriteBtn({ className, song }) {
+  const { defaultPlaylists } = useSelector(state => state.playlist)
+  
+  if(defaultPlaylists === null) return
+
   const addOrDeleteFavorite = () => {
-    if(thereFavPlaylist === true) return dispatch(deleteFavorites(song.key))
-    //this true value coming from collection/tracks route because there is no add favorite situation there
-    addFavoriteHandle(thereFavPlaylist, song)
+    addOrRemoveFavoriteSongs(song, defaultPlaylists[0].favoriteSongs)
   }
 
+  const favoriteSong = defaultPlaylists[0]?.favoriteSongs?.find(s => s.key === song.key)
+
   return (
-    <button onClick={addOrDeleteFavorite} className={clsx('favoriteBtn', className)}>
+    <button 
+      onClick={addOrDeleteFavorite} 
+      className={clsx('favoriteBtn', className, favoriteSong ? 'liked' : '')}
+    >
       <Icon
-        className={`${thereFavPlaylist ? 'like' : 'unlike'} ${thereFavPlaylist ? 'liked': ''}`}
-        name={thereFavPlaylist ? 'FillFavorite' : 'Favorite' } 
+        className={clsx(favoriteSong ? 'like' : 'unlike', favoriteSong ? 'liked': '')}
+        name={favoriteSong ? 'FillFavorite' : 'Favorite' } 
         size={21}
       />
     </button>
