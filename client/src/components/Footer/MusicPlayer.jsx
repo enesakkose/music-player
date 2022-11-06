@@ -4,6 +4,7 @@ import PlayBtn from '@/components/PlayBtn'
 import CustomRange from '@/components/CustomRange'
 import { useTimeConvert } from '@/hooks/useTimeConvert'
 import { useSelector, useDispatch } from 'react-redux'
+import { addSongToRecentSong } from '@/firebase/db'
 import { playPause, nextSong, prevSong } from '@/store/player'
 import '@/components/Footer/MusicPlayer.scss'
 
@@ -25,6 +26,7 @@ function MusicPlayer({volume, muted}) {
 
   useEffect(() => {
     dispatch(playPause(true))
+    if(isActive === true) addSongToRecentSong(current)
   }, [current])
 
   useEffect(() => {

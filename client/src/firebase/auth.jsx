@@ -16,23 +16,26 @@ import {
 import { store } from "@/store"
 import { login, logout } from "@/store/auth"
 import { user as currentUser } from '@/utils'
+import { addDefaultCollection } from '@/firebase/db'
 import toast from "react-hot-toast"
 
-
-const provider = new GoogleAuthProvider()
 export const auth = getAuth(app)
+const provider = new GoogleAuthProvider()
 
 export const handleLogin = async(username, password) => {
     try {
         await signInWithEmailAndPassword(auth, username, password)
+        return true
     } catch (error) {
-        toast.error('Invalid username or password')        
+        toast.error(error.message)        
     }
 }
 
-export const createUser = async(username, password) => {
+export const createUser = async(username, password, name) => {
     try {
-        await createUserWithEmailAndPassword(auth, username, password)
+        await createUserWithEmailAndPassword(auth, username, password)//check it
+        addDefaultCollection()
+        return true
     } catch (error) {
         toast.error('This email already using!')
     }
@@ -41,8 +44,10 @@ export const createUser = async(username, password) => {
 export const loginWithGoogle = async() => {
     try {
         await signInWithPopup(auth, provider)
+        addDefaultCollection()
+        return true
     } catch (error) {
-        toast.error('Something went wrong')
+        toast.error(error.message)
     }
 }
 

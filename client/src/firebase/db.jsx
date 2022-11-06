@@ -12,20 +12,27 @@ import {
     updateDoc,
     arrayUnion,
     onSnapshot } from "firebase/firestore"
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '@/firebase/auth'
+import { onAuthStateChanged, getAuth } from 'firebase/auth'
 import { store } from "@/store"
-import { addPlaylist } from '@/store/playlist'
+import { addPlaylist, setDefaultPlaylists } from '@/store/playlist'
 import { popup } from '@/utils'
 import { toast } from 'react-hot-toast'
 
-const db = getFirestore(app)
+export const db = getFirestore(app)
+const auth = getAuth(app)
 
 onAuthStateChanged(auth, (user) => {
     if(user) 
     onSnapshot(query(collection(db, 'playlists'), where('uid', '==', auth.currentUser.uid), orderBy('createdAt', 'desc')), (doc) => {
         store.dispatch(
             addPlaylist(
+                doc.docs.reduce((playlists, playlist) => [...playlists, playlist.data()], [])
+            )
+        )
+    }),
+    onSnapshot(query(collection(db, 'users'), where('uid', '==', auth.currentUser.uid)), (doc) => {
+        store.dispatch(
+            setDefaultPlaylists(
                 doc.docs.reduce((playlists, playlist) => [...playlists, playlist.data()], [])
             )
         )
@@ -78,6 +85,30 @@ export const addOrRemoveAddedSongs = async(playlistId, data, addedSongs) => {
         return findInAddedSongs 
             ? popup(true, 'RemoveSongPopup') 
             : popup(true, 'AddSongPopup')
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
+export const addDefaultCollection = async() => {
+    try {
+        await setDoc(doc(db, 'users', auth.currentUser.uid), {
+            uid: auth.currentUser.uid,
+            recentSongs: [],
+            favoriteSongs: []
+        })
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
+export const addSongToRecentSong = async(data) => {
+    try {
+        const recentSongsRef = doc(db, 'users', auth.currentUser.uid)
+
+        await updateDoc(recentSongsRef, {
+            recentSongs: arrayUnion(data)
+        })
     } catch (error) {
         toast.error(error.message)
     }

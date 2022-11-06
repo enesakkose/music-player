@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     playlists: [],
     favoritesPlaylist: [],
+    defaultPlaylists: [],
     favorite: false,
     openCover: false
 }
@@ -31,6 +32,9 @@ export const playlist = createSlice({
         },
         deletePlaylist: (state,action) => {
             state.playlists = state.playlists.filter(playlist => playlist.id !== action.payload)
+        },
+        setDefaultPlaylists: (state,action) => {
+            state.defaultPlaylists = action.payload
         }
     }
 })
@@ -41,7 +45,8 @@ export const {
     deleteFavorites,
     setFavorite, 
     setOpenCover,
-    deletePlaylist
+    deletePlaylist,
+    setDefaultPlaylists
 } = playlist.actions
 
 export default playlist.reducer
