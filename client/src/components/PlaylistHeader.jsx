@@ -3,7 +3,14 @@ import clsx from 'clsx'
 import Icon from '@/components/Icon'
 import '@/components/PlaylistHeader.scss'
 
-function PlaylistHeader({ className, children, style, infoTitle, infoHeader, img = null, ...props }) {
+function PlaylistHeader({ 
+  className, 
+  children, 
+  style, 
+  infoTitle, 
+  infoHeader, 
+  img = null, 
+  ...props }) {
 
   return (
     <header className={clsx('playlistHeader', className)} style={style}>

@@ -10,23 +10,21 @@ import { createUser, loginWithGoogle } from '@/firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
 function Signup({changeContent, setChangeContent}) {
-  
   const navigate = useNavigate()
 
-  const onSubmit = async(values, actions) => {
-    const user = await createUser(values.email, values.password)
-    if(user) return navigate('/', { replace: true })
-    {user && actions.resetForm()}
+  const onSubmit = async(values) => {
+    const user = await createUser(values.email, values.password, values.username)
+    if(user) navigate('/', { replace: true })
   }
 
   const continueGoogle = async() => {
     const user = await loginWithGoogle()
-    if(user) return navigate('/', { replace: true })
+    if(user) navigate('/', { replace: true })
   }
 
   return (
     <div className='auth__content'>
-      <BrandLogo  size={35}/>
+      <BrandLogo size={35}/>
       <button onClick={continueGoogle} className='auth__content__googleBtn'>
         <GoogleBtn text='SIGNUP WITH GOOGLE'/>
       </button>
