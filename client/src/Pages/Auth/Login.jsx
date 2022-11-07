@@ -15,8 +15,8 @@ function Login({changeContent, setChangeContent}) {
   const navigate = useNavigate()
 
   const onSubmit = async(values) => {
-    await handleLogin(values.username, values.password)
-    navigate('/', { replace: true })
+    const user = await handleLogin(values.username, values.password)
+    if(user) navigate('/', { replace: true })
   }
   
   const continueGoogle = async() => {

@@ -23,14 +23,14 @@ const auth = getAuth(app)
 
 onAuthStateChanged(auth, (user) => {
     if(user) 
-    onSnapshot(query(collection(db, 'playlists'), where('uid', '==', auth.currentUser.uid), orderBy('createdAt', 'desc')), (doc) => {
+    onSnapshot(query(collection(db, 'playlists'), where('uid', '==', user.uid), orderBy('createdAt', 'desc')), (doc) => {
         store.dispatch(
             addPlaylist(
                 doc.docs.reduce((playlists, playlist) => [...playlists, playlist.data()], [])
             )
         )
     }),
-    onSnapshot(query(collection(db, 'users'), where('uid', '==', auth.currentUser.uid)), (doc) => {
+    onSnapshot(query(collection(db, 'users'), where('uid', '==', user.uid)), (doc) => {
         store.dispatch(
             setDefaultPlaylists(
                 doc.docs.reduce((playlists, playlist) => [...playlists, playlist.data()], [])

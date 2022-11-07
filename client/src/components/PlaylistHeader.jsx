@@ -9,13 +9,13 @@ function PlaylistHeader({
   style, 
   infoTitle, 
   infoHeader, 
-  img = null, 
+  img = null,
   ...props }) {
 
   return (
     <header className={clsx('playlistHeader', className)} style={style}>
       <button {...props} className='playlistHeader__cover'>
-        {img === null && <Icon name='Music' size={75}/>}
+        {img === null && <Icon name={infoHeader === 'LIKED SONGS' ? 'Favorite' : 'Music'} size={75}/>}
         {img !== null && <img 
           src={img}
           alt="img"

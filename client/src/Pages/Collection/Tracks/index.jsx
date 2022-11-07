@@ -1,12 +1,7 @@
 import React from 'react'
 import PlaylistHeader from '@/components/PlaylistHeader'
 import EmptyPlaylist from '@/components/EmptyPlaylist'
-import SongsTableHeader from '@/components/SongsTableHeader'
-import SongsTableList from '@/components/SongsTableList'
-import ActionBtns from '@/components/ActionBtns'
-import Icon from '@/components/Icon'
 import clsx from 'clsx'
-import FavoriteIcon from '@/icons/Favorite.svg'
 import Loading from '@/components/Loading'
 import MainContent from '@/Pages/Collection/Tracks/MainContent'
 import { useSelector } from 'react-redux'
@@ -23,12 +18,12 @@ function Tracks() {
     <div className='favoriteTracks'>
       <PlaylistHeader
         className='favoriteTracks__header'
-        img={FavoriteIcon}
         infoTitle='PLAYLIST'
         infoHeader='LIKED SONGS'
       >
         {favoritesPlaylist.length > 0 && <h6>{favoritesPlaylist.length} songs</h6>}
       </PlaylistHeader>
+      
       <div className={clsx('favoriteTracks__main', favoritesPlaylist.length === 0 ? 'favoriteTracks__empty' : '')}>
         {favoritesPlaylist.length === 0 &&
           <EmptyPlaylist
