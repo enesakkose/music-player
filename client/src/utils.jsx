@@ -29,10 +29,11 @@ export const modal = (name, data = false) => {
     }))
 }
 
-export const popup = (open, name = false) => {
+export const popup = (open, name = false, text = false) => {
     store.dispatch(setOpenPopup({
         open,
-        name
+        name,
+        text
     }))
 }
 

@@ -82,9 +82,8 @@ export const addOrRemoveAddedSongs = async(playlistId, data, addedSongs) => {
             : arrayUnion(data)
         })
         
-        return findInAddedSongs 
-            ? popup(true, 'RemoveSongPopup') 
-            : popup(true, 'AddSongPopup')
+        return popup(true, 'AddSongPopup', `${findInAddedSongs ? 'Removed' : 'Added'}`) 
+
     } catch (error) {
         toast.error(error.message)
     }
@@ -124,6 +123,7 @@ export const addOrRemoveFavoriteSongs = async(data, favoriteSongs) => {
             ? favoriteSongs.filter(song => song.key !== data.key) 
             : arrayUnion(data)
         })
+        return popup(true, 'FavoritePopup', `${findSameSong ? 'Remove' : 'Added'}`)
     } catch (error) {
         toast.error(error.message)
     }
