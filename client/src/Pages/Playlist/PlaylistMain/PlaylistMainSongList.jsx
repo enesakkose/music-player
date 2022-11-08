@@ -6,6 +6,7 @@ import Icon from '@/components/Icon'
 import moment from 'moment'
 import { addOrRemoveAddedSongs } from '@/firebase/db'
 import { useFindPlaylist } from '@/hooks/useFindPlaylist'
+import { modal } from '@/utils'
 
 function PlaylistMainSongList({ show, playlistId }) {
   const findPlaylist = useFindPlaylist(playlistId)
@@ -15,11 +16,19 @@ function PlaylistMainSongList({ show, playlistId }) {
   const removeSong = async(key) => {
     await addOrRemoveAddedSongs(playlistId, {id: key}, findPlaylist?.addedSongs)
   }
+
+  const commentModal = () => {
+    modal('CommentModal')
+  }
   
   return (
     <>
     {showPlaylist && <div className="playlist__main__content__songsList">
-      <ActionBtns findSongs={onlyTracks}/>
+      <ActionBtns className='playlistActBtns' findSongs={onlyTracks}>
+        <button onClick={commentModal} className='commentBtn'>
+          <Icon name='Comment' size={25}/>
+        </button>
+      </ActionBtns>
       <SongsTableHeader className='playlist__main__content__songsList__header'>
         <h5>Date Added</h5>
       </SongsTableHeader>

@@ -1,0 +1,60 @@
+.commentModal{
+    background-color: $GRAY;
+    padding: $PM $PL;
+    border-radius: .5rem;
+
+    &__header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: $PM;
+    }
+
+    &__main{
+        display: flex;
+        flex-direction: column;
+        min-width: 25rem;
+        min-height: 20rem;
+        border: 1px solid $earlGray;
+        background-color: $darkGray;
+        border-radius: .5rem;
+        padding: $PXS;
+
+        &__comment{
+            flex: 1;
+        }
+
+        &__footer{
+            
+
+            &__form{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                border: 1px solid rgba($WHITE, .2);
+                border-radius: 1.5rem;
+
+                .commentForm{
+                    flex: 1;
+                }
+
+                .commentFormInput{
+                    background-color: transparent;
+                    border: none;
+                }
+
+                button{
+                    padding: $PXS;
+                    border-radius: 50%;
+                    color: $WHITE;
+                }
+
+                .commentBtn{
+                    background-color: $GREEN;
+                }
+
+
+            }
+        }
+    }
+}
