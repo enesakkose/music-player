@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import PlayBtn from '@/components/PlayBtn'
+import clsx from 'clsx'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import '@/components/ActionBtns.scss'
 
-function ActionBtns({findSongs}) {
+function ActionBtns({findSongs, children, className}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
   const haveSongs = findSongs.some(f => f.key === current.key)
@@ -21,12 +22,13 @@ function ActionBtns({findSongs}) {
   }
 
   return (
-    <div className="actionBtns">
+    <div className={clsx('actionBtns', className)}>
       <PlayBtn
         onClick={playAlbumSong}
         className='actionBtns__play'
         playPause={isPlaying && haveSongs}
       />
+      {children}
     </div>
   )
 }
