@@ -3,36 +3,51 @@
     padding: $PM $PL;
     border-radius: .5rem;
 
-    &__header{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: $PM;
-    }
-
     &__main{
         display: flex;
         flex-direction: column;
         min-width: 25rem;
-        min-height: 20rem;
+        height: 20rem;
+        max-height: 20rem;
         border: 1px solid $earlGray;
         background-color: $darkGray;
         border-radius: .5rem;
         padding: $PXS;
+        overflow: overlay;
+
+        &::-webkit-scrollbar{
+            width: .25rem;
+            
+        }
+    
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+            
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba($WHITE, .3);
+    
+            &:hover{
+                background-color: rgba($WHITE, .5);
+            }
+        }
 
         &__comment{
             flex: 1;
         }
 
         &__footer{
+            position: sticky;
+            bottom: 0;
+            width: 100%;
             
-
             &__form{
                 display: flex;
                 align-items: center;
                 gap: 1rem;
                 border: 1px solid rgba($WHITE, .2);
                 border-radius: 1.5rem;
+                background-color: $WHITE;
 
                 .commentForm{
                     flex: 1;
@@ -41,19 +56,22 @@
                 .commentFormInput{
                     background-color: transparent;
                     border: none;
+                    color: $BLACK;
                 }
 
                 button{
                     padding: $PXS;
                     border-radius: 50%;
-                    color: $WHITE;
+                }
+
+                .emojiBtn{
+                    color: $BLACK;
                 }
 
                 .commentBtn{
                     background-color: $GREEN;
+                    color: $WHITE;
                 }
-
-
             }
         }
     }

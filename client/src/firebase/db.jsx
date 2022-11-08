@@ -46,6 +46,7 @@ export const addPlaylistHandle = async(playlists, id, userId) => {
         uid: userId,
         addedSongs: [],
         coverURL: null,
+        comments: [], 
         createdAt: new Date().toISOString()
     })
     popup(true, 'AddPlaylistPopup')
@@ -124,6 +125,18 @@ export const addOrRemoveFavoriteSongs = async(data, favoriteSongs) => {
             : arrayUnion(data)
         })
         return popup(true, 'FavoritePopup', `${findSameSong ? 'Remove' : 'Added'}`)
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
+export const addComment = async(playlistId, comment) => {
+    try {
+        const playlistRef = doc(db, 'playlists', playlistId)
+
+        await updateDoc(playlistRef, {
+            comments: arrayUnion(comment)
+        })
     } catch (error) {
         toast.error(error.message)
     }

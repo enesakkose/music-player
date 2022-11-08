@@ -18,7 +18,7 @@ function PlaylistMainSongList({ show, playlistId }) {
   }
 
   const commentModal = () => {
-    modal('CommentModal')
+    modal('CommentModal', playlistId)
   }
   
   return (

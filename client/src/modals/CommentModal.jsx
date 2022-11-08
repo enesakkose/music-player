@@ -1,27 +1,42 @@
 import React from 'react'
-import ModalCloseBtn from '@/modals/ModalCloseBtn'
 import CustomInput from '@/components/CustomInput'
 import Icon from '@/components/Icon'
+import ModalHeader from '@/modals/ModalHeader'
+import Comment from '@/modals/Comment'
+import EmptyComments from '@/modals/EmptyComments'
+import { useFindPlaylist } from '@/hooks/useFindPlaylist'
 import { Form, Formik } from 'formik'
+import { addComment } from '@/firebase/db'
+import { useSelector } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid'
+import clsx from 'clsx'
 import '@/modals/CommentModal.scss'
 
-function CommentModal({ outClickRef}) {
-
-  const commentSubmit = () => {
-
+function CommentModal({ outClickRef, data: playlistId }) {
+  const { user } = useSelector(state => state.auth)
+  const findPlaylist = useFindPlaylist(playlistId)
+  
+  const commentSubmit = async(values, actions) => {
+    await addComment(playlistId, {
+      uid: user.uid,
+      photoURL: user.photoURL,
+      displayName: user.displayName,
+      comment: values.comment,
+      createdAt: new Date().toISOString(),
+      id: uuidv4()
+    })
+    actions.resetForm()
   }
 
   return (
     <div ref={outClickRef} className='commentModal'>
-      <header className='commentModal__header'>
-        <h3 className='commentModal__header__title'>
-          Comments
-        </h3>
-        <ModalCloseBtn/>
-      </header>
+      <ModalHeader title='Comments'/>
       <section className='commentModal__main'>
         <div className="commentModal__main__comment">
-          comment
+          {findPlaylist.comments.map(comment => (
+            <Comment key={comment.id} comment={comment}/>
+          ))}
+          {findPlaylist.comments.length === 0 && <EmptyComments/>}
         </div>
 
         <div className='commentModal__main__footer'>
@@ -43,7 +58,10 @@ function CommentModal({ outClickRef}) {
                 <button type='button' className='emojiBtn'>
                   <Icon name='Smile' size={20}/>
                 </button>
-                <button type='submit' className='commentBtn'>
+                <button 
+                  type='submit' 
+                  className={clsx('commentBtn', isSubmitting ? 'submittingBtn' : '')}
+                >
                   <Icon name='Send' size={20}/>
                 </button>
               </Form>
