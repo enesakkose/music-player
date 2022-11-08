@@ -40,7 +40,10 @@ function PlaylistInfoModal({data, outClickRef}) {
               {data.coverURL === null && <Icon name='Music' size={64}/>}
               {data.coverURL === null && dataSongs && <img src={coverImage} alt="img"/>}
               {data.coverURL !== null && <img src={data.coverURL} alt="img"/>}
-              <button type='button'  className='playlistInfoModal__form__img__changeBtn'>
+              <button 
+                type='button' 
+                className='playlistInfoModal__form__img__changeBtn'
+              >
                 <Icon name='Pencil' size={16}/>
               </button>
             </div>
