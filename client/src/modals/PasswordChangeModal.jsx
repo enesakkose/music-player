@@ -1,8 +1,8 @@
 import React from 'react'
-import ModalCloseBtn from '@/modals/ModalCloseBtn'
 import clsx from 'clsx'
 import CustomInput from '@/components/CustomInput'
 import PasswordInput from '@/components/PasswordInput'
+import ModalHeader from '@/modals/ModalHeader'
 import { updateUserPassword, updateMail } from '@/firebase/auth'
 import { passwordChangeSchema, emailChangeSchema } from '@/forms/schemas'
 import { auth } from '@/firebase/auth'
@@ -23,12 +23,7 @@ function PasswordChangeModal({ outClickRef }) {
 
   return (
     <div ref={outClickRef} className='passwordChangeModal'>
-      <header className='passwordChangeModal__header'>
-        <h3 className='passwordChangeModal__header__title'>
-          Password Change
-        </h3>
-        <ModalCloseBtn/>
-      </header>
+      <ModalHeader title='Password Change'/>
       <div className="passwordChangeModal__content">
         <div className='passwordChangeModal__content__password'>
           <h4 className='passwordChangeModal__content__password__title'>Password</h4>

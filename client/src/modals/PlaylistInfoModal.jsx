@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomInput from '@/components/CustomInput'
 import Icon from '@/components/Icon'
-import ModalCloseBtn from '@/modals/ModalCloseBtn'
+import ModalHeader from '@/modals/ModalHeader'
 import { closeModalHandle } from '@/utils'
 import { updatePlaylist } from '@/firebase/db'
 import { Form, Formik } from 'formik'
@@ -23,12 +23,7 @@ function PlaylistInfoModal({data, outClickRef}) {
 
   return (
     <div ref={outClickRef} className='playlistInfoModal'>
-      <header className='playlistInfoModal__header'>
-        <h3 className='playlistInfoModal__header__title'>
-          Edit Details
-        </h3>
-        <ModalCloseBtn/>
-      </header>
+      <ModalHeader title='Edit Details'/>
       <Formik 
         initialValues={{ playlistName: data?.name, coverURL: data?.coverURL }}
         validationSchema={playlistInfoSchema}
