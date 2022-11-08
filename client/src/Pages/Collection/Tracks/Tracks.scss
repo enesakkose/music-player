@@ -6,6 +6,10 @@
     &__header{
         background-color: $purple;
         background-image: $grayLinear;
+
+        button{
+            pointer-events: none;
+        }
     }
     
     &__main{
