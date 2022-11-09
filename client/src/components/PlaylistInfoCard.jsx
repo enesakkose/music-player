@@ -4,7 +4,7 @@ import PlayBtn from '@/components/PlayBtn'
 import { Link } from 'react-router-dom'
 import '@/components/playlistInfoCard.scss'
 
-function PlaylistInfoCard({playlist}) {
+function PlaylistInfoCard({playlist, user}) {
   return (
     <div className='playlistInfoCard'>
         <div className="playlistInfoCard__img">
@@ -13,7 +13,7 @@ function PlaylistInfoCard({playlist}) {
         </div>
         <div className="playlistInfoCard__info">
             <h5>{playlist.name}</h5>
-            <span>By Aaa(username)</span>
+            <span>{user?.displayName}</span>
         </div>
         <Link to={`/playlist/${playlist.id}`} className='perde'></Link>
     </div>
