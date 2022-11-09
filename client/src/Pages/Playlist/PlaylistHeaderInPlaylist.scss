@@ -3,13 +3,13 @@
     background-image: $grayLinear;
     transition: .5s background ease-in-out;
     position: relative;
+    
 
         &__action{
             margin-bottom: $MXS;
             display: flex;
             align-items: center;
             gap: 2rem;
-
             a{
 
                 &:hover{
@@ -19,6 +19,7 @@
             
             .playlistAction-btn{
                 height: 2rem;
+                
 
                 &:hover{
                     color: $WHITE;
@@ -27,7 +28,7 @@
 
             .playlistActionMenu{
                 position: absolute;
-                bottom: -4.62rem;
+                bottom: -7.5rem;
                 z-index: 2; 
                 
                 button{

@@ -46,7 +46,8 @@ export const addPlaylistHandle = async(playlists, id, userId) => {
         uid: userId,
         addedSongs: [],
         coverURL: null,
-        comments: [], 
+        comments: [],
+        publish: false,
         createdAt: new Date().toISOString()
     })
     popup(true, 'AddPlaylistPopup')
@@ -137,6 +138,19 @@ export const addComment = async(playlistId, comment) => {
         await updateDoc(playlistRef, {
             comments: arrayUnion(comment)
         })
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
+export const publishPlaylist = async(playlistId, publish) => {
+    try {
+        const playlistRef = doc(db, 'playlists', playlistId)
+
+        await updateDoc(playlistRef, {
+            publish: publish
+        })
+        return popup(true, 'PublishPlaylistPopup', `${publish ? 'now' : 'no longer'}`)
     } catch (error) {
         toast.error(error.message)
     }
