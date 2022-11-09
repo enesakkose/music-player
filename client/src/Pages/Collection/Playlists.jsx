@@ -36,7 +36,7 @@ function Playlists() {
         : <div className="playlists__cards">
             <FavoritesCard/>
             {playlists.map((playlist) => (
-              <PlaylistInfoCard key={playlist.id} playlist={playlist} />
+              <PlaylistInfoCard key={playlist.id} playlist={playlist} user={user}/>
             ))}
           </div>  
       }
