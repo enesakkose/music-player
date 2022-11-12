@@ -1,0 +1,30 @@
+.songResult{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow: hidden;
+
+    &__list{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        overflow: overlay;
+
+        &::-webkit-scrollbar{
+            width: .25rem;
+        }
+    
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+            
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba($WHITE, .3);
+    
+            &:hover{
+                background-color: rgba($WHITE, .5);
+            }
+        }
+    }
+}
+

@@ -24,7 +24,7 @@ function Search() {
   return (
     <div className='search'>
       {querySongs.length < 2 && <Categories/>}
-      {isSuccess && !isFetching && <SearchResult songs={data.tracks.hits}/>}
+      {isSuccess && !isFetching && <SearchResult songs={data.tracks.hits} querySongs={debouncedSearch} />}
     </div>
   )
 }

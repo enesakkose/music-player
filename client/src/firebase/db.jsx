@@ -11,10 +11,12 @@ import {
     orderBy,
     updateDoc,
     arrayUnion,
+    getDocs,
     onSnapshot } from "firebase/firestore"
 import { onAuthStateChanged, getAuth } from 'firebase/auth'
 import { store } from "@/store"
 import { addPlaylist, setDefaultPlaylists } from '@/store/playlist'
+import { setProfiles } from '@/store/profiles'
 import { popup } from '@/utils'
 import { toast } from 'react-hot-toast'
 
@@ -155,3 +157,32 @@ export const publishPlaylist = async(playlistId, publish) => {
         toast.error(error.message)
     }
 }
+
+export const userProfile = async(name = null) => {
+    try {
+        await setDoc(doc(db, 'profiles', auth.currentUser.uid), {
+            uid: auth.currentUser.uid,
+            displayName: auth.currentUser.displayName === null ? name : auth.currentUser.displayName,
+            photoURL: auth.currentUser.photoURL,
+            follower: 0,
+            following: 0
+        })
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
+export const profileQuery = async(querySongs) => {
+    try {
+        const q = query(collection(db, 'profiles'), where('displayName', '>=', querySongs))
+        const querySnapshot = await getDocs(q)
+        store.dispatch(
+            setProfiles(
+                querySnapshot.docs.reduce((profiles, profile) => [...profiles, profile.data()], [])
+            )
+        )
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+

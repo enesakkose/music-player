@@ -1,22 +1,13 @@
 import React from 'react'
-import SongsTableHeader from '@/components/SongsTableHeader'
-import SongsTableList from '@/components/SongsTableList'
+import ProfilesResult from '@/Pages/Search/ProfilesResult'
+import SongResult from '@/Pages/Search/SongResult'
 import '@/Pages/Search/SearchResult.scss'
 
-function SearchResult({ songs }) {
+function SearchResult({ songs, querySongs }) {
   return (
     <div className='searchResult'>
-      <SongsTableHeader/>
-      <div className="searchResult__songs__list">
-        {songs.map((song, index) => (
-          <SongsTableList
-            key={song.track.key}
-            index={index}
-            song={song.track}
-            findSongs={songs}
-          />
-        ))}
-      </div>
+      <SongResult songs={songs}/>
+      <ProfilesResult querySongs={querySongs}/>
     </div>
   )
 }
