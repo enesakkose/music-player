@@ -62,7 +62,8 @@ export const userInfoSchema = yup.object().shape({
     displayName: yup
       .string()
       .max(14, 'Max 14 characters')
-      .required('Display Name is required'),
+      .required('Display Name is required')
+      .nullable(),
     avatar: yup
       .string()
       .nullable()
