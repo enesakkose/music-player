@@ -1,8 +1,8 @@
 import React from 'react'
 import clsx from 'clsx'
-import Icon from '@/components/Icon'
 import CustomInput from '@/components/CustomInput'
-import ModalCloseBtn from '@/modals/ModalCloseBtn'
+import ModalHeader from '@/modals/ModalHeader'
+import Avatar from '@/components/Avatar'
 import { Form, Formik } from 'formik'
 import { updateUser, auth } from '@/firebase/auth'
 import { userInfoSchema } from '@/forms/schemas'
@@ -22,13 +22,8 @@ function UserInfoModal({data, outClickRef}) {
   }
 
   return (
-    <div ref={outClickRef} className='modal__content userInfoModal'>
-      <header className='userInfoModal__header'>
-        <h3 className='userInfoModal__header__title'>
-          User Details
-        </h3>
-        <ModalCloseBtn/>
-      </header>
+    <div ref={outClickRef} className='modalContent userInfoModal'>
+      <ModalHeader title='User Details'/>
       
       <Formik
         initialValues={{ 
@@ -40,12 +35,7 @@ function UserInfoModal({data, outClickRef}) {
       >
         {({isSubmitting}) => (
           <Form className='userInfoModal__form'>
-            {auth.currentUser.photoURL !== null && <img 
-              className='userInfoModal__form__img'  
-              src={auth.currentUser.photoURL} 
-              alt="userPhoto" 
-            />}
-            {auth.currentUser.photoURL === null && <Icon name='Avatar' size='100%' style={{ color: 'gray'}}/>}
+            <Avatar src={auth.currentUser.photoURL} size='100%'/>
             <div className="userInfoModal__form__inputs">
               <CustomInput
                 labelClassName='userInfoModal__form__inputs__input'

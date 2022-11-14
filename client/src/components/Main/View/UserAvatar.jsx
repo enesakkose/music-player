@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Icon from '@/components/Icon'
+import Avatar from '@/components/Avatar'
 import DropdownMenu from '@/components/DropDownMenu'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useSelector } from 'react-redux'
@@ -39,10 +40,7 @@ function UserAvatar() {
       <button 
         onClick={() => setOpenAvatarMenu(!openAvatarMenu)} className='avatar__btn'
       >
-        <div className="avatar__btn__img">
-          {user.photoURL !== null && <img src={user.photoURL} alt="profile"/>}
-          {user.photoURL === null && <Icon name='Avatar' size={28} style={{ color: 'gray'}}/>}
-        </div>
+        <Avatar src={user.photoURL} size='28px'/>
       </button>
 
       {openAvatarMenu && 
