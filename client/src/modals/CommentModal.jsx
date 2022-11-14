@@ -29,7 +29,7 @@ function CommentModal({ outClickRef, data: playlistId }) {
   }
 
   return (
-    <div ref={outClickRef} className='commentModal'>
+    <div ref={outClickRef} className='modalContent commentModal'>
       <ModalHeader title='Comments'/>
       <section className='commentModal__main'>
         <div className="commentModal__main__comment">

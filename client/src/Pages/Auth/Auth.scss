@@ -65,15 +65,10 @@
             gap: 1.5rem;
 
             input{
-                background-color: transparent;
-                border: 2px solid $earlGray;
-                border-radius: .25rem;
-                padding: $PS;
+                border-color: $earlGray;
+                color: $BLACK;
+                padding: $PM $PS;
                 font-size: .875rem;
-
-                &:focus{
-                    border-color: $BLACK;
-                }
             }
 
             &__title{

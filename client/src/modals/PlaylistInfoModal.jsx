@@ -22,7 +22,7 @@ function PlaylistInfoModal({data, outClickRef}) {
   const coverImage = data?.addedSongs[0]?.track?.images?.coverart
 
   return (
-    <div ref={outClickRef} className='playlistInfoModal'>
+    <div ref={outClickRef} className='modalContent playlistInfoModal'>
       <ModalHeader title='Edit Details'/>
       <Formik 
         initialValues={{ playlistName: data?.name, coverURL: data?.coverURL }}
