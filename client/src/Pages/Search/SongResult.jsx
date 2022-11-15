@@ -5,7 +5,6 @@ import '@/Pages/Search/SongResult.scss'
 
 function SongResult({songs}) {
   return (
-    <>
     <div className="songResult">
       <h3>Songs</h3>
       <SongsTableHeader/>
@@ -20,7 +19,6 @@ function SongResult({songs}) {
         ))}
       </div>
     </div>
-    </>
   )
 }
 
