@@ -23,10 +23,9 @@ function PasswordChangeModal({ outClickRef }) {
 
   return (
     <div ref={outClickRef} className='passwordChangeModal'>
-      <ModalHeader title='Password Change'/>
+      <ModalHeader title='Personal Info Change'/>
       <div className="passwordChangeModal__content">
         <div className='passwordChangeModal__content__password'>
-          <h4 className='passwordChangeModal__content__password__title'>Password</h4>
           <Formik
             initialValues={{ 
               password: '', 
@@ -68,7 +67,6 @@ function PasswordChangeModal({ outClickRef }) {
           </Formik>
         </div>
         <div className='passwordChangeModal__content__email'>
-          <h4 className='passwordChangeModal__content__email__title'>Email</h4>
           <Formik
             initialValues={{ newEmail: auth.currentUser.email, confirmPassword: '' }}
             validationSchema={emailChangeSchema}

@@ -8,6 +8,7 @@ function PasswordInput({title, name='password', ...rest}) {
     const [showPassword, setShowPassword] = useState(false)
 
   return (
+    <div className='passwordInput'>
     <CustomInput
       labelClassName='passwordInput__label inputContain'
       type={showPassword ? 'text' : 'password'}
@@ -18,10 +19,11 @@ function PasswordInput({title, name='password', ...rest}) {
       <span className='passwordInput__label__title'>
         {title}
       </span>
-      <span type="button" onClick={() => setShowPassword(!showPassword)} className='eyeBtn'>
-        <Icon name={showPassword ? 'CloseEye' : 'Eye'} size={22}/>
-      </span>
     </CustomInput>
+      <button type="button" onClick={() => setShowPassword(!showPassword)} className='eyeBtn'>
+        <Icon name={showPassword ? 'CloseEye' : 'Eye'} size={22}/>
+      </button>
+    </div>
   )
 }
 
