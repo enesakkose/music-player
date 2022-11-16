@@ -5,7 +5,7 @@ import '@/Pages/Auth/Auth.scss'
 
 function Auth() {
 
-  const [ changeContent, setChangeContent ] = useState(false)
+  const [ changeContent, setChangeContent ] = useState(true)
 
   return (
     <div className='auth'>

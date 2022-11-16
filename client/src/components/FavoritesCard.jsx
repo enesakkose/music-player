@@ -1,13 +1,14 @@
 import React from 'react'
 import PlayBtn from '@/components/PlayBtn'
+import clsx from 'clsx'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import '@/components/FavoritesCard.scss'
 
-function FavoritesCard() {
+function FavoritesCard({defaultPlaylists}) {
   const dispatch = useDispatch()
-  const { favoritesPlaylist } = useSelector(state => state.playlist)
+  const favoritesPlaylist = defaultPlaylists[0].favoriteSongs
   const { current, isPlaying } = useSelector(state => state.player)
   const haveFavoritesPlaylist = favoritesPlaylist.some(song => song.key === current.key)
   
@@ -30,9 +31,7 @@ function FavoritesCard() {
           disabled={favoritesPlaylist.length === 0}
           playPause={haveFavoritesPlaylist && isPlaying}
           onClick={favoritesCardPlayPause} 
-          className={`favoritesCard__playBtn 
-          ${haveFavoritesPlaylist && isPlaying ? 'currentFav' : 'notCurrentFav'}
-          `}
+          className={clsx('favoritesCard__playBtn',haveFavoritesPlaylist && isPlaying ? 'currentFav' : 'notCurrentFav' )}
         />
         <Link to='/collection/tracks' className='perde'/>
     </div>
