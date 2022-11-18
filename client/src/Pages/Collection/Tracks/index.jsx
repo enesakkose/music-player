@@ -1,6 +1,7 @@
 import React from 'react'
 import PlaylistHeader from '@/components/PlaylistHeader'
 import EmptyPlaylist from '@/components/EmptyPlaylist'
+import EmptyField from '@/components/EmptyField'
 import clsx from 'clsx'
 import Loading from '@/components/Loading'
 import MainContent from '@/Pages/Collection/Tracks/MainContent'
@@ -26,12 +27,11 @@ function Tracks() {
       
       <div className={clsx('favoriteTracks__main', favoritesPlaylist.length === 0 ? 'favoriteTracks__empty' : '')}>
         {favoritesPlaylist.length === 0 &&
-          <EmptyPlaylist
-          title='Songs you like will appear here'
-          text='Save songs by tapping the heart icon.'
+          <EmptyField
+            icon='Music'
           >
-            <Link to='/search' className="emptyPlaylistBtn">Find Songs</Link>
-          </EmptyPlaylist>}
+            <Link to='/search' className="emptyFieldBtn">Find Songs</Link>
+          </EmptyField>}
         {favoritesPlaylist.length > 0 && <MainContent favoritesPlaylist={favoritesPlaylist}/>}
         <div className="favoriteTracks__main__background" />
       </div>
