@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomInput from '@/components/CustomInput'
 import Icon from '@/components/Icon'
-import ModalHeader from '@/modals/ModalHeader'
+import ModalHeader from '@/components/Modal/ModalHeader'
 import { closeModalHandle } from '@/utils'
 import { updatePlaylist } from '@/firebase/db'
 import { Form, Formik } from 'formik'

@@ -1,6 +1,6 @@
 import React from 'react'
-import ModalCloseBtn from '@/modals/ModalCloseBtn'
-import '@/modals/ModalHeader.scss'
+import ModalCloseBtn from '@/components/Modal/ModalCloseBtn'
+import '@/components/Modal/ModalHeader.scss'
 
 function ModalHeader({title}) {
   return (

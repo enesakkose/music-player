@@ -1,9 +1,9 @@
 import React from 'react'
 import CustomInput from '@/components/CustomInput'
 import Icon from '@/components/Icon'
-import ModalHeader from '@/modals/ModalHeader'
-import Comment from '@/modals/Comment'
-import EmptyComments from '@/modals/EmptyComments'
+import ModalHeader from '@/components/Modal/ModalHeader'
+import Comment from '@/components/Modal/Comment'
+import EmptyField from '@/components/EmptyField'
 import { useFindPlaylist } from '@/hooks/useFindPlaylist'
 import { Form, Formik } from 'formik'
 import { addComment } from '@/firebase/db'
@@ -36,7 +36,7 @@ function CommentModal({ outClickRef, data: playlistId }) {
           {findPlaylist.comments.map(comment => (
             <Comment key={comment.id} comment={comment}/>
           ))}
-          {findPlaylist.comments.length === 0 && <EmptyComments/>}
+          {findPlaylist.comments.length === 0 && <EmptyField icon='Comment'/>}
         </div>
 
         <div className='commentModal__main__footer'>

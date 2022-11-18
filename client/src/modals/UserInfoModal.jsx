@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import CustomInput from '@/components/CustomInput'
-import ModalHeader from '@/modals/ModalHeader'
+import ModalHeader from '@/components/Modal/ModalHeader'
 import Avatar from '@/components/Avatar'
 import { Form, Formik } from 'formik'
 import { updateUser, auth } from '@/firebase/auth'

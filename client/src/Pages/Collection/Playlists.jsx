@@ -1,5 +1,5 @@
 import React from 'react'
-import EmptyPlaylist from '@/components/EmptyPlaylist'
+import EmptyField from '@/components/EmptyField'
 import FavoritesCard from '@/components/FavoritesCard'
 import PlaylistInfoCard from '@/components/PlaylistInfoCard'
 import Loading from '@/components/Loading'
@@ -26,16 +26,13 @@ function Playlists() {
   return (
     <div className='playlists contentSpacing'>
       { playlists.length === 0 
-        ? <div className="playlists__empty">
-            <EmptyPlaylist 
-            title='Create your first playlist'
-            text="It's easy, we'll help you."
-            >
-              <button onClick={handleAdd} className='emptyPlaylistBtn'>
-                Create Playlist
-              </button>
-            </EmptyPlaylist>  
-          </div>
+        ? <EmptyField 
+            icon='Music'
+          >
+            <button onClick={handleAdd} className='emptyFieldBtn'>
+              Create Playlist
+            </button>
+          </EmptyField>  
 
         : <div className="playlists__cards">
             <FavoritesCard defaultPlaylists={defaultPlaylists}/>

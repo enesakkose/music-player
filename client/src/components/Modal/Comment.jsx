@@ -3,9 +3,7 @@ import Icon from '@/components/Icon'
 import Avatar from '@/components/Avatar'
 import { Link } from 'react-router-dom'
 import { useGetTime } from '@/hooks/useTimeConvert'
-import '@/modals/Comment.scss'
-
-
+import '@/components/Modal/Comment.scss'
 
 function Comment({comment}) {
   const time = useGetTime(comment.createdAt)

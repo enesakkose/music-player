@@ -1,14 +1,13 @@
 import React from 'react'
 import InfoCard from '@/Pages/Search/InfoCard'
-import EmptyModal from '@/modals/EmptyModal'
+import EmptyField from '@/components/EmptyField'
 import '@/Pages/Search/ProfilesResult.scss'
 
 function ProfilesResult({profiles}) {
-  
   return (
     <div className='profilesResult'>
       <h3>Profiles</h3>
-      {profiles.length === 0 && <EmptyModal icon='Avatar'/>}
+      {profiles.length === 0 && <EmptyField icon='Avatar'/>}
       <div className="profilesResult__list">
         {profiles.map((profile) => (
           <InfoCard 

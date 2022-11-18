@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from '@/components/Icon'
 import { closeModalHandle } from '@/utils'
-import '@/modals/ModalCloseBtn.scss'
+import '@/components/Modal/ModalCloseBtn.scss'
 
 function ModalCloseBtn() {
   return (

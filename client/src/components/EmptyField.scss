@@ -1,12 +1,10 @@
-.emptyPlaylist{
+.emptyField{
     display: flex;
-    align-items: center;
     flex-direction: column;
-    gap: 2.25rem;
-    
-    p{
-        font-weight: bold;
-    }
+    gap: .875rem;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 
     &Btn{
         background-color: $WHITE;
