@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import Icon from '@/components/Icon'
 import PlayBtn from '@/components/PlayBtn'
 import CustomRange from '@/components/CustomRange'
@@ -65,6 +65,23 @@ function MusicPlayer({volume, muted}) {
     audioRef.current.muted = true
     setSeekTime(value)
   }
+
+  const handlePress = useCallback(
+      (e) => {
+      if(e.which === 32 && 
+        isActive === true && 
+        document.activeElement.tagName.toLowerCase() === 'body'
+      ) {
+        handlePlayPause()
+      }  
+    },
+    [handlePlayPause]
+  )
+
+  useEffect(() => {
+    document.addEventListener("keydown", handlePress);
+    return () => document.removeEventListener("keydown", handlePress);
+  }, [handlePress]);
 
   return (
     <div className="footer__music__player">
