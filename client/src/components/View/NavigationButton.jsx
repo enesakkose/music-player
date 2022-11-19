@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from '@/components/Icon'
 import { useNavigate, useLocation } from 'react-router-dom'
-import '@/components/Main/View/NavigationButton.scss'
+import '@/components/View/NavigationButton.scss'
 
 function NavigationButton() {
   const navigate = useNavigate()

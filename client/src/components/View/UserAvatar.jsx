@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { modal } from '@/utils'
 import { handleLogout } from '@/firebase/auth'
-import '@/components/Main/View/UserAvatar.scss'
+import '@/components/View/UserAvatar.scss'
 
 
 function UserAvatar() {
