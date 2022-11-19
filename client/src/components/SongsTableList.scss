@@ -10,12 +10,15 @@
     &:hover{
         background-color: rgba($WHITE, .1);
     }
+
     &__music{
         display: flex;
         align-items: center;
         gap: 1.5rem;
     }
+
     &__indexPlay{
+        min-width: 1.188rem;
         width: 1.188rem;
         height: 1.188rem;
 
