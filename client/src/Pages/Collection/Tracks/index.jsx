@@ -1,6 +1,5 @@
 import React from 'react'
 import PlaylistHeader from '@/components/PlaylistHeader'
-import EmptyPlaylist from '@/components/EmptyPlaylist'
 import EmptyField from '@/components/EmptyField'
 import clsx from 'clsx'
 import Loading from '@/components/Loading'
