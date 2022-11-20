@@ -1,6 +1,21 @@
 .home{
+    position: relative;
     flex: 1;
     padding: $PM $PL;
+    z-index: 1;
+
+    &__bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 50%;
+        background-image: $darkLinear;
+        background-color: $playlistMainColor;
+        z-index: -1;
+        transition: 500ms background-color ease-in-out;
+    }
 
     &__recent__songs{
         

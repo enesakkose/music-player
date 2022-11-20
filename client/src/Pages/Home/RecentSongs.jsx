@@ -1,7 +1,7 @@
 import React from 'react'
 import SongCard from '@/components/SongCard'
 
-function RecentSongs({recentSongs}) {
+function RecentSongs({recentSongs, setBgColor}) {
   return (
     <>
     {recentSongs?.length > 0 && <div className='home__recent__songs'>
@@ -15,6 +15,7 @@ function RecentSongs({recentSongs}) {
             song={recent} 
             data={recentSongs}
             index={index}
+            onMouseOver={() => setBgColor(`#${recent?.images?.joecolor.slice(18,24)}`)}
           />
         ))}
       </div>

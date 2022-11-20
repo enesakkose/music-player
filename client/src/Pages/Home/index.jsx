@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react'
-import SongCard from '@/components/SongCard'
-import { useSelector, useDispatch } from 'react-redux'
-import { setRecentSongs } from '@/store/song'
+import React, { useState } from 'react'
 import RecentSongs from '@/Pages/Home/RecentSongs'
 import Loading from '@/components/Loading'
+import { useSelector } from 'react-redux'
 import '@/Pages/Home/Home.scss'
 
 function Home() {
+  const [bgColor, setBgColor] = useState('')
   const { defaultPlaylists } = useSelector(state => state.playlist)
 
   if(defaultPlaylists === null) return <Loading/>
@@ -15,7 +14,8 @@ function Home() {
 
   return (
     <section className='home'>
-      <RecentSongs recentSongs={recentSongs}/>
+      <RecentSongs recentSongs={recentSongs} setBgColor={setBgColor}/>
+      <div className="home__bg" style={{ backgroundColor: `${bgColor}` }}/>
     </section>
   )
 }
