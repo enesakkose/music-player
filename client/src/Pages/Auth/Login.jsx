@@ -20,8 +20,8 @@ function Login({changeContent, setChangeContent}) {
   }
   
   const continueGoogle = async() => {
-    await loginWithGoogle()
-    navigate('/', { replace: true })
+    const user = await loginWithGoogle()
+    if(user) navigate('/', { replace: true })
   }
 
   return (
