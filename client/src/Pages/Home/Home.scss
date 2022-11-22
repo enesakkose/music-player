@@ -17,14 +17,26 @@
         transition: 500ms background-color ease-in-out;
     }
 
-    &__recent__songs{
-        
-        &__cards{
-            height: 100%;
-            padding: $PL 0;
-            display: grid;
-            grid-template-columns: repeat( auto-fill, minmax(11.875rem, 1fr));
-            gap: 1.5rem;
+    &List{
+        height: 100%;
+        padding: $PL 0;
+        display: grid;
+        grid-template-columns: repeat( auto-fill, minmax(11.875rem, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .playlistsHighlight{
+        &__title{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            a{
+                
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }
