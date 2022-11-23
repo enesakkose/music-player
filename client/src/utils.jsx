@@ -36,16 +36,3 @@ export const popup = (open, name = false, text = false) => {
         text
     }))
 }
-
-export const addFavoriteHandle = (thereFavPlaylist, song) => {
-    if(thereFavPlaylist){
-        store.dispatch(setFavorite(false))
-        store.dispatch(deleteFavorites(song.key))
-        popup(true, 'FavoritePopup')
-        //THIS VALUE OPEN FOR EVERY SITUATION 
-    }else{
-        store.dispatch(setFavorite(true))
-        store.dispatch(setFavoritesPlaylist(song))
-        popup(true, 'FavoritePopup')
-    }
-}
