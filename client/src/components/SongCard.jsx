@@ -11,11 +11,12 @@ function SongCard({song, index, data, ...props}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
 
-
   const updateCurrent = () => {
-      dispatch(setCurrent({ song, index }))
-      dispatch(setCurrentSongs(data))
-
+      if(current.key !== song.key){
+        dispatch(setCurrent({ song, index }))
+        dispatch(setCurrentSongs(data))
+      }
+ 
       if(current.key === song.key) return dispatch(playPause(!isPlaying))
       if(current.key !== song.key) return dispatch(playPause(true))
   }
