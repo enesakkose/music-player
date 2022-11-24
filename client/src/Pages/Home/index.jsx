@@ -19,7 +19,7 @@ function Home() {
       {recentSongs.length > 0 && 
         <CardListLayout 
           data={recentSongs}
-          link='/'
+          link='/recentSongs'
           title='Recent Songs'
           onMouseOver={true}
           setBgColor={setBgColor}
