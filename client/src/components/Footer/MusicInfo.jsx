@@ -12,7 +12,7 @@ function MusicInfo() {
   const { current, isActive } = useSelector(state => state.player)
 
   return (
-    <div>
+    <>
       {isActive && <div className={`footer__music__info ${openCover ? 'openCover' : ''}`}>
         <div className='footer__music__info__cover'>
           <img src={current?.images?.coverart} alt={current?.title}/>
@@ -40,7 +40,7 @@ function MusicInfo() {
           />
         </div>
     </div>}
-    </div>
+    </>
   )
 }
 

@@ -5,6 +5,7 @@
     animation: closeCover .3s ease-in-out;
     gap: 1.5rem;
     height: 100%;
+    grid-area: info;
 
     &__cover{
         width: 3.5rem;
