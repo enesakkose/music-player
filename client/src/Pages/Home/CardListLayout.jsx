@@ -3,7 +3,14 @@ import SongCard from '@/components/SongCard'
 import PlaylistInfoCard from '@/components/PlaylistInfoCard'
 import { Link } from 'react-router-dom'
 
-function CardListLayout({ title, link, data, playlist = false, onMouseOver = false, ...props }) {
+function CardListLayout({ 
+  title, 
+  link, 
+  data, 
+  playlist = false, 
+  onMouseOver = false, 
+  ...props }) {
+    
   return (
     <section className='cardListLayout'>
       <div className="cardListLayout__title">
