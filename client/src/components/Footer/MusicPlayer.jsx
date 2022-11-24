@@ -12,10 +12,11 @@ function MusicPlayer({volume, muted}) {
   const audioRef = useRef(null)
   const dispatch = useDispatch()
   const { current, isPlaying, isActive, currentIndex, currentSongs } = useSelector(state => state.player)
+  const { defaultPlaylists } = useSelector(state => state.playlist)
   const [duration, setDuration] = useState(0)
   const [seekTime, setSeekTime] = useState(0)
   const [songTime, setSongTime] = useState(0)
-
+  
   if(audioRef.current){
     if(isPlaying) {
       audioRef.current.play()
@@ -25,8 +26,11 @@ function MusicPlayer({volume, muted}) {
   }
 
   useEffect(() => {
-    dispatch(playPause(true))
-    if(isActive === true) addSongToRecentSong(current)
+    if(isActive === true) {
+      dispatch(playPause(true))
+      addSongToRecentSong(current, defaultPlaylists[0]?.recentSongs)
+      localStorage.setItem('currentSong', JSON.stringify(current))
+    }   
   }, [current])
 
   useEffect(() => {
@@ -46,7 +50,7 @@ function MusicPlayer({volume, muted}) {
   }, [seekTime])
 
   const handlePlayPause = () => {
-    if(!isActive) return
+    if(!current.key) return
     if(isPlaying) return dispatch(playPause(false))
     if(!isPlaying) return dispatch(playPause(true))
   }
@@ -57,7 +61,7 @@ function MusicPlayer({volume, muted}) {
   }
 
   const handlePrevSong = () => {
-    if (currentIndex === 0) return dispatch(prevSong(currentSongs.length - 1)) 
+    if(currentIndex === 0) return dispatch(prevSong(currentSongs.length - 1)) 
     if(currentIndex !== 0) return dispatch(prevSong(currentIndex - 1))
   }
 
@@ -77,7 +81,7 @@ function MusicPlayer({volume, muted}) {
     },
     [handlePlayPause]
   )
-
+  
   useEffect(() => {
     document.addEventListener("keydown", handlePress);
     return () => document.removeEventListener("keydown", handlePress);
@@ -90,7 +94,7 @@ function MusicPlayer({volume, muted}) {
         ref={audioRef}
         onEnded={handleNextSong}
         muted={muted}
-        autoPlay={true}
+        autoPlay={isPlaying ? true : false}
         onTimeUpdate={(e) => setSongTime(e.target.currentTime)}
         onLoadedData={(e) => setDuration(e.target.duration)}
       />
@@ -104,7 +108,7 @@ function MusicPlayer({volume, muted}) {
         </button>
         <PlayBtn
           onClick={handlePlayPause} 
-          playPause={isPlaying && isActive} className='footer__playBtn' 
+          playPause={isPlaying && current.key} className='footer__playBtn' 
         />
         <button
           disabled={!isActive} 

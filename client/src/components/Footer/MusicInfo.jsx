@@ -9,11 +9,11 @@ import '@/components/Footer/MusicInfo.scss'
 function MusicInfo() {
   const dispatch = useDispatch()
   const { openCover } = useSelector(state => state.playlist)
-  const { current, isActive } = useSelector(state => state.player)
+  const { current } = useSelector(state => state.player)
 
   return (
     <>
-      {isActive && <div className={`footer__music__info ${openCover ? 'openCover' : ''}`}>
+      {current.key && <div className={`footer__music__info ${openCover ? 'openCover' : ''}`}>
         <div className='footer__music__info__cover'>
           <img src={current?.images?.coverart} alt={current?.title}/>
           <button 
