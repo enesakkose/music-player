@@ -10,7 +10,7 @@ function Search() {
   return (
     <div className='search'>
       {querySongs.length < 2 && <Categories/>}
-      <SearchResult querySongs={querySongs}/>
+      {querySongs.length > 1 && <SearchResult querySongs={querySongs}/>}
     </div>
   )
 }
