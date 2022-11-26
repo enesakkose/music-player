@@ -5,17 +5,4 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-
-    &Btn{
-        background-color: $WHITE;
-        color: $BLACK;
-        font-weight: 600;
-        padding: $PS $PM;
-        border-radius: 1.5rem;
-        font-size: 1rem;
-
-        &:hover{
-            transform: scale(1.09);
-        }
-    }
 }

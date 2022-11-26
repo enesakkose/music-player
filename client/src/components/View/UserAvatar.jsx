@@ -20,7 +20,7 @@ function UserAvatar() {
   })
 
   const openUserInfo = () => {
-    modal('UserInfoModal', user)
+    modal('UserInfoModal')
     setOpenAvatarMenu(false)
   }
 
