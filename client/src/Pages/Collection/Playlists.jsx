@@ -1,6 +1,7 @@
 import React from 'react'
 import EmptyField from '@/components/EmptyField'
 import FavoritesCard from '@/components/FavoritesCard'
+import LightBtn from '@/components/LightBtn'
 import PlaylistInfoCard from '@/components/PlaylistInfoCard'
 import Loading from '@/components/Loading'
 import { addPlaylistHandle } from '@/firebase/db'
@@ -29,9 +30,7 @@ function Playlists() {
         ? <EmptyField 
             icon='Music'
           >
-            <button onClick={handleAdd} className='emptyFieldBtn'>
-              Create Playlist
-            </button>
+            <LightBtn onClick={handleAdd} text='Create Playlist'/>
           </EmptyField>  
 
         : <div className="playlists__cards">
