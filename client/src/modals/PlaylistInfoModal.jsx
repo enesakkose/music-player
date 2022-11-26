@@ -1,43 +1,63 @@
 import React from 'react'
 import CustomInput from '@/components/CustomInput'
 import Icon from '@/components/Icon'
+import LightBtn from '@/components/LightBtn'
 import ModalHeader from '@/components/Modal/ModalHeader'
+import { useFindPlaylist } from '@/hooks/useFindPlaylist'
+import { uploadImg, deleteImg } from '@/firebase/storage'
 import { closeModalHandle } from '@/utils'
 import { updatePlaylist } from '@/firebase/db'
 import { Form, Formik } from 'formik'
 import { playlistInfoSchema } from '@/forms/schemas'
 import '@/modals/PlaylistInfoModal.scss'
 
-function PlaylistInfoModal({data, outClickRef}) {
-
+function PlaylistInfoModal({data: playlistId, outClickRef}) {
+  const playlistInfo = useFindPlaylist(playlistId)
+  
+  const handleUpload = async(e) => {
+    await uploadImg(e.target.files[0], playlistInfo.id)
+    e.target.value = null
+  }
   const onSubmit = async(values) => {
-    const updatePlaylistProcess = await updatePlaylist(data.id, {
-      name: values.playlistName,
-      coverURL: values.coverURL
+    const updatePlaylistProcess = await updatePlaylist(playlistInfo.id, {
+      name: values.playlistName
     })
     {updatePlaylistProcess && closeModalHandle()}
   }
 
-  const dataSongs = data?.addedSongs?.length > 0
-  const coverImage = data?.addedSongs[0]?.track?.images?.coverart
+  const deleteImgHandle = async() => {
+    await deleteImg(playlistInfo.coverURL)
+    await updatePlaylist(playlistId,{
+      coverURL: null
+    })
+  }
+
+  const songsInPlaylist = playlistInfo?.addedSongs?.length > 0
+  const coverImage = playlistInfo?.addedSongs[0]?.track?.images?.coverart
 
   return (
     <div ref={outClickRef} className='modalContent playlistInfoModal'>
       <ModalHeader title='Edit Details'/>
       <Formik 
-        initialValues={{ playlistName: data?.name, coverURL: data?.coverURL }}
+        initialValues={{ playlistName: playlistInfo?.name }}
         validationSchema={playlistInfoSchema}
         onSubmit={onSubmit}
       >
         {({isSubmitting}) => (
           <Form className='playlistInfoModal__form'>
             <div className="playlistInfoModal__form__img">
-              {data.coverURL === null && <Icon name='Music' size={64}/>}
-              {data.coverURL === null && dataSongs && <img src={coverImage} alt="img"/>}
-              {data.coverURL !== null && <img src={data.coverURL} alt="img"/>}
-              <button type='button'  className='playlistInfoModal__form__img__changeBtn'>
-                <Icon name='Pencil' size={16}/>
+              {playlistInfo.coverURL === null && <Icon name='Music' size={64}/>}
+              {playlistInfo.coverURL === null && songsInPlaylist && <img src={coverImage} alt="img"/>}
+              {playlistInfo.coverURL !== null && <img src={playlistInfo.coverURL} alt="img"/>}
+              <div className='imgChange'>
+              <label className='imgChange__btn'>
+                <Icon name='Pencil' size={20}/>
+                <input type='file' onChange={handleUpload} accept="image/png, image/jpeg" hidden/>
+              </label>
+              <button type='button' onClick={deleteImgHandle} className='imgChange__btn'>
+                <Icon name='Trash' size={20}/>
               </button>
+              </div>
             </div>
             <div className='playlistInfoModal__form__input'>
               <CustomInput
@@ -51,23 +71,11 @@ function PlaylistInfoModal({data, outClickRef}) {
                   Playlist Name
                 </span>
               </CustomInput>
-              <CustomInput
-                labelClassName='playlistInfoModal__form__input__item'
-                type='text'
-                name='coverURL'
-                placeholder='Cover'
-                autoComplete='off'
-              >
-                <span className='playlistInfoModal__form__input__item__name'>
-                  Cover Url
-                </span>
-              </CustomInput>
-              <button 
+              <LightBtn
+                text='Save' 
                 type='submit' 
-                className={`playlistInfoModal__form__input__submit ${isSubmitting ? 'isSubmitting' : ''}`}
-              >
-                Save
-              </button>
+                className={`submitBtn ${isSubmitting ? 'isSubmitting' : ''}`}
+              />
             </div>
           </Form>
         )}

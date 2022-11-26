@@ -2,14 +2,48 @@
 
     &__form{
         display: grid;
-        grid-template-columns: 11.5rem 17.5rem;
-        gap: 2rem;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 1.5rem;
+
+        .profileImgChange{
+            position: relative;
+            height: 11.25rem;
+
+            .pencilBtn{
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                border-radius: 50%;
+                color: rgba($WHITE, .6);
+                background-color: rgba($GRAY, .5);
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+
+                &__remove{
+                    font-weight: bold;
+                    text-decoration: underline;
+                    color: $WHITE;
+                }
+            }
+
+            &:hover .pencilBtn{
+                opacity: 1;
+            }
+        }
+
 
         &__inputs{
             display: flex;
             flex-direction: column;
+            justify-content: center;
             gap: .875rem;
-        
+            
             &__input{
                 display: flex;
                 flex-direction: column;
@@ -22,19 +56,8 @@
                 
             }
 
-            &__submit{
-                padding: $PXS $PM;
+            .submitBtn{
                 align-self: flex-end;
-                background-color: $WHITE;
-                text-align: center;
-                color: $BLACK;
-                font-weight: bold;
-                font-size: 1rem;
-                border-radius: 1.5rem;
-                
-                &:active{
-                    transform: translateY(.5px);
-                }
             }
         }
     }

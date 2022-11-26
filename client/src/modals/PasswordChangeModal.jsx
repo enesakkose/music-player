@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import CustomInput from '@/components/CustomInput'
 import PasswordInput from '@/components/PasswordInput'
 import ModalHeader from '@/components/Modal/ModalHeader'
+import LightBtn from '@/components/LightBtn'
 import { updateUserPassword, updateMail } from '@/firebase/auth'
 import { passwordChangeSchema, emailChangeSchema } from '@/forms/schemas'
 import { auth } from '@/firebase/auth'
@@ -56,12 +57,11 @@ function PasswordChangeModal({ outClickRef }) {
                   autoComplete='off'
                 />
 
-                <button 
+                <LightBtn 
                   type='submit' 
-                  className={clsx('passwordChangeModal__content__password__form__submitBtn', isSubmitting ? 'submittingBtn' : '')}
-                >
-                  Confirm
-                </button>
+                  text='Confirm'
+                  className={clsx('submitBtn', isSubmitting ? 'submittingBtn' : '')}
+                />
               </Form>
             )}
           </Formik>
@@ -96,14 +96,13 @@ function PasswordChangeModal({ outClickRef }) {
                     Password
                   </span>
                 </CustomInput>
-                <button 
+                <LightBtn
+                  text='Confirm'
                   type='submit' 
-                  className={clsx('passwordChangeModal__content__email__form__submitBtn',
+                  className={clsx('submitBtn',
                     isSubmitting ? 'submittingBtn' : ''
                   )}
-                >
-                  Confirm
-                </button>
+                />
               </Form>
             )}
           </Formik>
