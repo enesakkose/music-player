@@ -3,14 +3,16 @@ import clsx from 'clsx'
 import { useField } from 'formik'
 import '@/components/CustomInput.scss'
 
-function CustomInput({labelClassName, children, className, ...props}) {
+function CustomInput({labelClassName, children, inputTitle = false, className, ...props}) {
 
   const [ field, meta ] = useField(props)
     
   return (
     <>
       <label className={clsx('customInputLabel',labelClassName)}>
-        {children}
+        <span className='customInputLabel__title'>
+          {inputTitle}
+        </span>
         <input 
           {...field} 
           {...props}

@@ -66,21 +66,17 @@ function UserInfoModal({outClickRef}) {
                   Remove Photo
                 </button>
               </div>
-              <input id='file' type='file' onChange={handleUpload} accept="image/.jpg, image/.jpeg, image/.png" hidden/>
+              <input id='file' type='file' onChange={handleUpload} accept="image/png, image/jpeg" hidden/>
             </label>
             <div className="userInfoModal__form__inputs">
               <CustomInput
                 labelClassName='userInfoModal__form__inputs__input'
                 type='text'
                 name='displayName'
+                inputTitle='Name'
                 placeholder='Name'
                 autoComplete='off'
-              >
-                <span className='userInfoModal__form__inputs__input__span'>
-                  Name
-                </span>
-              </CustomInput>
-
+              />
               <LightBtn 
                 type='submit' 
                 text='Save' 

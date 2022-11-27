@@ -9,17 +9,14 @@ function PasswordInput({title, name='password', ...rest}) {
 
   return (
     <div className='passwordInput'>
-    <CustomInput
-      labelClassName='passwordInput__label inputContain'
-      type={showPassword ? 'text' : 'password'}
-      name={name}
-      className='passwordInput__label__input'
-      {...rest}
-    >
-      <span className='passwordInput__label__title'>
-        {title}
-      </span>
-    </CustomInput>
+      <CustomInput
+        labelClassName='passwordInput__label inputContain'
+        type={showPassword ? 'text' : 'password'}
+        name={name}
+        inputTitle={title}
+        className='passwordInput__label__input'
+        {...rest}
+      />
       <button type="button" onClick={() => setShowPassword(!showPassword)} className='eyeBtn'>
         <Icon name={showPassword ? 'CloseEye' : 'Eye'} size={22}/>
       </button>

@@ -64,13 +64,10 @@ function PlaylistInfoModal({data: playlistId, outClickRef}) {
                 labelClassName='playlistInfoModal__form__input__item'
                 type='text'
                 name='playlistName'
+                inputTitle='Playlist Name'
                 placeholder='Playlist Name'
                 autoComplete='off'
-              >
-                <span className='playlistInfoModal__form__input__item__name'>
-                  Playlist Name
-                </span>
-              </CustomInput>
+              />
               <LightBtn
                 text='Save' 
                 type='submit' 

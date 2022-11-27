@@ -49,14 +49,13 @@ function PasswordChangeModal({ outClickRef }) {
                   placeholder='New Password'
                   name='newPassword'
                   autoComplete='off'
-                />
+                  />
                 <PasswordInput 
                   title='Confirm Password' 
                   placeholder='Confirm Password'
                   name='confirmPassword'
                   autoComplete='off'
                 />
-
                 <LightBtn 
                   type='submit' 
                   text='Confirm'
@@ -78,24 +77,18 @@ function PasswordChangeModal({ outClickRef }) {
                   labelClassName='passwordChangeModal__content__email__form__label'
                   type='email'
                   name='newEmail'
+                  inputTitle='Email'
                   placeholder='Email'
                   autoComplete='off'
-                >
-                  <span className='passwordChangeModal__content__email__form__label__input__name'>
-                    Email
-                  </span>
-                </CustomInput>
+                />
                 <CustomInput
                   labelClassName='passwordChangeModal__content__email__form__label'
                   type='password'
                   name='confirmPassword'
+                  inputTitle='Password'
                   placeholder='Password'
                   autoComplete='off'
-                >
-                  <span className='passwordChangeModal__content__email__form__label__input__name'>
-                    Password
-                  </span>
-                </CustomInput>
+                />
                 <LightBtn
                   text='Confirm'
                   type='submit' 
