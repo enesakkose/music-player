@@ -8,8 +8,8 @@ function ErrorFallback() {
   
   return (
     <App404 className='errorFallback' errorMessage='Something went wrong'>
-      <button className='backBtn' onClick={() => navigate(-1)}>
-        BACK
+      <button className='backBtn' onClick={() => navigate(0)}>
+        TRY AGAIN
       </button>
     </App404>
   )
