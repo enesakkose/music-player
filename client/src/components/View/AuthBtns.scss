@@ -1,0 +1,14 @@
+.authBtns{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    &__signup{
+        color: $WHITE;
+        background-color: transparent;
+    }
+
+    &__login{
+        color: $BLACK;
+    }
+}
