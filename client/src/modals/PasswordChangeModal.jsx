@@ -2,6 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import CustomInput from '@/components/CustomInput'
 import PasswordInput from '@/components/PasswordInput'
+import ForgetPassword from '@/components/ForgetPassword'
 import ModalHeader from '@/components/Modal/ModalHeader'
 import LightBtn from '@/components/LightBtn'
 import { updateUserPassword, updateMail } from '@/firebase/auth'
@@ -38,20 +39,23 @@ function PasswordChangeModal({ outClickRef }) {
           >
             {({isSubmitting}) => (
               <Form className='passwordChangeModal__content__password__form'>
-                <PasswordInput 
-                  title='Current Password' 
+                <CustomInput
+                  type='password' 
+                  inputTitle='Current Password' 
                   placeholder='Current Password'
                   name='password'
                   autoComplete='off'
                 />
-                <PasswordInput 
-                  title='New Password' 
+                <CustomInput
+                  type='password' 
+                  inputTitle='New Password' 
                   placeholder='New Password'
                   name='newPassword'
                   autoComplete='off'
                   />
-                <PasswordInput 
-                  title='Confirm Password' 
+                <CustomInput
+                  type='password'
+                  inputTitle='Confirm Password' 
                   placeholder='Confirm Password'
                   name='confirmPassword'
                   autoComplete='off'
@@ -60,10 +64,11 @@ function PasswordChangeModal({ outClickRef }) {
                   type='submit' 
                   text='Confirm'
                   className={clsx('submitBtn', isSubmitting ? 'submittingBtn' : '')}
-                />
+                  />
               </Form>
             )}
           </Formik>
+          <ForgetPassword/>
         </div>
         <div className='passwordChangeModal__content__email'>
           <Formik

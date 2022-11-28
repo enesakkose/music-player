@@ -94,3 +94,10 @@ export const emailChangeSchema = yup.object().shape({
       .min(8,'')
       .required('Min 8 characters')
 })
+
+export const resetPasswordEmailSchema = yup.object().shape({
+    email: yup
+      .string()
+      .email('Please enter a valid email')
+      .required("Please enter a valid email")
+})
