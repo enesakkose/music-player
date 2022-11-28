@@ -37,7 +37,7 @@ function Profile() {
   const follow = async() => {
     await followOrUnfollow(profiles, user)
   }
-  
+  //profilePage created
   const findInFollowers = profiles[0].follower.find(profile => profile.uid === user.uid)
   const validProfile = profiles[0]?.uid === user.uid
 
