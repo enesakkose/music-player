@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     gap: .5rem;
+    grid-area: player;
 
     &__actionBtns{
         display: flex;

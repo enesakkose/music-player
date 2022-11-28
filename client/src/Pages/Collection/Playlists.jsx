@@ -1,7 +1,9 @@
 import React from 'react'
-import EmptyPlaylist from '@/components/EmptyPlaylist'
+import EmptyField from '@/components/EmptyField'
 import FavoritesCard from '@/components/FavoritesCard'
+import LightBtn from '@/components/LightBtn'
 import PlaylistInfoCard from '@/components/PlaylistInfoCard'
+import Loading from '@/components/Loading'
 import { addPlaylistHandle } from '@/firebase/db'
 import { v4 as uuidv4 } from 'uuid'
 import { useSelector } from 'react-redux'
@@ -12,7 +14,10 @@ function Playlists() {
   const id = uuidv4()
   const navigate = useNavigate()
   const { playlists } = useSelector(state => state.playlist)
+  const { defaultPlaylists } = useSelector(state => state.playlist)
   const { user } = useSelector(state => state.auth)
+
+  if(defaultPlaylists === null) return <Loading/>
 
   const handleAdd = async() => {
     await addPlaylistHandle(playlists, id, user.uid)
@@ -22,21 +27,20 @@ function Playlists() {
   return (
     <div className='playlists contentSpacing'>
       { playlists.length === 0 
-        ? <div className="playlists__empty">
-            <EmptyPlaylist 
-            title='Create your first playlist'
-            text="It's easy, we'll help you."
-            >
-              <button onClick={handleAdd} className='emptyPlaylistBtn'>
-                Create Playlist
-              </button>
-            </EmptyPlaylist>  
-          </div>
+        ? <EmptyField 
+            icon='Music'
+          >
+            <LightBtn onClick={handleAdd} text='Create Playlist'/>
+          </EmptyField>  
 
         : <div className="playlists__cards">
-            <FavoritesCard/>
+            <FavoritesCard defaultPlaylists={defaultPlaylists}/>
             {playlists.map((playlist) => (
-              <PlaylistInfoCard key={playlist.id} playlist={playlist} />
+              <PlaylistInfoCard 
+                key={playlist.id} 
+                playlist={playlist} 
+                user={user}
+              />
             ))}
           </div>  
       }

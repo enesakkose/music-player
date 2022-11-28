@@ -10,6 +10,7 @@ function MusicTool({ volume, setVolume, muted, setMuted }) {
   const [mutedVolume,setMutedVolume] = useState(0)
 
   const volumeIcon = useMemo(() => {
+    localStorage.setItem('currentVolume', JSON.stringify(volume))
     if(muted === true || volume === 0 ) return 'Unmute'
     if(volume > 0 && volume < .33) return 'VolumeLow'
     if(volume >= .33 && volume < .66) return 'Volumemedium'

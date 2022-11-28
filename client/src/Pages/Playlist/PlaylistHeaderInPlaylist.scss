@@ -2,42 +2,14 @@
     background: $playlistMainColor;
     background-image: $grayLinear;
     transition: .5s background ease-in-out;
-
-    &__cover{
-        background-color: $darkGray;
-        position: relative;
-        cursor: pointer;
+    position: relative;
+    
 
         &__action{
-            display: none;
-            align-items: center;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        &:hover{
-            span{
-                display: flex;
-                position: absolute;
-                inset: 0;
-                background-color: rgba(0, 0, 0, 0.3);
-                //todo will be arranged according to image
-                font-weight: 600;
-                
-            }
-        }
-        
-    }
-
-    &__info{
-
-        &__userName{
-            position: relative;
             margin-bottom: $MXS;
             display: flex;
             align-items: center;
-            gap: 50px;
-
+            gap: 2rem;
             a{
 
                 &:hover{
@@ -47,6 +19,7 @@
             
             .playlistAction-btn{
                 height: 2rem;
+                
 
                 &:hover{
                     color: $WHITE;
@@ -54,7 +27,8 @@
             }
 
             .playlistActionMenu{
-                top: 2.62rem;
+                position: absolute;
+                bottom: -7.5rem;
                 z-index: 2; 
                 
                 button{
@@ -63,5 +37,4 @@
                 } 
             }
         }
-    }
 }

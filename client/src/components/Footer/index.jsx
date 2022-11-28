@@ -5,7 +5,7 @@ import MusicTool from '@/components/Footer/MusicTool'
 import '@/components/Footer/Footer.scss'
 
 function Footer() {
-  const [volume, setVolume] = useState(0.3)
+  const [volume, setVolume] = useState(JSON.parse(localStorage.getItem('currentVolume')) || 0.3)
   const [muted, setMuted] = useState(false)
 
   return (

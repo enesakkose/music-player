@@ -1,0 +1,32 @@
+.main{
+    flex: 1;
+    display: flex;
+    background-color: $secondaryColor;
+    color: $WHITE;
+    width: 100%;
+    height: calc(100vh - 6.25rem);
+    
+    .viewLayout{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: overlay;
+        
+        &::-webkit-scrollbar{
+            width: 15px;
+            
+        }
+    
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+            
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba($WHITE, .3);
+    
+            &:hover{
+                background-color: rgba($WHITE, .5);
+            }
+        }
+    }
+}

@@ -9,12 +9,12 @@ import '@/components/SongsTableList.scss'
 function SongsTableList({children, className, index, song, findSongs}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
-  const { favoritesPlaylist } = useSelector(state => state.playlist)
-  const thereHavePlaylist = favoritesPlaylist.find(f => f.key === song.key)
 
   const listPlayBtn = () => {
-    dispatch(setCurrent({song, index}))
-    dispatch(setCurrentSongs(findSongs))
+    if(current.key !== song.key){
+      dispatch(setCurrent({song, index}))
+      dispatch(setCurrentSongs(findSongs))
+    }
     
     if(current.key === song.key) return dispatch(playPause(!isPlaying))
     if(current.key !== song.key) return dispatch(playPause(true))
@@ -46,8 +46,7 @@ function SongsTableList({children, className, index, song, findSongs}) {
       {children}
       <FavoriteBtn 
         song={song}
-        thereFavPlaylist={thereHavePlaylist}
-        className={`songsTableListItem__favBtn ${thereHavePlaylist ? 'liked' : ''}`}
+        className='songsTableListItem__favBtn'
       />
     </div>
   )

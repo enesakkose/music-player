@@ -1,20 +1,22 @@
 import React from 'react'
-import { useField } from 'formik'
 import clsx from 'clsx'
+import { useField } from 'formik'
 import '@/components/CustomInput.scss'
 
-function CustomInput({labelClassName, children, ...props}) {
+function CustomInput({labelClassName, children, inputTitle = false, className, ...props}) {
 
   const [ field, meta ] = useField(props)
     
   return (
     <>
       <label className={clsx('customInputLabel',labelClassName)}>
-        {children}
+        <span className='customInputLabel__title'>
+          {inputTitle}
+        </span>
         <input 
           {...field} 
           {...props}
-          className={meta.touched && meta.error ? 'inputError' : ''}
+          className={clsx(meta.touched && meta.error ? 'inputError' : '', className)}
         />
         {meta.touched && meta.error && <p className='errorText'>{meta.error}</p>}
       </label>

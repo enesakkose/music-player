@@ -23,6 +23,12 @@
                 }
         }
 
+        &__logo{
+            a{
+                color: $GREEN;
+            }
+        }
+
         h5{
             padding-bottom: $PM;
             color: $WHITE;

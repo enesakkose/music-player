@@ -12,6 +12,7 @@
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
     "clsx": "^1.2.1",
+    "emoji-picker-react": "^4.4.4",
     "firebase": "^9.10.0",
     "formik": "^2.2.9",
     "lodash": "^4.17.21",

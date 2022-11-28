@@ -1,0 +1,16 @@
+.lightBtn{
+    background-color: $WHITE;
+    color: $BLACK;
+    font-weight: bold;
+    padding: $PS $PM;
+    border-radius: 1.5rem;
+    font-size: 1rem;
+
+    &:hover{
+        transform: scale(1.09);
+    }
+}
+
+.isSubmitting{
+    opacity: .5;
+}

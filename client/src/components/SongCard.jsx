@@ -6,17 +6,17 @@ import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import { useDispatch, useSelector } from 'react-redux'
 import '@/components/SongCard.scss'
 
-function SongCard({song, index, data}) {
+function SongCard({song, index, data, ...props}) {
   const location = useLocation()
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
-  const issueRoute = routes.find(route => route.path === location.pathname)
-  // This variable was created in order not to affect client because genre names are different in API
 
   const updateCurrent = () => {
-      dispatch(setCurrent({ song, index }))
-      dispatch(setCurrentSongs(data))
-
+      if(current.key !== song.key){
+        dispatch(setCurrent({ song, index }))
+        dispatch(setCurrentSongs(data))
+      }
+ 
       if(current.key === song.key) return dispatch(playPause(!isPlaying))
       if(current.key !== song.key) return dispatch(playPause(true))
   }
@@ -24,7 +24,7 @@ function SongCard({song, index, data}) {
   const isActiveBtn = current?.key === song?.key && isPlaying
   
   return (
-    <div className='songCard'>
+    <div className='songCard' {...props}>
       <div className="songCard__img" style={{ backgroundColor: `#${backgroundColor}`}}>
         <img src={song.images.coverart} alt={song.title} />
         <PlayBtn
@@ -37,7 +37,7 @@ function SongCard({song, index, data}) {
         <h5 className='songCard__info__title'>{song.title}</h5>
         <span className='songCard__info__subtitle'>{song.subtitle}</span>
       </div>
-      {!issueRoute && <Link to={`/album/${song.key}`} className='perde'></Link>}
+      <Link to={`/album/${song.key}`} className='perde'></Link>
     </div>
   )
 }

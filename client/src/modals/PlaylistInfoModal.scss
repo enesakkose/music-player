@@ -1,14 +1,4 @@
 .playlistInfoModal{
-    background-color: $GRAY;
-    padding: $PM $PL;
-    border-radius: .5rem;
-
-    &__header{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: $PM;
-    }
 
     &__form{
         display: grid;
@@ -16,26 +6,46 @@
         gap: 1.5rem;
 
         &__img{
-            width: 180px;
-            height: 180px;
+            width: 11.25rem;
+            height: 11.25rem;
             background-color: $earlGray;
             box-shadow: $cover;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
             
-            &__changeBtn{
-                padding: $PXS;
-                background-color: rgba($WHITE, .1);
-                border-radius: 50%;
+            .imgChange{
                 opacity: 0;
                 position: absolute;
                 top: .5rem;
                 right: .5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                &__btn{
+                    background-color: $BLACK;
+                    border-radius: 50%;
+                    padding: $PXS;
+                    cursor: pointer;
+                    width: 2.25rem;
+                    height: 2.25rem;
+                    color: rgba($WHITE, .5);
+
+                    &:active{
+                        color: $WHITE;
+                    }
+                }
             }
 
-            &:hover &__changeBtn{
+            &:hover .imgChange{
                 opacity: 1;
             }
         }
@@ -57,23 +67,8 @@
                 }
             }
             
-            &__submit{
-                background-color: $WHITE;
-                color: $BLACK;
-                font-weight: bold;
-                font-size: 1rem;
-                border-radius: 1.5rem;
-                padding: $PS $PL;
-                margin-left: auto;
-                width: max-content;
-                
-                &:active{
-                    transform: translateY(1px);
-                }
-            }
-
-            .isSubmitting{
-                opacity: .5;
+            .submitBtn{
+                align-self: flex-end;
             }
         }
     }

@@ -19,7 +19,7 @@
             color: $BLACK;
         }
 
-        &__googleBtn{
+        .googleBtn{
             color: $GRAY;
             display: flex;
             align-items: center;
@@ -65,15 +65,10 @@
             gap: 1.5rem;
 
             input{
-                background-color: transparent;
-                border: 2px solid $earlGray;
-                border-radius: .25rem;
-                padding: $PS;
+                border-color: $earlGray;
+                color: $BLACK;
+                padding: $PM $PS;
                 font-size: .875rem;
-
-                &:focus{
-                    border-color: $BLACK;
-                }
             }
 
             &__title{
@@ -81,34 +76,28 @@
             }
         }
 
-        &__actionBtns{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .submitBtn{
+            display: block;
+            background-color: $GREEN;
 
-            &__forgot{
-
-                &:hover{
-                    text-decoration: underline;
-                }
+            &:hover{
+                transform: scale(1.01);
             }
-
-            &__login{
-                background-color: $GREEN;
-                padding: $PS;
-                border-radius: 1.5rem;
-                font-weight: bold;
-                color: $BLACK;
-                letter-spacing: 1px;
-
-                &:hover{
-                    background-color: rgba($GREEN, .9);
-                }
-            }
-
         }
 
-        &__createAccount{
+        .loginForgetPassword{
+            align-self: flex-start;
+            width: 100%;
+
+
+            input{
+                border-color: $earlGray;
+                padding: $PM $PS;
+                color: $BLACK;
+            }
+        }
+
+        .contentChangeBtn{
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -118,7 +107,7 @@
             width: 100%;
 
             &__text{
-                font-weight: 700;
+                font-weight: bold;
             }
 
             &__link{

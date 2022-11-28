@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import Icon from '@/components/Icon'
 import PlayBtn from '@/components/PlayBtn'
 import CustomRange from '@/components/CustomRange'
 import { useTimeConvert } from '@/hooks/useTimeConvert'
 import { useSelector, useDispatch } from 'react-redux'
+import { addSongToRecentSong } from '@/firebase/db'
 import { playPause, nextSong, prevSong } from '@/store/player'
 import '@/components/Footer/MusicPlayer.scss'
 
@@ -11,10 +12,11 @@ function MusicPlayer({volume, muted}) {
   const audioRef = useRef(null)
   const dispatch = useDispatch()
   const { current, isPlaying, isActive, currentIndex, currentSongs } = useSelector(state => state.player)
+  const { defaultPlaylists } = useSelector(state => state.playlist)
   const [duration, setDuration] = useState(0)
   const [seekTime, setSeekTime] = useState(0)
   const [songTime, setSongTime] = useState(0)
-
+  
   if(audioRef.current){
     if(isPlaying) {
       audioRef.current.play()
@@ -24,7 +26,11 @@ function MusicPlayer({volume, muted}) {
   }
 
   useEffect(() => {
-    dispatch(playPause(true))
+    if(isActive === true) {
+      dispatch(playPause(true))
+      addSongToRecentSong(current, defaultPlaylists[0]?.recentSongs)
+      localStorage.setItem('currentSong', JSON.stringify(current))
+    }   
   }, [current])
 
   useEffect(() => {
@@ -44,7 +50,7 @@ function MusicPlayer({volume, muted}) {
   }, [seekTime])
 
   const handlePlayPause = () => {
-    if(!isActive) return
+    if(!current.key) return
     if(isPlaying) return dispatch(playPause(false))
     if(!isPlaying) return dispatch(playPause(true))
   }
@@ -55,7 +61,7 @@ function MusicPlayer({volume, muted}) {
   }
 
   const handlePrevSong = () => {
-    if (currentIndex === 0) return dispatch(prevSong(currentSongs.length - 1)) 
+    if(currentIndex === 0) return dispatch(prevSong(currentSongs.length - 1)) 
     if(currentIndex !== 0) return dispatch(prevSong(currentIndex - 1))
   }
 
@@ -64,6 +70,23 @@ function MusicPlayer({volume, muted}) {
     setSeekTime(value)
   }
 
+  const handlePress = useCallback(
+      (e) => {
+      if(e.which === 32 && 
+        isActive === true && 
+        document.activeElement.tagName.toLowerCase() === 'body'
+      ) {
+        handlePlayPause()
+      }  
+    },
+    [handlePlayPause]
+  )
+  
+  useEffect(() => {
+    document.addEventListener("keydown", handlePress);
+    return () => document.removeEventListener("keydown", handlePress);
+  }, [handlePress]);
+
   return (
     <div className="footer__music__player">
       <audio
@@ -71,7 +94,7 @@ function MusicPlayer({volume, muted}) {
         ref={audioRef}
         onEnded={handleNextSong}
         muted={muted}
-        autoPlay={true}
+        autoPlay={isPlaying ? true : false}
         onTimeUpdate={(e) => setSongTime(e.target.currentTime)}
         onLoadedData={(e) => setDuration(e.target.duration)}
       />
@@ -85,7 +108,7 @@ function MusicPlayer({volume, muted}) {
         </button>
         <PlayBtn
           onClick={handlePlayPause} 
-          playPause={isPlaying && isActive} className='footer__playBtn' 
+          playPause={isPlaying && current.key} className='footer__playBtn' 
         />
         <button
           disabled={!isActive} 

@@ -1,33 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import Icon from '@/components/Icon'
+import clsx from 'clsx'
 import SongsTableList from '@/components/SongsTableList'
 import SearchError from '@/components/SearchError'
+import AddOrRemoveBtn from '@/Pages/Playlist/PlaylistMain/AddOrRemoveBtn'
 import { useGetSearchSongsQuery } from '@/services/music'
-import { useDispatch } from 'react-redux'
-import { addSongToPlaylist } from '@/store/playlist'
-import { popup } from '@/utils'
+import { useFindPlaylist } from '@/hooks/useFindPlaylist'
+import { addOrRemoveAddedSongs } from '@/firebase/db'
 import { useDebounceValue } from '@/hooks/useDebounceValue'
 
 function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
-  const dispatch = useDispatch()
   const [skip, setSkip] = useState(true)//this state was used to for not send request when page first render 
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounceValue(search, 600)
   const {data, isFetching, error, isSuccess} = useGetSearchSongsQuery(debouncedSearch, { skip })
+  const findPlaylist = useFindPlaylist(playlistId)
 
   const handleSearch = (e) => {
     setSearch(e.target.value)
     setSkip(e.target.value.length > 1 ? false : true)
   }
 
-  const addPlaylist = (song) => {
-    dispatch(addSongToPlaylist({
-      id: playlistId,
+  const addOrRemove = (song) => {
+    addOrRemoveAddedSongs(playlistId, {
+      id: song.key,
       track: song,
       createdAt: new Date().toISOString()
-    }))
-    popup(true, 'AddSongPopup')
+    }, findPlaylist?.addedSongs)
   }
+
   useEffect(() => {
       setSkip(true)
       setSearch('')
@@ -38,8 +39,9 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
   return (
     <>
     <div className=
-      {`playlist__main__content__searchSongs ${show ? 'hide' : ''} 
-      ${isSuccess && !isFetching && show ? 'c' : ''}`}  
+      {clsx('playlist__main__content__searchSongs',
+      show ? 'hide' : '',
+      isSuccess && !isFetching && show ? 'c' : '')}  
     >
       <div className={`playlist__main__content__searchSongs__head ${show ? 'hideHead' : ''}`}>
         <div className='playlist__main__content__searchSongs__head__input'>
@@ -73,8 +75,8 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
           <Icon name={show ? 'Up' : 'Close'} size={35}/>
         </button>
       </div>
-        <div className={`playlist__main__content__searchSongs__list ${show ? 'hideSongsList' : ''}`}>
-          {isFetching  || error  && <SearchError text={search} status={error.status}/>}
+        <div className={clsx('playlist__main__content__searchSongs__list', show ? 'hideSongsList' : '')}>
+          {isFetching || error  && <SearchError text={search} status={error.status}/>}
           <ul className='playlist__main__content__searchSongs__list__items'>
             {isSuccess && !isFetching && searchSong.map((song,index) => (
               <li
@@ -86,12 +88,12 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
                   song={song.track}
                   findSongs={searchSong}
                 >
-                  <button 
-                    onClick={() => addPlaylist(song.track)} 
+                  <AddOrRemoveBtn 
+                    onClick={() => addOrRemove(song.track)}
+                    id={song.track.key}
+                    playlistId={playlistId}
                     className='addOrRemove'
-                  >
-                    Add
-                  </button>
+                  />
                 </SongsTableList>
               </li>
             ))}
@@ -101,5 +103,5 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
     </>
   )
 }
-//todo 75.satıra bak
+
 export default PlaylistMainSearchSongs

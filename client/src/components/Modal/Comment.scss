@@ -1,0 +1,39 @@
+.comment{
+    border-bottom: 1px solid rgba($WHITE, .3);
+    padding: $PS $PXS;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+
+    &__avatar{
+        width: 1.625rem;
+        height: 1.625rem;
+        border-radius: 50%;
+    }
+
+    &__text{
+        flex: 1;
+
+        &__title{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+
+            span, a{
+                color: rgba($WHITE, .7);
+                font-size: .875rem;
+            }
+
+            a{
+                &:hover{
+                    color: $GREEN;
+                }
+            }
+        }
+
+        &__content{
+            word-break: break-all;
+            max-width: 18rem;
+        }
+    }
+}

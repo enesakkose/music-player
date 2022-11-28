@@ -5,7 +5,7 @@ export const useClickOutside = (menu) => {
 
     useEffect(() => {
         const maybeHandler = (e) => {
-            if(!domNode.current.contains(e.target)){
+            if(!domNode?.current?.contains(e.target)){
                 menu()
             }
         }

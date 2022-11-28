@@ -25,7 +25,7 @@ function Sidebar() {
         setWidth({ width: width + d.width})}}
       >
         <div className="sidebar__content">
-          <BrandLogo size={35}/>
+          <BrandLogo size={35} className='sidebar__content__logo'/>
           <Navbar/>
           <Library/>
           <Playlist/>

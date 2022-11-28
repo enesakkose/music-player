@@ -2,6 +2,8 @@ import UserInfoModal from "@/modals/UserInfoModal"
 import PlaylistInfoModal from "@/modals/PlaylistInfoModal"
 import PlaylistDeleteModal from "@/modals/PlaylistDeleteModal"
 import PasswordChangeModal from "@/modals/PasswordChangeModal"
+import CommentModal from "@/modals/CommentModal"
+import FollowersModal from "@/modals/FollowersModal"
 
 const modals = [
     {   
@@ -19,6 +21,14 @@ const modals = [
     {
         name: 'PasswordChangeModal',
         element: PasswordChangeModal
+    },
+    {
+        name: 'CommentModal',
+        element: CommentModal
+    },
+    {
+        name: 'FollowersModal',
+        element: FollowersModal
     }
 ]
 

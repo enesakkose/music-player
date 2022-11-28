@@ -1,39 +1,44 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import ActionBtns from '@/components/ActionBtns'
 import SongsTableHeader from '@/components/SongsTableHeader'
 import SongsTableList from '@/components/SongsTableList'
 import Icon from '@/components/Icon'
 import moment from 'moment'
-import { removeSongPlaylist } from '@/store/playlist'
-import { useSelector, useDispatch } from 'react-redux'
+import { addOrRemoveAddedSongs } from '@/firebase/db'
+import { useFindPlaylist } from '@/hooks/useFindPlaylist'
+import { modal } from '@/utils'
 
 function PlaylistMainSongList({ show, playlistId }) {
-  const dispatch = useDispatch()
-  const { songPlaylist } = useSelector(state => state.playlist)
-  const havePlaylist = songPlaylist.filter(song => song.id === playlistId)
-  const onlyTracks = havePlaylist.map((a => a.track))
-  
-  
-  const removeSong = (key) => {
-    dispatch(removeSongPlaylist(key))
+  const findPlaylist = useFindPlaylist(playlistId)
+  const showPlaylist = findPlaylist?.addedSongs?.length > 0 && show
+  const onlyTracks = findPlaylist?.addedSongs?.length > 0 && findPlaylist.addedSongs.map((a => a.track))
+
+  const removeSong = async(key) => {
+    await addOrRemoveAddedSongs(playlistId, {id: key}, findPlaylist?.addedSongs)
   }
 
-  const showPlaylist = havePlaylist.length > 0 && show
+  const commentModal = () => {
+    modal('CommentModal', playlistId)
+  }
   
   return (
     <>
     {showPlaylist && <div className="playlist__main__content__songsList">
-      <ActionBtns findSongs={onlyTracks}/>
+      <ActionBtns className='playlistActBtns' findSongs={onlyTracks}>
+        <button onClick={commentModal} className='commentBtn'>
+          <Icon name='Comment' size={25}/>
+        </button>
+      </ActionBtns>
       <SongsTableHeader className='playlist__main__content__songsList__header'>
         <h5>Date Added</h5>
       </SongsTableHeader>
       <ul className='playlist__main__content__songsList__items'>
-        {havePlaylist.map((song, index) => (
+        {findPlaylist.addedSongs.map((song, index) => (
           <li key={song.track.key} className='playlist__main__content__songsList__items__item'>
             <SongsTableList
               index={index}
               song={song.track}
-              findSongs={songPlaylist}
+              findSongs={findPlaylist.addedSongs}
               className='playlist__main__content__songsList__items__item__content'
             >
               <div className='playlist__main__content__songsList__items__item__content__dateAdded'>

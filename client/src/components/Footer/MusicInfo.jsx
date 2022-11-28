@@ -8,13 +8,12 @@ import '@/components/Footer/MusicInfo.scss'
 
 function MusicInfo() {
   const dispatch = useDispatch()
-  const { openCover, favoritesPlaylist } = useSelector(state => state.playlist)
-  const { current, isActive } = useSelector(state => state.player)
-  const thereFavPlaylist = favoritesPlaylist.find(f => f.key === current.key)
+  const { openCover } = useSelector(state => state.playlist)
+  const { current } = useSelector(state => state.player)
 
   return (
-    <div>
-      {isActive && <div className={`footer__music__info ${openCover ? 'openCover' : ''}`}>
+    <>
+      {current.key && <div className={`footer__music__info ${openCover ? 'openCover' : ''}`}>
         <div className='footer__music__info__cover'>
           <img src={current?.images?.coverart} alt={current?.title}/>
           <button 
@@ -38,11 +37,10 @@ function MusicInfo() {
         <div className="footer__music__info__actionBtns">
           <FavoriteBtn
             song={current}
-            thereFavPlaylist={thereFavPlaylist}
           />
         </div>
     </div>}
-    </div>
+    </>
   )
 }
 

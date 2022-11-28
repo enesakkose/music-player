@@ -1,8 +1,10 @@
 import React from 'react'
-import ModalCloseBtn from '@/modals/ModalCloseBtn'
 import clsx from 'clsx'
 import CustomInput from '@/components/CustomInput'
 import PasswordInput from '@/components/PasswordInput'
+import ForgetPassword from '@/components/ForgetPassword'
+import ModalHeader from '@/components/Modal/ModalHeader'
+import LightBtn from '@/components/LightBtn'
 import { updateUserPassword, updateMail } from '@/firebase/auth'
 import { passwordChangeSchema, emailChangeSchema } from '@/forms/schemas'
 import { auth } from '@/firebase/auth'
@@ -23,15 +25,9 @@ function PasswordChangeModal({ outClickRef }) {
 
   return (
     <div ref={outClickRef} className='passwordChangeModal'>
-      <header className='passwordChangeModal__header'>
-        <h3 className='passwordChangeModal__header__title'>
-          Password Change
-        </h3>
-        <ModalCloseBtn/>
-      </header>
+      <ModalHeader title='Personal Info Change'/>
       <div className="passwordChangeModal__content">
         <div className='passwordChangeModal__content__password'>
-          <h4 className='passwordChangeModal__content__password__title'>Password</h4>
           <Formik
             initialValues={{ 
               password: '', 
@@ -43,37 +39,38 @@ function PasswordChangeModal({ outClickRef }) {
           >
             {({isSubmitting}) => (
               <Form className='passwordChangeModal__content__password__form'>
-                <PasswordInput 
-                  title='Current Password' 
+                <CustomInput
+                  type='password' 
+                  inputTitle='Current Password' 
                   placeholder='Current Password'
                   name='password'
                   autoComplete='off'
                 />
-                <PasswordInput 
-                  title='New Password' 
+                <CustomInput
+                  type='password' 
+                  inputTitle='New Password' 
                   placeholder='New Password'
                   name='newPassword'
                   autoComplete='off'
-                />
-                <PasswordInput 
-                  title='Confirm Password' 
+                  />
+                <CustomInput
+                  type='password'
+                  inputTitle='Confirm Password' 
                   placeholder='Confirm Password'
                   name='confirmPassword'
                   autoComplete='off'
                 />
-
-                <button 
+                <LightBtn 
                   type='submit' 
-                  className={clsx('passwordChangeModal__content__password__form__submitBtn', isSubmitting ? 'submittingBtn' : '')}
-                >
-                  Confirm
-                </button>
+                  text='Confirm'
+                  className={clsx('submitBtn', isSubmitting ? 'submittingBtn' : '')}
+                  />
               </Form>
             )}
           </Formik>
+          <ForgetPassword/>
         </div>
         <div className='passwordChangeModal__content__email'>
-          <h4 className='passwordChangeModal__content__email__title'>Email</h4>
           <Formik
             initialValues={{ newEmail: auth.currentUser.email, confirmPassword: '' }}
             validationSchema={emailChangeSchema}
@@ -85,32 +82,25 @@ function PasswordChangeModal({ outClickRef }) {
                   labelClassName='passwordChangeModal__content__email__form__label'
                   type='email'
                   name='newEmail'
+                  inputTitle='Email'
                   placeholder='Email'
                   autoComplete='off'
-                >
-                  <span className='passwordChangeModal__content__email__form__label__input__name'>
-                    Email
-                  </span>
-                </CustomInput>
+                />
                 <CustomInput
                   labelClassName='passwordChangeModal__content__email__form__label'
                   type='password'
                   name='confirmPassword'
+                  inputTitle='Password'
                   placeholder='Password'
                   autoComplete='off'
-                >
-                  <span className='passwordChangeModal__content__email__form__label__input__name'>
-                    Password
-                  </span>
-                </CustomInput>
-                <button 
+                />
+                <LightBtn
+                  text='Confirm'
                   type='submit' 
-                  className={clsx('passwordChangeModal__content__email__form__submitBtn',
+                  className={clsx('submitBtn',
                     isSubmitting ? 'submittingBtn' : ''
                   )}
-                >
-                  Confirm
-                </button>
+                />
               </Form>
             )}
           </Formik>

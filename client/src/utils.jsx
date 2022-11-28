@@ -29,22 +29,10 @@ export const modal = (name, data = false) => {
     }))
 }
 
-export const popup = (open, name = false) => {
+export const popup = (open, name = false, text = false) => {
     store.dispatch(setOpenPopup({
         open,
-        name
+        name,
+        text
     }))
-}
-
-export const addFavoriteHandle = (thereFavPlaylist, song) => {
-    if(thereFavPlaylist){
-        store.dispatch(setFavorite(false))
-        store.dispatch(deleteFavorites(song.key))
-        popup(true, 'FavoritePopup')
-        //THIS VALUE OPEN FOR EVERY SITUATION 
-    }else{
-        store.dispatch(setFavorite(true))
-        store.dispatch(setFavoritesPlaylist(song))
-        popup(true, 'FavoritePopup')
-    }
 }

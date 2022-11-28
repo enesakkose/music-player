@@ -1,39 +1,53 @@
 .userInfoModal{
 
-    &__header{
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-    }
-
     &__form{
-        padding-top: $PM;
         display: grid;
-        grid-template-columns: 11.5rem 17.5rem;
-        gap: 2rem;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 1.5rem;
 
-        &__img{
-            width: 100%;
-            height: 100%;
-            max-height: 11.5rem;
-            border-radius: 50%;
-            box-shadow: $cover;
+        .profileImgChange{
+            position: relative;
+            height: 11.25rem;
+
+            .pencilBtn{
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                border-radius: 50%;
+                color: rgba($WHITE, .6);
+                background-color: rgba($GRAY, .5);
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+
+                &__remove{
+                    font-weight: bold;
+                    text-decoration: underline;
+                    color: $WHITE;
+                }
+            }
+
+            &:hover .pencilBtn{
+                opacity: 1;
+            }
         }
+
 
         &__inputs{
             display: flex;
             flex-direction: column;
+            justify-content: center;
             gap: .875rem;
-        
+            
             &__input{
                 display: flex;
                 flex-direction: column;
                 gap: .25rem;
-
-                .inputError{
-                    border-color: rgba($WHITE, .1) !important;
-                    border-bottom-color: red !important;
-                }
 
                 &__span{
                     font-weight: bold;
@@ -42,19 +56,8 @@
                 
             }
 
-            &__submit{
-                padding: $PXS $PM;
+            .submitBtn{
                 align-self: flex-end;
-                background-color: $WHITE;
-                text-align: center;
-                color: $BLACK;
-                font-weight: bold;
-                font-size: 1rem;
-                border-radius: 1.5rem;
-                
-                &:active{
-                    transform: translateY(.5px);
-                }
             }
         }
     }

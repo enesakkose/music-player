@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: .5rem;
+    grid-area: tool;
 
     &__lyricsBtn{
         color: rgba($WHITE, .6);
