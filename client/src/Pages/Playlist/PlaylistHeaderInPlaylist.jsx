@@ -22,7 +22,7 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
   })
 
   const openPlaylistInfoModal = () => {
-    modal('PlaylistInfoModal', findPlaylist)
+    modal('PlaylistInfoModal', findPlaylist.id)
     setOpen(false)
   }
 
@@ -46,6 +46,7 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
       infoTitle='PLAYLIST'
       img={findPlaylist.coverURL !== null ? findPlaylist.coverURL : findPlaylist.addedSongs.length > 0  ? coverImage : null}
       infoHeader={findPlaylist.name}
+      validProfile={true}//todo
     >
       <h6 ref={domNode}  className='playlist__headerInPlaylist__action'>
         <Link to={`/profile/${user.uid}`}>
