@@ -39,7 +39,7 @@ export const signupSchema = yup.object().shape({
       .required("Please enter an username"),
     password: yup
       .string()
-      .min(6, 'Password must be at least 6 characters')
+      .min(6, 'Min 6 characters')
       .required("Please enter your password"),
     confirmPassword: yup
       .string()
@@ -64,10 +64,10 @@ export const userInfoSchema = yup.object().shape({
 export const passwordChangeSchema = yup.object().shape({
     password: yup
       .string()
-      .min(6,'Min 8 characters'),
+      .min(6,'Min 6 characters'),
     newPassword: yup
       .string()
-      .min(6, 'Password must be at least 6 characters')
+      .min(6, 'Min 6 characters')
       .required("Please enter your password"),
     confirmPassword: yup
       .string()
@@ -81,7 +81,7 @@ export const emailChangeSchema = yup.object().shape({
       .required("Please enter a valid email"),
     confirmPassword: yup
       .string()
-      .min(6,'')
+      .min(6,'Min 6 characters')
       .required('Min 6 characters')
 })
 
