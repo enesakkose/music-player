@@ -11,7 +11,9 @@ import {
     orderBy,
     updateDoc,
     arrayUnion,
+    arrayRemove,
     getDocs,
+    increment,
     onSnapshot } from "firebase/firestore"
 import { onAuthStateChanged, getAuth } from 'firebase/auth'
 import { store } from "@/store"
@@ -105,12 +107,15 @@ export const addDefaultCollection = async() => {
     }
 }
 
-export const addSongToRecentSong = async(data) => {
+export const addSongToRecentSong = async(currentSong, recentSongs) => {
     try {
         const recentSongsRef = doc(db, 'users', auth.currentUser.uid)
-
+        const findCurrent = recentSongs.some(song => song.key === currentSong.key)
+        const filteredSongs = recentSongs.filter(song => song.key !== currentSong.key)
         await updateDoc(recentSongsRef, {
-            recentSongs: arrayUnion(data)
+            recentSongs: findCurrent 
+            ? [...filteredSongs, currentSong]
+            : arrayUnion(currentSong)
         })
     } catch (error) {
         toast.error(error.message)
@@ -164,25 +169,60 @@ export const userProfile = async(name = null) => {
             uid: auth.currentUser.uid,
             displayName: auth.currentUser.displayName === null ? name : auth.currentUser.displayName,
             photoURL: auth.currentUser.photoURL,
-            follower: 0,
-            following: 0
+            follower: [],
+            following: []
         })
     } catch (error) {
         toast.error(error.message)
     }
 }
 
-export const profileQuery = async(querySongs) => {
+export const profileQuery = async(querySongs = false, id = false) => {
     try {
-        const q = query(collection(db, 'profiles'), where('displayName', '>=', querySongs))
-        const querySnapshot = await getDocs(q)
-        store.dispatch(
-            setProfiles(
-                querySnapshot.docs.reduce((profiles, profile) => [...profiles, profile.data()], [])
+        onSnapshot(query(collection(db, 'profiles'), id ? where('uid', '==', id) : where('displayName', '==', querySongs)), (doc) => {
+            store.dispatch(
+                setProfiles(
+                    doc.docs.reduce((profiles, profile) => [...profiles, profile.data()], [])
+                )
             )
-        )
+        })
     } catch (error) {
         toast.error(error.message)
     }
 }
 
+export const getProfile = async(userId) => {
+    try {
+        const q = query(collection(db, 'profiles'), where('uid', '==', userId))
+        const querySnapshot = await getDocs(q)
+        let profile = null
+        querySnapshot.forEach((doc) => {
+            profile = doc.data()
+        })
+        return profile
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
+export const followOrUnfollow = async(profiles, currentUser) => {
+    try {
+        const profileRef = doc(db, 'profiles', profiles[0].uid)
+        const currentUserRef = doc(db, 'profiles', currentUser.uid)
+        const currentUserProfile = await getProfile(currentUser.uid)
+        const findUser = profiles[0].follower.find(profile => profile.uid === currentUser.uid)
+        const findInFollowing = currentUserProfile.following.find(profile => profile.uid === profiles[0].uid)
+        await updateDoc(profileRef, {
+            follower: findUser
+            ? profiles[0].follower.filter(user => user.uid !== currentUser.uid)
+            : arrayUnion(currentUserProfile)
+        })
+        await updateDoc(currentUserRef, {
+            following: findInFollowing
+            ? currentUserProfile.following.filter(profile => profile.uid !== profiles[0].uid)
+            : arrayUnion(profiles[0])
+        })
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
