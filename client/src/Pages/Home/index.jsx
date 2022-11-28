@@ -8,7 +8,7 @@ import '@/Pages/Home/Home.scss'
 function Home() {
   const [bgColor, setBgColor] = useState('')
   const { defaultPlaylists, playlists } = useSelector(state => state.playlist)
-  const { data: songs, isFetching, error } = useGetChartsByGenreQuery('WORLDWIDE')
+  const { data: songs, isFetching } = useGetChartsByGenreQuery('WORLDWIDE')
 
   if(defaultPlaylists === null || isFetching) return <Loading/>
 
@@ -35,13 +35,11 @@ function Home() {
         />
       }
       
-      {!error && 
-        <CardListLayout 
-          data={songs.slice(0,6)}
-          link='/genre/WORLDWIDE'
-          title='Recommended For You'
-        />
-      }
+      <CardListLayout 
+        data={songs.slice(0,6)}
+        link='/genre/WORLDWIDE'
+        title='Recommended For You'
+      />
       
       <div className="home__bg" style={{ backgroundColor: `${bgColor}` }}/>
     </section>
