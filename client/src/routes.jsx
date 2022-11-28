@@ -13,6 +13,7 @@ import Auth from "@/Pages/Auth"
 import Lyric from "@/Pages/Lyric"
 import Genre from "@/Pages/Genre"
 import App404 from "@/Pages/404"
+import RecentSongs from "@/Pages/RecentSongs"
 import MainLayout from "@/components/MainLayout"
 
 export const routes = [
@@ -20,9 +21,9 @@ export const routes = [
         element: <Suspense><MainLayout/></Suspense>,
         children: [
             {
-                index: true,
-                element: <Suspense><Home/></Suspense>,
-                path: '/'
+                path: '/',
+                element: <Home/>,
+                index: true
             },
             {
                 path: 'songs',
@@ -77,12 +78,16 @@ export const routes = [
             {
                 path: 'genre/:genre',
                 element: <Suspense><Genre/></Suspense>
+            },
+            {
+                path: 'recentSongs',
+                element: <Suspense><RecentSongs/></Suspense>
             }
         ]
     },
     {
         path: 'auth',
-        element: <Suspense><Auth/></Suspense>,
+        element: <Suspense><Auth/></Suspense>
     },
     {
         path: '*',
