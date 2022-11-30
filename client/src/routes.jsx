@@ -46,7 +46,7 @@ export const routes = [
             },
             {
                 path: 'playlist/:playlistId',
-                element: <Suspense><Playlist/></Suspense>,
+                element: <Suspense><Playlist/></Suspense>
             },
             {
                 element: <PrivateRoute/>,
