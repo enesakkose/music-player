@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
-import Icon from '@/components/Icon'
 import Avatar from '@/components/Avatar'
 import DropdownMenu from '@/components/DropDownMenu'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { modal } from '@/utils'
 import { handleLogout } from '@/firebase/auth'
+import { navigateAuth } from '@/utils'
 import '@/components/View/UserAvatar.scss'
 
-
 function UserAvatar() {
-  const navigate= useNavigate()
   const { user } = useSelector(state => state.auth)
   const [ openAvatarMenu, setOpenAvatarMenu] = useState(false)
   
@@ -30,15 +27,15 @@ function UserAvatar() {
   }
   
   const logout = async() => {
-    await new Promise(resolve => setTimeout(resolve, 4000));
-    await  handleLogout()
-    navigate('/auth', { replace: true })
+    await handleLogout()
+    navigateAuth()
   }
-
+  
   return (
     <div ref={domNode} className="userAvatar">
       <button 
-        onClick={() => setOpenAvatarMenu(!openAvatarMenu)} className='avatar__btn'
+        className='avatar__btn'
+        onClick={() => setOpenAvatarMenu(!openAvatarMenu)} 
       >
         <Avatar src={user.photoURL} size='28px'/>
       </button>
