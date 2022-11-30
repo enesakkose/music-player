@@ -36,3 +36,10 @@ export const popup = (open, name = false, text = false) => {
         text
     }))
 }
+
+export const unauthModal = (e,user) => {
+    if(!user) {
+        e.preventDefault()
+        modal('UnauthModal')
+    }
+}

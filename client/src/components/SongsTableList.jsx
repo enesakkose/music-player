@@ -2,6 +2,7 @@ import React from 'react'
 import Icon from '@/components/Icon'
 import FavoriteBtn from '@/components/FavoriteBtn'
 import clsx from 'clsx'
+import { modal } from '@/utils'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import { useSelector, useDispatch } from 'react-redux'
 import '@/components/SongsTableList.scss'
@@ -9,8 +10,11 @@ import '@/components/SongsTableList.scss'
 function SongsTableList({children, className, index, song, findSongs}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
+  const { user } = useSelector(state => state.auth)
 
   const listPlayBtn = () => {
+    if(!user) return modal('UnauthSongModal', song)
+
     if(current.key !== song.key){
       dispatch(setCurrent({song, index}))
       dispatch(setCurrentSongs(findSongs))
