@@ -15,8 +15,7 @@ function ViewLayoutHeader() {
     <header className='viewLayoutHeader'>
       <NavigationButton/>
       {location.pathname === '/search' && <SearchInput/>}
-      {user && <UserAvatar/>}
-      {!user && <AuthBtns/>}
+      {user ? <UserAvatar/> : <AuthBtns/>}
     </header>
   )
 }
