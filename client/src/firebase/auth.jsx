@@ -18,7 +18,7 @@ import { getFirestore, doc, updateDoc } from 'firebase/firestore'
 import { store } from "@/store"
 import { login, logout } from "@/store/auth"
 import { user as currentUser } from '@/utils'
-import { addDefaultCollection, userProfile } from '@/firebase/db'
+import { addDefaultCollection, userProfile, getProfile } from '@/firebase/db'
 import toast from "react-hot-toast"
 
 export const db = getFirestore(app)
@@ -36,7 +36,7 @@ export const handleLogin = async(username, password) => {
 
 export const createUser = async(username, password, name) => {
     try {
-        await createUserWithEmailAndPassword(auth, username, password)//check it
+        await createUserWithEmailAndPassword(auth, username, password)
         addDefaultCollection()
         userProfile(name)
         return true
@@ -48,7 +48,8 @@ export const createUser = async(username, password, name) => {
 export const loginWithGoogle = async() => {
     try {
         await signInWithPopup(auth, provider)
-        addDefaultCollection()
+        const profile = await getProfile(auth.currentUser.uid)
+        if(!profile) addDefaultCollection()
         userProfile()
         return true
     } catch (error) {
@@ -59,9 +60,9 @@ export const loginWithGoogle = async() => {
 export const handleLogout = async() => {
     try {
         await signOut(auth)
-        localStorage.removeItem('currentSong')
+        localStorage.clear()
     } catch (error) {
-        toast.error('Failed!!!')
+        toast.error(error.message)
     }
 }
 
