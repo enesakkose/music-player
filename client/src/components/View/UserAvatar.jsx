@@ -25,10 +25,11 @@ function UserAvatar() {
     modal('PasswordChangeModal')
     setOpenAvatarMenu(false)
   }
-  
-  const logout = async() => {
-    await handleLogout()
-    navigateAuth()
+
+  const logout = () => {
+    window.location.reload()
+    handleLogout()
+    //todo buna tekrar bakılacak
   }
   
   return (
