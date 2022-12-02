@@ -5,17 +5,18 @@ import ViewLayoutHeader from '@/components/View/ViewLayoutHeader'
 import Popups from '@/components/MainLayout/Popups'
 import ErrorFallback from '@/components/ErrorFallback'
 import UnauthFooterBar from '@/components/Footer/UnauthFooterBar'
+import Loading from '@/components/Loading'
 import { useSelector } from 'react-redux'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
 import '@/components/MainLayout/MainLayout.scss'
 
 function MainLayout() {
-  const location = useLocation()
   const { user } = useSelector(state => state.auth)
+  if(user === null) return <Loading/>
 
   return (
-    <ErrorBoundary key={location.pathname} FallbackComponent={ErrorFallback}>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
       <section className='main'>
         <Popups/>
         <Sidebar/>
