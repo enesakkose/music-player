@@ -1,4 +1,3 @@
-// private routes will decided
 // responsive design
 // history scroll,!!
 // and comment area in playlist firebase rules check
@@ -8,3 +7,4 @@
 // comment @ linkine bak
 //giriş çıkışlarda şarkı oto açılıyor ve localStorage temizlenmiyor create olurkeb update user yapmak zorundayız bu yğzden popup çıkıyor
 // resimler değişirken loading göster
+//logout kontrol edilecek ve logout olunca playlistlere erişilemiyor

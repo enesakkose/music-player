@@ -8,13 +8,16 @@ import { useGetSearchSongsQuery } from '@/services/music'
 import { useFindPlaylist } from '@/hooks/useFindPlaylist'
 import { addOrRemoveAddedSongs } from '@/firebase/db'
 import { useDebounceValue } from '@/hooks/useDebounceValue'
+import { useSelector } from 'react-redux'
 
 function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
-  const [skip, setSkip] = useState(true)//this state was used to for not send request when page first render 
+  const [skip, setSkip] = useState(true)//this state was used to not send request when page first render 
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounceValue(search, 600)
   const {data, isFetching, error, isSuccess} = useGetSearchSongsQuery(debouncedSearch, { skip })
   const findPlaylist = useFindPlaylist(playlistId)
+  //const { user } = useSelector(state => state.auth)
+  //const validPlaylist = findPlaylist?.uid === user?.uid
 
   const handleSearch = (e) => {
     setSearch(e.target.value)
@@ -38,7 +41,7 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
 
   return (
     <>
-    <div className=
+    {<div className=
       {clsx('playlist__main__content__searchSongs',
       show ? 'hide' : '',
       isSuccess && !isFetching && show ? 'c' : '')}  
@@ -99,7 +102,7 @@ function PlaylistMainSearchSongs({ show, setShow, playlistId }) {
             ))}
           </ul>
       </div>
-    </div>
+    </div>}
     </>
   )
 }
