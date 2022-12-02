@@ -88,7 +88,10 @@
         .loginForgetPassword{
             align-self: flex-start;
             width: 100%;
-
+            
+            button{
+                color: inherit;
+            }
 
             input{
                 border-color: $earlGray;

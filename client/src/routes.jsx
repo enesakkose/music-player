@@ -15,6 +15,7 @@ import Genre from "@/Pages/Genre"
 import App404 from "@/Pages/404"
 import RecentSongs from "@/Pages/RecentSongs"
 import MainLayout from "@/components/MainLayout"
+import PrivateRoute from "@/components/PrivateRoute"
 
 export const routes = [
     {
@@ -32,12 +33,10 @@ export const routes = [
             {
                 path: 'search',
                 element: <Suspense><Search/></Suspense>,
-                search: true,
                 children: [
                     {
                         path: 'profiles',
-                        element: <Suspense><ProfilesResult/></Suspense>,
-                        search: true
+                        element: <Suspense><ProfilesResult/></Suspense>
                     }
                 ] 
             },
@@ -47,25 +46,30 @@ export const routes = [
             },
             {
                 path: 'playlist/:playlistId',
-                element: <Suspense><Playlist/></Suspense>,
+                element: <Suspense><Playlist/></Suspense>
             },
             {
-                path: 'collection',
-                element: <Suspense><CollectionLayout/></Suspense>,
+                element: <PrivateRoute/>,
                 children: [
                     {
-                        path: 'tracks',
-                        element: <Suspense><Tracks/></Suspense> 
+                        path: 'collection',
+                        element: <Suspense><CollectionLayout/></Suspense>,
+                        children: [
+                            {
+                                path: 'tracks',
+                                element: <Suspense><Tracks/></Suspense> 
+                            },
+                            {
+                                path: 'playlists',
+                                element: <Suspense><Playlists/></Suspense> 
+                            }
+                        ]
                     },
-                    {
-                        path: 'playlists',
-                        element: <Suspense><Playlists/></Suspense> 
-                    }
                 ]
             },
             {
                 path: 'songs',
-                element: <Suspense><Songs/></Suspense>
+                element: <Suspense><Songs/></Suspense>,
             },
             {
                 path: 'album/:id',

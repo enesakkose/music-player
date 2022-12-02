@@ -1,10 +1,11 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setCurrent, setCurrentSongs, playPause } from "@/store/player";
-import  { store } from "@/store"
+import { setCurrent, setCurrentSongs, playPause } from "@/store/player"
+import { modal } from '@/utils'
+import { store } from "@/store"
 
-export const usePlaySong = (songs, current, isPlaying) => {
+export const usePlaySong = (songs, current, isPlaying, user) => {
   const haveSongs = songs.some(song => song.key === current.key)
+
+  if(!user) return modal('UnauthSongModal', songs[0])
 
   if(current.key !== songs[0].key && haveSongs) 
   return store.dispatch(playPause(!isPlaying))

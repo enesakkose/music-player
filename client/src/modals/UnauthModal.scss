@@ -1,0 +1,35 @@
+.unauthModal{
+    padding: $PM;
+    border-radius: .5rem;
+    background-color: $purple;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: .5s dd ease-in-out;
+
+    &__text{
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    &__btns{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        align-self: flex-end;
+
+        .closeBtn{
+            background-color: transparent;
+            color: $WHITE;
+        }
+    }
+}
+
+@keyframes dd {
+    0%{
+        opacity: 0.7;
+    }
+    100%{
+        opacity: 1;
+    }
+}

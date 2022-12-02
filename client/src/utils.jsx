@@ -1,8 +1,4 @@
 import  { store } from "@/store"
-import {  
-    deleteFavorites, 
-    setFavorite, 
-    setFavoritesPlaylist } from '@/store/playlist'
 import { setOpenPopup } from "@/store/popup"
 import { closeModal, openModal } from "@/store/modal"
 import { auth } from "@/firebase/auth"
@@ -35,4 +31,15 @@ export const popup = (open, name = false, text = false) => {
         name,
         text
     }))
+}
+
+export const unauthModal = (e,user) => {
+    if(!user) {
+        e.preventDefault()
+        modal('UnauthModal')
+    }
+}
+
+export const navigateAuth = () => {
+    window.location.href='/auth' 
 }

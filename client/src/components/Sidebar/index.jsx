@@ -11,6 +11,7 @@ import '@/components/Sidebar/Sidebar.scss'
 function Sidebar() {
   const [ width, setWidth ] = useState(300)
   const { openCover } = useSelector(state => state.playlist)
+  const { user } = useSelector(state => state.auth)
 
   return (
     <aside className='sidebar'>
@@ -26,9 +27,9 @@ function Sidebar() {
       >
         <div className="sidebar__content">
           <BrandLogo size={35} className='sidebar__content__logo'/>
-          <Navbar/>
-          <Library/>
-          <Playlist/>
+          <Navbar user={user}/>
+          <Library user={user}/>
+          {user && <Playlist/>}
           {openCover && <SidebarAlbumCover/>}
         </div>
       </Resizable>

@@ -1,8 +1,9 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import Icon from '@/components/Icon'
+import { unauthModal } from '@/utils'
+import { NavLink } from 'react-router-dom'
 
-function Navbar() {
+function Navbar({user}) {
   return (
     <nav className="sidebar__content__navbar">
       <NavLink to='/'>
@@ -13,7 +14,7 @@ function Navbar() {
         <Icon name='Search' size={30}/>
         search
       </NavLink>
-      <NavLink to='/collection/playlists'>
+      <NavLink to='/collection/playlists' onClick={(e) => unauthModal(e, user)}>
         <Icon name='Book' size={30}/>
         library
       </NavLink>
