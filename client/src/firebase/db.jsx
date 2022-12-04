@@ -11,13 +11,14 @@ import {
     orderBy,
     updateDoc,
     arrayUnion,
+    getDoc,
     arrayRemove,
     getDocs,
     increment,
     onSnapshot } from "firebase/firestore"
 import { onAuthStateChanged, getAuth } from 'firebase/auth'
 import { store } from "@/store"
-import { addPlaylist, setDefaultPlaylists } from '@/store/playlist'
+import playlist, { addPlaylist, setDefaultPlaylists } from '@/store/playlist'
 import { setProfiles } from '@/store/profiles'
 import { popup } from '@/utils'
 import { toast } from 'react-hot-toast'
@@ -44,17 +45,36 @@ onAuthStateChanged(auth, (user) => {
 })
 
 export const addPlaylistHandle = async(playlists, id, userId) => {
-    await setDoc(doc(db, 'playlists', id),{
-        name: `My Playlist #${playlists.length + 1}`,
-        id : id,
-        uid: userId,
-        addedSongs: [],
-        coverURL: null,
-        comments: [],
-        publish: false,
-        createdAt: new Date().toISOString()
-    })
-    popup(true, 'AddPlaylistPopup')
+    try {
+        await setDoc(doc(db, 'playlists', id),{
+            name: `My Playlist #${playlists.length + 1}`,
+            id : id,
+            uid: userId,
+            displayName: auth.currentUser.displayName,
+            addedSongs: [],
+            coverURL: null,
+            comments: [],
+            publish: false,
+            createdAt: new Date().toISOString()
+        })
+        const userRef = doc(db, 'newUsers', auth.currentUser.uid)
+        {/*await updateDoc(userRef, {
+            playlists: arrayUnion({
+                name: `My Playlist #${playlists.length + 1}`,
+                id : id,
+                uid: auth.currentUser.uid,
+                displayName: auth.currentUser.displayName,
+                addedSongs: [],
+                coverURL: null,
+                comments: [],
+                publish: false,
+                createdAt: new Date().toISOString()
+            })
+        })*/}
+        return popup(true, 'AddPlaylistPopup')
+    } catch (error) {
+        toast.error(error.message)
+    }
 }
 
 
@@ -87,7 +107,6 @@ export const addOrRemoveAddedSongs = async(playlistId, data, addedSongs) => {
             ? addedSongs.filter(song => song.id !== data.id)
             : arrayUnion(data)
         })
-        
         return popup(true, 'AddSongPopup', `${findInAddedSongs ? 'Removed' : 'Added'}`) 
 
     } catch (error) {
@@ -191,6 +210,16 @@ export const profileQuery = async(querySongs = false, id = false) => {
     }
 }
 
+export const getPlaylist = async(playlistId) => {
+    try {
+        const playlistRef = doc(db, 'playlists', playlistId)
+        const getPlaylist = await getDoc(playlistRef)
+        return getPlaylist.data()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getProfile = async(userId) => {
     try {
         const q = query(collection(db, 'profiles'), where('uid', '==', userId))
@@ -221,6 +250,24 @@ export const followOrUnfollow = async(profiles, currentUser) => {
             following: findInFollowing
             ? currentUserProfile.following.filter(profile => profile.uid !== profiles[0].uid)
             : arrayUnion(profiles[0])
+        })
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
+export const newCreateUser = async() => {
+    try {
+        await setDoc(doc(db, 'newUsers', auth.currentUser.uid),{
+            photoURL: auth.currentUser.photoURL,
+            uid: auth.currentUser.uid,
+            displayName: auth.currentUser.displayName,
+            email: auth.currentUser.email,
+            following: [],
+            follower: [],
+            playlists: [],
+            favoriteSongs: [],
+            recentSongs: []
         })
     } catch (error) {
         toast.error(error.message)
