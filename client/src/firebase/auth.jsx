@@ -18,7 +18,7 @@ import { getFirestore, doc, updateDoc } from 'firebase/firestore'
 import { store } from "@/store"
 import { login, logout } from "@/store/auth"
 import { user as currentUser } from '@/utils'
-import { addDefaultCollection, userProfile, getProfile } from '@/firebase/db'
+import { addDefaultCollection, userProfile, docExist } from '@/firebase/db'
 import toast from "react-hot-toast"
 
 export const db = getFirestore(app)
@@ -34,11 +34,11 @@ export const handleLogin = async(username, password) => {
     }
 }
 
-export const createUser = async(username, password, name) => {
+export const createUser = async(username, password) => {
     try {
         await createUserWithEmailAndPassword(auth, username, password)
         addDefaultCollection()
-        userProfile(name)
+        userProfile()
         return true
     } catch (error) {
         toast.error('This email already using!')
@@ -48,8 +48,8 @@ export const createUser = async(username, password, name) => {
 export const loginWithGoogle = async() => {
     try {
         await signInWithPopup(auth, provider)
-        const profile = await getProfile(auth.currentUser.uid)
-        if(!profile) addDefaultCollection()
+        const profile = await docExist(auth.currentUser.uid)
+        if(profile === false) addDefaultCollection()
         userProfile()
         return true
     } catch (error) {

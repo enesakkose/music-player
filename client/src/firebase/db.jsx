@@ -164,11 +164,11 @@ export const publishPlaylist = async(playlistId, publish) => {
     }
 }
 
-export const userProfile = async(name = null) => {
+export const userProfile = async() => {
     try {
         await setDoc(doc(db, 'profiles', auth.currentUser.uid), {
             uid: auth.currentUser.uid,
-            displayName: auth.currentUser.displayName === null ? name : auth.currentUser.displayName,
+            displayName: auth.currentUser.displayName,
             photoURL: auth.currentUser.photoURL,
             follower: [],
             following: []
@@ -230,6 +230,20 @@ export const unfollow = async(profile, currentUser) => {
             following: arrayRemove(profile)
         })
     } catch(error) {
+        toast.error(error.message)
+    }
+}
+
+export const docExist = async(id) => {
+    try {
+        const docRef = doc(db, 'profiles', id)
+        const docSnap = await getDoc(docRef)
+        if(docSnap.exists()) {
+            return true
+        } else{
+            return false
+        }
+    } catch (error) {
         toast.error(error.message)
     }
 }

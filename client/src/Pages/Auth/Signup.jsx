@@ -16,7 +16,7 @@ function Signup({changeContent, setChangeContent}) {
   const navigate = useNavigate()
 
   const onSubmit = async(values) => {
-    const user = await createUser(values.email, values.password, values.username)
+    const user = await createUser(values.email, values.password)
     await updateUser({
       displayName: values.username
     })
