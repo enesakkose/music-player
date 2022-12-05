@@ -192,34 +192,44 @@ export const profileQuery = async(querySongs = false, id = false) => {
     }
 }
 
-export const getProfile = async(userId) => {
+export const getProfile = async(userId, setProfile) => {
     try {
-        const profileRef = doc(db, 'profiles', userId)
-        const docSnap = await getDoc(profileRef)
-        return docSnap.data()
+        onSnapshot(doc(db, "profiles", userId), (doc) => {
+            setProfile(doc.data())
+        })
     } catch (error) {
         console.log(error)
     }
 }
 
-
-export const followOrUnfollow = async(profile, currentUser, currentUserProfile) => {
+export const follow = async(profile, currentUser) => {
     try {
         const profileRef = doc(db, 'profiles', profile.uid)
         const currentUserRef = doc(db, 'profiles', currentUser.uid)
-        const findUser = profile.follower.find(p => p.uid === currentUser.uid)
-        const findInFollowing = currentUserProfile.following.find(p => p.uid === profile.uid)
+
         await updateDoc(profileRef, {
-            follower: findUser
-            ? profile.follower.filter(user => user.uid !== currentUser.uid)
-            : arrayUnion(currentUserProfile)
+            follower: arrayUnion(currentUser)
         })
         await updateDoc(currentUserRef, {
-            following: findInFollowing
-            ? currentUserProfile.following.filter(p => p.uid !== profile.uid)
-            : arrayUnion(profile)
+            following: arrayUnion(profile)
         })
     } catch (error) {
+        toast.error(error.message)
+    }
+}
+
+export const unfollow = async(profile, currentUser) => {
+    try{
+        const profileRef = doc(db, 'profiles', profile.uid)
+        const currentUserRef = doc(db, 'profiles', currentUser.uid)
+
+        await updateDoc(profileRef, {
+            follower: arrayRemove(currentUser)
+        })
+        await updateDoc(currentUserRef, {
+            following: arrayRemove(profile)
+        })
+    } catch(error) {
         toast.error(error.message)
     }
 }

@@ -3,32 +3,6 @@
     flex-direction: column;
     height: 100%;
 
-    &__header{
-        background: rgba($playlistMainColor, .3);
-        background-image: $grayLinear;
-
-        .cover, span, button{
-            border-radius: 50%;
-        }
-
-        &__follow{
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-
-            .openFollowModal{
-                display: flex;
-                gap: .5rem;
-                font-size: 1rem;
-
-                &:hover{
-                    text-decoration: underline;
-                }
-            }
-        }
-
-    }
-
     &Main{
         flex: 1;
         padding: $PM $PL;

@@ -7,8 +7,7 @@ export const useGetProfile = (userId) => {
     
     useEffect(() => {
         (async () => {
-            const resultProfile =  await getProfile(userId)
-            setProfile(resultProfile)
+            await getProfile(userId, setProfile)
         })()
     }, [userId])
 

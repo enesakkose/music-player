@@ -1,9 +1,9 @@
 import React from 'react'
 import '@/components/FollowBtn.scss'
 
-function FollowBtn({ statement, onClick }) {
+function FollowBtn({ statement, ...props }) {
   return (
-    <button onClick={onClick} className='followBtn'>
+    <button className='followBtn' {...props}>
       {statement ? 'Unfollow' : 'Follow'}
     </button>
   )
