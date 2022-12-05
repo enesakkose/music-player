@@ -4,6 +4,7 @@ import {
     collection, 
     addDoc,
     setDoc,
+    getDoc,
     doc,
     deleteDoc,
     query,
@@ -193,34 +194,30 @@ export const profileQuery = async(querySongs = false, id = false) => {
 
 export const getProfile = async(userId) => {
     try {
-        const q = query(collection(db, 'profiles'), where('uid', '==', userId))
-        const querySnapshot = await getDocs(q)
-        let profile = null
-        querySnapshot.forEach((doc) => {
-            profile = doc.data()
-        })
-        return profile
+        const profileRef = doc(db, 'profiles', userId)
+        const docSnap = await getDoc(profileRef)
+        return docSnap.data()
     } catch (error) {
-        toast.error(error.message)
+        console.log(error)
     }
 }
 
-export const followOrUnfollow = async(profiles, currentUser) => {
+
+export const followOrUnfollow = async(profile, currentUser, currentUserProfile) => {
     try {
-        const profileRef = doc(db, 'profiles', profiles[0].uid)
+        const profileRef = doc(db, 'profiles', profile.uid)
         const currentUserRef = doc(db, 'profiles', currentUser.uid)
-        const currentUserProfile = await getProfile(currentUser.uid)
-        const findUser = profiles[0].follower.find(profile => profile.uid === currentUser.uid)
-        const findInFollowing = currentUserProfile.following.find(profile => profile.uid === profiles[0].uid)
+        const findUser = profile.follower.find(p => p.uid === currentUser.uid)
+        const findInFollowing = currentUserProfile.following.find(p => p.uid === profile.uid)
         await updateDoc(profileRef, {
             follower: findUser
-            ? profiles[0].follower.filter(user => user.uid !== currentUser.uid)
+            ? profile.follower.filter(user => user.uid !== currentUser.uid)
             : arrayUnion(currentUserProfile)
         })
         await updateDoc(currentUserRef, {
             following: findInFollowing
-            ? currentUserProfile.following.filter(profile => profile.uid !== profiles[0].uid)
-            : arrayUnion(profiles[0])
+            ? currentUserProfile.following.filter(p => p.uid !== profile.uid)
+            : arrayUnion(profile)
         })
     } catch (error) {
         toast.error(error.message)
