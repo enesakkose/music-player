@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useFocus } from '@/hooks/useFocus'
 import { useDispatch, useSelector } from 'react-redux'
 import { setQuerySongs } from '@/store/song'
 import { useSearchParams } from 'react-router-dom'
