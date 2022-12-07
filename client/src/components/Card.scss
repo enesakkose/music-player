@@ -1,4 +1,4 @@
-.playlistInfoCard{
+.card{
     padding: $PS;
     border-radius: .5rem;
     background-color: $GRAY;
@@ -9,7 +9,7 @@
         background-color: $darkGray;
     }
 
-    &__img{
+    &Img{
         border-radius: .5rem;
         width: 100%;
         height: 10.75rem;
@@ -23,6 +23,7 @@
         img{
             width: 100%;
             height: 100%;
+            border-radius: .5rem;
         }
 
         &__btn{
@@ -30,6 +31,7 @@
             bottom: .5rem;
             right: .5rem;
             display: none !important;
+            cursor: default;
         }
 
         .showBtn{
@@ -39,34 +41,44 @@
         }
     }
 
-
-    &:hover  &__img__btn{
+    &:hover  &Img__btn{
         display: block !important;
         bottom: .9rem;
-        animation: btnFade .3s ease-out; 
+        animation: btnFade .3s ease-out;
     }
 
-    &__info{
+    &Info{
         margin-top: $MS;
         display: flex;
         flex-direction: column;
         gap: .875rem;
 
-        span{
+        &__title, &__name{
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+
+        &__name{
             font-size: .875rem;
             color: $textGray;
             font-weight: bold;
             padding-bottom: $PS;
+            letter-spacing: 1px;
         }
     }
 
     .perde{
         position: absolute;
         content: '';
-        inset: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         cursor: pointer;
     }
 }
+
 
 @keyframes btnFade {
     0%{
@@ -79,5 +91,3 @@
         bottom: .9rem;
     }
 }
-
-//! used of keyframes property because hover property is not working with display 

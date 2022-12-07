@@ -1,11 +1,8 @@
 import React from 'react'
 import Icon from '@/components/Icon'
-import PlayBtn from '@/components/PlayBtn'
-import clsx from 'clsx'
+import Card from '@/components/Card'
 import { setCurrent, setCurrentSongs, playPause } from '@/store/player'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import '@/components/playlistInfoCard.scss'
 
 function PlaylistInfoCard({playlist, user = false}) {
   const dispatch = useDispatch()
@@ -26,28 +23,24 @@ function PlaylistInfoCard({playlist, user = false}) {
   }
 
   return (
-    <div className='playlistInfoCard'>
-      <div className="playlistInfoCard__img">
-        {playlist.coverURL !== null 
+    <Card
+      onClick={playInPlaylist}
+      playPause={isPlaying && haveSongs}
+      className={isPlaying && haveSongs ? 'showBtn': ''}
+      title={playlist.name}
+      name={user?.displayName}
+      playBtn={playlist.addedSongs.length > 0}
+      href={`/playlist/${playlist.id}`}
+    >     
+      {playlist.coverURL !== null 
           ? (<img src={playlist.coverURL} alt="cover"/>)
           
           : (validCoverImg 
               ? <img src={coverImage} alt="cover"/>  
               : <Icon name='Music' size={52}/>
             )
-        }
-        {playlist.addedSongs.length > 0 && <PlayBtn
-          onClick={playInPlaylist}
-          playPause={isPlaying && haveSongs}
-          className={`playlistInfoCard__img__btn ${isPlaying && haveSongs ? 'showBtn': ''}`}
-        />}
-      </div>
-      <div className="playlistInfoCard__info">
-        <h5>{playlist.name}</h5>
-        <span>{user?.displayName}</span>
-      </div>
-      <Link to={`/playlist/${playlist.id}`} className='perde'></Link>
-    </div>
+      }
+    </Card>
   )
 }
 export default PlaylistInfoCard
