@@ -151,19 +151,6 @@ export const addComment = async(playlistId, comment) => {
     }
 }
 
-export const publishPlaylist = async(playlistId, publish) => {
-    try {
-        const playlistRef = doc(db, 'playlists', playlistId)
-
-        await updateDoc(playlistRef, {
-            publish: publish
-        })
-        return popup(true, 'PublishPlaylistPopup', `${publish ? 'now' : 'no longer'}`)
-    } catch (error) {
-        toast.error(error.message)
-    }
-}
-
 export const userProfile = async() => {
     try {
         await setDoc(doc(db, 'profiles', auth.currentUser.uid), {

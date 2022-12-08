@@ -7,7 +7,6 @@ import { useFindPlaylist } from '@/hooks/useFindPlaylist'
 import { Link } from 'react-router-dom'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useSelector } from 'react-redux'
-import { publishPlaylist } from '@/firebase/db'
 import { modal } from '@/utils'
 import '@/Pages/Playlist/PlaylistHeaderInPlaylist.scss'
 
@@ -28,11 +27,6 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
 
   const openPlaylistDeleteModal = () => {
     modal('PlaylistDeleteModal', findPlaylist)
-    setOpen(false)
-  }
-
-  const handlePublishPlaylist = async() => {
-    await publishPlaylist(playlistId, !findPlaylist.publish)
     setOpen(false)
   }
 
@@ -61,11 +55,6 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
               <li>
                 <button onClick={openPlaylistInfoModal}>
                   Edit Details
-                </button>
-              </li>
-              <li>
-                <button onClick={handlePublishPlaylist}>
-                  {findPlaylist.publish ? 'Remove' : 'Add'} to profile
                 </button>
               </li>
               <li>
