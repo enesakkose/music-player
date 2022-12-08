@@ -1,0 +1,13 @@
+.dateAndRemoveBtn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .remove{
+        opacity: 0;
+    }
+
+    span{
+        color: rgba($WHITE, .6);
+    }
+}

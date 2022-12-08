@@ -1,0 +1,18 @@
+.headerBtns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .commentBtn{
+        padding: $PXS; 
+        border-radius: 50%;
+
+        &:hover{
+            background-color: rgba($WHITE, .1);
+        }
+
+        &:active{
+            background-color: rgba($WHITE, .07);
+        }
+    }
+}
