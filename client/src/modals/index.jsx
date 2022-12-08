@@ -3,7 +3,6 @@ import PlaylistInfoModal from "@/modals/PlaylistInfoModal"
 import PlaylistDeleteModal from "@/modals/PlaylistDeleteModal"
 import PasswordChangeModal from "@/modals/PasswordChangeModal"
 import CommentModal from "@/modals/CommentModal"
-import FollowersModal from "@/modals/FollowersModal"
 import UnauthSongModal from "@/modals/UnauthSongModal"
 import UnauthModal from "@/modals/UnauthModal"
 
@@ -27,10 +26,6 @@ const modals = [
     {
         name: 'CommentModal',
         element: CommentModal
-    },
-    {
-        name: 'FollowersModal',
-        element: FollowersModal
     },
     {
         name: 'UnauthSongModal',

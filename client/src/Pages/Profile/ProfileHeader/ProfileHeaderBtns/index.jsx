@@ -1,22 +1,24 @@
 import React from 'react'
 import FollowBtn from '@/components/FollowBtn'
-import FollowModalBtn from '@/Pages/Profile/ProfileHeader/ProfileHeaderBtns/FollowModalBtn'
+import NavigateBtn from '@/Pages/Profile/ProfileHeader/ProfileHeaderBtns/NavigateBtn'
+import { useNavigate } from 'react-router-dom'
 import { modal } from '@/utils'
 import { follow, unfollow } from '@/firebase/db'
 import '@/Pages/Profile/ProfileHeader/ProfileHeaderBtns/ProfileHeaderBtns.scss'
 
 function ProfileHeaderBtns({ profile, validProfile, user }) {
+  const navigate = useNavigate()
   const findInFollowers = profile?.follower?.find(p => p.uid === user.uid)
 
-  const openFollowersModal = () => {
+  const navigateToFollowers = () => {
     user
-    ? modal('FollowersModal', profile.follower)
+    ? navigate(`/profile/${profile.uid}/followers`)
     : modal('UnauthModal')
   }
 
-  const openFollowingModal = () => {
+  const navigateToFollowing = () => {
     user
-    ? modal('FollowersModal', profile.following)
+    ? navigate(`/profile/${profile.uid}/followings`)
     : modal('UnauthModal')
   }
 
@@ -30,12 +32,12 @@ function ProfileHeaderBtns({ profile, validProfile, user }) {
 
   return (
     <div className='profileHeaderBtns'>
-      <FollowModalBtn 
-        onClick={openFollowersModal}
+      <NavigateBtn 
+        onClick={navigateToFollowers}
         text={`${profile.follower.length} Followers`}  
       />
-      <FollowModalBtn
-        onClick={openFollowingModal}
+      <NavigateBtn
+        onClick={navigateToFollowing}
         text={`${profile.following.length} Following`}
       />
       {!validProfile && user && 
