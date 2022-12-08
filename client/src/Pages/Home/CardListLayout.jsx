@@ -2,6 +2,7 @@ import React from 'react'
 import SongCard from '@/components/SongCard'
 import PlaylistInfoCard from '@/components/PlaylistInfoCard'
 import { Link } from 'react-router-dom'
+import '@/Pages/Home/CardListLayout.scss'
 
 function CardListLayout({ 
   title, 
