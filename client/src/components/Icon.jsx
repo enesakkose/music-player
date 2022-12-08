@@ -1,9 +1,13 @@
 import SVG from "react-inlinesvg";
+import IcoMoon from "react-icomoon";
+import iconSet from '@/icons/selection.json'
 
 function Icon({ name, size = 16, ...props }) {
+	const lowerCaseName = name.toLowerCase()
 	return (
-		<SVG
-			src={`../src/icons/${name}.svg`}
+		<IcoMoon
+			icon={lowerCaseName}
+			iconSet={iconSet}
 			width={size}
 			height={size}
 			{...props}
