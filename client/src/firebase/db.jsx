@@ -185,7 +185,17 @@ export const getProfile = async(userId, setProfile) => {
             setProfile(doc.data())
         })
     } catch (error) {
-        console.log(error)
+        toast.error(error.message)
+    }
+}
+
+export const getPlaylist = async(playlistId, setPlaylist) => {
+    try {
+        onSnapshot(doc(db, 'playlists', playlistId), (doc) => {
+            setPlaylist(doc.data())
+        })
+    } catch (error) {
+        toast.error(error.message)
     }
 }
 
