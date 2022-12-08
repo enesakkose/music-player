@@ -2,7 +2,6 @@ import React from 'react'
 import ProfileFollowers from '@/Pages/Profile/ProfileFollowers'
 import { useGetProfile } from '@/hooks/useGetProfile'
 import { useParams } from 'react-router-dom'
-import '@/Pages/Profile/ProfileLayout.scss'
 
 function Following() {
   const { id } = useParams()
