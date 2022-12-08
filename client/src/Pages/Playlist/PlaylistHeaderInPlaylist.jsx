@@ -2,35 +2,28 @@ import React, { useState } from 'react'
 import PlaylistHeader from '@/components/PlaylistHeader'
 import Icon from '@/components/Icon'
 import DropdownMenu from '@/components/DropdownMenu'
-import Loading from '@/components/Loading'
-import { useFindPlaylist } from '@/hooks/useFindPlaylist'
 import { Link } from 'react-router-dom'
 import { useClickOutside } from '@/hooks/useClickOutside'
-import { useSelector } from 'react-redux'
 import { modal } from '@/utils'
 import '@/Pages/Playlist/PlaylistHeaderInPlaylist.scss'
 
-function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
-  const findPlaylist = useFindPlaylist(playlistId)
-  const { user } = useSelector(state => state.auth)
+function PlaylistHeaderInPlaylist({ playlist, bgColor, validUser, user }) {
   const [ open, setOpen ] = useState(false)
-  const coverImage = findPlaylist?.addedSongs[0]?.track?.images?.coverart
+  const coverImage = playlist?.addedSongs[0]?.track?.images?.coverart
 
   const domNode = useClickOutside(() => { 
     setOpen(false)
   })
 
   const openPlaylistInfoModal = () => {
-    modal('PlaylistInfoModal', findPlaylist.id)
+    modal('PlaylistInfoModal', playlist.id)
     setOpen(false)
   }
 
   const openPlaylistDeleteModal = () => {
-    modal('PlaylistDeleteModal', findPlaylist)
+    modal('PlaylistDeleteModal', playlist)
     setOpen(false)
   }
-
-  if(findPlaylist === undefined) return <Loading/>
 
   return (        
     <PlaylistHeader 
@@ -38,9 +31,9 @@ function PlaylistHeaderInPlaylist({ playlistId, bgColor }) {
       style={{ backgroundColor: `#${bgColor}`}}
       onClick={openPlaylistInfoModal}
       infoTitle='PLAYLIST'
-      img={findPlaylist.coverURL !== null ? findPlaylist.coverURL : findPlaylist.addedSongs.length > 0  ? coverImage : null}
-      infoHeader={findPlaylist.name}
-      validProfile={true}//todo
+      img={playlist?.coverURL !== null ? playlist.coverURL : playlist.addedSongs.length > 0 ? coverImage : null}
+      infoHeader={playlist.name}
+      validProfile={validUser}
     >
       <h6 ref={domNode}  className='playlist__headerInPlaylist__action'>
         <Link to={`/profile/${user.uid}`}>

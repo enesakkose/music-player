@@ -1,19 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PlaylistHeaderInPlaylist from '@/Pages/Playlist/PlaylistHeaderInPlaylist'
 import PlaylistMain from '@/Pages/Playlist/PlaylistMain'
-import { useFindPlaylist } from '@/hooks/useFindPlaylist'
+import Loading from '@/components/Loading'
+import { useSelector } from 'react-redux'
+import { useGetPlaylist } from '@/hooks/useGetPlaylist'
 import { useParams } from 'react-router-dom'
 import '@/Pages/Playlist/Playlist.scss'
 
 function Playlist() {
   const { playlistId } = useParams()
-  const findPlaylist = useFindPlaylist(playlistId)
-  const bgColor = findPlaylist?.addedSongs[0]?.track?.images?.joecolor?.slice(18, 24)
+  const { user } = useSelector(state => state.auth)
+  const playlist = useGetPlaylist(playlistId)
+  const validUser = user?.uid === playlist?.uid
+  const bgColor = playlist?.addedSongs[0]?.track?.images?.joecolor?.slice(18, 24)
+  
+  if(playlist === null) return <Loading/>
 
   return (
-    <div key={playlistId} className='playlist'>
-      <PlaylistHeaderInPlaylist playlistId={playlistId} bgColor={bgColor}/>
-      <PlaylistMain playlistId={playlistId} bgColor={bgColor} />
+    <div className='playlist'>
+      <PlaylistHeaderInPlaylist 
+        playlist={playlist}
+        bgColor={bgColor} 
+        validUser={validUser}
+        user={user}
+      />
+      <PlaylistMain playlist={playlist} validUser={validUser} playlistId={playlistId} bgColor={bgColor} />
     </div>
   )
 }
