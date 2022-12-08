@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import Home from '@/Pages/Home'
 import Search from '@/Pages/Search'
+import ProfileLayout from "@/Pages/Profile/ProfileLayout"
 import Profile from '@/Pages/Profile'
 import ProfilesResult from "@/Pages/Search/ProfilesResult"
 import CollectionLayout from '@/Pages/Collection'
@@ -16,6 +17,8 @@ import App404 from "@/Pages/404"
 import RecentSongs from "@/Pages/RecentSongs"
 import MainLayout from "@/components/MainLayout"
 import PrivateRoute from "@/components/PrivateRoute"
+import Followers from "@/Pages/Profile/ProfileFollowers/Followers"
+import Following from "@/Pages/Profile/ProfileFollowers/Following"
 
 export const routes = [
     {
@@ -41,8 +44,21 @@ export const routes = [
                 ] 
             },
             {
-                path: 'profile/:id',
-                element: <Suspense><Profile/></Suspense>
+                element: <Suspense><ProfileLayout/></Suspense>,
+                children: [
+                    {
+                        path: 'profile/:id',
+                        element: <Suspense><Profile/></Suspense>,
+                    },
+                    {
+                        path:'profile/:id/followers',
+                        element: <Suspense><Followers/></Suspense>
+                    },
+                    {
+                        path:'profile/:id/followings',
+                        element: <Suspense><Following/></Suspense>
+                    }
+                ]
             },
             {
                 path: 'playlist/:playlistId',
