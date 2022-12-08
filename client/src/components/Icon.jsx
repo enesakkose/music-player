@@ -1,4 +1,3 @@
-import SVG from "react-inlinesvg";
 import IcoMoon from "react-icomoon";
 import iconSet from '@/icons/selection.json'
 
