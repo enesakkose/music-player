@@ -1,5 +1,5 @@
 import React from 'react'
-import '@/Pages/Profile/ProfileHeader/ProfileHeaderBtns/NavigateBtn.scss'
+import '@/Pages/Profile/ProfileHeader/ProfileHeaderBtns/NavigateBtN.scss'
 
 function NavigateBtn({ text, ...props }) {
   return (

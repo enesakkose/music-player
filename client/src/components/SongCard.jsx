@@ -35,7 +35,7 @@ function SongCard({song, index, data, ...props}) {
       href={`/album/${song.key}`}
       {...props}
     >
-      <img src={song.images.coverart} alt={song.title}/>
+      <img src={song?.images?.coverart} alt={song.title}/>
     </Card>
   )
 }
