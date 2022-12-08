@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import CardListLayout from '@/Pages/Home/CardListLayout'
+import CardList from '@/Pages/Home/CardList'
 import Loading from '@/components/Loading'
 import { useSelector } from 'react-redux'
 import { useGetChartsByGenreQuery } from '@/services/music'
@@ -15,7 +15,7 @@ function Home() {
   return (
     <section className='home'>
       {user && userPlaylists[0]?.recentSongs.length > 0 &&
-        <CardListLayout 
+        <CardList 
           data={userPlaylists[0]?.recentSongs.slice(-6).reverse()}
           link='/recentSongs'
           title='Recent Songs'
@@ -25,7 +25,7 @@ function Home() {
       }
 
       {playlists.length > 0 && user &&
-        <CardListLayout 
+        <CardList 
           data={playlists.slice(0,6)}
           link='/collection/playlists'
           title='Your Playlist'
@@ -33,7 +33,7 @@ function Home() {
         />
       }
       
-      <CardListLayout 
+      <CardList 
         data={songs.slice(0,6)}
         link='/genre/WORLDWIDE'
         title='Recommended For You'
