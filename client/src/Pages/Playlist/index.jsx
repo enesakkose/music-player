@@ -17,14 +17,14 @@ function Playlist() {
   if(playlist === null) return <Loading/>
 
   return (
-    <div className='playlist'>
+    <div key={playlist.id} className='playlist'>
       <PlaylistHeaderInPlaylist 
         playlist={playlist}
         bgColor={bgColor} 
         validUser={validUser}
         user={user}
       />
-      <PlaylistMain playlist={playlist} validUser={validUser} playlistId={playlistId} bgColor={bgColor} />
+      <PlaylistMain playlist={playlist} validUser={validUser} bgColor={bgColor}/>
     </div>
   )
 }
