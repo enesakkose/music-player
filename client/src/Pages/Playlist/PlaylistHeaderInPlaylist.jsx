@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import PlaylistHeader from '@/components/PlaylistHeader'
 import Icon from '@/components/Icon'
 import DropdownMenu from '@/components/DropdownMenu'
+import { useGetProfile } from '@/hooks/useGetProfile'
 import { Link } from 'react-router-dom'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { modal } from '@/utils'
 import '@/Pages/Playlist/PlaylistHeaderInPlaylist.scss'
 
-function PlaylistHeaderInPlaylist({ playlist, bgColor, validUser, user }) {
+function PlaylistHeaderInPlaylist({ playlist, bgColor, validUser }) {
+  const user = useGetProfile(playlist.uid)
   const [ open, setOpen ] = useState(false)
   const coverImage = playlist?.addedSongs[0]?.track?.images?.coverart
 
@@ -36,12 +38,13 @@ function PlaylistHeaderInPlaylist({ playlist, bgColor, validUser, user }) {
       validProfile={validUser}
     >
       <h6 ref={domNode}  className='playlist__headerInPlaylist__action'>
-        <Link to={`/profile/${user.uid}`}>
+        <Link to={`/profile/${user?.uid}`}>
           {user?.displayName}
         </Link>
+        {validUser && 
         <button onClick={() => setOpen(!open)} className="playlistAction-btn">
           <Icon name='ThreeDots' size={32}/>
-        </button>
+        </button>}
         {open && 
           <DropdownMenu className='playlistActionMenu'>
             <ul>
