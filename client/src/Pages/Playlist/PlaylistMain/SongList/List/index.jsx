@@ -3,18 +3,18 @@ import SongsTableList from '@/components/SongsTableList'
 import DateAndRemoveBtn from '@/Pages/Playlist/PlaylistMain/SongList/List/DateAndRemoveBtn'
 import '@/Pages/Playlist/PlaylistMain/SongList/List/List.scss'
 
-function List({ addedSongs, playlistId }) {
+function List({ playlist }) {
   return (
     <ul className='songList'>
-      {addedSongs.map((song, index) => (
+      {playlist.addedSongs.map((song, index) => (
         <li key={song.track.key} className='songList__item'>
           <SongsTableList
             index={index}
             song={song.track}
-            findSongs={addedSongs}
+            findSongs={playlist.addedSongs}
             className='songList__item__content'
           >
-            <DateAndRemoveBtn song={song} addedSongs={addedSongs} playlistId={playlistId}/>
+            <DateAndRemoveBtn song={song} playlist={playlist}/>
           </SongsTableList>
         </li>
       ))}

@@ -8,7 +8,7 @@ function SongList({playlist}) {
     <div className='songList'>
       <HeaderBtns playlist={playlist}/>
       <SongsTableHeader><h5>Date Added</h5></SongsTableHeader>
-      <List addedSongs={playlist.addedSongs} playlistId={playlist.id}/>
+      <List playlist={playlist}/>
     </div>
   )
 }
