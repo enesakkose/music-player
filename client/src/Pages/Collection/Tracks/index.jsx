@@ -4,6 +4,7 @@ import EmptyField from '@/components/EmptyField'
 import LightBtn from '@/components/LightBtn'
 import clsx from 'clsx'
 import Loading from '@/components/Loading'
+import GradientBg from '@/components/GradientBg'
 import MainContent from '@/Pages/Collection/Tracks/MainContent'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -35,7 +36,7 @@ function Tracks() {
             </Link>
           </EmptyField>}
         {favoritesPlaylist.length > 0 && <MainContent favoritesPlaylist={favoritesPlaylist}/>}
-        <div className="favoriteTracks__main__background" />
+        <GradientBg className='favoritesGradient'/>
       </div>
     </div>
   )

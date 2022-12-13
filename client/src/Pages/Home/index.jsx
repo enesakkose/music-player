@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import CardList from '@/Pages/Home/CardList'
 import Loading from '@/components/Loading'
+import GradientBg from '@/components/GradientBg'
 import { useSelector } from 'react-redux'
 import { useGetChartsByGenreQuery } from '@/services/music'
 import '@/Pages/Home/Home.scss'
@@ -39,7 +40,7 @@ function Home() {
         title='Recommended For You'
       />
       
-      <div className="home__bg" style={{ backgroundColor: `${bgColor}` }}/>
+      <GradientBg bgColor={bgColor}/>
     </section>
   )
 }

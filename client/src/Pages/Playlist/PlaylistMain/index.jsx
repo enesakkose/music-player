@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PlaylistSearch from '@/Pages/Playlist/PlaylistMain/Search'
 import SongList from '@/Pages/Playlist/PlaylistMain/SongList'
+import GradientBg from '@/components/GradientBg'
 import '@/Pages/Playlist/PlaylistMain/PlaylistMain.scss'
 
 function PlaylistMain({ playlist, validUser, bgColor }) {
@@ -19,7 +20,7 @@ function PlaylistMain({ playlist, validUser, bgColor }) {
           />
         }
       </div>
-      <div className="playlist__main__background" style={{ backgroundColor: `#${bgColor}` }} />
+      <GradientBg size='40vh' bgColor={bgColor}/>
     </section>
   )
 }
