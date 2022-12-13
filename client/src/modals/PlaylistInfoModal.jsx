@@ -54,7 +54,12 @@ function PlaylistInfoModal({data: playlistId, outClickRef}) {
                 <Icon name='Pencil' size={20}/>
                 <input type='file' onChange={handleUpload} accept="image/png, image/jpeg" hidden/>
               </label>
-              <button type='button' onClick={deleteImgHandle} className='imgChange__btn'>
+              <button 
+                disabled={playlistInfo.coverURL === null} 
+                type='button' 
+                onClick={deleteImgHandle} 
+                className='imgChange__btn'
+              >
                 <Icon name='Trash' size={20}/>
               </button>
               </div>
@@ -70,7 +75,7 @@ function PlaylistInfoModal({data: playlistId, outClickRef}) {
               />
               <LightBtn
                 text='Save' 
-                type='submit' 
+                type='submit'
                 className={`submitBtn ${isSubmitting ? 'isSubmitting' : ''}`}
               />
             </div>
