@@ -72,15 +72,9 @@
         }
     }
 
-    &__actionBtns{
-        display: flex;
-        align-items: center;
-
-        button{
-
-            &:hover{
-                color: $WHITE;
-            }
+    .footerFavBtn{
+        &:hover{
+            color: $WHITE;
         }
     }
 }

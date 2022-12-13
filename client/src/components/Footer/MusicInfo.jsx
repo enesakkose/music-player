@@ -34,11 +34,7 @@ function MusicInfo() {
             {current?.subtitle}
           </span>
         </div>
-        <div className="footer__music__info__actionBtns">
-          <FavoriteBtn
-            song={current}
-          />
-        </div>
+        <FavoriteBtn song={current} className='footerFavBtn'/>
     </div>}
     </>
   )
