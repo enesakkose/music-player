@@ -1,6 +1,7 @@
 import React from 'react'
 import Loading from '@/components/Loading'
 import ProfileHeader from '@/Pages/Profile/ProfileHeader'
+import ProfileMain from '@/Pages/Profile/ProfileMain'
 import { useSelector } from 'react-redux'
 import { useGetProfile } from '@/hooks/useGetProfile'
 import { useParams } from 'react-router-dom'
@@ -21,6 +22,7 @@ function Profile() {
         validProfile={validProfile} 
         user={user}
       />
+      <ProfileMain profile={profile}/>
     </div>
   )
 }
