@@ -8,16 +8,17 @@ import '@/Pages/Home/Home.scss'
 
 function Home() {
   const [bgColor, setBgColor] = useState('')
-  const { defaultPlaylists: userPlaylists, playlists } = useSelector(state => state.playlist)
+  const { playlists } = useSelector(state => state.playlist)
+  const { profile: { recentSongs } } = useSelector(state => state.profiles)
   const { user } = useSelector(state => state.auth)
   const { data: songs, isFetching } = useGetChartsByGenreQuery('WORLDWIDE')
-  if(user && userPlaylists === null || isFetching) return <Loading/>
+  if(isFetching) return <Loading/>
 
   return (
     <section className='home'>
-      {user && userPlaylists[0]?.recentSongs.length > 0 &&
+      {user && recentSongs.length > 0 &&
         <CardList 
-          data={userPlaylists[0]?.recentSongs.slice(-6).reverse()}
+          data={recentSongs.slice(-6).reverse()}
           link='/recentSongs'
           title='Recent Songs'
           onMouseOver={true}

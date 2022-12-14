@@ -6,10 +6,7 @@ import { useSelector } from 'react-redux'
 import '@/Pages/RecentSongs.scss'
 
 function RecentSongs() {
-  const { defaultPlaylists } = useSelector(state => state.playlist)  
-  
-  if(defaultPlaylists === null) return <Loading/>
-  const recentSongs = defaultPlaylists[0]?.recentSongs
+  const { profile: { recentSongs } } = useSelector(state => state.profiles)  
 
   return (
     <div className='recentSongs'>

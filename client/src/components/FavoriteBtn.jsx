@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React from 'react'
 import Icon from '@/components/Icon'
 import clsx from 'clsx'
 import { useSelector } from 'react-redux'
@@ -6,24 +6,21 @@ import { addOrRemoveFavoriteSongs } from '@/firebase/db'
 import '@/components/FavoriteBtn.scss'
 
 function FavoriteBtn({ className, song }) {
-  const { defaultPlaylists } = useSelector(state => state.playlist)
-  
-  if(defaultPlaylists === null) return
+  const { profile: { favorites } } = useSelector(state => state.profiles)
+  const favSong = favorites.some(f => f.key === song.key)
 
   const addOrDeleteFavorite = () => {
-    addOrRemoveFavoriteSongs(song, defaultPlaylists[0].favoriteSongs)
+    addOrRemoveFavoriteSongs(song, favSong)
   }
-
-  const favoriteSong = defaultPlaylists[0]?.favoriteSongs?.find(s => s.key === song.key)
 
   return (
     <button 
       onClick={addOrDeleteFavorite} 
-      className={clsx('favoriteBtn', className, favoriteSong ? 'liked' : '')}
+      className={clsx('favoriteBtn', favSong ? 'liked' : '', className)}
     >
       <Icon
-        className={clsx(favoriteSong ? 'like' : 'unlike', favoriteSong ? 'liked': '')}
-        name={favoriteSong ? 'FillFavorite' : 'Favorite' } 
+        className={clsx(favSong ? 'like' : 'unlike', favSong ? 'liked': '')}
+        name={favSong ? 'FillFavorite' : 'Favorite' } 
         size={21}
       />
     </button>

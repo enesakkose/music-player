@@ -14,10 +14,8 @@ function Playlists() {
   const id = uuidv4()
   const navigate = useNavigate()
   const { playlists } = useSelector(state => state.playlist)
-  const { defaultPlaylists } = useSelector(state => state.playlist)
+  const { profile: { favorites } } = useSelector(state => state.profiles)
   const { user } = useSelector(state => state.auth)
-
-  if(defaultPlaylists === null) return <Loading/>
 
   const handleAdd = async() => {
     await addPlaylistHandle(playlists, id, user.uid)
@@ -26,7 +24,7 @@ function Playlists() {
   
   return (
     <div className='playlists contentSpacing'>
-      { playlists.length === 0 
+      {playlists.length === 0 
         ? <EmptyField 
             icon='Music'
           >
@@ -34,7 +32,7 @@ function Playlists() {
           </EmptyField>  
 
         : <div className="playlists__cards">
-            <FavoritesCard defaultPlaylists={defaultPlaylists}/>
+            <FavoritesCard favorites={favorites}/>
             {playlists.map((playlist) => (
               <PlaylistInfoCard 
                 key={playlist.id} 

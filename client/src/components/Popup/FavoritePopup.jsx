@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux'
 import PopupLayout from '@/components/Popup/PopupLayout'
 
 function FavoritePopup({text}) {
-  const { favorite, defaultPlaylists } = useSelector(state => state.playlist)
+  const { profile: { favorites } } = useSelector(state => state.profiles)
 
   return (
     <PopupLayout 
-      dep={defaultPlaylists[0].favoriteSongs} 
+      dep={favorites} 
       text={`${text} your favorite songs`} 
     />
   )
