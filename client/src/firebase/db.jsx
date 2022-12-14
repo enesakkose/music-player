@@ -18,8 +18,8 @@ import {
     onSnapshot } from "firebase/firestore"
 import { onAuthStateChanged, getAuth } from 'firebase/auth'
 import { store } from "@/store"
-import { addPlaylist, setDefaultPlaylists } from '@/store/playlist'
-import { setProfiles } from '@/store/profiles'
+import { addPlaylist } from '@/store/playlist'
+import { setProfiles, setProfile } from '@/store/profiles'
 import { popup } from '@/utils'
 import { toast } from 'react-hot-toast'
 
@@ -35,27 +35,31 @@ onAuthStateChanged(auth, (user) => {
             )
         )
     }),
-    onSnapshot(query(collection(db, 'users'), where('uid', '==', user.uid)), (doc) => {
-        store.dispatch(
-            setDefaultPlaylists(
-                doc.docs.reduce((playlists, playlist) => [...playlists, playlist.data()], [])
+
+    onSnapshot(query(collection(db, 'profiles'), where('uid', '==', user.uid)), (doc) => {
+        doc.docs.map((profile) => (
+            store.dispatch(
+                setProfile(profile.data())
             )
-        )
+        ))
     })
 })
 
 export const addPlaylistHandle = async(playlists, id, userId) => {
-    await setDoc(doc(db, 'playlists', id),{
-        name: `My Playlist #${playlists.length + 1}`,
-        id : id,
-        uid: userId,
-        addedSongs: [],
-        coverURL: null,
-        comments: [],
-        publish: false,
-        createdAt: new Date().toISOString()
-    })
-    popup(true, 'AddPlaylistPopup')
+    try{
+        await setDoc(doc(db, 'playlists', id),{
+            name: `My Playlist #${playlists.length + 1}`,
+            id : id,
+            uid: userId,
+            addedSongs: [],
+            coverURL: null,
+            comments: [],
+            createdAt: new Date().toISOString()
+        })
+        popup(true, 'AddPlaylistPopup')
+    } catch (error) {
+        toast.error(error.message)
+    }
 }
 
 
@@ -96,24 +100,13 @@ export const addOrRemoveAddedSongs = async(playlistId, data, addedSongs) => {
     }
 }
 
-export const addDefaultCollection = async() => {
-    try {
-        await setDoc(doc(db, 'users', auth.currentUser.uid), {
-            uid: auth.currentUser.uid,
-            recentSongs: [],
-            favoriteSongs: []
-        })
-    } catch (error) {
-        toast.error(error.message)
-    }
-}
-
 export const addSongToRecentSong = async(currentSong, recentSongs) => {
     try {
-        const recentSongsRef = doc(db, 'users', auth.currentUser.uid)
+        const recentRef = doc(db, 'profiles', auth.currentUser.uid)
         const findCurrent = recentSongs.some(song => song.key === currentSong.key)
         const filteredSongs = recentSongs.filter(song => song.key !== currentSong.key)
-        await updateDoc(recentSongsRef, {
+        
+        await updateDoc(recentRef, {
             recentSongs: findCurrent 
             ? [...filteredSongs, currentSong]
             : arrayUnion(currentSong)
@@ -123,17 +116,21 @@ export const addSongToRecentSong = async(currentSong, recentSongs) => {
     }
 }
 
-export const addOrRemoveFavoriteSongs = async(data, favoriteSongs) => {
+export const addOrRemoveFavoriteSongs = async(data, favorite) => {
     try {
-        const favoriteSongsRef = doc(db, 'users', auth.currentUser.uid)
-        const findSameSong = favoriteSongs.some(song => song.key === data.key)
-        
-        await updateDoc(favoriteSongsRef, {
-            favoriteSongs: findSameSong
-            ? favoriteSongs.filter(song => song.key !== data.key) 
-            : arrayUnion(data)
+        const fRef = doc(db, 'profiles', auth.currentUser.uid)
+        //const findSameSong = favoriteSongs.some(song => song.key === data.key)
+        /*const q = query(collection(db, 'profiles'), where('favorites', '==', data))
+        const querySnapshot = await getDocs(q)
+        querySnapshot.forEach((doc) => {
+            console.log(doc.data())
+        })*/
+
+        await updateDoc(fRef, {
+            favorites: favorite ? arrayRemove(data) : arrayUnion(data)
         })
-        return popup(true, 'FavoritePopup', `${findSameSong ? 'Remove' : 'Added'}`)
+
+        return popup(true, 'FavoritePopup', `${favorite ? 'Remove' : 'Added'}`)
     } catch (error) {
         toast.error(error.message)
     }
@@ -158,7 +155,9 @@ export const userProfile = async() => {
             displayName: auth.currentUser.displayName,
             photoURL: auth.currentUser.photoURL,
             follower: [],
-            following: []
+            following: [],
+            recentSongs: [],
+            favoriteSongs: []
         })
     } catch (error) {
         toast.error(error.message)
@@ -230,6 +229,7 @@ export const unfollow = async(profile, currentUser) => {
         toast.error(error.message)
     }
 }
+
 
 export const docExist = async(id) => {
     try {
