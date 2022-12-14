@@ -18,7 +18,7 @@ import { getFirestore, doc, updateDoc } from 'firebase/firestore'
 import { store } from "@/store"
 import { login, logout } from "@/store/auth"
 import { user as currentUser } from '@/utils'
-import { addDefaultCollection, userProfile, docExist } from '@/firebase/db'
+import { userProfile, docExist } from '@/firebase/db'
 import toast from "react-hot-toast"
 
 export const db = getFirestore(app)
@@ -37,7 +37,6 @@ export const handleLogin = async(username, password) => {
 export const createUser = async(username, password) => {
     try {
         await createUserWithEmailAndPassword(auth, username, password)
-        addDefaultCollection()
         userProfile()
         return true
     } catch (error) {
@@ -49,8 +48,7 @@ export const loginWithGoogle = async() => {
     try {
         await signInWithPopup(auth, provider)
         const profile = await docExist(auth.currentUser.uid)
-        if(profile === false) addDefaultCollection()
-        userProfile()
+        if(profile === false) userProfile()
         return true
     } catch (error) {
         toast.error(error.message)
