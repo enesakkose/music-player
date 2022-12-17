@@ -17,8 +17,9 @@ import App404 from "@/Pages/404"
 import RecentSongs from "@/Pages/RecentSongs"
 import MainLayout from "@/components/MainLayout"
 import PrivateRoute from "@/components/PrivateRoute"
-import Followers from "@/Pages/Profile/ProfileFollowers/Followers"
-import Following from "@/Pages/Profile/ProfileFollowers/Following"
+import Followers from "@/Pages/Profile/Slug/Followers"
+import Following from "@/Pages/Profile/Slug/Following"
+import Favorites from "@/Pages/Profile/Slug/Favorites"
 
 export const routes = [
     {
@@ -57,6 +58,10 @@ export const routes = [
                     {
                         path:'profile/:id/followings',
                         element: <Suspense><Following/></Suspense>
+                    },
+                    {
+                        path: 'profile/:id/favorites',
+                        element: <Suspense><Favorites/></Suspense>
                     }
                 ]
             },
@@ -73,11 +78,11 @@ export const routes = [
                         children: [
                             {
                                 path: 'tracks',
-                                element: <Suspense><Tracks/></Suspense> 
+                                element: <Suspense><Tracks/></Suspense>
                             },
                             {
                                 path: 'playlists',
-                                element: <Suspense><Playlists/></Suspense> 
+                                element: <Suspense><Playlists/></Suspense>
                             }
                         ]
                     },
