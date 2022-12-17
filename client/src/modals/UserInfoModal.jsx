@@ -36,7 +36,7 @@ function UserInfoModal({outClickRef}) {
       photoURL: ''
     })
   }
-  console.log(auth.currentUser)
+
   return (
     <div ref={outClickRef} className='modalContent userInfoModal'>
       <ModalHeader title='User Details'/>
