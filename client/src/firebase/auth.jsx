@@ -17,7 +17,6 @@ import {
 import { getFirestore, doc, updateDoc } from 'firebase/firestore'
 import { store } from "@/store"
 import { login, logout } from "@/store/auth"
-import { user as currentUser } from '@/utils'
 import { userProfile, docExist } from '@/firebase/db'
 import toast from "react-hot-toast"
 
@@ -66,19 +65,19 @@ export const handleLogout = async() => {
 
 onAuthStateChanged(auth, (user) => {
     if(user){
-        currentUser()
+        store.dispatch(login(true))
     }else{
         store.dispatch(logout())
     }
 })
 
-export const updateUser = async(data) => {
+export const updateUser = async(data, popup = true) => {
     try {
         const profileRef = doc(db, 'profiles', auth.currentUser.uid)
         await updateProfile(auth.currentUser, data)
         await updateDoc(profileRef, data)
-        currentUser()
-        toast.success('Profile updated')
+
+        if(popup) toast.success('Profile updated')
         return true
     } catch (error) {
         toast.error(error.message)
