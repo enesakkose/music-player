@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import '@/Pages/Collection/Tracks/Tracks.scss'
 
 function Tracks() {
-  const { profile: { favorites } } = useSelector(state => state.profiles)
+  const { profile: { favorites, uid, displayName } } = useSelector(state => state.profiles)
 
   return (
     <div className='favoriteTracks'>
@@ -19,7 +19,12 @@ function Tracks() {
         infoTitle='PLAYLIST'
         infoHeader='LIKED SONGS'
       >
-        {favorites.length > 0 && <h6>{favorites.length} songs</h6>}
+        <div className="favoriteTracks__btns">
+          <Link to={`/profile/${uid}`}>
+            {displayName}
+          </Link>
+          {favorites.length > 0 && <h6>• {favorites.length} songs</h6>}
+        </div>
       </PlaylistHeader>
       
       <div className={clsx('favoriteTracks__main', favorites.length === 0 ? 'favoriteTracks__empty' : '')}>
