@@ -19,7 +19,7 @@ function CardList({
           song={item} 
           index={index}
           data={data}
-          onMouseOver={onMouseOver ? () => props.setBgColor(`${item?.images?.joecolor.slice(18,24)}`) : undefined}
+          onMouseOver={onMouseOver ? () => props.setBgColor(`${item?.images?.joecolor?.slice(18,24)}`) : undefined}
         />     
       ))}
       {playlist && data.map(item => (

@@ -4,7 +4,7 @@ import { navigateAuth } from '@/utils'
 import '@/modals/UnauthSongModal.scss'
 
 function UnauthSongModal({ outClickRef, data: songData }) {
-  const backgroundColor = songData?.images?.joecolor.slice(18,24)
+  const backgroundColor = songData?.images?.joecolor?.slice(18,24)
 
   return (
     <div 

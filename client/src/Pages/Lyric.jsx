@@ -11,7 +11,7 @@ function Lyric() {
   if(isFetching) return <Loading/>
   if(error) return 'Something went wrong'
 
-  const backgroundColor = current?.images?.joecolor.slice(18,24)
+  const backgroundColor = current?.images?.joecolor?.slice(18,24)
   const track = trackDetails?.sections[1].type === 'LYRICS'
   const textColor = current?.images?.joecolor.slice(2,8)
   
