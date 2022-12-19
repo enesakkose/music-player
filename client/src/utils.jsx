@@ -1,18 +1,6 @@
 import  { store } from "@/store"
 import { setOpenPopup } from "@/store/popup"
 import { closeModal, openModal } from "@/store/modal"
-import { auth } from "@/firebase/auth"
-import { login } from "@/store/auth"
-
-export const user = () => {
-    store.dispatch(login({
-        displayName: auth.currentUser.displayName,
-        email: auth.currentUser.email,
-        emailVerified: auth.currentUser.emailVerified,
-        photoURL: auth.currentUser.photoURL,
-        uid: auth.currentUser.uid
-    }))
-}
 
 export const closeModalHandle = () => {
     store.dispatch(closeModal())
