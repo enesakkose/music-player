@@ -1,15 +1,16 @@
 import React from 'react'
-import ProfileCard from '@/components/ProfileCard'
+import PageWrapper from '@/components/Wrappers/PageWrapper'
+import CardListWrapper from '@/components/Wrappers/CardListWrapper'
 import '@/Pages/Profile/Slug/PageLayout.scss'
 
-function PageLayout({ users, title, children }) {
+function PageLayout({ title, children }) {
   return (
-    <div className='pageLayout'>
+    <PageWrapper className='pageLayout'>
       <h3 className='pageLayout__title'>{title}</h3>
-      <div className="pageLayout__list">
+      <CardListWrapper className="pageLayout__list">
         {children}
-      </div>
-    </div>
+      </CardListWrapper>
+    </PageWrapper>
   )
 }
 

@@ -1,4 +1,6 @@
 import React from 'react'
+import PageWrapper from '@/components/Wrappers/PageWrapper'
+import CardListWrapper from '@/components/Wrappers/CardListWrapper'
 import EmptyField from '@/components/EmptyField'
 import FavoritesCard from '@/components/FavoritesCard'
 import LightBtn from '@/components/LightBtn'
@@ -21,15 +23,13 @@ function Playlists() {
   }
   
   return (
-    <div className='playlists contentSpacing'>
+    <PageWrapper className='playlists'>
       {playlists.length === 0 
-        ? <EmptyField 
-            icon='Music'
-          >
+        ? <EmptyField icon='Music'>
             <LightBtn onClick={handleAdd} text='Create Playlist'/>
           </EmptyField>  
 
-        : <div className="playlists__cards">
+        : <CardListWrapper className="playlists__cards">
             <FavoritesCard favorites={favorites}/>
             {playlists.map((playlist) => (
               <PlaylistInfoCard 
@@ -38,9 +38,9 @@ function Playlists() {
                 userName={displayName}
               />
             ))}
-          </div>  
+          </CardListWrapper>  
       }
-    </div>
+    </PageWrapper>
   )
 }
 

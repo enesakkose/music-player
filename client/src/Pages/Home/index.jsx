@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import CardList from '@/Pages/Home/CardList'
 import Loading from '@/components/Loading'
 import GradientBg from '@/components/GradientBg'
+import PageWrapper from '@/components/Wrappers/PageWrapper'
 import { useSelector } from 'react-redux'
 import { useGetChartsByGenreQuery } from '@/services/music'
 import '@/Pages/Home/Home.scss'
@@ -16,10 +17,10 @@ function Home() {
   if(isFetching) return <Loading/>
 
   return (
-    <section className='home'>
+    <PageWrapper className='home'>
       {user && profile.recentSongs.length > 0 &&
         <CardList 
-          data={recentSongs.slice(-6).reverse()}
+          data={profile.recentSongs.slice(-6).reverse()}
           link='/recentSongs'
           title='Recent Songs'
           onMouseOver={true}
@@ -43,7 +44,7 @@ function Home() {
       />
       
       <GradientBg bgColor={bgColor}/>
-    </section>
+    </PageWrapper>
   )
 }
 
