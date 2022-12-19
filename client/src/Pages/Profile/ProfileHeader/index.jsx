@@ -5,17 +5,17 @@ import ProfileHeaderBtns from '@/Pages/Profile/ProfileHeader/ProfileHeaderBtns'
 import { modal } from '@/utils'
 import '@/Pages/Profile/ProfileHeader/ProfileHeader.scss'
 
-function ProfileHeader({ profile, validProfile, user }) {
+function ProfileHeader({ profile, validProfile }) {
   return (
     <PlaylistHeader 
       className='profileHeader' 
       infoTitle='PROFILE' 
       infoHeader={profile.displayName}
       img={profile.photoURL === null || profile.photoURL === '' ? DefaultAvatar : profile.photoURL}
-      onClick={validProfile ? () => modal('UserInfoModal', user) : undefined}
+      onClick={validProfile ? () => modal('UserInfoModal') : undefined}
       validProfile={validProfile}
     >
-      <ProfileHeaderBtns profile={profile} validProfile={validProfile} user={user}/>
+      <ProfileHeaderBtns profile={profile} validProfile={validProfile}/>
     </PlaylistHeader>
   )
 }
