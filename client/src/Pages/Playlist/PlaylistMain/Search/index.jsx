@@ -15,7 +15,7 @@ function Search({ playlist, show, setShow }) {
   }, [show])
 
   return (
-    <div className={clsx('playlistSearchSongs', show ? 'hide' : '',)}>
+    <div className={clsx('playlistSearchSongs', show ? 'hide' : '')}>
       <SearchHeader 
         show={show} 
         setShow={setShow} 
