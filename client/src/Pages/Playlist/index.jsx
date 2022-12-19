@@ -3,6 +3,7 @@ import PlaylistHeaderInPlaylist from '@/Pages/Playlist/PlaylistHeaderInPlaylist'
 import PlaylistMain from '@/Pages/Playlist/PlaylistMain'
 import Loading from '@/components/Loading'
 import { useValidUser } from '@/hooks/useValidUser'
+import { useGetProfile } from '@/hooks/useGetProfile'
 import { useGetPlaylist } from '@/hooks/useGetPlaylist'
 import { useParams } from 'react-router-dom'
 import '@/Pages/Playlist/Playlist.scss'
@@ -16,7 +17,7 @@ function Playlist() {
   if(playlist === null) return <Loading/>
 
   return (
-    <div key={playlist.id} className='playlist'>
+    <div key={playlistId} className='playlist'>
       <PlaylistHeaderInPlaylist 
         playlist={playlist}
         bgColor={bgColor} 
