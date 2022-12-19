@@ -48,10 +48,10 @@ function SongsTableList({children, className, index, song, findSongs}) {
           </h5>
       </div>
       {children}
-      <FavoriteBtn 
+      {user && <FavoriteBtn 
         song={song}
         className='songsTableListItem__favBtn'
-      />
+      />}
     </div>
   )
 }
