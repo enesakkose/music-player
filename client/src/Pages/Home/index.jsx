@@ -9,14 +9,15 @@ import '@/Pages/Home/Home.scss'
 function Home() {
   const [bgColor, setBgColor] = useState('')
   const { playlists } = useSelector(state => state.playlist)
-  const { profile: { recentSongs } } = useSelector(state => state.profiles)
   const { user } = useSelector(state => state.auth)
+  const { profile } = useSelector(state => state.profiles)
   const { data: songs, isFetching } = useGetChartsByGenreQuery('WORLDWIDE')
+
   if(isFetching) return <Loading/>
 
   return (
     <section className='home'>
-      {user && recentSongs.length > 0 &&
+      {user && profile.recentSongs.length > 0 &&
         <CardList 
           data={recentSongs.slice(-6).reverse()}
           link='/recentSongs'
