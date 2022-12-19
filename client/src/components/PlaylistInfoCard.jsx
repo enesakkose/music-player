@@ -4,7 +4,7 @@ import Card from '@/components/Card'
 import { setCurrent, setCurrentSongs, playPause } from '@/store/player'
 import { useDispatch, useSelector } from 'react-redux'
 
-function PlaylistInfoCard({playlist, user = false}) {
+function PlaylistInfoCard({playlist, userName = false}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
   const validCoverImg = playlist.coverURL === null && playlist.addedSongs.length > 0
@@ -28,7 +28,7 @@ function PlaylistInfoCard({playlist, user = false}) {
       playPause={isPlaying && haveSongs}
       className={isPlaying && haveSongs ? 'showBtn': ''}
       title={playlist.name}
-      name={user?.displayName}
+      name={userName}
       playBtn={playlist.addedSongs.length > 0}
       href={`/playlist/${playlist.id}`}
     >     
