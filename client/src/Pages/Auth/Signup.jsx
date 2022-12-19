@@ -19,7 +19,7 @@ function Signup({changeContent, setChangeContent}) {
     const user = await createUser(values.email, values.password)
     await updateUser({
       displayName: values.username
-    })
+    }, false)
     if(user) navigate('/', { replace: true })
   }
 
