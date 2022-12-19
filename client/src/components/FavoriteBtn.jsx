@@ -7,7 +7,7 @@ import '@/components/FavoriteBtn.scss'
 
 function FavoriteBtn({ className, song }) {
   const { profile: { favorites } } = useSelector(state => state.profiles)
-  const favSong = favorites.some(f => f.key === song.key)
+  const favSong = favorites?.some(f => f.key === song.key)
 
   const addOrDeleteFavorite = () => {
     addOrRemoveFavoriteSongs(song, favSong)
