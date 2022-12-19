@@ -14,7 +14,7 @@ import '@/components/MainLayout/MainLayout.scss'
 function MainLayout() {
   const { user } = useSelector(state => state.auth)
   const { profile } = useSelector(state => state.profiles)
-  if(user === null || profile === null) return <Loading/>
+  if(user === null || user && profile === null) return <Loading/>
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
