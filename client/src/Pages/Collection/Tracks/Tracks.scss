@@ -11,6 +11,20 @@
             pointer-events: none;
         }
     }
+
+    &__btns{
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        a{
+            font-weight: 700;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
     
     &__main{
         flex: 1;
