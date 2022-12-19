@@ -9,19 +9,15 @@ import '@/Pages/Profile/Profile.scss'
 
 function Profile() {
   const { id } = useParams()
-  const { user } = useSelector(state => state.auth)
+  const { profile: userProfile } = useSelector(state => state.profiles)
   const profile = useGetProfile(id)
-  const validProfile = user?.uid === profile?.uid
-  
+  const validProfile = userProfile?.uid === profile?.uid
+
   if(profile === null) return <Loading/>
 
   return (
     <div className='profile'>
-      <ProfileHeader 
-        profile={profile} 
-        validProfile={validProfile} 
-        user={user}
-      />
+      <ProfileHeader profile={profile} validProfile={validProfile}/>
       <ProfileMain profile={profile}/>
     </div>
   )

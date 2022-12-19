@@ -13,7 +13,7 @@ import clsx from 'clsx'
 import '@/modals/CommentModal.scss'
 
 function CommentModal({ outClickRef, data: playlistId }) {
-  const { user } = useSelector(state => state.auth)
+  const { profile: user } = useSelector(state => state.profiles)
   const findPlaylist = useFindPlaylist(playlistId)
   
   const commentSubmit = async(values, actions) => {

@@ -9,7 +9,7 @@ import { navigateAuth } from '@/utils'
 import '@/components/View/UserAvatar.scss'
 
 function UserAvatar() {
-  const { user } = useSelector(state => state.auth)
+  const { profile: { photoURL } } = useSelector(state => state.profiles)
   const [ openAvatarMenu, setOpenAvatarMenu] = useState(false)
   
   const domNode = useClickOutside(() => { 
@@ -38,7 +38,7 @@ function UserAvatar() {
         className='avatar__btn'
         onClick={() => setOpenAvatarMenu(!openAvatarMenu)} 
       >
-        <Avatar src={user.photoURL} size='28px'/>
+        <Avatar src={photoURL} size='28px'/>
       </button>
 
       {openAvatarMenu && 
