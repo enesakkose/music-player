@@ -27,7 +27,10 @@
             border: 1px solid $earlGray;
             padding: $PXS $PL;
             border-radius: 1.5rem;
-            min-width: 20.875rem;
+
+            &Text{
+                font-weight: 400;
+            }
 
             &:active{
                 transform: translateY(.5px);
