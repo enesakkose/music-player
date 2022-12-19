@@ -7,10 +7,11 @@ import { modal } from '@/utils'
 import { follow, unfollow } from '@/firebase/db'
 import '@/Pages/Profile/ProfileHeader/ProfileHeaderBtns/ProfileHeaderBtns.scss'
 
-function ProfileHeaderBtns({ profile, validProfile, user }) {
+function ProfileHeaderBtns({ profile, validProfile }) {
   const navigate = useNavigate()
+  const { user } = useSelector(state => state.auth)
   const { profile: currentUserProfile } = useSelector(state => state.profiles)
-  const findInFollowers = profile?.follower?.find(p => p.uid === user.uid)
+  const findInFollowers = profile?.follower?.find(p => p.uid === currentUserProfile.uid)
 
   const navigateToFollowers = () => {
     user
