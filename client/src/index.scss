@@ -7,11 +7,7 @@
   border: none;
   box-sizing: border-box;
   font-family: "Gilroy", Arial, sans-serif;
-}
-
-@font-face {
-  font-family: "Gilroy";
-  src: local("Gilroy"), url("@/assets/fonts/Gilroy/Gilroy-Light.otf") format("truetype")
+  font-display: fallback;
 }
 
 html, #root{
