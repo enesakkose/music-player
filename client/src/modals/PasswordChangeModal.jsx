@@ -1,4 +1,5 @@
 import React from 'react'
+import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import clsx from 'clsx'
 import CustomInput from '@/components/CustomInput'
 import ForgetPassword from '@/components/ForgetPassword'
@@ -25,7 +26,7 @@ function PasswordChangeModal({ outClickRef }) {
   }
 
   return (
-    <div ref={outClickRef} className='passwordChangeModal'>
+    <ModalWrapper ref={outClickRef} className='passwordChangeModal'>
       <ModalHeader title='Personal Info Change'/>
       <div className="passwordChangeModal__content">
         <div className='passwordChangeModal__content__password'>
@@ -107,7 +108,7 @@ function PasswordChangeModal({ outClickRef }) {
           </Formik>
         </div>
       </div>
-    </div>
+    </ModalWrapper>
   )
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import LightBtn from '@/components/LightBtn'
 import { closeModalHandle } from '@/utils'
 import { deletePlaylist } from '@/firebase/db'
@@ -15,7 +16,7 @@ function PlaylistDeleteModal({data: playlistInfo, outClickRef}) {
   }
   
   return (
-    <div ref={outClickRef} className='playlistDeleteModal'>
+    <ModalWrapper ref={outClickRef} className='playlistDeleteModal'>
       <h4 className='playlistDeleteModal__title'>
         Delete {playlistInfo.name}?
       </h4>
@@ -31,7 +32,7 @@ function PlaylistDeleteModal({data: playlistInfo, outClickRef}) {
           onClick={() => deletePlaylistHandle(playlistInfo.id)}
         />
       </div>
-    </div>
+    </ModalWrapper>
   )
 }
 

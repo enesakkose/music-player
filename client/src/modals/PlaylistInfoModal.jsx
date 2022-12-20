@@ -1,4 +1,5 @@
 import React from 'react'
+import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import CustomInput from '@/components/CustomInput'
 import Icon from '@/components/Icon'
 import LightBtn from '@/components/LightBtn'
@@ -36,7 +37,7 @@ function PlaylistInfoModal({data: playlistId, outClickRef}) {
   const coverImage = playlistInfo?.addedSongs[0]?.track?.images?.coverart
 
   return (
-    <div ref={outClickRef} className='modalContent playlistInfoModal'>
+    <ModalWrapper ref={outClickRef} className='playlistInfoModal'>
       <ModalHeader title='Edit Details'/>
       <Formik 
         initialValues={{ playlistName: playlistInfo?.name }}
@@ -82,7 +83,7 @@ function PlaylistInfoModal({data: playlistId, outClickRef}) {
           </Form>
         )}
       </Formik>
-    </div>
+    </ModalWrapper>
   )
 }
 

@@ -1,8 +1,6 @@
 .playlistDeleteModal{
-    background-color: $WHITE;
     color: $BLACK;
-    padding: $PM $PXL;
-    border-radius: .5rem;
+    background-color: $WHITE !important;
 
     &__actionBtns{
         display: flex;

@@ -1,4 +1,5 @@
 import React from 'react'
+import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import clsx from 'clsx'
 import CustomInput from '@/components/CustomInput'
 import LightBtn from '@/components/LightBtn'
@@ -37,13 +38,11 @@ function UserInfoModal({outClickRef}) {
   }
 
   return (
-    <div ref={outClickRef} className='modalContent userInfoModal'>
+    <ModalWrapper ref={outClickRef} className='userInfoModal'>
       <ModalHeader title='User Details'/>
       
       <Formik
-        initialValues={{ 
-          displayName: userInfo.displayName,
-        }}
+        initialValues={{ displayName: userInfo.displayName }}
         onSubmit={onSubmit}
         validationSchema={userInfoSchema}
       >
@@ -86,7 +85,7 @@ function UserInfoModal({outClickRef}) {
           </Form>
         )}
       </Formik>
-    </div>
+    </ModalWrapper>
   )
 }
 
