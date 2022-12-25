@@ -21,3 +21,13 @@ export const useAutoScroll = (dep, length) => {
 
   return ref
 }
+
+export const useScrollEnd = (ref) => {
+  const { scrollHeight, scrollTop, clientHeight } = ref.current || {}
+
+  if (scrollHeight - scrollTop === clientHeight) {
+    return true
+  }else{
+    return false
+  }
+}
