@@ -1,6 +1,7 @@
 import React from 'react'
 import ActionBtns from '@/components/ActionBtns'
 import Icon from '@/components/Icon'
+import { useNumberFormat } from '@/hooks/useTimeConvert'
 import { modal } from '@/utils'
 import '@/Pages/Playlist/PlaylistMain/SongList/HeaderBtns/HeaderBtns.scss'
 
@@ -15,6 +16,7 @@ function HeaderBtns({ playlist }) {
     <ActionBtns className='headerBtns' findSongs={onlyTracks}>
       <button onClick={commentModal} className='commentBtn'>
         <Icon name='Comment' size={25}/>
+        <span>{useNumberFormat(playlist.commentsCount)}</span>
       </button>
     </ActionBtns>
   )
