@@ -9,20 +9,14 @@
 
     ul{
         li{
+            color: $WHITE;
+            padding: $PS;
+            cursor: default;
+            
             &:hover{
                 border-radius: .250rem;
                 background-color: rgba($WHITE, .1);
             }
         }
-    }
-
-    a, button{
-        padding: $PS;
-        display: block;
-    }
-    
-    button{
-        width: 100%;
-        display: flex;
     }
 }
