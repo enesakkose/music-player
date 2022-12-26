@@ -15,21 +15,25 @@ function ProfileHeaderBtns({ profile, validProfile }) {
 
   const navigateToFollowers = () => {
     user
-    ? navigate(`/profile/${profile.uid}/followers`, {state: {
-      profile: profile
-    }})
-    : modal('UnauthModal')
+      ? navigate(`/profile/${profile.uid}/followers`, {
+        state: {
+          profile: profile
+        }
+      })
+      : modal('UnauthModal')
   }
 
   const navigateToFollowing = () => {
     user
-    ? navigate(`/profile/${profile.uid}/followings`, {state: {
-      profile: profile
-    }})
-    : modal('UnauthModal')
+      ? navigate(`/profile/${profile.uid}/followings`, {
+        state: {
+          profile: profile
+        }
+      })
+      : modal('UnauthModal')
   }
 
-  const unFollowHandle = async() => {
+  const unFollowHandle = async () => {
     await unfollow(profile, currentUserProfile)
   }
 
@@ -39,17 +43,17 @@ function ProfileHeaderBtns({ profile, validProfile }) {
 
   return (
     <div className='profileHeaderBtns'>
-      <NavigateBtn 
+      <NavigateBtn
         onClick={navigateToFollowers}
-        text={`${profile.follower.length} Followers`}  
+        text={`${profile.follower.length} Followers`}
       />
       <NavigateBtn
         onClick={navigateToFollowing}
         text={`${profile.following.length} Following`}
       />
-      {!validProfile && user && 
-        <FollowBtn 
-          onClick={findInFollowers ? unFollowHandle : followHandle} 
+      {!validProfile && user &&
+        <FollowBtn
+          onClick={findInFollowers ? unFollowHandle : followHandle}
           statement={findInFollowers}
         />
       }

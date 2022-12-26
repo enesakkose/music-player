@@ -6,13 +6,13 @@ import '@/components/View/AuthBtns.scss'
 function AuthBtns() {
   return (
     <div className='authBtns'>
-      <LightBtn 
-        className='authBtns__signup' 
+      <LightBtn
+        className='authBtns__signup'
         text='Sign up'
         onClick={() => navigateAuth()}
       />
-      <LightBtn 
-        className='authBtns__login' 
+      <LightBtn
+        className='authBtns__login'
         text='Log in'
         onClick={() => navigateAuth()}
       />

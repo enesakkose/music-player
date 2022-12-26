@@ -9,13 +9,13 @@ function HeaderBtns({ playlist }) {
   const onlyTracks = playlist.addedSongs.length > 0 && playlist.addedSongs.map((a => a.track))
 
   const commentModal = () => {
-      modal('CommentModal', playlist.id)
+    modal('CommentModal', playlist.id)
   }
 
   return (
     <ActionBtns className='headerBtns' findSongs={onlyTracks}>
       <button onClick={commentModal} className='commentBtn'>
-        <Icon name='Comment' size={25}/>
+        <Icon name='Comment' size={25} />
         <span>{useNumberFormat(playlist.commentsCount)}</span>
       </button>
     </ActionBtns>
