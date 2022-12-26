@@ -1,6 +1,6 @@
 import React from 'react'
 import Modal from '@/components/Modal'
-import Popup from '@/components/Popup/Popup'
+import Popup from '@/components/Popup'
 import { useSelector } from 'react-redux'
 
 function Popups() {
