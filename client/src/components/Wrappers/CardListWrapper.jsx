@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import '@/components/Wrappers/cardListWrapper.scss'
+import '@/components/Wrappers/CardListWrapper.scss'
 
 function CardListWrapper({ size = '11.875rem', children, className }) {
   return (
