@@ -1,5 +1,5 @@
 import React from 'react'
-import PlaylistHeaderInPlaylist from '@/Pages/Playlist/PlaylistHeaderInPlaylist'
+import HeaderInPlaylist from '@/Pages/Playlist/Header'
 import PlaylistMain from '@/Pages/Playlist/PlaylistMain'
 import Loading from '@/components/Loading'
 import { useValidUser } from '@/hooks/useValidUser'
@@ -18,12 +18,16 @@ function Playlist() {
 
   return (
     <div key={playlist.id} className='playlist'>
-      <PlaylistHeaderInPlaylist 
+      <HeaderInPlaylist 
         playlist={playlist}
         bgColor={bgColor} 
         validUser={validUser}
       />
-      <PlaylistMain playlist={playlist} validUser={validUser} bgColor={bgColor}/>
+      <PlaylistMain 
+        playlist={playlist} 
+        validUser={validUser} 
+        bgColor={bgColor}
+      />
     </div>
   )
 }
