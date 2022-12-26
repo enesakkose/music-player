@@ -17,7 +17,7 @@ function Playlist() {
   if(playlist === null) return <Loading/>
 
   return (
-    <div key={playlistId} className='playlist'>
+    <div key={playlist.id} className='playlist'>
       <PlaylistHeaderInPlaylist 
         playlist={playlist}
         bgColor={bgColor} 
