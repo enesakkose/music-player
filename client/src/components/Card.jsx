@@ -18,12 +18,16 @@ function Card({
   return (
     <div className='card' {...props}>
       <div className='cardImg' style={style}>
-        {children}
-        {playBtn && <PlayBtn
-          onClick={onClick}
-          playPause={playPause}
-          className={clsx('cardImg__btn', className)}
-        />}
+        <div className='cardImgCont'>
+        <div className='img'>{/*this div created so it can come in svg  */}
+          {children}
+          {playBtn && <PlayBtn
+            onClick={onClick}
+            playPause={playPause}
+            className={clsx('cardImg__btn', className)}
+          />}
+        </div>
+        </div>
       </div>
       <div className="cardInfo">
         <h5 className='cardInfo__title'>{title}</h5>
