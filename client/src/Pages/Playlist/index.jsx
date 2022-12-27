@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import HeaderInPlaylist from '@/Pages/Playlist/Header'
 import PlaylistMain from '@/Pages/Playlist/PlaylistMain'
 import Loading from '@/components/Loading'
@@ -15,7 +15,7 @@ function Playlist() {
   const bgColor = playlist?.addedSongs[0]?.track?.images?.joecolor?.slice(18, 24)
   
   if(playlist === null) return <Loading/>
-
+  
   return (
     <div key={playlist.id} className='playlist'>
       <HeaderInPlaylist 
