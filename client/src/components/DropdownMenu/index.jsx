@@ -5,7 +5,7 @@ import '@/components/DropdownMenu/DropdownMenu.scss'
 
 export const DropdownMenuItem = ({text, ...props}) => {
   return(
-    <li {...props}>
+    <li style={{ fontSize: '.875rem' }} {...props}>
       {text}
     </li>
   )
