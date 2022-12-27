@@ -15,7 +15,11 @@ function MusicInfo() {
     <>
       {current.key && <div className={`footer__music__info ${openCover ? 'openCover' : ''}`}>
         <div className='footer__music__info__cover'>
-          <img src={current?.images?.coverart} alt={current?.title}/>
+          <img 
+            src={current?.images?.coverart} 
+            alt={current?.title} 
+            loading='lazy'
+          />
           <button 
             onClick={() => dispatch(setOpenCover(!openCover))} 
             className="expandBtn"
