@@ -1,18 +1,23 @@
 import React from 'react'
 import SongsTableList from '@/components/SongsTableList'
 import AddOrRemoveBtn from '@/Pages/Playlist/PlaylistMain/Search/Result/AddOrRemoveBtn'
-import { addOrRemoveAddedSongs } from '@/firebase/db'
+import { addToAddedSongs, removeFromAddedSongs } from '@/firebase/db'
 import '@/Pages/Playlist/PlaylistMain/Search/Result/List.scss'
 
 function List({ result, isSuccess, isFetching, playlist }) {
   const resultSong = result?.tracks?.hits?.slice(1,11)
 
   const addOrRemove = (song) => {
-    addOrRemoveAddedSongs(playlist.id, {
-      id: song.key,
-      track: song,
-      createdAt: new Date().toISOString()
-    }, playlist.addedSongs)
+    const findAddedSongs = playlist.addedSongs.find(s => s.id === song.key)
+
+    findAddedSongs 
+    ? removeFromAddedSongs(playlist.id, findAddedSongs)
+      
+    : addToAddedSongs(playlist.id, {
+        id: song.key,
+        track: song,
+        createdAt: new Date().toISOString()
+      })
   }
 
   return (

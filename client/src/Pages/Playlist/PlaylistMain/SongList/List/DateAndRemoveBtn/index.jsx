@@ -13,7 +13,6 @@ function DateAndRemoveBtn({ song, playlist }) {
       {validUser && 
         <RemoveBtn 
           song={song} 
-          addedSongs={playlist.addedSongs} 
           playlistId={playlist.id}
         />
       }

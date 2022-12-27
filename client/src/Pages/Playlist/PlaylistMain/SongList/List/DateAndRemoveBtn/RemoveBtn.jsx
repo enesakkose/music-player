@@ -1,14 +1,14 @@
 import React from 'react'
 import Icon from '@/components/Icon'
-import { addOrRemoveAddedSongs } from '@/firebase/db'
+import { removeFromAddedSongs } from '@/firebase/db'
 
-function RemoveBtn({ song, addedSongs, playlistId }) {
-  const removeSong = async(key) => {
-    await addOrRemoveAddedSongs(playlistId, {id: key}, addedSongs)
+function RemoveBtn({ song, playlistId }) {
+  const removeSong = () => {
+    removeFromAddedSongs(playlistId, song)
   }
 
   return (
-    <button onClick={() => removeSong(song.track.key)} className='remove'>
+    <button onClick={removeSong} className='remove'>
       <Icon name='Remove' size={21}/>
     </button>
   )
