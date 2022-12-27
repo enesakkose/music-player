@@ -22,6 +22,7 @@ function PlaylistHeader({
           src={img}
           alt="img"
           className='cover'
+          loading='lazy'
         />}
         {validProfile && <span className='pencil'>
           <Icon name='Pencil' size={48} className='pencil'/>

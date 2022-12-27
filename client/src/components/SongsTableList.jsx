@@ -41,7 +41,12 @@ function SongsTableList({ children, className, index, song, findSongs }) {
             <Icon name={validMusic ? 'Stop' : 'Play'}/>
           </button>
         </div>
-        <img className='songsTableListItem__img' src={song?.images?.coverart} alt="cover" />
+        <img 
+          className='songsTableListItem__img' 
+          src={song?.images?.coverart} 
+          alt="cover"
+          loading='lazy'
+        />
         <h5 className='songsTableListItem__text'>
           {song.title}
           <span>{song.subtitle}</span>

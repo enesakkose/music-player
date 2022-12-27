@@ -11,7 +11,13 @@ function Avatar({src, size, ...props}) {
       {!a && <img 
         src={src}
         referrerPolicy="no-referrer"
-        style={{ width: `${size}` ,height: `${size}`, borderRadius: '50%', ...props}}
+        style={{ 
+          width: `${size}`,
+          height: `${size}`, 
+          borderRadius: '50%', 
+          ...props
+        }}
+        loading='lazy'
       />}
     </>
   )

@@ -11,7 +11,10 @@ function ProfileCard({user}) {
       href={`/profile/${user.uid}`}
       title={user.displayName}
     >
-      <Avatar src={user.photoURL === '' ? null : user.photoURL} size='100%'/>
+      <Avatar 
+        src={user.photoURL === '' ? null : user.photoURL} 
+        size='100%'
+      />
     </Card>
   )
 }
