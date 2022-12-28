@@ -4,8 +4,8 @@ import AddOrRemoveBtn from '@/Pages/Playlist/PlaylistMain/Search/Result/AddOrRem
 import { addToAddedSongs, removeFromAddedSongs } from '@/firebase/db'
 import '@/Pages/Playlist/PlaylistMain/Search/Result/List.scss'
 
-function List({ result, isSuccess, isFetching, playlist }) {
-  const resultSong = result?.tracks?.hits?.slice(1,11)
+function List({ result, isSuccess, isFetching, playlist, show }) {
+  const resultSong = show ? [] : result?.tracks?.hits?.slice(1,11)
 
   const addOrRemove = (song) => {
     const findAddedSongs = playlist.addedSongs.find(s => s.id === song.key)

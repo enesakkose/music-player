@@ -13,7 +13,8 @@ function Result({ show, search, playlist, skip }) {
   return (
     <div className={clsx('playlistSearchResult', show ? 'hidePlaylistSearchResult' : '')}>
       {isFetching || error  && <SearchError text={search} status={error.status}/>}
-      <ResultList 
+      <ResultList
+        show={show}
         result={result} 
         playlist={playlist} 
         isSuccess={isSuccess} 
