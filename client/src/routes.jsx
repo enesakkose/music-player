@@ -15,7 +15,7 @@ import Lyric from "@/Pages/Lyric"
 import Genre from "@/Pages/Genre"
 import App404 from "@/Pages/404"
 import RecentSongs from "@/Pages/RecentSongs"
-import MainLayout from "@/components/MainLayout"
+import MainLayout from "@/components/Main/Layout"
 import PrivateRoute from "@/components/PrivateRoute"
 import Followers from "@/Pages/Profile/Slug/Followers"
 import Following from "@/Pages/Profile/Slug/Following"
@@ -23,66 +23,66 @@ import Favorites from "@/Pages/Profile/Slug/Favorites"
 
 export const routes = [
     {
-        element: <Suspense><MainLayout/></Suspense>,
+        element: <Suspense><MainLayout /></Suspense>,
         children: [
             {
                 path: '/',
-                element: <Home/>,
+                element: <Home />,
                 index: true
             },
             {
                 path: 'songs',
-                element: <Suspense><Songs/></Suspense>
+                element: <Suspense><Songs /></Suspense>
             },
             {
                 path: 'search',
-                element: <Suspense><Search/></Suspense>,
+                element: <Suspense><Search /></Suspense>,
                 children: [
                     {
                         path: 'profiles',
-                        element: <Suspense><ProfilesResult/></Suspense>
+                        element: <Suspense><ProfilesResult /></Suspense>
                     }
-                ] 
+                ]
             },
             {
-                element: <Suspense><ProfileLayout/></Suspense>,
+                element: <Suspense><ProfileLayout /></Suspense>,
                 children: [
                     {
                         path: 'profile/:id',
-                        element: <Suspense><Profile/></Suspense>,
+                        element: <Suspense><Profile /></Suspense>,
                     },
                     {
-                        path:'profile/:id/followers',
-                        element: <Suspense><Followers/></Suspense>
+                        path: 'profile/:id/followers',
+                        element: <Suspense><Followers /></Suspense>
                     },
                     {
-                        path:'profile/:id/followings',
-                        element: <Suspense><Following/></Suspense>
+                        path: 'profile/:id/followings',
+                        element: <Suspense><Following /></Suspense>
                     },
                     {
                         path: 'profile/:id/favorites',
-                        element: <Suspense><Favorites/></Suspense>
+                        element: <Suspense><Favorites /></Suspense>
                     }
                 ]
             },
             {
                 path: 'playlist/:playlistId',
-                element: <Suspense><Playlist/></Suspense>
+                element: <Suspense><Playlist /></Suspense>
             },
             {
-                element: <PrivateRoute/>,
+                element: <PrivateRoute />,
                 children: [
                     {
                         path: 'collection',
-                        element: <Suspense><CollectionLayout/></Suspense>,
+                        element: <Suspense><CollectionLayout /></Suspense>,
                         children: [
                             {
                                 path: 'tracks',
-                                element: <Suspense><Tracks/></Suspense>
+                                element: <Suspense><Tracks /></Suspense>
                             },
                             {
                                 path: 'playlists',
-                                element: <Suspense><Playlists/></Suspense>
+                                element: <Suspense><Playlists /></Suspense>
                             }
                         ]
                     },
@@ -90,32 +90,32 @@ export const routes = [
             },
             {
                 path: 'songs',
-                element: <Suspense><Songs/></Suspense>,
+                element: <Suspense><Songs /></Suspense>,
             },
             {
                 path: 'album/:id',
-                element: <Suspense><Album/></Suspense>
+                element: <Suspense><Album /></Suspense>
             },
             {
                 path: 'lyrics',
-                element: <Suspense><Lyric/></Suspense>
+                element: <Suspense><Lyric /></Suspense>
             },
             {
                 path: 'genre/:genre',
-                element: <Suspense><Genre/></Suspense>
+                element: <Suspense><Genre /></Suspense>
             },
             {
                 path: 'recentSongs',
-                element: <Suspense><RecentSongs/></Suspense>
+                element: <Suspense><RecentSongs /></Suspense>
             }
         ]
     },
     {
         path: 'auth',
-        element: <Suspense><Auth/></Suspense>
+        element: <Suspense><Auth /></Suspense>
     },
     {
         path: '*',
-        element: <Suspense><App404/></Suspense>
+        element: <Suspense><App404 /></Suspense>
     }
 ]
