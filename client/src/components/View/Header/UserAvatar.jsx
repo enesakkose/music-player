@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { modal } from '@/utils'
 import { handleLogout } from '@/firebase/auth'
 import { navigateAuth } from '@/utils'
-import '@/components/View/UserAvatar.scss'
+import '@/components/View/Header/UserAvatar.scss'
 
 function UserAvatar() {
   const { profile: { photoURL } } = useSelector(state => state.profiles)

@@ -1,7 +1,7 @@
 import React from 'react'
 import LightBtn from '@/components/LightBtn'
 import { navigateAuth } from '@/utils'
-import '@/components/View/AuthBtns.scss'
+import '@/components/View/Header/AuthBtns.scss'
 
 function AuthBtns() {
   return (
