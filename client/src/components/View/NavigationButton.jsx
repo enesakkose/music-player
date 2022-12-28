@@ -10,11 +10,14 @@ function NavigationButton() {
 
   return (
     <div className="navigationButton">
-      <button disabled={homePath} className={window.history.state.idx === 0 ?'disabled': ''} onClick={() => navigate(-1)}>
+      <button 
+        disabled={homePath && window.history.state.idx === 0} 
+        className={window.history.state.idx === 0 ? 'disabled': ''} 
+        onClick={() => navigate(-1)}
+      >
         <Icon name='Left' size={24}/>
       </button>
-      <button 
-        onClick={() => navigate(1)}>
+      <button onClick={() => navigate(1)}>
         <Icon name='Right' size={24}/>
       </button>
     </div>
