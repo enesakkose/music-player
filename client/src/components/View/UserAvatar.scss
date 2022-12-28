@@ -11,6 +11,11 @@
     justify-content: center;
     width: 3rem;
     height: 3rem;
-    background-color: rgba($earlGray, .9);
+    background-color: rgba($earlGray, .5);
     border-radius: 50%;
+    transition: 300ms background-color ease-in-out;
+
+    &:hover{
+        background-color: rgba($earlGray, .9);
+    }
 }

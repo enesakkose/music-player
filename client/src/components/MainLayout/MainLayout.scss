@@ -1,7 +1,8 @@
 .main{
     flex: 1;
     display: flex;
-    background-color: $secondaryColor;
+    gap: .5rem;
+    background-color: $GRAY;
     color: $WHITE;
     width: 100%;
     height: calc(100vh - 6.25rem);
@@ -11,6 +12,9 @@
         display: flex;
         flex-direction: column;
         overflow: overlay;
+        background-color: $secondaryColor;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
         
         &::-webkit-scrollbar{
             width: 15px;

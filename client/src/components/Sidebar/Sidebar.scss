@@ -1,6 +1,8 @@
 .sidebar{
     display: flex;
-    background-color: $BLACK; 
+    background-color: $BLACK;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     color: rgba($WHITE, .6);
     
     &__content{
