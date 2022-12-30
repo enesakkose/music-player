@@ -1,10 +1,9 @@
 import React from 'react'
 import Icon from '@/components/Icon'
 
-function ResetBtn({ setSearch, setSkip }) {
+function ResetBtn({ setSearch }) {
   const resetBtn = () => {
     setSearch('')
-    setSkip(true)
   }
   
   return (

@@ -3,10 +3,9 @@ import Icon from '@/components/Icon'
 import ResetBtn from '@/Pages/Playlist/PlaylistMain/Search/Header/Form/ResetBtn'
 import '@/Pages/Playlist/PlaylistMain/Search/Header/Form/Form.scss'
 
-function Form({ search, setSearch, setSkip }) {
+function Form({ search, setSearch }) {
   const handleSearch = (e) => {
     setSearch(e.target.value)
-    setSkip(e.target.value.length > 1 ? false : true)
   }
 
   return (
@@ -22,7 +21,7 @@ function Form({ search, setSearch, setSkip }) {
           onChange={handleSearch}
         />
         <Icon className='searchIcon' name='Search' size={20}/>
-        {search.length > 1 && <ResetBtn setSearch={setSearch} setSkip={setSkip}/>}
+        {search.length > 1 && <ResetBtn setSearch={setSearch}/>}
       </label>
     </div>
   )

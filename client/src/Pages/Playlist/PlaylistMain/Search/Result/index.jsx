@@ -6,9 +6,9 @@ import { useGetSearchSongsQuery } from '@/services/music'
 import { useDebounceValue } from '@/hooks/useDebounceValue'
 import '@/Pages/Playlist/PlaylistMain/Search/Result/Result.scss'
 
-function Result({ show, search, playlist, skip }) {
+function Result({ show, search, playlist }) {
   const debouncedSearch = useDebounceValue(search, 600)
-  const {data: result, isFetching, error, isSuccess} = useGetSearchSongsQuery(debouncedSearch, { skip })
+  const {data: result, isFetching, error, isSuccess} = useGetSearchSongsQuery(debouncedSearch, { skip: debouncedSearch.length > 1 ? false : true })
 
   return (
     <div className={clsx('playlistSearchResult', show ? 'hidePlaylistSearchResult' : '')}>

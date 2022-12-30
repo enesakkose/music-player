@@ -5,12 +5,9 @@ import clsx from 'clsx'
 import '@/Pages/Playlist/PlaylistMain/Search/Search.scss'
 
 function Search({ playlist, show, setShow }) {
-  //this state was used to not send request when page first render 
-  const [skip, setSkip] = useState(true)
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-      setSkip(true)
       setSearch('')
   }, [show])
 
@@ -20,14 +17,12 @@ function Search({ playlist, show, setShow }) {
         show={show} 
         setShow={setShow} 
         search={search} 
-        setSearch={setSearch} 
-        setSkip={setSkip}
+        setSearch={setSearch}
       />
       <SearchResult
         playlist={playlist}
         show={show}
         search={search}
-        skip={skip}
       />
     </div>
   )
