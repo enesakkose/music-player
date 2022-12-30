@@ -9,7 +9,7 @@ import '@/Pages/Playlist/Header.scss'
 
 function Header({ playlist, bgColor, validUser }) {
   const user = useGetProfile(playlist.uid)
-  const coverImage = playlist.addedSongs[0].track?.images?.coverart
+  const coverImage = playlist?.addedSongs[0]?.track?.images?.coverart
 
   const openPlaylistInfoModal = () => {
     modal('PlaylistInfoModal', playlist)

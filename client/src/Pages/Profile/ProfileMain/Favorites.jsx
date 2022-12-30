@@ -3,10 +3,9 @@ import CardListLayout from '@/components/CardListLayout'
 import SongCard from '@/components/SongCard'
 
 function Favorites({profile}) {
-
   return (
     <CardListLayout title='Favorites' href={`/profile/${profile.uid}/favorites`} profile={profile}>
-      {profile.favorites.slice(0,5).map((song, index) => (
+      {profile.favorites.slice(0,6).map((song, index) => (
         <SongCard
           key={song.key} 
           song={song} 
