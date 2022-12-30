@@ -5,7 +5,6 @@ import Loading from '@/components/Loading'
 import { useDebounceValue } from '@/hooks/useDebounceValue'
 import { useGetSearchSongsQuery } from '@/services/music'
 import { useGetProfiles } from '@/hooks/useGetProfiles'
-import '@/Pages/Search/SearchResult.scss'
 
 function SearchResult({ querySongs }) {
   const debouncedSearch = useDebounceValue(querySongs, 600)
