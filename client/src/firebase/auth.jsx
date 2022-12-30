@@ -58,6 +58,7 @@ export const handleLogout = async() => {
     try {
         await signOut(auth)
         localStorage.clear()
+        window.location.reload()
     } catch (error) {
         toast.error(error.message)
     }
@@ -66,8 +67,10 @@ export const handleLogout = async() => {
 onAuthStateChanged(auth, (user) => {
     if(user){
         store.dispatch(login(true))
-    }else{
-        store.dispatch(logout())
+    }else{ 
+        setTimeout(() => {
+            store.dispatch(logout())
+        }, 1000)
     }
 })
 

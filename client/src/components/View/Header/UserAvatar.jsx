@@ -4,7 +4,6 @@ import { DropdownMenu, DropdownMenuItem } from '@/components/DropdownMenu'
 import { useSelector } from 'react-redux'
 import { modal } from '@/utils'
 import { handleLogout } from '@/firebase/auth'
-import { navigateAuth } from '@/utils'
 import '@/components/View/Header/UserAvatar.scss'
 
 function UserAvatar() {
@@ -18,10 +17,8 @@ function UserAvatar() {
     modal('PasswordChangeModal')
   }
 
-  const logout = () => {
-    window.location.reload()
+  const logout = async() => {
     handleLogout()
-    //todo buna tekrar bakılacak
   }
   
   return (
