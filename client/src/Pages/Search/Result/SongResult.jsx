@@ -1,7 +1,7 @@
 import React from 'react'
 import SongsTableHeader from '@/components/SongsTableHeader'
 import SongsTableList from '@/components/SongsTableList'
-import '@/Pages/Search/SongResult.scss'
+import '@/Pages/Search/Result/SongResult.scss'
 
 function SongResult({songs}) {
   return (
