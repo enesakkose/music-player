@@ -1,7 +1,6 @@
 .searchInput{
     flex: 1;
     margin-left: 1rem;
-
     
     label{
         background-color: $WHITE;
@@ -10,7 +9,7 @@
         display: flex;
         align-items: center;
         gap: .5rem;
-        width: 364px;
+        width: 22.875rem;
         padding: $PXS $PXL $PXS $PS;
         position: relative;
         cursor: text;
@@ -34,10 +33,10 @@
 
     &__error{
         position: absolute;
-        font-size: 15px;
+        font-size: 1rem;
         letter-spacing: 1px;
-        bottom: -55%;
-        left: 20px;
+        bottom: -2rem;
+        left: 1.5rem;
         color: red;
     }
 }
