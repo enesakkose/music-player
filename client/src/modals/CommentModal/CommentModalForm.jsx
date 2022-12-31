@@ -30,18 +30,15 @@ function CommentModalForm({playlistId}) {
             autoFocus={true}
           />
           <button
-            disabled={values.comment.length < 1}
+            disabled={values.comment.trim().length < 1}
             type='submit' 
             className={clsx(
               'commentBtn', 
               isSubmitting ? 'submittingBtn' : '',
-              values.comment.length < 1 ? 'submittingBtn' : ''
+              values.comment.trim().length < 1 ? 'submittingBtn' : ''
             )}
           >
             <Icon name='Send' size={20}/>
-          </button>
-          <button type='button' className='emojiBtn'>
-            <Icon name='Smile' size={22}/>
           </button>
         </Form>
       )}

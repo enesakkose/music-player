@@ -12,37 +12,30 @@
 
         .commentList{
             flex: 1;
-            overflow: hidden;
-            position: relative;
+            overflow: overlay;
+            padding: $PXS;
+            scroll-behavior: smooth;
             
-            .inner{
-                overflow: overlay;
-                padding: $PXS;
-                height: 100%;
-
-                &::-webkit-scrollbar{
-                    width: .25rem;
-                }
+            &::-webkit-scrollbar{
+                width: .25rem;
+            }
             
-                &::-webkit-scrollbar-track {
-                    background: transparent;
-                }
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
                     
-                &::-webkit-scrollbar-thumb {
-                    background-color: rgba($WHITE, .3);
+            &::-webkit-scrollbar-thumb {
+                background-color: rgba($WHITE, .3);
             
-                    &:hover{
-                        background-color: rgba($WHITE, .5);
-                    }
+                &:hover{
+                    background-color: rgba($WHITE, .5);
                 }
             }
-
         }
 
         .commentForm{
             display: flex;
             align-items: center;
-            gap: 1rem;
             border-top: 1px solid rgba($WHITE, .1);
             background-color: rgba($GRAY, .5);
             border-radius: .5rem;
@@ -63,13 +56,10 @@
                 border-radius: 50%;
             }
 
-            .emojiBtn{
-                color: $WHITE
-            }
-
             .commentBtn{
                 background-color: $GREEN;
                 color: $WHITE;
+                margin-inline: $PXS;
             }
         }
     }
