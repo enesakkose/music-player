@@ -2,9 +2,6 @@
     &__list{
         height: 100%;
         padding: $PL 0;
-        display: grid;
-        grid-template-columns: repeat( auto-fill, minmax(14.5rem, 1fr));
-        gap: 1.5rem;
 
         &__card{
             border: 1px solid $earlGray;

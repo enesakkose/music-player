@@ -9,19 +9,14 @@
   font-family: "Gilroy", Arial, sans-serif;
 }
 
-@font-face {
-  font-family: "Gilroy";
-  src: local("Gilroy"), url("@/assets/fonts/Gilroy/Gilroy-Light.otf") format("truetype")
-}
-
-html{
+html, #root{
   height: 100%;
 }
 
-body , #root{
+body, #root{
   font-size: 16px;
   font-weight: 400;
-  height: 100vh;
+  height: 100%;
 }
 
 .App{
@@ -68,8 +63,4 @@ button{
   color: rgba($WHITE, .6);
   display: flex;
 
-}
-
-.contentSpacing{
-  padding: $PM $PL;
 }

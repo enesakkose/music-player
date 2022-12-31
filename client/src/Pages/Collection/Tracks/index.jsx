@@ -3,17 +3,14 @@ import PlaylistHeader from '@/components/PlaylistHeader'
 import EmptyField from '@/components/EmptyField'
 import LightBtn from '@/components/LightBtn'
 import clsx from 'clsx'
-import Loading from '@/components/Loading'
+import GradientBg from '@/components/GradientBg'
 import MainContent from '@/Pages/Collection/Tracks/MainContent'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '@/Pages/Collection/Tracks/Tracks.scss'
 
 function Tracks() {
-  const { defaultPlaylists } = useSelector(state => state.playlist)
-  if(defaultPlaylists === null) return <Loading/>
-  
-  const favoritesPlaylist = defaultPlaylists[0].favoriteSongs
+  const { profile: { favorites, uid, displayName } } = useSelector(state => state.profiles)
 
   return (
     <div className='favoriteTracks'>
@@ -22,20 +19,23 @@ function Tracks() {
         infoTitle='PLAYLIST'
         infoHeader='LIKED SONGS'
       >
-        {favoritesPlaylist.length > 0 && <h6>{favoritesPlaylist.length} songs</h6>}
+        <div className="favoriteTracks__btns">
+          <Link to={`/profile/${uid}`}>
+            {displayName}
+          </Link>
+          {favorites.length > 0 && <h6>• {favorites.length} songs</h6>}
+        </div>
       </PlaylistHeader>
       
-      <div className={clsx('favoriteTracks__main', favoritesPlaylist.length === 0 ? 'favoriteTracks__empty' : '')}>
-        {favoritesPlaylist.length === 0 &&
-          <EmptyField
-            icon='Music'
-          >
+      <div className={clsx('favoriteTracks__main', favorites.length === 0 ? 'favoriteTracks__empty' : '')}>
+        {favorites.length === 0 &&
+          <EmptyField icon='Music'>
             <Link to='/search'>
               <LightBtn text='Find Songs'/> 
             </Link>
           </EmptyField>}
-        {favoritesPlaylist.length > 0 && <MainContent favoritesPlaylist={favoritesPlaylist}/>}
-        <div className="favoriteTracks__main__background" />
+        {favorites.length > 0 && <MainContent favorites={favorites}/>}
+        <GradientBg className='favoritesGradient'/>
       </div>
     </div>
   )

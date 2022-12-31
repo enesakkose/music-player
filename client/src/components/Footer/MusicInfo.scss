@@ -58,7 +58,6 @@
 
         &__songName{
             p{
-                font-weight: bold;
                 font-size: 14px;
                 max-width: 18rem;
                 overflow: hidden;
@@ -72,15 +71,9 @@
         }
     }
 
-    &__actionBtns{
-        display: flex;
-        align-items: center;
-
-        button{
-
-            &:hover{
-                color: $WHITE;
-            }
+    .footerFavBtn{
+        &:hover{
+            color: $WHITE;
         }
     }
 }

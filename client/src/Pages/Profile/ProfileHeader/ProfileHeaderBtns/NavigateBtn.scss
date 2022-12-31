@@ -1,0 +1,9 @@
+.navigateBtn{
+    display: flex;
+    gap: .5rem;
+    font-size: 1rem;
+
+    &:hover{
+        text-decoration: underline;
+    }
+}

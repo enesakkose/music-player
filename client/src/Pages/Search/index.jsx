@@ -1,6 +1,6 @@
 import React from 'react'
 import Categories from '@/Pages/Search/Categories'
-import SearchResult from '@/Pages/Search/SearchResult'
+import Result from '@/Pages/Search/Result'
 import { useSelector } from 'react-redux'
 import '@/Pages/Search/Search.scss'
 
@@ -10,7 +10,7 @@ function Search() {
   return (
     <div className='search'>
       {querySongs.length < 2 && <Categories/>}
-      {querySongs.length > 1 && <SearchResult querySongs={querySongs}/>}
+      {querySongs.length > 1 && <Result querySongs={querySongs}/>}
     </div>
   )
 }

@@ -1,0 +1,16 @@
+.headerBtns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .commentBtn{
+        display: flex;
+        gap: .125rem;
+        padding: $PXS; 
+        border-radius: 50%;
+
+        &:hover{
+            color: $WHITE;
+        }
+    }
+}

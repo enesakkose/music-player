@@ -27,7 +27,10 @@
             border: 1px solid $earlGray;
             padding: $PXS $PL;
             border-radius: 1.5rem;
-            min-width: 20.875rem;
+
+            &Text{
+                font-weight: 400;
+            }
 
             &:active{
                 transform: translateY(.5px);
@@ -72,7 +75,7 @@
             }
 
             &__title{
-                font-weight: bold;
+                font-weight: 700;
             }
         }
 
@@ -110,14 +113,14 @@
             width: 100%;
 
             &__text{
-                font-weight: bold;
+                font-weight: 700;
             }
 
             &__link{
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-weight: bold;
+                font-weight: 700;
                 border: 1px solid $earlGray;
                 padding: $PXS;
                 width: 100%;
@@ -139,7 +142,7 @@
             background-color: $GREEN;
             padding: $PS 0;
             border-radius: 1.5rem;
-            font-weight: bold;
+            font-weight: 700;
             color: $BLACK;
             letter-spacing: 1px;
 
@@ -156,7 +159,7 @@
             &__btn{
                 color: $GREEN;
                 font-size: 1rem;
-                font-weight: bold;
+                font-weight: 700;
                 text-decoration: underline;
                 letter-spacing: 1px;
             }

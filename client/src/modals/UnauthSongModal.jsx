@@ -1,13 +1,14 @@
 import React from 'react'
+import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import LightBtn from '@/components/LightBtn'
 import { navigateAuth } from '@/utils'
 import '@/modals/UnauthSongModal.scss'
 
 function UnauthSongModal({ outClickRef, data: songData }) {
-  const backgroundColor = songData?.images?.joecolor.slice(18,24)
+  const backgroundColor = songData?.images?.joecolor?.slice(18,24)
 
   return (
-    <div 
+    <ModalWrapper 
       ref={outClickRef} 
       className='unauthSongModal' 
       style={{ backgroundColor: `#${backgroundColor}`}}
@@ -26,7 +27,7 @@ function UnauthSongModal({ outClickRef, data: songData }) {
           onClick={() => navigateAuth()}
         />
       </div>
-    </div>
+    </ModalWrapper>
   )
 }
 

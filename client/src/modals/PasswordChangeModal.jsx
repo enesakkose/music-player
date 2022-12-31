@@ -1,30 +1,32 @@
 import React from 'react'
+import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import clsx from 'clsx'
 import CustomInput from '@/components/CustomInput'
-import PasswordInput from '@/components/PasswordInput'
 import ForgetPassword from '@/components/ForgetPassword'
 import ModalHeader from '@/components/Modal/ModalHeader'
 import LightBtn from '@/components/LightBtn'
+import { useSelector } from 'react-redux'
 import { updateUserPassword, updateMail } from '@/firebase/auth'
 import { passwordChangeSchema, emailChangeSchema } from '@/forms/schemas'
-import { auth } from '@/firebase/auth'
 import { closeModalHandle } from '@/utils'
 import { Formik, Form } from 'formik'
 import '@/modals/PasswordChangeModal.scss'
 
 function PasswordChangeModal({ outClickRef }) {
-
+  const { profile: { email } } = useSelector(state => state.profiles)
+  
   const passwordChange = async(values) => {
     const update = await updateUserPassword(values.password, values.newPassword)
     {update && closeModalHandle()}
   }
+
   const emailChange = async(values) => {
     const update = await updateMail(values.confirmPassword, values.newEmail)
     {update && closeModalHandle()}
   }
 
   return (
-    <div ref={outClickRef} className='passwordChangeModal'>
+    <ModalWrapper ref={outClickRef} className='passwordChangeModal'>
       <ModalHeader title='Personal Info Change'/>
       <div className="passwordChangeModal__content">
         <div className='passwordChangeModal__content__password'>
@@ -72,7 +74,7 @@ function PasswordChangeModal({ outClickRef }) {
         </div>
         <div className='passwordChangeModal__content__email'>
           <Formik
-            initialValues={{ newEmail: auth.currentUser.email, confirmPassword: '' }}
+            initialValues={{ newEmail: email, confirmPassword: '' }}
             validationSchema={emailChangeSchema}
             onSubmit={emailChange}
           >
@@ -106,7 +108,7 @@ function PasswordChangeModal({ outClickRef }) {
           </Formik>
         </div>
       </div>
-    </div>
+    </ModalWrapper>
   )
 }
 

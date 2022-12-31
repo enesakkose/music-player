@@ -1,23 +1,26 @@
 import React, { useState } from 'react'
-import PlaylistMainSongList from '@/Pages/Playlist/PlaylistMain/PlaylistMainSongList'
-import PlaylistMainSearchSongs from '@/Pages/Playlist/PlaylistMain/PlaylistMainSearchSongs'
-import { useSelector } from 'react-redux'
+import PlaylistSearch from '@/Pages/Playlist/PlaylistMain/Search'
+import SongList from '@/Pages/Playlist/PlaylistMain/SongList'
+import GradientBg from '@/components/GradientBg'
 import '@/Pages/Playlist/PlaylistMain/PlaylistMain.scss'
 
-function PlaylistMain({ playlistId, bgColor }) {
+function PlaylistMain({ playlist, validUser, bgColor }) {
   const [show, setShow] = useState(true)
-
+  const showPlaylist = playlist.addedSongs.length > 0 && show
+  
   return (
-    <section className={`playlist__main`}>
+    <section className='playlist__main'>
       <div className="playlist__main__content">
-        <PlaylistMainSongList playlistId={playlistId} show={show} />
-        <PlaylistMainSearchSongs
-          show={show}
-          setShow={setShow}
-          playlistId={playlistId}
-        />
+        {showPlaylist && <SongList playlist={playlist}/>}
+        {validUser && 
+          <PlaylistSearch
+            playlist={playlist}
+            show={show}
+            setShow={setShow}
+          />
+        }
       </div>
-      <div className="playlist__main__background" style={{ backgroundColor: `#${bgColor}` }} />
+      <GradientBg size='40vh' bgColor={bgColor}/>
     </section>
   )
 }

@@ -3,13 +3,21 @@ import Icon from '@/components/Icon'
 import '@/components/Avatar.scss'
 
 function Avatar({src, size, ...props}) {
+  const a = src === null || src === ''
+
   return (
     <>
-      {src === null && <Icon name='Avatar' size={size}/>}
-      {src !== null && <img 
+      {a && <Icon name='Avatar' size={size}/>}
+      {!a && <img 
         src={src}
         referrerPolicy="no-referrer"
-        style={{ width: `${size}` ,height: `${size}`, borderRadius: '50%', ...props}}
+        style={{ 
+          width: `${size}`,
+          height: `${size}`, 
+          borderRadius: '50%', 
+          ...props
+        }}
+        loading='lazy'
       />}
     </>
   )

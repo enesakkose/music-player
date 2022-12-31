@@ -1,4 +1,5 @@
 import React from 'react'
+import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import clsx from 'clsx'
 import CustomInput from '@/components/CustomInput'
 import LightBtn from '@/components/LightBtn'
@@ -7,21 +8,20 @@ import ModalHeader from '@/components/Modal/ModalHeader'
 import Avatar from '@/components/Avatar'
 import { uploadImg, deleteImg } from '@/firebase/storage'
 import { Form, Formik } from 'formik'
-import { updateUser, auth } from '@/firebase/auth'
+import { updateUser } from '@/firebase/auth'
 import { userInfoSchema } from '@/forms/schemas'
 import { useSelector } from 'react-redux'
-import { user } from '@/utils'
+
 import { closeModalHandle } from '@/utils'
 import '@/modals/UserInfoModal.scss'
 
 function UserInfoModal({outClickRef}) {
-  const { user: userInfo } = useSelector(state => state.auth)
-  
+  const { profile: userInfo } = useSelector(state => state.profiles)
+
   const onSubmit = async(values) => {
     const update = await updateUser({
       displayName: values.displayName
     })
-    user()
     {update && closeModalHandle()}
   }
 
@@ -36,15 +36,13 @@ function UserInfoModal({outClickRef}) {
       photoURL: ''
     })
   }
-  console.log(auth.currentUser)
+
   return (
-    <div ref={outClickRef} className='modalContent userInfoModal'>
+    <ModalWrapper ref={outClickRef} className='userInfoModal'>
       <ModalHeader title='User Details'/>
       
       <Formik
-        initialValues={{ 
-          displayName: userInfo.displayName,
-        }}
+        initialValues={{ displayName: userInfo.displayName }}
         onSubmit={onSubmit}
         validationSchema={userInfoSchema}
       >
@@ -53,12 +51,12 @@ function UserInfoModal({outClickRef}) {
             <label htmlFor='file' className='profileImgChange'>
               <Avatar 
                 src={userInfo.photoURL} 
-                size='11.25rem' 
+                size='11.25rem'
               />
               <div className="pencilBtn">
                 <Icon name='Pencil' size={50}/>
                 <button
-                  disabled={userInfo.photoURL === null} 
+                  disabled={userInfo.photoURL === null || userInfo.photoURL === ''} 
                   type='button'
                   onClick={removePrflImg} 
                   className='pencilBtn__remove'
@@ -87,7 +85,7 @@ function UserInfoModal({outClickRef}) {
           </Form>
         )}
       </Formik>
-    </div>
+    </ModalWrapper>
   )
 }
 
