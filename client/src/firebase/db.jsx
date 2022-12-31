@@ -60,6 +60,7 @@ export const addPlaylistHandle = async (playlists, id, userId) => {
             addedSongs: [],
             commentsCount: 0,
             coverURL: null,
+            publish: false,
             createdAt: new Date().toISOString()
         })
 
@@ -142,6 +143,30 @@ export const addOrRemoveFavoriteSongs = async (data, favorite) => {
         })
 
         return popup(true, `${favorite ? 'Remove' : 'Added'} your favorite songs`)
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
+export const publishPlaylist = async(playlistId, publish) => {
+    try {
+        const playlistRef = doc(db, 'playlists', playlistId)
+
+        await updateDoc(playlistRef, {
+            publish: publish
+        })
+
+        return popup(true,  `Playlist ${publish ? 'published' : 'removed'} your profile`)
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
+export const getPublishPlaylists = async(uid, setPublishPlaylists) => {
+    try {
+        onSnapshot(query(collection(db, 'playlists'), where('uid', '==', uid),where('publish', '==', true)), (doc) => {
+            setPublishPlaylists(doc.docs)
+        })
     } catch (error) {
         toast.error(error.message)
     }

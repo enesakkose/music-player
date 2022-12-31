@@ -2,6 +2,7 @@ import React from 'react'
 import Loading from '@/components/Loading'
 import ProfileHeader from '@/Pages/Profile/ProfileHeader'
 import ProfileMain from '@/Pages/Profile/ProfileMain'
+import { useGetPublishPlaylists } from '@/hooks/useGetPublishPlaylists'
 import { useSelector } from 'react-redux'
 import { useGetProfile } from '@/hooks/useGetProfile'
 import { useParams } from 'react-router-dom'
@@ -11,14 +12,15 @@ function Profile() {
   const { id } = useParams()
   const { profile: userProfile } = useSelector(state => state.profiles)
   const profile = useGetProfile(id)
+  const publishPlaylists = useGetPublishPlaylists(id)
   const validProfile = userProfile?.uid === profile?.uid
 
-  if(profile === null) return <Loading/>
+  if(profile === null || publishPlaylists === null) return
 
   return (
     <div className='profile'>
       <ProfileHeader profile={profile} validProfile={validProfile}/>
-      <ProfileMain profile={profile}/>
+      <ProfileMain profile={profile} publishPlaylists={publishPlaylists}/>
     </div>
   )
 }

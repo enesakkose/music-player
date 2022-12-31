@@ -3,6 +3,7 @@ import PlaylistHeader from '@/components/PlaylistHeader'
 import Icon from '@/components/Icon'
 import { DropdownMenu, DropdownMenuItem } from '@/components/DropdownMenu'
 import { useGetProfile } from '@/hooks/useGetProfile'
+import { publishPlaylist } from '@/firebase/db'
 import { Link } from 'react-router-dom'
 import { modal } from '@/utils'
 import '@/Pages/Playlist/Header.scss'
@@ -10,13 +11,17 @@ import '@/Pages/Playlist/Header.scss'
 function Header({ playlist, bgColor, validUser }) {
   const user = useGetProfile(playlist.uid)
   const coverImage = playlist?.addedSongs[0]?.track?.images?.coverart
-
+  console.log(playlist.publish)
   const openPlaylistInfoModal = () => {
     modal('PlaylistInfoModal', playlist)
   }
 
   const openPlaylistDeleteModal = () => {
     modal('PlaylistDeleteModal', playlist)
+  }
+
+  const publishPlaylistHandle = () => {
+    publishPlaylist(playlist.id, !playlist.publish)
   }
 
   return (        
@@ -42,6 +47,7 @@ function Header({ playlist, bgColor, validUser }) {
           btn={<Icon name='ThreeDots' size={32}/>}
         >
           <DropdownMenuItem text='Edit Details' onClick={openPlaylistInfoModal}/>
+          <DropdownMenuItem text={playlist.publish ? 'Remove from profile' : 'Add to profile'} onClick={publishPlaylistHandle}/>
           <DropdownMenuItem text='Delete' onClick={openPlaylistDeleteModal}/>
         </DropdownMenu>}
       </div>
