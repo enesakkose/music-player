@@ -3,15 +3,18 @@ import Icon from '@/components/Icon'
 import Card from '@/components/Card'
 import { setCurrent, setCurrentSongs, playPause } from '@/store/player'
 import { useDispatch, useSelector } from 'react-redux'
+import { modal } from '@/utils'
 
 function PlaylistInfoCard({playlist, userName = false}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
+  const { user } = useSelector(state => state.auth)
   const validCoverImg = playlist.coverURL === null && playlist.addedSongs.length > 0
   const coverImage = playlist?.addedSongs[0]?.track?.images?.coverart
   const haveSongs = playlist.addedSongs.some(song => song.id === current.key)
   
   const playInPlaylist = () => {
+    if(!user) return modal('UnauthSongModal', playlist.addedSongs[0].track)
     if(current.key !== playlist.addedSongs[0].id && haveSongs) 
     return dispatch(playPause(!isPlaying))
 
