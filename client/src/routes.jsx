@@ -3,7 +3,7 @@ import Home from '@/Pages/Home'
 import Search from '@/Pages/Search'
 import ProfileLayout from "@/Pages/Profile/ProfileLayout"
 import Profile from '@/Pages/Profile'
-import ProfilesResult from "@/Pages/Search/ProfilesResult"
+import ProfilesResult from "@/Pages/Search/Result/ProfilesResult"
 import CollectionLayout from '@/Pages/Collection'
 import Playlist from "@/Pages/Playlist"
 import Playlists from '@/Pages/Collection/Playlists'
