@@ -1,5 +1,4 @@
 import React from 'react'
-import CardListWrapper from '@/components/Wrappers/CardListWrapper'
 import { GENRES } from '@/constants'
 import { Link } from 'react-router-dom'
 import '@/Pages/Search/Categories.scss'
@@ -8,7 +7,7 @@ function Categories() {
   return (
     <div className='categories'>
       <h3>CATEGORIES</h3>
-      <CardListWrapper size='14.5rem' className="categories__list">
+      <div className="categories__list">
         {GENRES.map((genre) => (
           <Link 
             key={genre.val} 
@@ -21,7 +20,7 @@ function Categories() {
             </h3>
           </Link>
         ))}
-      </CardListWrapper>
+      </div>
     </div>
   )
 }

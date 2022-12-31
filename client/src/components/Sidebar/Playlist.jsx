@@ -11,11 +11,11 @@ function Playlist() {
   const id = uuidv4()
   const navigate = useNavigate()
   const { playlists } = useSelector(state => state.playlist)
-  const { profile: { uid } } = useSelector(state => state.profiles)
+  const { user } = useSelector(state => state.auth)
 
   const handleAdd = () => {
-    addPlaylistHandle(playlists, id, uid)
-    navigate(`/playlist/${id}`, { replace: true })
+    addPlaylistHandle(playlists, id, user.uid)
+    navigate(`/playlist/${id}`, {replace: true})
   }
 
   return (

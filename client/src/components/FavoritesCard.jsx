@@ -6,15 +6,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import '@/components/FavoritesCard.scss'
 
-function FavoritesCard({favorites}) {
+function FavoritesCard({defaultPlaylists}) {
   const dispatch = useDispatch()
+  const favoritesPlaylist = defaultPlaylists[0].favoriteSongs
   const { current, isPlaying } = useSelector(state => state.player)
-  const haveFavoritesPlaylist = favorites.some(song => song.key === current.key)
+  const haveFavoritesPlaylist = favoritesPlaylist.some(song => song.key === current.key)
   
   const favoritesCardPlayPause = () => {
     if (!haveFavoritesPlaylist){
-      dispatch(setCurrent(favorites[0]))
-      dispatch(setCurrentSongs(favorites))
+      dispatch(setCurrent(favoritesPlaylist[0]))
+      dispatch(setCurrentSongs(favoritesPlaylist))
     }else{
       dispatch(playPause(!isPlaying))
     }
@@ -22,17 +23,17 @@ function FavoritesCard({favorites}) {
 
   return (
     <div className='favoritesCard'>
-      <div className="favoritesCard__info">
-        <h3>Liked Songs</h3>
-        <span>{favorites.length} liked songs</span>  
-      </div>
-      <PlayBtn 
-        disabled={favorites.length === 0}
-        playPause={haveFavoritesPlaylist && isPlaying}
-        onClick={favoritesCardPlayPause} 
-        className={clsx('favoritesCard__playBtn',haveFavoritesPlaylist && isPlaying ? 'currentFav' : 'notCurrentFav' )}
-      />
-      <Link to='/collection/tracks' className='perde'/>
+        <div className="favoritesCard__info">
+          <h3>Liked Songs</h3>
+          <span>{favoritesPlaylist.length} liked songs</span>  
+        </div>
+        <PlayBtn 
+          disabled={favoritesPlaylist.length === 0}
+          playPause={haveFavoritesPlaylist && isPlaying}
+          onClick={favoritesCardPlayPause} 
+          className={clsx('favoritesCard__playBtn',haveFavoritesPlaylist && isPlaying ? 'currentFav' : 'notCurrentFav' )}
+        />
+        <Link to='/collection/tracks' className='perde'/>
     </div>
   )
 }

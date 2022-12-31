@@ -17,7 +17,7 @@ function Modal() {
       <modal.element
         data={data}
         outClickRef={outClickRef}
-      />
+      />      
     </div>
   )
 }

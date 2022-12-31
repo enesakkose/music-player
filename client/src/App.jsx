@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { routes } from '@/routes'
 import { useRoutes } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'

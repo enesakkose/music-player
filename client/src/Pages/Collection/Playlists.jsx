@@ -1,10 +1,9 @@
 import React from 'react'
-import PageWrapper from '@/components/Wrappers/PageWrapper'
-import CardListWrapper from '@/components/Wrappers/CardListWrapper'
 import EmptyField from '@/components/EmptyField'
 import FavoritesCard from '@/components/FavoritesCard'
 import LightBtn from '@/components/LightBtn'
 import PlaylistInfoCard from '@/components/PlaylistInfoCard'
+import Loading from '@/components/Loading'
 import { addPlaylistHandle } from '@/firebase/db'
 import { v4 as uuidv4 } from 'uuid'
 import { useSelector } from 'react-redux'
@@ -15,32 +14,37 @@ function Playlists() {
   const id = uuidv4()
   const navigate = useNavigate()
   const { playlists } = useSelector(state => state.playlist)
-  const { profile: { favorites, uid, displayName } } = useSelector(state => state.profiles)
+  const { defaultPlaylists } = useSelector(state => state.playlist)
+  const { user } = useSelector(state => state.auth)
+
+  if(defaultPlaylists === null) return <Loading/>
 
   const handleAdd = async() => {
-    await addPlaylistHandle(playlists, id, uid)
-    navigate(`/playlist/${id}`, { replace: true })
+    await addPlaylistHandle(playlists, id, user.uid)
+    navigate(`/playlist/${id}`, {replace: true})
   }
   
   return (
-    <PageWrapper className='playlists'>
-      {playlists.length === 0 
-        ? <EmptyField icon='Music'>
+    <div className='playlists contentSpacing'>
+      { playlists.length === 0 
+        ? <EmptyField 
+            icon='Music'
+          >
             <LightBtn onClick={handleAdd} text='Create Playlist'/>
           </EmptyField>  
 
-        : <CardListWrapper className="playlists__cards">
-            <FavoritesCard favorites={favorites}/>
+        : <div className="playlists__cards">
+            <FavoritesCard defaultPlaylists={defaultPlaylists}/>
             {playlists.map((playlist) => (
               <PlaylistInfoCard 
                 key={playlist.id} 
                 playlist={playlist} 
-                userName={displayName}
+                user={user}
               />
             ))}
-          </CardListWrapper>  
+          </div>  
       }
-    </PageWrapper>
+    </div>
   )
 }
 

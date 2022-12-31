@@ -15,11 +15,7 @@ function MusicInfo() {
     <>
       {current.key && <div className={`footer__music__info ${openCover ? 'openCover' : ''}`}>
         <div className='footer__music__info__cover'>
-          <img 
-            src={current?.images?.coverart} 
-            alt={current?.title} 
-            loading='lazy'
-          />
+          <img src={current?.images?.coverart} alt={current?.title}/>
           <button 
             onClick={() => dispatch(setOpenCover(!openCover))} 
             className="expandBtn"
@@ -38,7 +34,11 @@ function MusicInfo() {
             {current?.subtitle}
           </span>
         </div>
-        <FavoriteBtn song={current} className='footerFavBtn'/>
+        <div className="footer__music__info__actionBtns">
+          <FavoriteBtn
+            song={current}
+          />
+        </div>
     </div>}
     </>
   )

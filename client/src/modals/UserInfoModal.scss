@@ -26,7 +26,7 @@
                 opacity: 0;
 
                 &__remove{
-                    font-weight: 700;
+                    font-weight: bold;
                     text-decoration: underline;
                     color: $WHITE;
                 }
@@ -50,7 +50,7 @@
                 gap: .25rem;
 
                 &__span{
-                    font-weight: 700;
+                    font-weight: bold;
                     color: rgba($WHITE, .8);
                 }
                 

@@ -1,15 +1,14 @@
-import React from 'react'
-import PageWrapper from '@/components/Wrappers/PageWrapper'
-import CardListWrapper from '@/components/Wrappers/CardListWrapper'
-import SongCard from '@/components/SongCard'
-import Loading from '@/components/Loading'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetChartsByGenreQuery } from '@/services/music'
 import { useDispatch } from 'react-redux'
 import { GENRES } from '@/constants'
+import SongCard from '@/components/SongCard'
+import Loading from '@/components/Loading'
 import '@/Pages/Genre.scss'
 
 function Genre() {
+  const dispatch = useDispatch()
   const { genre } = useParams()
   const { data, isFetching, error } = useGetChartsByGenreQuery(genre)
   const findGenres = GENRES.find(g => g.val === genre)
@@ -22,9 +21,9 @@ function Genre() {
   //This variable created cause api issues
 
   return (
-    <PageWrapper className='genre'>
+    <section className='genre'>
       <h2 className='genre__title'>{findGenres.genre}</h2>
-      <CardListWrapper className='genre__cards'>
+      <div className='genre__cards'>
         {genreData.map((genreItem, index) => (
           <SongCard 
             key={genreItem.key}
@@ -33,8 +32,8 @@ function Genre() {
             data={genreData}
           />
         ))}
-      </CardListWrapper>  
-    </PageWrapper>
+      </div>  
+    </section>
   )
 }
 

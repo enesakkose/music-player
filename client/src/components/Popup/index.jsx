@@ -1,31 +1,25 @@
-import React, { useEffect } from 'react'
-import { popup } from '@/utils'
-import { useSelector } from 'react-redux'
-import { v4 as uuidv4 } from 'uuid'
-import '@/components/Popup/Popup.scss'
+import FavoritePopup from "@/components/Popup/FavoritePopup"
+import AddPlaylistPopup from "@/components/Popup/AddPlaylistPopup"
+import AddSongPopup from "@/components/Popup/AddSongPopup"
+import PublishPlaylistPopup from "@/components/Popup/PublishPlaylistPopup"
 
-function Popup() {
-  const { text } = useSelector(state => state.popup)
-  
-  useEffect(() => {
-    const t = setTimeout(() => {
-      popup(false)
-    }, 2500)
-
-    return () => {
-      clearTimeout(t)
+const popups = [
+    {
+        name: 'FavoritePopup',
+        element: FavoritePopup
+    },
+    {
+        name: 'AddPlaylistPopup',
+        element: AddPlaylistPopup
+    },
+    {
+        name: 'AddSongPopup',
+        element: AddSongPopup
+    },
+    {
+        name: 'PublishPlaylistPopup',
+        element: PublishPlaylistPopup
     }
+]
 
-  }, [text])
-
-  return (
-    //key added, React will mount component and in this way refresh animation time in css 
-    <div key={uuidv4()} className='popupLayout'>
-      <h5 className='popupLayout__text'>
-        {text}
-      </h5>
-    </div>
-  )
-}
-
-export default Popup
+export default popups

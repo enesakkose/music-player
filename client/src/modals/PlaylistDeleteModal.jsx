@@ -1,38 +1,33 @@
 import React from 'react'
-import ModalWrapper from '@/components/Wrappers/ModalWrapper'
-import LightBtn from '@/components/LightBtn'
 import { closeModalHandle } from '@/utils'
 import { deletePlaylist } from '@/firebase/db'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import '@/modals/PlaylistDeleteModal.scss'
 
-function PlaylistDeleteModal({ data: playlistInfo, outClickRef }) {
+function PlaylistDeleteModal({data: playlistInfo, outClickRef}) {
   const navigate = useNavigate()
 
-  const deletePlaylistHandle = async (id) => {
-    navigate('collection/playlists', { replace: true })
+  const deletePlaylistHandle = async(id) => {
     await deletePlaylist(id)
     closeModalHandle()
+    navigate('collection/playlists', { replace: true })
   }
-
+  
   return (
-    <ModalWrapper ref={outClickRef} className='playlistDeleteModal'>
+    <div ref={outClickRef} className='playlistDeleteModal'>
       <h4 className='playlistDeleteModal__title'>
         Delete {playlistInfo.name}?
       </h4>
       <div className="playlistDeleteModal__actionBtns">
-        <LightBtn
-          className='cancel'
-          text='CANCEL'
-          onClick={() => closeModalHandle()}
-        />
-        <LightBtn
-          className='delete'
-          text='DELETE'
-          onClick={() => deletePlaylistHandle(playlistInfo.id)}
-        />
+        <button onClick={() => closeModalHandle()} className='cancel'>
+          CANCEL
+        </button>
+        <button onClick={() => deletePlaylistHandle(playlistInfo.id)} className='delete'>
+          DELETE
+        </button>
       </div>
-    </ModalWrapper>
+    </div>
   )
 }
 

@@ -1,4 +1,6 @@
 .unauthModal{
+    padding: $PM;
+    border-radius: .5rem;
     background-color: $purple;
     display: flex;
     flex-direction: column;
@@ -7,6 +9,7 @@
 
     &__text{
         font-size: 1.25rem;
+        font-weight: bold;
     }
 
     &__btns{

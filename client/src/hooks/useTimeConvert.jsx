@@ -7,10 +7,3 @@ export const useTimeConvert = (seconds) => {
 export const useGetTime = (date) => {
     return moment(date).utcOffset('+02:00').format('HH:mm')
 }
-
-export const useNumberFormat = (num) => {
-    return Intl.NumberFormat('en-EN', {
-        notation: 'compact',
-        maximumFractionDigits: 1
-        }).format(num)
-}

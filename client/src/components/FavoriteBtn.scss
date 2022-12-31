@@ -1,8 +1,11 @@
 .favoriteBtn{
+
+    .like{
+        fill: $GREEN;
+    }
     
     .liked{
         opacity: 1;
-        color: $GREEN;
     }
     
     &:active{

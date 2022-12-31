@@ -1,16 +1,19 @@
 import React from 'react'
-import PageWrapper from '@/components/Wrappers/PageWrapper'
-import CardListWrapper from '@/components/Wrappers/CardListWrapper'
 import SongCard from '@/components/SongCard'
+import Loading from '@/components/Loading'
+import EmptyField from '@/components/EmptyField'
 import { useSelector } from 'react-redux'
 import '@/Pages/RecentSongs.scss'
 
 function RecentSongs() {
-  const { profile: { recentSongs } } = useSelector(state => state.profiles)  
+  const { defaultPlaylists } = useSelector(state => state.playlist)  
+  
+  if(defaultPlaylists === null) return <Loading/>
+  const recentSongs = defaultPlaylists[0]?.recentSongs
 
   return (
-    <PageWrapper className='recentSongs'>
-      <CardListWrapper className="recentSongs__list">
+    <div className='recentSongs'>
+      <div className="recentSongs__list">
         {recentSongs.map((song, index) =>(
           <SongCard
             key={song.key} 
@@ -19,8 +22,8 @@ function RecentSongs() {
             data={recentSongs}
           />
         ))}
-      </CardListWrapper>
-    </PageWrapper>
+      </div>
+    </div>
   )
 }
 

@@ -12,7 +12,7 @@ function MusicPlayer({volume, muted}) {
   const audioRef = useRef(null)
   const dispatch = useDispatch()
   const { current, isPlaying, isActive, currentIndex, currentSongs } = useSelector(state => state.player)
-  const { profile: { recentSongs } } = useSelector(state => state.profiles)
+  const { defaultPlaylists } = useSelector(state => state.playlist)
   const [duration, setDuration] = useState(0)
   const [seekTime, setSeekTime] = useState(0)
   const [songTime, setSongTime] = useState(0)
@@ -28,7 +28,7 @@ function MusicPlayer({volume, muted}) {
   useEffect(() => {
     if(isActive === true) {
       dispatch(playPause(true))
-      addSongToRecentSong(current, recentSongs)
+      addSongToRecentSong(current, defaultPlaylists[0]?.recentSongs)
       localStorage.setItem('currentSong', JSON.stringify(current))
     }   
   }, [current])

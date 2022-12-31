@@ -1,6 +1,4 @@
 import React from 'react'
-import PageWrapper from '@/components/Wrappers/PageWrapper'
-import CardListWrapper from '@/components/Wrappers/CardListWrapper'
 import SongCard from '@/components/SongCard'
 import Loading from '@/components/Loading'
 import { useGetChartsByGenreQuery } from '@/services/music'
@@ -14,9 +12,9 @@ function Songs() {
   if(error) return 'Something went wrong...'
   
   return (
-    <PageWrapper className='songs'>
+    <div className='songs'>
       <h3 className='songs__title'>Top 50</h3>
-      <CardListWrapper className='songs__cards'>
+      <div className='songs__cards'>
         {data.map((song, index) => (
           <SongCard 
             key={song.key} 
@@ -25,8 +23,8 @@ function Songs() {
             data={data}
           />
         ))}
-      </CardListWrapper>
-    </PageWrapper>
+      </div>
+    </div>
   )
 }
 

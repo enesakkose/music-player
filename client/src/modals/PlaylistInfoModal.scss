@@ -1,0 +1,75 @@
+.playlistInfoModal{
+
+    &__form{
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 1.5rem;
+
+        &__img{
+            width: 11.25rem;
+            height: 11.25rem;
+            background-color: $earlGray;
+            box-shadow: $cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+            
+            .imgChange{
+                opacity: 0;
+                position: absolute;
+                top: .5rem;
+                right: .5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                &__btn{
+                    background-color: $BLACK;
+                    border-radius: 50%;
+                    padding: $PXS;
+                    cursor: pointer;
+                    width: 2.25rem;
+                    height: 2.25rem;
+                    color: rgba($WHITE, .5);
+
+                    &:active{
+                        color: $WHITE;
+                    }
+                }
+            }
+
+            &:hover .imgChange{
+                opacity: 1;
+            }
+        }
+
+        &__input{
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-direction: column;
+
+            &__item{
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                &__name{
+                    font-weight: bold;
+                    font-size: .875rem;
+                }
+            }
+            
+            .submitBtn{
+                align-self: flex-end;
+            }
+        }
+    }
+}

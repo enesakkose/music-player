@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useFocus } from '@/hooks/useFocus'
 import { useDispatch, useSelector } from 'react-redux'
 import { setQuerySongs } from '@/store/song'
 import { useSearchParams } from 'react-router-dom'
@@ -50,9 +51,7 @@ function SearchInput() {
         >
           <Icon name='Close' size={24}/>
         </button>}
-      {querySongs.length === 1 && 
-        <p className='searchInput__error'>Please enter min 2 character</p>
-      }
+      {querySongs.length === 1 && <p className='searchInput__error'>Please enter min 2 character</p>}
       </label>
     </form>
     

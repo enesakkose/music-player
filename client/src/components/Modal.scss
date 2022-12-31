@@ -1,0 +1,19 @@
+.modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($BLACK, .6);
+    color: $WHITE;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &Content{
+        padding: $PM;
+        background-color: $GRAY;
+        border-radius: .5rem;
+    }
+}

@@ -16,10 +16,10 @@ function Signup({changeContent, setChangeContent}) {
   const navigate = useNavigate()
 
   const onSubmit = async(values) => {
-    const user = await createUser(values.email, values.password)
+    const user = await createUser(values.email, values.password, values.username)
     await updateUser({
       displayName: values.username
-    }, false)
+    })
     if(user) navigate('/', { replace: true })
   }
 

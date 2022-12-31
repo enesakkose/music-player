@@ -1,20 +1,20 @@
 import React from 'react'
 import Icon from '@/components/Icon'
-import Card from '@/components/Card'
+import PlayBtn from '@/components/PlayBtn'
+import clsx from 'clsx'
 import { setCurrent, setCurrentSongs, playPause } from '@/store/player'
 import { useDispatch, useSelector } from 'react-redux'
-import { modal } from '@/utils'
+import { Link } from 'react-router-dom'
+import '@/components/playlistInfoCard.scss'
 
-function PlaylistInfoCard({playlist, userName = false}) {
+function PlaylistInfoCard({playlist, user = false}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
-  const { user } = useSelector(state => state.auth)
   const validCoverImg = playlist.coverURL === null && playlist.addedSongs.length > 0
   const coverImage = playlist?.addedSongs[0]?.track?.images?.coverart
   const haveSongs = playlist.addedSongs.some(song => song.id === current.key)
   
   const playInPlaylist = () => {
-    if(!user) return modal('UnauthSongModal', playlist.addedSongs[0].track)
     if(current.key !== playlist.addedSongs[0].id && haveSongs) 
     return dispatch(playPause(!isPlaying))
 
@@ -26,24 +26,28 @@ function PlaylistInfoCard({playlist, userName = false}) {
   }
 
   return (
-    <Card
-      onClick={playInPlaylist}
-      playPause={isPlaying && haveSongs}
-      className={isPlaying && haveSongs ? 'showBtn': ''}
-      title={playlist.name}
-      name={userName}
-      playBtn={playlist.addedSongs.length > 0}
-      href={`/playlist/${playlist.id}`}
-    >     
-      {playlist.coverURL !== null 
-          ? (<img src={playlist.coverURL} alt="cover" loading='lazy'/>)
+    <div className='playlistInfoCard'>
+      <div className="playlistInfoCard__img">
+        {playlist.coverURL !== null 
+          ? (<img src={playlist.coverURL} alt="cover"/>)
           
           : (validCoverImg 
-              ? <img src={coverImage} alt="cover" loading='lazy'/>  
+              ? <img src={coverImage} alt="cover"/>  
               : <Icon name='Music' size={52}/>
             )
-      }
-    </Card>
+        }
+        {playlist.addedSongs.length > 0 && <PlayBtn
+          onClick={playInPlaylist}
+          playPause={isPlaying && haveSongs}
+          className={`playlistInfoCard__img__btn ${isPlaying && haveSongs ? 'showBtn': ''}`}
+        />}
+      </div>
+      <div className="playlistInfoCard__info">
+        <h5>{playlist.name}</h5>
+        <span>{user?.displayName}</span>
+      </div>
+      <Link to={`/playlist/${playlist.id}`} className='perde'></Link>
+    </div>
   )
 }
 export default PlaylistInfoCard

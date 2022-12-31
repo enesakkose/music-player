@@ -1,26 +1,22 @@
 import React, { useState } from 'react'
-import CardList from '@/Pages/Home/CardList'
+import CardListLayout from '@/Pages/Home/CardListLayout'
 import Loading from '@/components/Loading'
-import GradientBg from '@/components/GradientBg'
-import PageWrapper from '@/components/Wrappers/PageWrapper'
 import { useSelector } from 'react-redux'
 import { useGetChartsByGenreQuery } from '@/services/music'
 import '@/Pages/Home/Home.scss'
 
 function Home() {
   const [bgColor, setBgColor] = useState('')
-  const { playlists } = useSelector(state => state.playlist)
+  const { defaultPlaylists: userPlaylists, playlists } = useSelector(state => state.playlist)
   const { user } = useSelector(state => state.auth)
-  const { profile } = useSelector(state => state.profiles)
   const { data: songs, isFetching } = useGetChartsByGenreQuery('WORLDWIDE')
-
-  if(isFetching) return <Loading/>
+  if(user && userPlaylists === null || isFetching) return <Loading/>
 
   return (
-    <PageWrapper className='home'>
-      {user && profile.recentSongs.length > 0 &&
-        <CardList 
-          data={profile.recentSongs.slice(-6).reverse()}
+    <section className='home'>
+      {user && userPlaylists[0]?.recentSongs.length > 0 &&
+        <CardListLayout 
+          data={userPlaylists[0]?.recentSongs.slice(-6).reverse()}
           link='/recentSongs'
           title='Recent Songs'
           onMouseOver={true}
@@ -29,7 +25,7 @@ function Home() {
       }
 
       {playlists.length > 0 && user &&
-        <CardList 
+        <CardListLayout 
           data={playlists.slice(0,6)}
           link='/collection/playlists'
           title='Your Playlist'
@@ -37,14 +33,14 @@ function Home() {
         />
       }
       
-      <CardList 
+      <CardListLayout 
         data={songs.slice(0,6)}
         link='/genre/WORLDWIDE'
         title='Recommended For You'
       />
       
-      <GradientBg bgColor={bgColor}/>
-    </PageWrapper>
+      <div className="home__bg" style={{ backgroundColor: `${bgColor}` }}/>
+    </section>
   )
 }
 

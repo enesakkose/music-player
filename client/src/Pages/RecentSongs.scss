@@ -1,2 +1,10 @@
 .recentSongs{
+    flex: 1;
+    padding: $PM $PL;
+
+    &__list{
+        display: grid;
+        grid-template-columns: repeat( auto-fill, minmax(11.875rem, 1fr));
+        gap: 1.5rem;
+    }
 }

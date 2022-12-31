@@ -8,14 +8,14 @@ import '@/components/ActionBtns.scss'
 function ActionBtns({findSongs, children, className}) {
   const { current, isPlaying } = useSelector(state => state.player)
   const { user } = useSelector(state => state.auth)
-  const inSongs = findSongs.some(f => f.key === current.key)
+  const haveSongs = findSongs.some(f => f.key === current.key)
 
   return (
     <div className={clsx('actionBtns', className)}>
       <PlayBtn
-        onClick={() => usePlaySong(findSongs, inSongs, current, isPlaying, user)}
+        onClick={() => usePlaySong(findSongs, current, isPlaying, user)}
         className='actionBtns__play'
-        playPause={isPlaying && inSongs}
+        playPause={isPlaying && haveSongs}
       />
       {children}
     </div>

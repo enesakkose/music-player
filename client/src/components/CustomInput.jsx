@@ -10,9 +10,9 @@ function CustomInput({labelClassName, children, inputTitle = false, className, .
   return (
     <>
       <label className={clsx('customInputLabel',labelClassName)}>
-        {inputTitle && <span className='customInputLabel__title'>
+        <span className='customInputLabel__title'>
           {inputTitle}
-        </span>}
+        </span>
         <input 
           {...field} 
           {...props}

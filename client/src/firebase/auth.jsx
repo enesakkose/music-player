@@ -17,7 +17,8 @@ import {
 import { getFirestore, doc, updateDoc } from 'firebase/firestore'
 import { store } from "@/store"
 import { login, logout } from "@/store/auth"
-import { userProfile, docExist } from '@/firebase/db'
+import { user as currentUser } from '@/utils'
+import { addDefaultCollection, userProfile, getProfile } from '@/firebase/db'
 import toast from "react-hot-toast"
 
 export const db = getFirestore(app)
@@ -33,10 +34,11 @@ export const handleLogin = async(username, password) => {
     }
 }
 
-export const createUser = async(username, password) => {
+export const createUser = async(username, password, name) => {
     try {
         await createUserWithEmailAndPassword(auth, username, password)
-        userProfile()
+        addDefaultCollection()
+        userProfile(name)
         return true
     } catch (error) {
         toast.error('This email already using!')
@@ -46,8 +48,9 @@ export const createUser = async(username, password) => {
 export const loginWithGoogle = async() => {
     try {
         await signInWithPopup(auth, provider)
-        const profile = await docExist(auth.currentUser.uid)
-        if(profile === false) userProfile()
+        const profile = await getProfile(auth.currentUser.uid)
+        if(!profile) addDefaultCollection()
+        userProfile()
         return true
     } catch (error) {
         toast.error(error.message)
@@ -58,7 +61,6 @@ export const handleLogout = async() => {
     try {
         await signOut(auth)
         localStorage.clear()
-        window.location.reload()
     } catch (error) {
         toast.error(error.message)
     }
@@ -66,21 +68,19 @@ export const handleLogout = async() => {
 
 onAuthStateChanged(auth, (user) => {
     if(user){
-        store.dispatch(login(true))
-    }else{ 
-        setTimeout(() => {
-            store.dispatch(logout())
-        }, 1000)
+        currentUser()
+    }else{
+        store.dispatch(logout())
     }
 })
 
-export const updateUser = async(data, popup = true) => {
+export const updateUser = async(data) => {
     try {
         const profileRef = doc(db, 'profiles', auth.currentUser.uid)
         await updateProfile(auth.currentUser, data)
         await updateDoc(profileRef, data)
-
-        if(popup) toast.success('Profile updated')
+        currentUser()
+        toast.success('Profile updated')
         return true
     } catch (error) {
         toast.error(error.message)

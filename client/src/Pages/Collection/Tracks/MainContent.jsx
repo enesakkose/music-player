@@ -3,19 +3,19 @@ import ActionBtns from '@/components/ActionBtns'
 import SongsTableHeader from '@/components/SongsTableHeader'
 import SongsTableList from '@/components/SongsTableList'
 
-function MainContent({favorites}) {
+function MainContent({favoritesPlaylist}) {
   return (
     <div className="favoriteTracks__main__content">
-      <ActionBtns findSongs={favorites} />
+      <ActionBtns findSongs={favoritesPlaylist} />
       <div className="favoriteTracks__main__content__songs">
         <SongsTableHeader />
         <div className='favoriteTracks__main__content__songs__list'>
-          {favorites.map((favorite, index) => (
+          {favoritesPlaylist.map((favorite, index) => (
             <SongsTableList
               key={favorite.key}
               index={index}
               song={favorite}
-              findSongs={favorites}
+              findSongs={favoritesPlaylist}
             />
           ))}
         </div>
