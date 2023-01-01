@@ -17,9 +17,8 @@ export const uploadImg = async(file, id, profile = false) => {
         const uploadTask = uploadBytesResumable(imgRef, file)
         uploadTask.on('state_changed',
             (snapshot) => {
-                const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+                //const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
                 //setUpload(progress)
-                //console.log(progress)
             },
             (error) => {
                 toast.error(error.message)

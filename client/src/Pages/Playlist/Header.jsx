@@ -11,7 +11,7 @@ import '@/Pages/Playlist/Header.scss'
 function Header({ playlist, bgColor, validUser }) {
   const user = useGetProfile(playlist.uid)
   const coverImage = playlist?.addedSongs[0]?.track?.images?.coverart
-  console.log(playlist.publish)
+
   const openPlaylistInfoModal = () => {
     modal('PlaylistInfoModal', playlist)
   }
