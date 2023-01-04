@@ -1,16 +1,33 @@
 .unauthSongModal{
     padding: $PXXL;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 3rem;
     background-image: linear-gradient(-180deg,rgba(0,0,0,.4),#282828);
     background-color: #aa1c1c;
     animation: modalAnimation 500ms ease-in-out;
 
+    @media only screen and (max-width: $md){
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        border-radius: 0;
+
+        .unauthSongModal__closeBtn{
+            display: flex;
+        }
+    }
+
     img{
         width: 18.75rem;
         height: 18.75rem;
         border-radius: .5rem;
+
+        @media only screen and (max-width: $md){
+            width: 10.5rem;
+            height: 10.5rem;
+        }
     }
 
     &__info{
@@ -20,6 +37,10 @@
         justify-content: center;
         flex-direction: column;
         gap: 1.25rem;
+
+        @media only screen and (max-width: $md){
+            max-width: 14rem;
+        }
 
         h3{
             text-align: center;
@@ -38,6 +59,10 @@
         &__logBtn{
             background-color: $GREEN;
         }
+    }
+
+    &__closeBtn{
+        display: none;
     }
 }
 
