@@ -1,9 +1,10 @@
 import React from 'react'
 import UnauthFooterBar from '@/components/Footer/UnauthFooterBar'
 import Footer from '@/components/Footer'
-import Navbar from '@/components/Sidebar/Navbar'
+import Navbar from '@/components/Navbar'
 import useGetWindowSize from '@/hooks/useGetWindowSize'
 import { useSelector } from 'react-redux'
+
 
 function Layout() {
   const size = useGetWindowSize()
@@ -11,7 +12,7 @@ function Layout() {
   
   return (
     <>
-      {size === 'SM' 
+      {size === 'SM' || size === 'MD'
         ? <Navbar/> 
         : user ? <Footer /> : <UnauthFooterBar/>
       }
