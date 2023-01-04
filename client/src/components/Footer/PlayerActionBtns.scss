@@ -1,0 +1,32 @@
+.playerActionBtns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    .previousBtn, .nextBtn{
+        &:hover{
+            color: $WHITE;
+        }
+        &:active{
+            transform: translateY(.5px);
+            color: rgba($WHITE, .6);
+        }            
+    }
+
+    .playerPlayBtn{
+        background-color: $WHITE;
+        width: 2rem;
+        height: 2rem;
+
+        &:active{
+            background-color: $WHITE;
+        }
+        
+        svg{
+            width: 1rem;
+            height: 1rem;
+        }
+
+    }
+}
