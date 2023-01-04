@@ -5,6 +5,10 @@
     gap: 1rem;
 
     .previousBtn, .nextBtn{
+        @media only screen and (max-width: $md){
+            color: $WHITE;
+        }
+
         &:hover{
             color: $WHITE;
         }
@@ -18,6 +22,11 @@
         background-color: $WHITE;
         width: 2rem;
         height: 2rem;
+
+        @media only screen and (max-width: $md){
+            width: 3.5rem;
+            height: 3.5rem;
+        }
 
         &:active{
             background-color: $WHITE;

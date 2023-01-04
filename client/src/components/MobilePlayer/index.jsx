@@ -19,7 +19,7 @@ function MobilePlayer() {
         onClick={() => setExpand(prevState => !prevState)} className="mobilePlayer__actions"
       >
         <img src={current?.images?.coverart} alt={current?.title}/>
-        <MediaInfo name={current?.title} singerName={current?.subtitle}/>
+        <MediaInfo as={'h6'} name={current?.title} singerName={current?.subtitle}/>
         <FavoriteBtn song={current} size={28}/>
         <PlayBtn className='mobilePlayerPlay'/>
       </div>

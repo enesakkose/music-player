@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import clsx from 'clsx'
 import Icon from '@/components/Icon'
 import MediaInfo from '@/components/MobilePlayer/MediaInfo'
-import CustomRange from '@/components/CustomRange'
-import PlayerActionBtns from '@/components/Footer/PlayerActionBtns'
-import MusicPlayer from '@/components/Footer/MusicPlayer'
+import Player from '@/components/Player'
 import FavoriteBtn from '@/components/FavoriteBtn'
 import { useSelector } from 'react-redux'
 import '@/components/MobilePlayer/WideMusicPlayer.scss'
@@ -25,11 +23,11 @@ function WideMusicPlayer({ className, setExpand }) {
           alt={current?.title} 
         />
       </div>
-      <MediaInfo name={current?.title} singerName={current?.subtitle} className='wideMusicPlayerInfo'>
+      <MediaInfo as={'h3'} name={current?.title} singerName={current?.subtitle} className='wideMusicPlayerInfo'>
         <Icon name='favorite' size={30}/>
         {/*<FavoriteBtn song={current}/>*/}
       </MediaInfo>
-      <MusicPlayer 
+      <Player 
         mobile={true} 
         volume={volume} 
         muted={muted} 
