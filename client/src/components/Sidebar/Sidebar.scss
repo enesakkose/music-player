@@ -4,6 +4,10 @@
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     color: rgba($WHITE, .6);
+
+    @media only screen and (max-width: $md) {
+        display: none;
+    }
     
     &__content{
         display: flex;
@@ -41,6 +45,30 @@
             align-items: center;
             justify-content: space-between;
             padding-right: $PL;
+
+            @media only screen and (max-width: $md) {
+                background-color: $secondaryColor;
+                justify-content: space-around;
+                padding-right: 0;
+                padding: $PS;
+
+                a{
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    color: $brokeGray;
+                        
+                    span{
+                        font-size: .6875rem;
+                        display: none;
+                    }
+
+                    svg{
+                        width: 1.75rem;
+                        height: 1.75rem;
+                    }
+                }
+            }
 
             a{
                 flex-direction: column;

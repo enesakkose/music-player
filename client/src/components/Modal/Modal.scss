@@ -16,4 +16,8 @@
         background-color: $GRAY;
         border-radius: .5rem;
     }
+
+    @media only screen and (max-width: $md){
+        z-index: 300;
+    }
 }
