@@ -2,7 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import CustomRange from '@/components/CustomRange'
 import { getTimeConvert } from '@/utils/number'
-import '@/components/Footer/ProgressBar.scss'
+import '@/components/Player/ProgressBar.scss'
 
 
 function ProgressBar({ songTime, duration, mobile, onChange }) {
@@ -27,7 +27,7 @@ function ProgressBar({ songTime, duration, mobile, onChange }) {
         </span>
       </div>}
       {!mobile && <span className='duration'>
-        {getTimeConvert(songTime)}
+        {getTimeConvert(duration)}
       </span>}
     </div>
   )

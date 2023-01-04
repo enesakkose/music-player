@@ -4,9 +4,9 @@ import Icon from '@/components/Icon'
 import PlayBtn from '@/components/PlayBtn'
 import { useSelector } from 'react-redux'
 import { handlePlayPause, handleNextSong, handlePrevSong } from '@/utils/player'
-import '@/components/Footer/PlayerActionBtns.scss'
+import '@/components/Player/ActionBtns.scss'
 
-function PlayerActionBtns({ className, size }) {
+function ActionBtns({ className, size= 36 }) {
   const { 
     current, 
     isPlaying, 
@@ -27,7 +27,7 @@ function PlayerActionBtns({ className, size }) {
       <PlayBtn
         onClick={() => handlePlayPause(current, isPlaying)} 
         playPause={isPlaying && current.key} 
-        className='playerPlayBtn' 
+        className='actionPlayBtn' 
       />
       <button
         disabled={!isActive} 
@@ -40,4 +40,4 @@ function PlayerActionBtns({ className, size }) {
   )
 }
 
-export default PlayerActionBtns
+export default ActionBtns
