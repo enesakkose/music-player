@@ -9,6 +9,7 @@ $secondaryColor: #121212;
 $purple: rgb(119, 46, 230);
 $playlistMainColor: #838383;
 $brokeWhite: #eee;
+$brokeGray: #b3b3b3; 
 
 //TEXT COLOR
 $textGray: #a7a7a7;
@@ -19,7 +20,7 @@ $favoritesGradient: linear-gradient( 83.2deg,  rgba(150,93,233,.7) 10.8%, rgba(9
 $darkLinear: linear-gradient(rgba(0,0,0,.6) 0,rgba(18,18,18,1) 100%);
 $grayLinear: linear-gradient(transparent 0,rgba(0,0,0,.5) 100%);
 $unauthBar: linear-gradient(90deg,#af2896,#509bf5);
-
+$mobileNavbar: linear-gradient(transparent,rgba(0,0,0,.6),rgba(0,0,0,.7),rgba(0,0,0,.8),rgba(0,0,0,.8),rgba(0,0,0,.9),rgba(0,0,0,.9),rgba(0,0,0,.9),#000,#000);
 
 //PADDING
 $PXS: .5rem;
