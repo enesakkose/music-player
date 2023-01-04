@@ -8,15 +8,15 @@ function Navbar({user}) {
     <nav className="sidebar__content__navbar">
       <NavLink to='/'>
         <Icon name='Home' size={30}/>
-        home
+        <span>home</span>
       </NavLink>
       <NavLink to='/search'>
         <Icon name='Search' size={30}/>
-        search
+        <span>search</span>
       </NavLink>
       <NavLink to='/collection/playlists' onClick={(e) => unauthModal(e, user)}>
         <Icon name='Book' size={30}/>
-        library
+        <span>library</span>
       </NavLink>
     </nav>
   )
