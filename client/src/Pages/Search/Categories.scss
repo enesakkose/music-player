@@ -9,6 +9,10 @@
             border-radius: .5rem;
             height: 14.5rem;
 
+            @media only screen and (max-width: $md){
+                height: 6rem;
+            }
+
             &__title{
                 padding: $PS $PM;
                 letter-spacing: 1px;
