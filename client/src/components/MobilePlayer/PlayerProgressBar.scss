@@ -1,0 +1,9 @@
+.playerProgressBar{
+    .rc-slider-rail, .rc-slider-track{
+        height: 2px;
+    }
+
+    .rc-slider-handle{
+        display: none;
+    }
+}

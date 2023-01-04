@@ -1,0 +1,25 @@
+.mediaInfo{
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    width: 100%;
+
+    .info{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        h5{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            //max-width: 12rem;
+        }
+
+        span{
+            font-size: .875rem;
+        }
+    }
+}
