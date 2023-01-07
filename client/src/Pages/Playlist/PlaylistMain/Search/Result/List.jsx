@@ -1,5 +1,6 @@
 import React from 'react'
-import SongsTableList from '@/components/SongsTableList'
+import Row from '@/components/TrackList/Row'
+import TrackList from '@/components/TrackList'
 import AddOrRemoveBtn from '@/Pages/Playlist/PlaylistMain/Search/Result/AddOrRemoveBtn'
 import { addToAddedSongs, removeFromAddedSongs } from '@/firebase/db'
 import '@/Pages/Playlist/PlaylistMain/Search/Result/List.scss'
@@ -21,23 +22,23 @@ function List({ result, isSuccess, isFetching, playlist, show }) {
   }
 
   return (
-    <div className='resultList'>
+    <TrackList className='resultTrackList'>
       {isSuccess && !isFetching && resultSong.map((song,index) => (
-        <SongsTableList
+        <Row
           key={song.track.key}
           index={index}
           song={song.track}
-          findSongs={resultSong}
-          className='resultList__item'
+          songs={resultSong}
+          className='resultTrackList__item'
         >
           <AddOrRemoveBtn 
             onClick={() => addOrRemove(song.track)}
             id={song.track.key}
             playlist={playlist}
           />
-        </SongsTableList>
+        </Row>
       ))}
-    </div>
+    </TrackList>
   )
 }
 

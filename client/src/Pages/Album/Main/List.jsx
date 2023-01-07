@@ -1,7 +1,7 @@
 import React from 'react'
 import SongsTableHeader from '@/components/SongsTableHeader'
-import Song from '@/components/SongsTableList'
-import styles from '@/Pages/Album/Main/List.module.scss'
+import TrackList from '@/components/TrackList'
+import Row from '@/components/TrackList/Row'
 
 function List({ size, songs }) {
   const filteredSongs = songs.filter(f => f.hub.actions)
@@ -9,16 +9,16 @@ function List({ size, songs }) {
   return (
     <>
       {!size && <SongsTableHeader/>}
-      <div className={styles.list}>
+      <TrackList>
         {filteredSongs.map((song, index) => (
-          <Song
+          <Row
             song={song}
-            findSongs={filteredSongs}
+            songs={filteredSongs}
             index={index}
             key={song.key}
           />
         ))}
-      </div>
+      </TrackList>
     </>
   )
 }

@@ -1,0 +1,122 @@
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $PXS $PM;
+    position: relative;
+    cursor: default;
+    gap: 1.5rem;
+    border-radius: .250rem;
+    user-select: none;
+
+    @media only screen and (max-width: $md){
+        padding: $PS;
+    }
+
+    &:hover{
+        background-color: rgba($WHITE, .1);
+    }
+
+    .rowInfo{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        overflow: hidden;
+    }
+
+    .playBtnContent{
+        min-width: 1.188rem;
+        width: 1.188rem;
+        height: 1.188rem;
+
+        @media only screen and (max-width: $md){
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .index{
+            font-size: 1.25rem;
+            
+            @media only screen and (max-width: $md){
+                font-size: .875rem;
+            }
+        }
+
+        .playBtn{
+            display: none;
+            color: $WHITE;
+            cursor: default;
+        }
+        
+    }
+
+    &:hover .playBtnContent{
+        .index{
+            display: none;
+        }
+
+        .playBtn{
+            display: block;
+        }
+    }
+    
+    .cover{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
+        white-space: nowrap; 
+        overflow: hidden;
+
+        .title, .subtitle{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            letter-spacing: 0;
+        }
+
+        .subtitle{
+            color: rgba($WHITE, .7);
+            font-weight: 400; 
+        }
+    }
+
+    .favBtn{
+        opacity: 0;
+    }
+
+    button{
+        z-index: 1;
+    }
+
+    &:hover .favBtn{
+        opacity: 1;
+    }
+
+    .playSong{
+        position: absolute;
+        inset: 0;
+    }
+}
+
+.playingRow{
+    background-color: rgba($WHITE, .1);
+
+    .playBtnContent{
+        .index{
+            display: none;
+        }
+
+        .playBtn{
+            display: block;
+        }
+    }
+
+    button{
+        opacity: 1 !important;
+    }
+}
