@@ -1,32 +1,17 @@
 import React from 'react'
-import ActionBtns from '@/components/ActionBtns'
-import SongsList from '@/Pages/Album/Main/SongsList'
-import SongsTableHeader from '@/components/SongsTableHeader'
+import GradientBg from '@/components/GradientBg'
+import PageWrapper from '@/components/Wrappers/PageWrapper'
+import Header from '@/Pages/Album/Main/Header'
+import List from '@/Pages/Album/Main/List'
+import styles from '@/Pages/Album/Album.module.scss'
 
-function Main({ findSongs, backgroundColor }) {
-  const filterFindSongs = findSongs.filter(f => f.hub.actions)
-
+function Main({ findSongs, findAlbum, backgroundColor, size }) {
   return (
-    <main className="album__content">
-      <ActionBtns findSongs={findSongs} />
-      <div className="album__content__songs">
-        <SongsTableHeader />
-        <div className="album__content__songs__list">
-          {filterFindSongs.map((song, index) => (
-            <SongsList
-              song={song}
-              findSongs={filterFindSongs}
-              index={index}
-              key={song.key}
-            />
-          ))}
-        </div>
-      </div>
-      <div
-        className="album__content__background"
-        style={{ backgroundColor: `#${backgroundColor}` }}
-      />
-    </main>
+    <PageWrapper as='div' className={styles.content}>
+      <Header size={size} album={findAlbum} songs={findSongs}/>
+      <List size={size} songs={findSongs}/>
+      <GradientBg bgColor={backgroundColor}/>
+    </PageWrapper>
   )
 }
 

@@ -1,5 +1,4 @@
 .header{
-    padding: $PS;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -23,6 +22,8 @@
     }
     
     @media only screen and (max-width: $md){
+        padding: $PS;
+        
         .actionBtns{
             padding-bottom: 0;
         }
