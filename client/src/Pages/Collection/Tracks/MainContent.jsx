@@ -2,10 +2,11 @@ import React from 'react'
 import ActionBtns from '@/components/ActionBtns'
 import SongsTableHeader from '@/components/SongsTableHeader'
 import SongsTableList from '@/components/SongsTableList'
+import PageWrapper from '@/components/Wrappers/PageWrapper'
 
 function MainContent({favorites}) {
   return (
-    <div className="favoriteTracks__main__content">
+    <PageWrapper as='div' className="favoriteTracks__main__content">
       <ActionBtns findSongs={favorites} />
       <div className="favoriteTracks__main__content__songs">
         <SongsTableHeader />
@@ -20,7 +21,7 @@ function MainContent({favorites}) {
           ))}
         </div>
       </div>
-    </div>
+    </PageWrapper>
   )
 }
 
