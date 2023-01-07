@@ -1,4 +1,8 @@
 .pageWrapper{
     flex: 1;
     padding: $PM $PL;
+
+    @media only screen and (max-width: $md){
+        padding-bottom: 9rem;
+    }
 }
