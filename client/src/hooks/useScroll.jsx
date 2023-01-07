@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 
 export const useScroll = (ref, length) => {
   
@@ -30,4 +30,21 @@ export const useScrollEnd = (ref) => {
   }else{
     return false
   }
+}
+
+export const useHandleScroll = (ref) => {
+  const [ scrollTop, setScrollTop] = useState(0)
+  const handleScroll = () => {
+    setScrollTop(ref.current.scrollTop)
+  }
+
+  useEffect(() => {
+    ref?.current?.addEventListener('scroll', handleScroll)
+
+    return () => {
+      ref?.current?.removeEventListener('scroll', handleScroll)
+    }
+  }, [handleScroll])
+
+  return scrollTop
 }
