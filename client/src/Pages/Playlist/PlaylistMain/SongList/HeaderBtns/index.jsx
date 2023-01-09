@@ -6,7 +6,7 @@ import { getNumberFormat } from '@/utils/number'
 import { modal } from '@/utils'
 import '@/Pages/Playlist/PlaylistMain/SongList/HeaderBtns/HeaderBtns.scss'
 
-function HeaderBtns({ playlist }) {
+function HeaderBtns({ playlist, size }) {
   const { user } = useSelector(state => state.auth)
   const onlyTracks = playlist.addedSongs.length > 0 && playlist.addedSongs.map((a => a.track))
 
@@ -17,11 +17,16 @@ function HeaderBtns({ playlist }) {
   }
 
   return (
-    <ActionBtns className='headerBtns' findSongs={onlyTracks}>
-      <button onClick={commentModal} className='commentBtn'>
+    <ActionBtns 
+      className='headerBtns' 
+      findSongs={onlyTracks}
+      title={playlist?.name}
+      songLength={playlist.addedSongs.length}
+    >
+      {!size && <button onClick={commentModal} className='commentBtn'>
         <Icon name='Comment' size={25} />
         <span>{getNumberFormat(playlist.commentsCount)}</span>
-      </button>
+      </button>}
     </ActionBtns>
   )
 }

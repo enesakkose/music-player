@@ -27,8 +27,8 @@ function Album() {
       style={size ? { overflow: 'scroll' } : undefined}
     >
       <AlbumHeader 
-        findAlbum={data[0]} 
-        findSongs={data}
+        album={data[0]} 
+        songs={data}
         backgroundColor={backgroundColor}
         scrollTop={scrollTop}
       />
