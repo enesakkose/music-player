@@ -1,6 +1,10 @@
 .songList{
     padding-bottom: $PL;
 
+    @media only screen and (max-width: $md){
+        padding-bottom: 0;
+    }
+
     &__item{
         display: grid !important;
         grid-template-columns: 2.95fr 3fr 22px;

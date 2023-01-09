@@ -7,7 +7,7 @@ import PageWrapper from '@/components/Wrappers/PageWrapper'
 
 function MainContent({favorites}) {
   return (
-    <PageWrapper as='div' className="favoriteTracks__main__content">
+    <PageWrapper as='div'>
       <ActionBtns findSongs={favorites} />
         <SongsTableHeader />
         <TrackList>

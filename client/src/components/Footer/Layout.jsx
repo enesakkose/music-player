@@ -2,17 +2,17 @@ import React from 'react'
 import UnauthFooterBar from '@/components/Footer/UnauthFooterBar'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
-import useGetWindowSize from '@/hooks/useGetWindowSize'
+import { getMobileTabletSize } from '@/utils/size'
 import { useSelector } from 'react-redux'
 
 
 function Layout() {
-  const size = useGetWindowSize()
+  const size = getMobileTabletSize()
   const { user } = useSelector(state => state.auth)
-  
+
   return (
     <>
-      {size === 'SM' || size === 'MD'
+      {size
         ? <Navbar/> 
         : user ? <Footer /> : <UnauthFooterBar/>
       }
