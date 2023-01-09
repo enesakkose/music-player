@@ -12,6 +12,10 @@
     
 }
 
+.liked{
+    opacity: 1 !important;
+}
+
 @keyframes like {
     0%{
         transform: translateX(5px);
