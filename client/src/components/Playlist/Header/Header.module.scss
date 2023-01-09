@@ -74,6 +74,14 @@
         }
     }
 
+    .profileCover{
+        border-radius: 50%;
+
+        img, .pencil{
+            border-radius: 50%;
+        }
+    }
+
     .info{
         display: flex;
         flex-direction: column;

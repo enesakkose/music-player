@@ -17,13 +17,24 @@ function Header({
   bg = undefined,
   ...props }) {
   const size = getMobileTabletSize()
+  const imgSrc = img === null || img === ''
+  const P = type === 'PROFILE'
 
   return (
     <header className={clsx(styles.header, className)} style={style}>
       {size && <NavigateBtn scrollTop={scrollTop} bg={bg} />}
-      <div {...props} className={styles.cover}>
-        {img === null && <Icon name={title === 'LIKED SONGS' ? 'Favorite' : 'Music'} size={75} />}
-        {img !== null && <img
+      <div {...props} 
+        className={clsx(styles.cover, 
+        P ? styles.profileCover : ''
+        )}
+      >
+        {imgSrc && <Icon name={title === 'LIKED SONGS' 
+          ? 'Favorite' 
+          : P ? 'Avatar' : 'Music'} 
+          size={ P ? '100%' : 75 }
+        />}
+        
+        {!imgSrc && <img
           referrerPolicy="no-referrer"
           src={img}
           alt="img"
