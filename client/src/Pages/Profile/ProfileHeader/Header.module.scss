@@ -1,0 +1,8 @@
+.profileHeader{
+    background: rgba($playlistMainColor, .3);
+    background-image: $grayLinear;
+
+    div, img{
+        border-radius: 50%;
+    }
+}
