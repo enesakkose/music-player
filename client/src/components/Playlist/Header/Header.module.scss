@@ -1,4 +1,4 @@
-.playlistHeader{
+.header{
     //height: 30vh;
     min-height: 21.25rem;
     padding: 0 $PL $PM $PL;
@@ -20,8 +20,9 @@
         margin-top: 0;
     }
 
-    .mobileNavigateBtn{
+    .navigateBtn{
         position: fixed;
+        filter: brightness(90%);
         top: 0;
         left: 0;
         right: 0;
@@ -33,7 +34,7 @@
         transition: 400ms background-color ease-in-out;
     }
     
-    &__cover{
+    .cover{
         position: relative;
         box-shadow: $cover;
         width: clamp(11rem, 40vw, 14.5rem);
@@ -46,22 +47,19 @@
 
         img{
             width: 100%;
-            height: 100%;
+            aspect-ratio: 1;
         }
 
-        span{
+        .pencil{
             display: flex;
             flex-direction: column;
             align-items: center;
             position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
+            inset: 0;
             background-color: rgba($BLACK, .5);
             opacity: 0;
 
-            .pencil{
+            .pencilIcon{
                 position: absolute;
                 top: 50%; 
                 right: 50%;
@@ -82,7 +80,7 @@
         gap: .5rem;
         overflow: hidden;
 
-        &__header{
+        .title{
             padding-bottom: $PS;
             white-space: nowrap; 
             overflow: hidden;
@@ -93,5 +91,4 @@
             }
         }
     }
-
 }
