@@ -15,9 +15,9 @@
     &::-webkit-scrollbar{
         width: 1rem;
 
-        /*@media only screen and (max-width: $md){
-            width: 0;
-        }*/
+        @media only screen and (max-width: $md){
+            width: 2px;
+        }
     }
 
     &::-webkit-scrollbar-track {

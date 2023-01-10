@@ -4,10 +4,6 @@
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     color: rgba($WHITE, .6);
-
-    @media only screen and (max-width: $md) {
-        display: none;
-    }
     
     &__content{
         display: flex;

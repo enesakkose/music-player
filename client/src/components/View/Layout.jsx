@@ -4,11 +4,11 @@ import Popups from '@/components/Main/Popups'
 import { Outlet, useLocation } from 'react-router-dom'
 import '@/components/View/Layout.scss'
 
-function Layout() {
+function Layout({ size }) {
   return (
     <div className='viewLayout'>
       <Popups/>
-      <Header/>
+      {!size && <Header/>}
       <Outlet/>
     </div>
   )
