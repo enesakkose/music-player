@@ -19,5 +19,15 @@
 
     @media only screen and (max-width: $md){
         z-index: 300;
+
+        .submitBtn{
+            justify-content: center;
+            width: 100%;
+
+            &:hover{
+                transform: scale(1);
+            }
+        }
     }
+    
 }
