@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import PageWrapper from '@/components/Wrappers/PageWrapper'
+import PlaylistWrapper from '@/components/Wrappers/PlaylistWrapper'
 import PlaylistSearch from '@/Pages/Playlist/PlaylistMain/Search'
 import SongList from '@/Pages/Playlist/PlaylistMain/SongList'
 import GradientBg from '@/components/GradientBg'
@@ -11,7 +11,7 @@ function PlaylistMain({ playlist, validUser, bgColor, size }) {
   
   return (
     <section className='playlist__main'>
-      <PageWrapper as='div' className="playlist__main__content">
+      <PlaylistWrapper className="playlist__main__content">
         {showPlaylist && <SongList playlist={playlist} size={size}/>}
         {validUser && !size && 
           <PlaylistSearch
@@ -20,7 +20,7 @@ function PlaylistMain({ playlist, validUser, bgColor, size }) {
             setShow={setShow}
           />
         }
-      </PageWrapper>
+      </PlaylistWrapper>
       <GradientBg size='40vh' bgColor={bgColor}/>
     </section>
   )

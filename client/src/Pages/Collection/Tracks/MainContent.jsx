@@ -3,11 +3,11 @@ import ActionBtns from '@/components/ActionBtns'
 import SongsTableHeader from '@/components/SongsTableHeader'
 import TrackList from '@/components/TrackList'
 import Row from '@/components/TrackList/Row'
-import PageWrapper from '@/components/Wrappers/PageWrapper'
+import PlaylistWrapper from '@/components/Wrappers/PlaylistWrapper'
 
 function MainContent({favorites}) {
   return (
-    <PageWrapper as='div'>
+    <PlaylistWrapper>
       <ActionBtns findSongs={favorites} />
         <SongsTableHeader />
         <TrackList>
@@ -20,7 +20,7 @@ function MainContent({favorites}) {
             />
           ))}
         </TrackList>
-    </PageWrapper>
+    </PlaylistWrapper>
   )
 }
 

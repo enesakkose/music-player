@@ -1,13 +1,13 @@
 import React from 'react'
 import GradientBg from '@/components/GradientBg'
-import PageWrapper from '@/components/Wrappers/PageWrapper'
+import PlaylistWrapper from '@/components/Wrappers/PlaylistWrapper'
 import ActionBtns from '@/components/ActionBtns'
 import List from '@/Pages/Album/Main/List'
 import styles from '@/Pages/Album/Album.module.scss'
 
 function Main({ findSongs, findAlbum, backgroundColor, size }) {
   return (
-    <PageWrapper as='div' className={styles.content}>
+    <PlaylistWrapper className={styles.content}>
       <ActionBtns
         title={findAlbum.title}
         subtitle={findAlbum.subtitle} 
@@ -16,7 +16,7 @@ function Main({ findSongs, findAlbum, backgroundColor, size }) {
       />
       <List size={size} songs={findSongs}/>
       <GradientBg bgColor={backgroundColor}/>
-    </PageWrapper>
+    </PlaylistWrapper>
   )
 }
 
