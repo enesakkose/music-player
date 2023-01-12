@@ -1,6 +1,7 @@
 import React from 'react'
+import TrackList from '@/components/TrackList'
+import Row from '@/components/TrackList/Row'
 import SongsTableHeader from '@/components/SongsTableHeader'
-import SongsTableList from '@/components/SongsTableList'
 import '@/Pages/Search/Result/SongResult.scss'
 
 function SongResult({songs}) {
@@ -8,16 +9,16 @@ function SongResult({songs}) {
     <div className="songResult">
       <h3>Songs</h3>
       <SongsTableHeader/>
-      <div className="songResult__list">
+      <TrackList>
         {songs.map((song, index) => (
-          <SongsTableList
+          <Row
             key={song.track.key}
             index={index}
             song={song.track}
-            findSongs={songs}
+            songs={songs}
           />
         ))}
-      </div>
+      </TrackList>
     </div>
   )
 }

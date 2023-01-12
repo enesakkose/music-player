@@ -35,7 +35,7 @@ h2{
 }
 
 h3{
-  font-size: 1.75rem;
+  font-size: clamp(1.5rem, 2.25vw, 1.75rem);
 }
 
 h4{
@@ -62,5 +62,11 @@ button{
   background-color: transparent;
   color: rgba($WHITE, .6);
   display: flex;
+}
 
+
+@media only screen and (max-width: $md){
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+  }
 }

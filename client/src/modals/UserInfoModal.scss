@@ -5,6 +5,12 @@
         grid-template-columns: 1fr 1.5fr;
         gap: 1.5rem;
 
+        @media only screen and (max-width: $md){
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
         .profileImgChange{
             position: relative;
             height: 11.25rem;

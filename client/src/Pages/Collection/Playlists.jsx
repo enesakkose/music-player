@@ -5,6 +5,7 @@ import EmptyField from '@/components/EmptyField'
 import FavoritesCard from '@/components/FavoritesCard'
 import LightBtn from '@/components/LightBtn'
 import PlaylistInfoCard from '@/components/PlaylistInfoCard'
+import { getMobileTabletSize } from '@/utils/size'
 import { addPlaylistHandle } from '@/firebase/db'
 import { v4 as uuidv4 } from 'uuid'
 import { useSelector } from 'react-redux'
@@ -16,6 +17,7 @@ function Playlists() {
   const navigate = useNavigate()
   const { playlists } = useSelector(state => state.playlist)
   const { profile: { favorites, uid, displayName } } = useSelector(state => state.profiles)
+  const size = getMobileTabletSize()
 
   const handleAdd = async() => {
     await addPlaylistHandle(playlists, id, uid)
@@ -30,7 +32,7 @@ function Playlists() {
           </EmptyField>  
 
         : <CardListWrapper className="playlists__cards">
-            <FavoritesCard favorites={favorites}/>
+            {!size && <FavoritesCard favorites={favorites}/>}
             {playlists.map((playlist) => (
               <PlaylistInfoCard 
                 key={playlist.id} 

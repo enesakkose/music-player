@@ -6,4 +6,8 @@
     color: $WHITE;
     width: 100%;
     height: calc(100vh - 6.25rem);
+
+    @media only screen and (max-width: $md){
+        height: 100%;
+    }
 }

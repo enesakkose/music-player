@@ -2,6 +2,7 @@ import React from 'react'
 import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import LightBtn from '@/components/LightBtn'
 import { navigateAuth } from '@/utils'
+import { closeModalHandle } from '@/utils'
 import '@/modals/UnauthSongModal.scss'
 
 function UnauthSongModal({ outClickRef, data: songData }) {
@@ -27,6 +28,12 @@ function UnauthSongModal({ outClickRef, data: songData }) {
           onClick={() => navigateAuth()}
         />
       </div>
+      <button 
+        onClick={() => closeModalHandle()} 
+        className='unauthSongModal__closeBtn'
+      >
+        CLOSE
+      </button>
     </ModalWrapper>
   )
 }

@@ -1,24 +1,24 @@
 import React from 'react'
-import SongsTableList from '@/components/SongsTableList'
+import Row from '@/components/TrackList/Row'
+import TrackList from '@/components/TrackList'
 import DateAndRemoveBtn from '@/Pages/Playlist/PlaylistMain/SongList/List/DateAndRemoveBtn'
 import '@/Pages/Playlist/PlaylistMain/SongList/List/List.scss'
 
 function List({ playlist }) {
   return (
-    <ul className='songList'>
+    <TrackList className='songList'>
       {playlist.addedSongs.map((song, index) => (
-        <li key={song.track.key} className='songList__item'>
-          <SongsTableList
+          <Row
+            key={song.track.key}
             index={index}
             song={song.track}
-            findSongs={playlist.addedSongs}
-            className='songList__item__content'
+            songs={playlist.addedSongs}
+            className='songList__item'
           >
             <DateAndRemoveBtn song={song} playlist={playlist}/>
-          </SongsTableList>
-        </li>
+          </Row>
       ))}
-    </ul>
+    </TrackList>
   )
 }
 

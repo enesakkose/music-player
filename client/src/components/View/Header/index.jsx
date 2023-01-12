@@ -1,4 +1,5 @@
 import React from 'react'
+import Icon from '@/components/Icon'
 import NavigationButton from '@/components/View/Header/NavigationButton'
 import UserAvatar from '@/components/View/Header/UserAvatar'
 import SearchInput from '@/Pages/Search/SearchInput'
@@ -7,14 +8,13 @@ import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import '@/components/View/Header/Header.scss'
 
-function Header() {
+function Header({ user, size }) {
   const location = useLocation()
-  const { user } = useSelector(state => state.auth)
 
   return (
     <header className='viewLayoutHeader'>
-      <NavigationButton />
-      {location.pathname === '/search' && <SearchInput />}
+      {size ? <Icon name='Logo' size={30}/> : <NavigationButton />}
+      {!size && location.pathname === '/search' && <SearchInput />}
       {user ? <UserAvatar /> : <AuthBtns />}
     </header>
   )

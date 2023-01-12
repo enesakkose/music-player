@@ -9,10 +9,10 @@ import '@/components/FavoritesCard.scss'
 function FavoritesCard({favorites}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
-  const haveFavoritesPlaylist = favorites.some(song => song.key === current.key)
+  const inFavoritesPlaylist = favorites.some(song => song.key === current.key)
   
   const favoritesCardPlayPause = () => {
-    if (!haveFavoritesPlaylist){
+    if (!inFavoritesPlaylist){
       dispatch(setCurrent(favorites[0]))
       dispatch(setCurrentSongs(favorites))
     }else{
@@ -28,9 +28,9 @@ function FavoritesCard({favorites}) {
       </div>
       <PlayBtn 
         disabled={favorites.length === 0}
-        playPause={haveFavoritesPlaylist && isPlaying}
+        playPause={inFavoritesPlaylist && isPlaying}
         onClick={favoritesCardPlayPause} 
-        className={clsx('favoritesCard__playBtn',haveFavoritesPlaylist && isPlaying ? 'currentFav' : 'notCurrentFav' )}
+        className={clsx('favoritesCard__playBtn', inFavoritesPlaylist && isPlaying ? 'currentFav' : 'notCurrentFav' )}
       />
       <Link to='/collection/tracks' className='perde'/>
     </div>

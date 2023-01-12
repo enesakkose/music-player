@@ -1,26 +1,26 @@
 import React from 'react'
 import ActionBtns from '@/components/ActionBtns'
 import SongsTableHeader from '@/components/SongsTableHeader'
-import SongsTableList from '@/components/SongsTableList'
+import TrackList from '@/components/TrackList'
+import Row from '@/components/TrackList/Row'
+import PageWrapper from '@/components/Wrappers/PageWrapper'
 
 function MainContent({favorites}) {
   return (
-    <div className="favoriteTracks__main__content">
+    <PageWrapper as='div'>
       <ActionBtns findSongs={favorites} />
-      <div className="favoriteTracks__main__content__songs">
         <SongsTableHeader />
-        <div className='favoriteTracks__main__content__songs__list'>
+        <TrackList>
           {favorites.map((favorite, index) => (
-            <SongsTableList
+            <Row
               key={favorite.key}
               index={index}
               song={favorite}
-              findSongs={favorites}
+              songs={favorites}
             />
           ))}
-        </div>
-      </div>
-    </div>
+        </TrackList>
+    </PageWrapper>
   )
 }
 
