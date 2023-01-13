@@ -23,7 +23,7 @@ function Player({ volume, muted, mobile = false, btnSize }) {
   const [duration, setDuration] = useState(0)
   const [seekTime, setSeekTime] = useState(0)
   const [songTime, setSongTime] = useState(0)
-  
+
   if(audioRef.current){
     if(isPlaying) {
       audioRef.current.play()
@@ -89,6 +89,8 @@ function Player({ volume, muted, mobile = false, btnSize }) {
         autoPlay={isPlaying ? true : false}
         onTimeUpdate={(e) => setSongTime(e.target.currentTime)}
         onLoadedData={(e) => setDuration(e.target.duration)}
+        onPlay={() => dispatch(playPause(true))}
+        onPause={() => dispatch(playPause(false))}
       />
       <ActionBtns size={btnSize}/>
       <ProgressBar
