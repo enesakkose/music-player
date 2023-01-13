@@ -4,11 +4,11 @@ import Row from '@/components/TrackList/Row'
 import SongsTableHeader from '@/components/SongsTableHeader'
 import '@/Pages/Search/Result/SongResult.scss'
 
-function SongResult({songs}) {
+function SongResult({songs, size}) {
   return (
     <div className="songResult">
       <h3>Songs</h3>
-      <SongsTableHeader/>
+      {!size && <SongsTableHeader/>}
       <TrackList>
         {songs.map((song, index) => (
           <Row

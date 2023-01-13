@@ -3,6 +3,11 @@
         height: 100%;
         padding: $PL 0;
 
+        @media only screen and (max-width: $md){
+            display: grid;
+            padding: $PM 0;
+        }
+
         &__card{
             border: 1px solid $earlGray;
             box-shadow: $cover;
