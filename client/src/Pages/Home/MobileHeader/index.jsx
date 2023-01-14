@@ -9,6 +9,7 @@ function MobileHeader({profile}) {
   return (
     <>
     <header className='mobileHeader'>
+      <Icon name='Logo' size={30}/>
       <button onClick={() => setOpenMenu(true)}>
         <Icon name='Double' size={30}/>
       </button> 
