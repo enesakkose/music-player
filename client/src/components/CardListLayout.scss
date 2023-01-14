@@ -4,7 +4,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-top: $PM;
 
         a{
             
@@ -14,8 +13,4 @@
         }
     }
 
-    &__list{
-        //height: 100%;
-        padding: $PS 0;
-    }
 }

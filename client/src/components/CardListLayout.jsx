@@ -10,7 +10,7 @@ function CardListLayout({ href = true, title, children, ...props }) {
         <h3>{title}</h3>
         {href && <Link to={href} state={{...props}}>See All</Link>}
       </div>
-      <CardListWrapper className='cardListLayout__list'>
+      <CardListWrapper>
         {children}
       </CardListWrapper>
     </div>

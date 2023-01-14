@@ -26,6 +26,7 @@ function Playlists() {
   
   return (
     <PageWrapper className='playlists'>
+      <h3>Your Playlists</h3>
       {playlists.length === 0 
         ? <EmptyField icon='Music'>
             <LightBtn onClick={handleAdd} text='Create Playlist'/>

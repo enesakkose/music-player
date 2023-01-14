@@ -7,7 +7,6 @@ import { useGetChartsByGenreQuery } from '@/services/music'
 import '@/Pages/Songs.scss'
 
 function Songs() {
-
   const { data, isFetching, error } = useGetChartsByGenreQuery('POP')
   
   if(isFetching) return <Loading/>
@@ -15,8 +14,8 @@ function Songs() {
   
   return (
     <PageWrapper className='songs'>
-      <h3 className='songs__title'>Top 50</h3>
-      <CardListWrapper className='songs__cards'>
+      <h3>Top 50</h3>
+      <CardListWrapper>
         {data.map((song, index) => (
           <SongCard 
             key={song.key} 
