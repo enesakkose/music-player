@@ -28,7 +28,7 @@
         right: 0;
         height: 3.5rem;
         padding: $PS;
-        background-color: transparent;
+        background-color: var(--bg, transparent);
         z-index: 3;
         color: $WHITE;
         transition: 400ms background-color ease-in-out;

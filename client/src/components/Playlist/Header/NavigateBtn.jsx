@@ -8,7 +8,7 @@ function NavigateBtn({ bg, scrollTop, className }) {
 
   return (
     <button 
-      style={scrollTop >= 100 ? { backgroundColor: `#${bg}`}: undefined} className={styles.navigateBtn} 
+      style={scrollTop >= 100 ? { '--bg': `#${bg}`}: undefined} className={styles.navigateBtn} 
       onClick={() => navigate(-1)}
     >
       <Icon name='left' size={25}/>
