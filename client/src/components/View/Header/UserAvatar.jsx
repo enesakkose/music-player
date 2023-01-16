@@ -4,32 +4,23 @@ import { DropdownMenu, DropdownMenuItem } from '@/components/DropdownMenu'
 import { useSelector } from 'react-redux'
 import { modal } from '@/utils'
 import { handleLogout } from '@/firebase/auth'
+import { useNavigate } from 'react-router-dom'
 import '@/components/View/Header/UserAvatar.scss'
 
 function UserAvatar() {
-  const { profile: { photoURL } } = useSelector(state => state.profiles)
-  
-  const openUserInfo = () => {
-    modal('UserInfoModal')
-  }
+  const navigate = useNavigate()
+  const { profile: { photoURL, uid } } = useSelector(state => state.profiles)
 
-  const openPasswordChangeModal = () => {
-    modal('PasswordChangeModal')
-  }
-
-  const logout = async() => {
-    handleLogout()
-  }
-  
   return (
       <DropdownMenu 
         btn={<Avatar src={photoURL} size='28px'/>} 
         className="userAvatarMenu"
         btnClassName='avatarBtn'
       >
-        <DropdownMenuItem text='Account' onClick={openUserInfo}/>
-        <DropdownMenuItem text='Password Change' onClick={openPasswordChangeModal}/>
-        <DropdownMenuItem text='Logout' onClick={logout}/>
+        <DropdownMenuItem text='Account' onClick={() => modal('UserInfoModal')}/>
+        <DropdownMenuItem text='Profile' onClick={() => navigate(`/profile/${uid}`)}/>
+        <DropdownMenuItem text='Password Change' onClick={() => modal('PasswordChangeModal')}/>
+        <DropdownMenuItem text='Logout' onClick={() => handleLogout()}/>
       </DropdownMenu>
   )
 }
