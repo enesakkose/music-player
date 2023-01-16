@@ -32,12 +32,15 @@
         z-index: 3;
         color: $WHITE;
         transition: 400ms background-color ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     
     .cover{
         position: relative;
         box-shadow: $cover;
-        width: clamp(11rem, 40vw, 14.5rem);
+        width: clamp(9.75rem, 40vw, 14.5rem);
         aspect-ratio: 1;// height value set according to width
         display: flex;
         align-items: center;
@@ -87,6 +90,10 @@
         flex-direction: column;
         gap: .5rem;
         overflow: hidden;
+
+        @media only screen and (max-width: $md){
+            align-items: center;
+        }
 
         .title{
             padding-bottom: $PS;
