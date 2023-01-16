@@ -19,10 +19,11 @@ function Header({
   const size = getMobileTabletSize()
   const imgSrc = img === null || img === ''
   const P = type === 'PROFILE'
+  const SUBACTIONS = type === 'PLAYLIST' || type === 'PROFILE' || !size
 
   return (
     <header className={clsx(styles.header, className)} style={style}>
-      {size && <NavigateBtn scrollTop={scrollTop} bg={bg} />}
+      {size && <NavigateBtn scrollTop={scrollTop} bg={bg}/>}
       <div {...props} 
         className={clsx(styles.cover, 
         P ? styles.profileCover : ''
@@ -44,8 +45,8 @@ function Header({
           <Icon name='Pencil' size={48} className={styles.pencilIcon}/>
         </span>}
       </div>
-      {!size && <div className={styles.info}>
-        <h6 className={styles.type}>{type}</h6>
+      {SUBACTIONS && <div className={styles.info}>
+        {!size && <h6 className={styles.type}>{type}</h6>}
         <h1 className={styles.title}>{title}</h1>
         {children}
       </div>}

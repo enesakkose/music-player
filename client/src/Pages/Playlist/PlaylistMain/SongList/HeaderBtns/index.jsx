@@ -20,10 +20,8 @@ function HeaderBtns({ playlist, size }) {
     <ActionBtns 
       className='headerBtns' 
       findSongs={onlyTracks}
-      title={playlist?.name}
-      songLength={playlist.addedSongs.length}
     >
-      {!size && <button onClick={commentModal} className='commentBtn'>
+      {<button onClick={commentModal} className='commentBtn'>
         <Icon name='Comment' size={25} />
         <span>{getNumberFormat(playlist.commentsCount)}</span>
       </button>}

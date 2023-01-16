@@ -12,7 +12,7 @@ function List({ findPlaylist }) {
   const [lastVisible, setLastVisible] = useState(null)
   const containerRef = useRef(null)
   const commentLength = findPlaylist.commentsCount === items?.length
-  console.log(items?.length)
+
   const onScroll = () => {
       const scrollEnd = useScrollEnd(containerRef)
       if(scrollEnd === true){

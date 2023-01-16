@@ -1,6 +1,16 @@
 .profileHeaderBtns{
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    min-height: 33px;
+    gap: 1rem;
+    min-height: 2rem;
+
+    .followBtns{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem
+    }
+
+    @media only screen and (max-width: $md){
+        flex-direction: column;
+    }
 }

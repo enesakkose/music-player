@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import Icon from '@/components/Icon'
 import { Link } from 'react-router-dom'
 import { modal } from '@/utils'
+import { handleLogout } from '@/firebase/auth'
 import '@/Pages/Home/MobileHeader/Menu.scss'
 
 function Menu({ openMenu, setOpenMenu, profile }) {
@@ -24,7 +25,7 @@ function Menu({ openMenu, setOpenMenu, profile }) {
         <button onClick={() => modal('PasswordChangeModal')}>
           Password Change
         </button>
-        <button>
+        <button onClick={() => handleLogout()}>
           Logout
         </button>
       </div>

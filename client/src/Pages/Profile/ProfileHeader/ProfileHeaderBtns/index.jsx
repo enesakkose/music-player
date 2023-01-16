@@ -43,14 +43,16 @@ function ProfileHeaderBtns({ profile, validProfile }) {
 
   return (
     <div className='profileHeaderBtns'>
-      <NavigateBtn
-        onClick={navigateToFollowers}
-        text={`${profile.follower.length} Followers`}
-      />
-      <NavigateBtn
-        onClick={navigateToFollowing}
-        text={`${profile.following.length} Following`}
-      />
+      <div className="followBtns">
+        <NavigateBtn
+          onClick={navigateToFollowers}
+          text={`${profile.follower.length} Followers`}
+        />
+        <NavigateBtn
+          onClick={navigateToFollowing}
+          text={`${profile.following.length} Following`}
+        />
+      </div>
       {!validProfile && user &&
         <FollowBtn
           onClick={findInFollowers ? unFollowHandle : followHandle}
