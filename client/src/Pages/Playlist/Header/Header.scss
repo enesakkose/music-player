@@ -2,12 +2,18 @@
     background: $playlistMainColor;
     background-image: $grayLinear;
     transition: .5s background ease-in-out;
-    
+    //position: relative;
     .subActions{
+        //position: relative;
         display: flex;
         align-items: center;
         gap: 2rem;
         min-height: 2rem;
+
+        @media only screen and (max-width: $md){
+            flex-direction: column;
+            gap: .5rem;
+        }
         
         a{
             &:hover{
@@ -16,6 +22,8 @@
         }
         
         .playlistActionMenu{
+            //top: -4rem;
+            
             z-index: 2;  
         }
     }
