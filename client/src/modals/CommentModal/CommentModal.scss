@@ -3,7 +3,7 @@
     &__main{
         display: flex;
         flex-direction: column;
-        min-width: 25rem;
+        min-width: clamp(15rem, 40vw, 25rem);
         height: 20rem;
         max-height: 20rem;
         border: 1px solid $earlGray;

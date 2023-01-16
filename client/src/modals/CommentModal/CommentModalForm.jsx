@@ -27,7 +27,6 @@ function CommentModalForm({playlistId}) {
             name='comment'
             placeholder='Comment'
             autoComplete='off'
-            autoFocus={true}
           />
           <button
             disabled={values.comment.trim().length < 1}
