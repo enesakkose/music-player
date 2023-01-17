@@ -27,7 +27,7 @@ function PlaylistInfoCard({playlist, userName = false}) {
 
   return (
     <Card
-      onClick={playInPlaylist}
+      onClick={playlist.addedSongs.length > 0 ? playInPlaylist : undefined}
       playPause={isPlaying && haveSongs}
       className={isPlaying && haveSongs ? 'showBtn': ''}
       title={playlist.name}
