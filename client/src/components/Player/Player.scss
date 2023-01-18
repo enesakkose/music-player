@@ -8,19 +8,4 @@
 }
 
 .mobileMusicPlayer{
-    display: flex;
-    flex-direction: column-reverse;
-    
-    .playerActionBtns{
-        gap: 2.5rem;
-        margin-top: $PXL;
-        margin-bottom: $PM;
-
-        .playerPlayBtn{
-            width: 3rem;
-            height: 3rem;
-        }
-    }
-
-
 }
