@@ -14,7 +14,7 @@ function Header({ playlist, bgColor, validUser, scrollTop }) {
     <CustomPlaylistHeader 
       className="headerInPlaylist" 
       style={{ backgroundColor: `#${bgColor}`}}
-      onClick={() => modal('PlaylistInfoModal', playlist)}
+      onClick={() => validUser ? modal('PlaylistInfoModal', playlist) : undefined}
       type='PLAYLIST'
       img={playlist?.coverURL !== null ? playlist.coverURL : playlist.addedSongs.length > 0 ? coverImage : null}
       title={playlist.name}
