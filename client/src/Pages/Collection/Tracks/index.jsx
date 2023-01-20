@@ -4,12 +4,13 @@ import Main from '@/Pages/Collection/Tracks/Main'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styles from '@/Pages/Collection/Tracks/Tracks.module.scss'
+import PlaylistWrapper from '@/components/Wrappers/PlaylistWrapper'
 
 function Tracks() {
   const { profile: { favorites, uid, displayName } } = useSelector(state => state.profiles)
 
   return (
-    <div className={styles.favTracks}>
+    <PlaylistWrapper className={styles.favTracks}>
       <Header
         className={styles.header}
         type='PLAYLIST'
@@ -23,7 +24,7 @@ function Tracks() {
         </div>
       </Header>
       <Main favorites={favorites}/>
-    </div>
+    </PlaylistWrapper>
   )
 }
 

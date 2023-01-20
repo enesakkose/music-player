@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import AlbumHeader from '@/Pages/Album/AlbumHeader'
 import Main from '@/Pages/Album/Main'
 import Loading from '@/components/Loading'
+import PlaylistWrapper from '@/components/Wrappers/PlaylistWrapper'
 import { useHandleScroll } from '@/hooks/useScroll'
 import { useParams } from 'react-router-dom'
 import { useGetRelatedSongsQuery } from '@/services/music'
@@ -21,10 +22,9 @@ function Album() {
   const backgroundColor = data[0]?.images?.joecolor?.slice(18,24)
 
   return (
-    <div 
+    <PlaylistWrapper 
       ref={ref} 
       className={styles.album} 
-      style={size ? { overflow: 'scroll' } : undefined}
     >
       <AlbumHeader 
         album={data[0]} 
@@ -38,7 +38,7 @@ function Album() {
         findSongs={data} 
         backgroundColor={backgroundColor}
       />
-    </div>
+    </PlaylistWrapper>
   )
 }
 
