@@ -35,7 +35,6 @@ export const signupSchema = yup.object().shape({
       .required("Please enter a valid email"),
     username: yup
       .string()
-      .min(6, 'Username must be at least 6 characters')
       .max(14, 'Username must be at max 14 characters')
       .required("Please enter an username"),
     password: yup

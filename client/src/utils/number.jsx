@@ -5,7 +5,7 @@ export const getTimeConvert = (seconds) => {
 }
 
 export const getTime = (date) => {
-  return moment(date).utcOffset('+02:00').format('HH:mm')
+  return moment(date).format('HH:mm')
 }
 
 export const getNumberFormat = (num) => {
