@@ -6,12 +6,13 @@ import '@/components/Navbar/Navbar.scss'
 
 function MobileNavbar() {
   const { user } = useSelector(state => state.auth)
+  const { current } = useSelector(state => state.player)
 
   return (
-    <div className='navbar'>
-      <MobilePlayer/>
+    <nav className='navbar'>
+      {current.key && <MobilePlayer/>}
       <Navbar user={user}/>
-    </div> 
+    </nav> 
   )
 }
 
