@@ -6,11 +6,15 @@
     }
 
     &__item{
-        display: grid !important;
-        grid-template-columns: 2.95fr 3fr 22px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         
-        &:hover .remove{
-            opacity: 1;
+        :nth-child(2){
+            justify-self: center;
+            color: rgba($WHITE, .6);
+        }
+        :nth-child(3){
+            justify-self: end;
         }
     }
 }

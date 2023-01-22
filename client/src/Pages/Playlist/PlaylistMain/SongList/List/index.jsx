@@ -1,7 +1,7 @@
 import React from 'react'
 import Row from '@/components/TrackList/Row'
 import TrackList from '@/components/TrackList'
-import DateAndRemoveBtn from '@/Pages/Playlist/PlaylistMain/SongList/List/DateAndRemoveBtn'
+import moment from 'moment'
 import '@/Pages/Playlist/PlaylistMain/SongList/List/List.scss'
 
 function List({ playlist }) {
@@ -9,13 +9,13 @@ function List({ playlist }) {
     <TrackList className='songList'>
       {playlist.addedSongs.map((song, index) => (
           <Row
-            key={song.track.key}
+            key={song.id}
             index={index}
             song={song.track}
             songs={playlist.addedSongs}
             className='songList__item'
           >
-            <DateAndRemoveBtn song={song} playlist={playlist}/>
+            <span>{moment(song.createdAt).fromNow()}</span>
           </Row>
       ))}
     </TrackList>
