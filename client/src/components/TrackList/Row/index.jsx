@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import PlayBtn from '@/components/TrackList/Row/PlayBtn'
 import Cover from '@/components/TrackList/Row/Cover'
 import Info from '@/components/TrackList/Row/Info'
-import FavoriteBtn from '@/components/FavoriteBtn'
+import ActionBtns from '@/components/TrackList/Row/ActionBtns'
 import { modal } from '@/utils'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
@@ -42,10 +42,7 @@ function Row({ className, children, index, song, songs }) {
         <Info song={song}/>
       </div>
       {children}
-      {user && <FavoriteBtn
-        song={song}
-        className={styles.favBtn}
-      />}
+      {user && <ActionBtns song={song}/>}
       <div onClick={playSong} className={styles.playSong}/>
     </li>
   )

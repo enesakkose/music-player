@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $PXS $PM;
+    padding: $PXS $PXS $PXS $PM;
     position: relative;
     cursor: default;
     gap: 1.5rem;
@@ -50,6 +50,46 @@
         }
         
     }
+    .dropdownMenu{
+        right: 0;
+        bottom: 100%;
+        //z-index: 12;
+
+        button{
+            width: 100%;
+            display: block;
+        }
+    
+        .playlistsDropdownMenu{
+            overflow-y: scroll;
+            height: 22rem;
+            top: -150%;
+            left: -100%;
+            z-index: 111;
+    
+            &::-webkit-scrollbar{
+                width: .25rem;
+            }
+            
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+                    
+            &::-webkit-scrollbar-thumb {
+                background-color: rgba($WHITE, .3);
+            
+                &:hover{
+                    background-color: rgba($WHITE, .5);
+                }
+            }
+        }
+    }
+
+    .actionBtns{
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
 
     &:hover .playBtnContent{
         .index{
@@ -93,14 +133,21 @@
         z-index: 1;
     }
 
-    &:hover .favBtn{
-        opacity: 1;
+    .openDropdown{
+        opacity: 0;
+    }
+
+    &:hover{
+        .favBtn, .openDropdown{
+            opacity: 1;
+        }
     }
 
     .playSong{
         position: absolute;
         inset: 0;
     }
+
 }
 
 .playingRow{
