@@ -5,7 +5,7 @@ import { addOrRemoveFavoriteSongs } from '@/firebase/db'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { DropdownMenu, DropdownMenuItem } from '@/components/DropdownMenu'
-import { modal } from '@/utils'
+import { addToPlaylist } from '@/utils/song'
 import styles from '@/components/TrackList/Row/Row.module.scss'
 
 function ActionBtns({song}) {
@@ -46,7 +46,7 @@ function ActionBtns({song}) {
             <DropdownMenuItem
               key={playlist.id} 
               text={playlist.name} 
-              onClick={() => modal('PlaylistDeleteModal', playlist)}
+              onClick={() => addToPlaylist(playlist.id, song)}
             />
           ))}
         </DropdownMenu>
