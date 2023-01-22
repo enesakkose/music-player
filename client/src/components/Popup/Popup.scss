@@ -6,7 +6,7 @@
     background-color: $purple;
     padding: $PS $PL;
     border-radius: .875rem;
-    z-index: 100;
+    z-index: 1000;
     animation: a 2500ms ease-in-out;
 
     @media only screen and (max-width: $md){
