@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { addOrRemoveFavoriteSongs } from '@/firebase/db'
 import '@/components/FavoriteBtn.scss'
 
-function FavoriteBtn({ className, song, size= 21 }) {
+function FavoriteBtn({ className, song, size= 22 }) {
   const { profile: { favorites } } = useSelector(state => state.profiles)
   const favSong = favorites?.some(f => f.key === song.key)
 
