@@ -19,7 +19,7 @@ export const DropdownOpenBtn = ({children, className, ...props}) => {
   )
 }
 
-export const DropdownMenu = ({ btn, btnClassName, children, className }) => {
+export const DropdownMenu = ({ btn, btnClassName, children, className, onMouseOver = false }) => {
   const [ openDropdownMenu, setOpenDropdownMenu] = useState(false)
 
   const clickOutside = useClickOutside(() => { 
@@ -32,12 +32,16 @@ export const DropdownMenu = ({ btn, btnClassName, children, className }) => {
 
   const handleClick = (propsClick) => {
     setOpenDropdownMenu(false)
-    propsClick()
+    propsClick()// this onClick method coming from props
   }
 
   return (
     <div ref={clickOutside} className='dropdownMenuContainer'>
-      <DropdownOpenBtn onClick={openDropdown} className={btnClassName}>
+      <DropdownOpenBtn 
+        onClick={openDropdown} 
+        onMouseOver={() => onMouseOver ? setOpenDropdownMenu(true) : undefined}
+        className={clsx('dropdownOpenBtn', btnClassName)}
+      >
         {btn}
       </DropdownOpenBtn>
       {openDropdownMenu && 
