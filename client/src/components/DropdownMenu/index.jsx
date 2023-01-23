@@ -1,25 +1,11 @@
-import React, { useState, cloneElement } from 'react'
+import React, { Children, useState, cloneElement } from 'react'
 import clsx from 'clsx'
+import DropdownOpenBtn from '@/components/DropdownMenu/DropdownOpenBtn'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import '@/components/DropdownMenu/DropdownMenu.scss'
 
-export const DropdownMenuItem = ({text, ...props}) => {
-  return(
-    <li style={{ fontSize: '.875rem' }} {...props}>
-      {text}
-    </li>
-  )
-}
 
-export const DropdownOpenBtn = ({children, className, ...props}) => {
-  return (
-    <button className={className} {...props}>
-      {children}
-    </button>
-  )
-}
-
-export const DropdownMenu = ({ btn, btnClassName, children, className, onMouseOver = false }) => {
+function DropdownMenu({ btn, btnClassName, children, className, onMouseOver = false }) {
   const [ openDropdownMenu, setOpenDropdownMenu] = useState(false)
 
   const clickOutside = useClickOutside(() => { 
@@ -47,18 +33,23 @@ export const DropdownMenu = ({ btn, btnClassName, children, className, onMouseOv
       {openDropdownMenu && 
         <div className={clsx('dropdownMenu', className)}>
           <ul className='dropdownMenuList'>
-            {children.map((child, index) => (
-              cloneElement(child, { 
-                onClick: () => handleClick(child.props.onClick), 
-                key: index 
-              })
-            ))}
+            {Children.map(children, (child, index) => {
+              if(React.isValidElement(child)){
+                return (
+                  cloneElement(child, { 
+                    onClick: () => handleClick(child.props.onClick), 
+                    key: index
+                  })
+                )}}
+            )}
           </ul>
         </div>
       }
     </div>
   )
 }
+
+export default DropdownMenu
 
 /*
 1- DropdownMenu created with btn, btnClassName, children, className props for use in app, 
