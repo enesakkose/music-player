@@ -1,6 +1,7 @@
 import React from 'react'
 import Icon from '@/components/Icon'
-import { DropdownMenu, DropdownMenuItem } from '@/components/DropdownMenu'
+import DropdownMenu from '@/components/DropdownMenu'
+import DropdownMenuItem from '@/components/DropdownMenu/DropdownMenuItem'
 import { modal } from '@/utils'
 import { publishPlaylist } from '@/firebase/db'
 

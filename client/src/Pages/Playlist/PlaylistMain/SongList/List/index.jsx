@@ -13,6 +13,7 @@ function List({ playlist }) {
             index={index}
             song={song.track}
             songs={playlist.addedSongs}
+            customPlaylist={true}
             className='songList__item'
           >
             <span>{moment(song.createdAt).fromNow()}</span>

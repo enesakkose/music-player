@@ -9,7 +9,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import styles from '@/components/TrackList/Row/Row.module.scss'
 
-function Row({ className, children, index, song, songs, actionBtns = true }) {
+function Row({ 
+    className, 
+    children, 
+    index, 
+    song, 
+    songs, 
+    actionBtns = true,
+    customPlaylist = false
+  }) {
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.auth)
   const { current, isPlaying } = useSelector(state => state.player)
@@ -42,7 +50,7 @@ function Row({ className, children, index, song, songs, actionBtns = true }) {
         <Info song={song}/>
       </div>
       {children}
-      {user && actionBtns && <ActionBtns song={song}/>}
+      {user && actionBtns && <ActionBtns song={song} customPlaylist={customPlaylist}/>}
       <div onClick={playSong} className={styles.playSong}/>
     </li>
   )

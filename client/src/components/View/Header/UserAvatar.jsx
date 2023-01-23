@@ -1,6 +1,7 @@
 import React from 'react'
 import Avatar from '@/components/Avatar'
-import { DropdownMenu, DropdownMenuItem } from '@/components/DropdownMenu'
+import DropdownMenu from '@/components/DropdownMenu'
+import DropdownMenuItem from '@/components/DropdownMenu/DropdownMenuItem'
 import { useSelector } from 'react-redux'
 import { modal } from '@/utils'
 import { handleLogout } from '@/firebase/auth'
