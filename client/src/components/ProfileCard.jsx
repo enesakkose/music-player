@@ -1,18 +1,23 @@
 import React from 'react'
 import Card from '@/components/Card'
 import Avatar from '@/components/Avatar'
+import { useGetProfile } from '@/hooks/useGetProfile'
 
-function ProfileCard({user}) {
+function ProfileCard({userId}) {
+  const profile = useGetProfile(userId)
+  
+  if(profile === null) return
+
   return (
     <Card
       style={{backgroundColor: 'transparent', boxShadow: 'none'}}
       playBtn={false}
       name='Profile'
-      href={`/profile/${user.uid}`}
-      title={user.displayName}
+      href={`/profile/${userId}`}
+      title={profile?.displayName}
     >
       <Avatar 
-        src={user.photoURL === '' ? null : user.photoURL} 
+        src={profile?.photoURL === '' ? null : profile?.photoURL} 
         size='100%'
       />
     </Card>
