@@ -10,7 +10,7 @@ function ProfilesResult({profiles}) {
       {profiles.map((profile) => (
         <ProfileCard 
         key={profile.data().uid} 
-        user={profile.data()} 
+        userId={profile.data().uid} 
         />
       ))}
     </CardListLayout>

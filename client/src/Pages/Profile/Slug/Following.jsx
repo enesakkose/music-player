@@ -12,8 +12,8 @@ function Following() {
     <>
       {followings.length > 0 &&
         <Page title='Followings'>
-          {followings.map(user => (
-            <ProfileCard key={user.uid} user={user}/>
+          {followings.map(userId => (
+            <ProfileCard key={userId} userId={userId}/>
           ))}
         </Page>
       }

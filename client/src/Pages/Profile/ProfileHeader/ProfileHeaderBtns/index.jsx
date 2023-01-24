@@ -11,8 +11,8 @@ function ProfileHeaderBtns({ profile, validProfile }) {
   const navigate = useNavigate()
   const { user } = useSelector(state => state.auth)
   const { profile: currentUserProfile } = useSelector(state => state.profiles)
-  const findInFollowers = user && profile?.follower?.find(p => p.uid === currentUserProfile.uid)
-
+  const findInFollowers = user && profile?.follower?.find(p => p === currentUserProfile.uid)
+  
   const navigateToFollowers = () => {
     user
       ? navigate(`/profile/${profile.uid}/followers`, {
