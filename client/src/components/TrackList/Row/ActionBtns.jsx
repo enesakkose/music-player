@@ -1,14 +1,15 @@
 import React from 'react'
 import Icon from '@/components/Icon'
 import FavoriteBtn from '@/components/FavoriteBtn'
+import DropdownMenuItem from '@/components/DropdownMenu/DropdownMenuItem'
+import DropdownMenu from '@/components/DropdownMenu'
 import { addOrRemoveFavoriteSongs } from '@/firebase/db'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { DropdownMenu, DropdownMenuItem } from '@/components/DropdownMenu'
 import { addToPlaylist } from '@/utils/song'
 import styles from '@/components/TrackList/Row/Row.module.scss'
 
-function ActionBtns({song}) {
+function ActionBtns({ song, customPlaylist }) {
   const navigate = useNavigate()
   const { playlists } = useSelector(state => state.playlist)
   const { profile: { favorites } } = useSelector(state => state.profiles)
@@ -17,7 +18,7 @@ function ActionBtns({song}) {
   const addOrDeleteFavorite = () => {
     addOrRemoveFavoriteSongs(song, favSong)
   }
-
+  
   return (
     <div className={styles.actionBtns}>
       <FavoriteBtn
@@ -37,7 +38,7 @@ function ActionBtns({song}) {
           text='Go to Album' 
           onClick={() => navigate(`/album/${song.key}`)}
         />
-        <DropdownMenu
+        {!customPlaylist && <DropdownMenu
           btn={<DropdownMenuItem text='Add to playlist'/>}
           onMouseOver={true}
           className={styles.playlistsDropdownMenu}
@@ -49,7 +50,8 @@ function ActionBtns({song}) {
               onClick={() => addToPlaylist(playlist.id, song)}
             />
           ))}
-        </DropdownMenu>
+        </DropdownMenu>}
+        {customPlaylist}
       </DropdownMenu>
     </div>
   )
