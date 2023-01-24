@@ -1,35 +1,38 @@
 import React from 'react'
 import Icon from '@/components/Icon'
-import { useGetPlaylist } from '@/hooks/useGetPlaylist'
+import { useSelector } from 'react-redux'
 import { updatePlaylist } from '@/firebase/db'
 import { uploadImg, deleteImg } from '@/firebase/storage'
 
-function Cover({ playlistInfo }) {
-  const { coverURL } = useGetPlaylist(playlistInfo.id) || {}
+
+function Cover({ playlistId }) {
+  const { playlists } = useSelector(state => state.playlist)
+  const { id, coverURL, addedSongs } = playlists.find(playlist => playlist.id === playlistId)
+
 
   const handleUpload = async (e) => {
-    await uploadImg(e.target.files[0], playlistInfo.id)
+    await uploadImg(e.target.files[0], id)
     e.target.value = null
   }
 
   const deleteImgHandle = async () => {
     await deleteImg(coverURL)
-    await updatePlaylist(playlistInfo.id, {
+    await updatePlaylist(id, {
       coverURL: null
     })
   }
 
-  const songsInPlaylist = playlistInfo.addedSongs.length > 0
-  const coverImage = playlistInfo?.addedSongs[0]?.track?.images?.coverart
+  const songsInPlaylist = addedSongs.length > 0
+  const coverImage = addedSongs[0]?.track?.images?.coverart
 
   return (
     <div className='playlistInfoModal__form__img'>
       {coverURL === null
         ? <Icon name='Music' size={64} />
-        : <img src={coverURL} alt="img" />
+        : <img src={coverURL} alt="cover" />
       }
       {coverURL === null && songsInPlaylist &&
-        <img src={coverImage} alt="img" />
+        <img src={coverImage} alt="cover" />
       }
       <div className='imgChange'>
         <label className='imgChange__btn'>
