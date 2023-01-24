@@ -32,7 +32,7 @@ function Playlists() {
 
         : <CardListWrapper className="playlists__cards">
             {!size && <FavoritesCard favorites={favorites}/>}
-            {size && <CreatePlaylistBtn/>}
+            {size && <CreatePlaylistBtn size={42}/>}
             {playlists.map((playlist) => (
               <PlaylistInfoCard 
                 key={playlist.id} 
