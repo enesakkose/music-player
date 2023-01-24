@@ -34,7 +34,7 @@
             position: relative;
 
             @media only screen and (max-width: $md){
-                width: clamp(8.75rem, 40vw, 14.5rem);
+                width: clamp(8.75rem, 30vw, 14.5rem);
             }
             
             .img, img{
@@ -87,7 +87,7 @@
         gap: .875rem;
 
         @media only screen and (max-width: $md){
-            width: clamp(8.75rem, 40vw, 14.5rem);
+            width: clamp(8.75rem, 30vw, 14.5rem);
             
             &__title{
                 letter-spacing: 0;
