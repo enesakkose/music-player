@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react'
 import clsx from 'clsx'
 import '@/components/Wrappers/PlaylistWrapper.scss'
 
-const PlaylistWrapper = forwardRef(function PlaylistWrapper({children, className}, ref) {
+const PlaylistWrapper = forwardRef(function PlaylistWrapper({children, className, ...props}, ref) {
   return (
-    <section ref={ref} className={clsx('playlistWrapper', className)}>
+    <section ref={ref} className={clsx('playlistWrapper', className)} {...props}>
       {children}
     </section>
   )
