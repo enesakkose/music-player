@@ -2,6 +2,7 @@ import React from 'react'
 import Loading from '@/components/Loading'
 import ProfileHeader from '@/Pages/Profile/ProfileHeader'
 import ProfileMain from '@/Pages/Profile/ProfileMain'
+import PlaylistWrapper from '@/components/Wrappers/PlaylistWrapper'
 import { useGetPublishPlaylists } from '@/hooks/useGetPublishPlaylists'
 import { useSelector } from 'react-redux'
 import { useGetProfile } from '@/hooks/useGetProfile'
@@ -18,10 +19,10 @@ function Profile() {
   if(profile === null || publishPlaylists === null) return
 
   return (
-    <div className='profile'>
+    <PlaylistWrapper className='profile'>
       <ProfileHeader profile={profile} validProfile={validProfile}/>
       <ProfileMain profile={profile} publishPlaylists={publishPlaylists}/>
-    </div>
+    </PlaylistWrapper>
   )
 }
 
