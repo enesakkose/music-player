@@ -31,10 +31,6 @@
             }
         }
 
-        h5{
-            padding-bottom: $PM;
-            color: $WHITE;
-        }
 
         &__navbar{
             display: flex;
@@ -79,6 +75,11 @@
 
         &__library{
             padding-right: $PL;
+
+            &__title{
+                padding-bottom: $PM;
+                color: $WHITE;
+            }
 
             &__links{
                 display: flex;
@@ -128,23 +129,15 @@
             display: flex;
             flex-direction: column;
             
-            h5{
+            &__title{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 padding-bottom: $PXS;
                 box-shadow: $textShadow;
                 margin-right: $ML;
-                
-                .add-btn{
-                    color: #fff;
-                    transition: 300ms color ease-in-out;
-                    height: 1.5rem;
-
-                    &:hover{
-                        color: $GREEN;
-                    }
-                }
+                padding-bottom: $PS;
+                color: $WHITE;
             }
 
             &__items{
