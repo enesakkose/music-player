@@ -5,7 +5,13 @@ import { useClickOutside } from '@/hooks/useClickOutside'
 import '@/components/DropdownMenu/DropdownMenu.scss'
 
 
-function DropdownMenu({ btn, btnClassName, children, className, onMouseOver = false }) {
+function DropdownMenu({ 
+    btn, 
+    btnClassName, 
+    children, 
+    className, 
+    onMouseOver = false 
+  }) {
   const [ openDropdownMenu, setOpenDropdownMenu] = useState(false)
 
   const clickOutside = useClickOutside(() => { 
@@ -18,7 +24,7 @@ function DropdownMenu({ btn, btnClassName, children, className, onMouseOver = fa
 
   const handleClick = (propsClick) => {
     setOpenDropdownMenu(false)
-    propsClick()// this onClick method coming from props
+    propsClick() // this onClick method coming from props
   }
 
   return (
