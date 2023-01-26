@@ -1,4 +1,4 @@
-.wideMusicPlayer{
+.player{
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -8,38 +8,24 @@
     background-image: $grayLinear;
     z-index: 2;
     transform: translateY(0);
+    transition: .3s background-color ease-in-out;
 
-    &CloseBtn{
-        margin-bottom: $PM;
-    }
-
-    &Info{
+    .info{
         display: flex;
         align-items: center;
         padding: $PM $PS;
+        gap: 1.5rem;
     }
 }
 
-.expandPlayer{
+.expand{
     animation: showAnimation 600ms ease-in-out;
     transform: translateY(0)
 }
 
-.shrinkPlayer{
+.shrink{
     animation: showAnimation reverse 600ms ease-in-out;
     transform: translateY(80%)
-}
-
-.cover{
-    display: flex;
-    flex: 1;
-
-    img{
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
-    }
-
 }
 
 @keyframes showAnimation {

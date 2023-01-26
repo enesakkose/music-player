@@ -1,7 +1,22 @@
 .mediaInfo{
     display: flex;
+    align-items: center;
+    gap: .5rem;
     overflow: hidden;
     width: 100%;
+    
+    .cover{
+        width: var(--size);
+        height: var(--size);
+        display: flex;
+        flex-shrink: 0;
+    
+        img{
+            height: 100%;
+            width: 100%;
+            border-radius: .25rem;
+        }
+    }
 
     .info{
         flex: 1;
@@ -9,16 +24,20 @@
         flex-direction: column;
         overflow: hidden;
 
-        .mediaInfoName, .mediaInfoSingerName{
+        .songName, .singerName{
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
             letter-spacing: 0;
         }
 
-        .mediaInfoSingerName{
+        .singerName{
             font-weight: 400;
             color: rgba($WHITE, .8);
         }
+    }
+
+    .favBtn{
+        z-index: 2;
     }
 }
