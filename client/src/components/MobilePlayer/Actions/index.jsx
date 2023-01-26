@@ -10,7 +10,7 @@ function Actions() {
 
   return (
     <div className={styles.actions}>
-      <MediaInfo className={styles.mediaInfo} as='h6' img='2.5rem'/>
+      <MediaInfo as='h6' img='2.5rem'/>
       <PlayBtn
         className={styles.playBtn}
         onClick={() => handlePlayPause(current, isPlaying)} 
