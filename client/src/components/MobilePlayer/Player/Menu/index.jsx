@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import MediaInfo from '@/components/MobilePlayer/MediaInfo/MediaInfo'
+import MediaInfo from '@/components/MediaInfo/MediaInfo'
 import PlaylistMenu from '@/components/MobilePlayer/Player/Menu/PlaylistMenu'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import styles from '@/components/MobilePlayer/Player/Menu/Menu.module.scss'
 
-function Menu({setOpenMenu, setExpand}) {
-  const [ openPlaylist, setOpenPlaylist ] = useState(false)
+function Menu({ setOpenMenu, setExpand }) {
+  const [openPlaylist, setOpenPlaylist] = useState(false)
   const { current } = useSelector(state => state.player)
   const navigate = useNavigate()
 
@@ -18,7 +18,7 @@ function Menu({setOpenMenu, setExpand}) {
 
   return (
     <div className={styles.menu}>
-      <MediaInfo as='h4' img='3rem'/>
+      <MediaInfo as='h4' img='3rem' song={current} />
       <ul className={styles.list}>
         <li onClick={navigateAlbum}>
           Go to album
@@ -27,7 +27,7 @@ function Menu({setOpenMenu, setExpand}) {
           Add to playlist
         </li>
       </ul>
-      {openPlaylist && <PlaylistMenu setOpenPlaylist={setOpenPlaylist} setOpenMenu={setOpenMenu}/>}
+      {openPlaylist && <PlaylistMenu setOpenPlaylist={setOpenPlaylist} setOpenMenu={setOpenMenu} />}
       <button className={styles.close} onClick={() => setOpenMenu(false)}>
         CLOSE
       </button>

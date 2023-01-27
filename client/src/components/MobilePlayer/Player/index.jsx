@@ -4,7 +4,7 @@ import Header from '@/components/MobilePlayer/Player/Header/Header'
 import FavoriteBtn from '@/components/FavoriteBtn'
 import ProgressBar from '@/components/Player/ProgressBar'
 import ActionBtns from '@/components/Player/ActionBtns'
-import MediaInfo from '@/components/MobilePlayer/MediaInfo/MediaInfo'
+import MediaInfo from '@/components/MediaInfo/MediaInfo'
 import Cover from '@/components/MobilePlayer/Player/Cover'
 import { useSelector } from 'react-redux'
 import styles from '@/components/MobilePlayer/Player/Player.module.scss'
@@ -20,9 +20,9 @@ function Player({ expand, setExpand }) {
     >
       <Header setExpand={setExpand} />
       <Cover cover={current?.images?.coverart} />
-      <MediaInfo as='h2' className={styles.info}/>
+      <MediaInfo as='h2' className={styles.info} song={current} />
       <ProgressBar mobile={true} />
-      <ActionBtns size={54}/>
+      <ActionBtns size={54} />
     </div>
   )
 }
