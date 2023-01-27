@@ -1,13 +1,11 @@
 import React from 'react'
 import CustomPlaylistHeader from '@/components/Playlist/Header'
 import PlaylistDropdownMenu from '@/Pages/Playlist/Header/PlaylistDropdownMenu'
-import { useGetProfile } from '@/hooks/useGetProfile'
 import { Link } from 'react-router-dom'
 import { modal } from '@/utils'
 import '@/Pages/Playlist/Header/Header.scss'
 
-function Header({ playlist, bgColor, validUser, scrollTop }) {
-  const user = useGetProfile(playlist.uid)
+function Header({ playlist, bgColor, validUser, scrollTop, user }) {
   const coverImage = playlist?.addedSongs[0]?.track?.images?.coverart
 
   return (        

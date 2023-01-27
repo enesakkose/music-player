@@ -14,12 +14,13 @@ function Playlist() {
   const { playlistId } = useParams()
   const playlist = useGetPlaylist(playlistId)
   const validUser = useValidUser(playlist?.uid)
+  const user = useGetProfile(playlist?.uid)
   const ref = useRef(null)
   const scrollTop = useHandleScroll(ref)
   const bgColor = playlist?.addedSongs[0]?.track?.images?.joecolor?.slice(18, 24)
   const size = getMobileTabletSize()
   
-  if(playlist === null) return <Loading/>
+  if(playlist === null || user === null) return
   
   return (
     <div ref={ref} key={playlist.id} className='playlist'>
@@ -28,6 +29,7 @@ function Playlist() {
         bgColor={bgColor} 
         validUser={validUser}
         scrollTop={scrollTop}
+        user={user}
       />
       <PlaylistMain 
         playlist={playlist} 
