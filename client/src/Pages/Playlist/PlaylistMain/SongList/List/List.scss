@@ -6,16 +6,11 @@
     }
 
     &__item{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
         
         span{
             justify-self: center;
             color: rgba($WHITE, .6);
-        }
-        
-        :nth-child(3){
-            justify-self: end;
+            font-size: .875rem;
         }
     }
 }

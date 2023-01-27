@@ -5,18 +5,14 @@
 
         @media only screen and (max-width: $md){
             display: grid;
-            padding: $PM 0;
+            padding: 0;
         }
 
         &__card{
             border: 1px solid $earlGray;
             box-shadow: $cover;
             border-radius: .5rem;
-            height: 14.5rem;
-
-            @media only screen and (max-width: $md){
-                height: 6rem;
-            }
+            height: clamp(6rem, 30vw, 14.5rem);
 
             &__title{
                 padding: $PS $PM;
