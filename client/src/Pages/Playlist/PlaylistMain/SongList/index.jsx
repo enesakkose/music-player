@@ -7,7 +7,7 @@ function SongList({ playlist, size }) {
   return (
     <div className='songList'>
       <HeaderBtns playlist={playlist} size={size}/>
-      {!size && <SongsTableHeader><h5>Date Added</h5></SongsTableHeader>}
+      {!size && <SongsTableHeader/>}
       <List playlist={playlist}/>
     </div>
   )
