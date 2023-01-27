@@ -2,10 +2,12 @@ import React from 'react'
 import clsx from 'clsx'
 import CustomRange from '@/components/CustomRange'
 import { getTimeConvert } from '@/utils/number'
+import { useSelector } from 'react-redux'
 import '@/components/Player/ProgressBar.scss'
 
+function ProgressBar({ mobile, onChange, time = true }) {
+  const { songTime, duration } = useSelector(state => state.audio)
 
-function ProgressBar({ songTime, duration, mobile, onChange }) {
   return (
     <div className={clsx(mobile ? "mobileProgressBar" : "progressBar")}>
       {!mobile && <span className='duration'>
@@ -18,7 +20,7 @@ function ProgressBar({ songTime, duration, mobile, onChange }) {
         value={songTime} 
         onChange={onChange}
       />
-      {mobile && <div className="mobileDuration">
+      {mobile && time && <div className="mobileDuration">
         <span className='duration'>
           {getTimeConvert(songTime)}
         </span>
