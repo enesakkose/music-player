@@ -6,7 +6,7 @@ import { closeModalHandle } from '@/utils'
 import { useGetProfile } from '@/hooks/useGetProfile'
 import '@/components/Modal/Comment.scss'
 
-function Comment({comment}) {
+function Comment({comment, ...props}) {
   const navigate = useNavigate()
   const time = getTime(comment.createdAt)
   const profile = useGetProfile(comment.uid)
@@ -19,7 +19,7 @@ function Comment({comment}) {
   }
 
   return (
-    <div className='comment'>
+    <div className='comment' {...props}>
       <Avatar src={profile?.photoURL} size='32px'/>
       <div className="comment__text">
         <div className='comment__text__title'>
