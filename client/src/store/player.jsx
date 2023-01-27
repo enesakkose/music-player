@@ -17,9 +17,6 @@ export const player = createSlice({
             state.currentIndex = action.payload.index || 0
             state.isActive = true
         },
-        setPlaying: (state, action) => {
-            state.isPlaying = action.payload
-        },
         nextSong: (state, action) => {
             state.current = state.currentSongs[action.payload].track || state.currentSongs[action.payload]
             state.currentIndex = action.payload;
@@ -40,8 +37,7 @@ export const player = createSlice({
 })
 
 export const { 
-    setCurrent, 
-    setPlaying, 
+    setCurrent,  
     playPause, 
     nextSong, 
     setCurrentSongs, 
