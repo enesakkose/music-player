@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react"
 
-export const useScroll = (ref, length) => {
+export const useScrollTo = (ref, length) => {
   
     const scrollBottom = () => {
       ref.current.scrollToItem(length)
@@ -8,28 +8,28 @@ export const useScroll = (ref, length) => {
   return scrollBottom
 }
 
-export const useAutoScroll = (dep, length) => {
-  const ref = useRef(null)
+export const useScrollEnd = (ref) => {
+  const [scrollEnd, setScrollEnd] = useState(false)
+  
+  const handleScroll = () => {
+    const { scrollHeight, scrollTop, clientHeight } = ref.current || {}
+
+    if (scrollHeight - scrollTop === clientHeight) {
+      setScrollEnd(true)
+    }else{
+      setScrollEnd(false)
+    }
+  }
 
   useEffect(() => {
-    const scrollBottom = () => {
-      ref.current.scrollToItem(length)
+    ref?.current?.addEventListener('scroll', handleScroll)
+
+    return () => {
+      ref?.current?.removeEventListener('scroll', handleScroll)
     }
-    
-    return scrollBottom()
-  }, [dep])
+  }, [])
 
-  return ref
-}
-
-export const useScrollEnd = (ref) => {
-  const { scrollHeight, scrollTop, clientHeight } = ref.current || {}
-
-  if (scrollHeight - scrollTop === clientHeight) {
-    return true
-  }else{
-    return false
-  }
+  return scrollEnd
 }
 
 export const useHandleScroll = (ref) => {
