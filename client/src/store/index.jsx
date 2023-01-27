@@ -8,12 +8,14 @@ import auth from '@/store/auth'
 import modal from '@/store/modal'
 import popup from '@/store/popup'
 import profiles from '@/store/profiles'
+import audio from '@/store/audio'
 
 //SERVICES
 import { musicApi } from '@/services/music'
 
 export const store = configureStore({
   reducer: {
+    audio,
     playlist,
     song,
     player,
