@@ -1,4 +1,4 @@
-.footer__music__info{
+.musicInfo{
     display: flex;
     align-items: center;    
     transform: translateX(0);
@@ -6,14 +6,16 @@
     gap: 1.5rem;
     height: 100%;
     grid-area: info;
+    overflow: hidden;
 
-    &__cover{
+    .cover{
         width: 3.5rem;
         height: 3.5rem;
         background-color: $earlGray;
         box-shadow: $cover;
         position: relative;
         z-index: 1;
+        flex-shrink: 0;
 
         &:hover .expandBtn{
             opacity: 1;
@@ -47,42 +49,16 @@
         }
     }
 
-    &__text{
-        letter-spacing: .5px;
-        
-        a{
-            &:hover{
-                text-decoration: underline;
-            }
-        }
-
-        &__songName{
-            p{
-                font-size: 14px;
-                max-width: 18rem;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        }
-
-        &__singerName{
-            color: rgba($WHITE, .6);
-            font-size: 12px;
-        }
-    }
-
-    .footerFavBtn{
-        &:hover{
-            color: $WHITE;
-        }
+    .info{
+        width: max-content;
+        gap: 1.5rem;
     }
 }
+
 .openCover{
     transform: translateX(-5rem);
     animation: openCover .3s ease-in-out;
 }
-
-
 
 @keyframes openCover {
     0%{
