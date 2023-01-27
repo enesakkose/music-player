@@ -5,7 +5,6 @@
     padding: $PXS $PXS $PXS $PM;
     position: relative;
     cursor: default;
-    gap: 1.5rem;
     border-radius: .250rem;
     user-select: none;
 
@@ -22,6 +21,7 @@
         align-items: center;
         gap: 1.5rem;
         overflow: hidden;
+        flex: 1;
     }
 
     .playBtnContent{
@@ -83,12 +83,6 @@
         }
     }
 
-    .actionBtns{
-        display: flex;
-        align-items: center;
-        gap: .5rem;
-    }
-
     &:hover .playBtnContent{
         .index{
             display: none;
@@ -123,17 +117,13 @@
         }
     }
 
-    .favBtn, .openDropdown{
-        opacity: 0;
-    }
-
     button{
+        opacity: 0;
         z-index: 1;
     }
 
-
     &:hover{
-        .favBtn, .openDropdown{
+        button{
             opacity: 1;
         }
     }
