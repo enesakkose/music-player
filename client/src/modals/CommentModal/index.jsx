@@ -1,23 +1,18 @@
 import React from 'react'
 import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import ModalHeader from '@/components/Modal/ModalHeader'
-import CommentList from '@/modals/CommentModal/List'
-import CommentModalForm from '@/modals/CommentModal/CommentModalForm'
+import Main from '@/modals/CommentModal/Main'
 import { useGetPlaylist } from '@/hooks/useGetPlaylist'
-import '@/modals/CommentModal/CommentModal.scss'
 
 function CommentModal({ outClickRef, data: playlistId }) {
-  const findPlaylist = useGetPlaylist(playlistId)
+  const playlist = useGetPlaylist(playlistId)
   
-  if(findPlaylist === null) return 
+  if(playlist === null) return 
 
   return (
-    <ModalWrapper ref={outClickRef} className='commentModal'>
+    <ModalWrapper ref={outClickRef}>
       <ModalHeader title='Comments'/>
-      <section className='commentModal__main'>
-        <CommentList findPlaylist={findPlaylist}/>
-        <CommentModalForm playlistId={playlistId}/>
-      </section>
+      <Main playlist={playlist}/>
     </ModalWrapper>
   )
 }

@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import clsx from 'clsx'
 import Icon from '@/components/Icon'
 import CustomInput from '@/components/CustomInput'
 import { addComment } from '@/firebase/db'
 import { Form, Formik } from 'formik'
 import { useSelector } from 'react-redux'
+import styles from '@/modals/CommentModal/CommentModal.module.scss'
 
-function CommentModalForm({playlistId}) {
+const CommentModalForm = forwardRef(function CommentModalForm({playlistId}, ref) {
   const { profile: user } = useSelector(state => state.profiles)
-  const commentSubmit = (values, actions) => {
+
+  const commentSubmit = async(values, actions) => {
+    await addComment(playlistId, user, values)
     actions.resetForm()
-    addComment(playlistId, user, values)
+    ref.current.scrollTop = 0
   }
 
   return (
@@ -19,10 +22,10 @@ function CommentModalForm({playlistId}) {
       onSubmit={commentSubmit}
     >
       {({isSubmitting, values}) => (
-        <Form className='commentForm'>
+        <Form className={styles.form}>
           <CustomInput
-            labelClassName='commentFormLabel'
-            className='commentFormInput'
+            labelClassName={styles.label}
+            className={styles.input}
             type='text'
             name='comment'
             placeholder='Comment'
@@ -32,7 +35,7 @@ function CommentModalForm({playlistId}) {
             disabled={values.comment.trim().length < 1}
             type='submit' 
             className={clsx(
-              'commentBtn', 
+              styles.submitBtn, 
               isSubmitting ? 'submittingBtn' : '',
               values.comment.trim().length < 1 ? 'submittingBtn' : ''
             )}
@@ -43,6 +46,6 @@ function CommentModalForm({playlistId}) {
       )}
     </Formik>
   )
-}
+})
 
 export default CommentModalForm
