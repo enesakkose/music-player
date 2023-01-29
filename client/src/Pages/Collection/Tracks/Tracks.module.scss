@@ -1,12 +1,11 @@
 .favTracks{
+    display: flex;
+    flex-direction: column;
+    // for empty field
     
     .header{
         background-color: $purple;
         background-image: $grayLinear;
-
-        button{
-            pointer-events: none;
-        }
     }
 
     .navBtn{

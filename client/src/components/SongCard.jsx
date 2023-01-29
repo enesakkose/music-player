@@ -29,7 +29,7 @@ function SongCard({ song, index, data, ...props }) {
       style={{ backgroundColor: `#${backgroundColor}` }}
       onClick={updateCurrent}
       className={isActiveBtn ? 'showBtn' : ''}
-      playPause={isPlaying && current?.title === song.title}
+      playPause={isActiveBtn}
       title={song.title}
       name={song.subtitle}
       href={`/album/${song.key}`}

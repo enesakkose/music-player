@@ -29,9 +29,8 @@ function Header({
         P ? styles.profileCover : ''
         )}
       >
-        {imgSrc && <Icon name={title === 'LIKED SONGS' 
-          ? 'Favorite' 
-          : P ? 'Avatar' : 'Music'} 
+        {imgSrc && <Icon 
+          name={title === 'LIKED SONGS' ? 'Favorite' : P ? 'Avatar' : 'Music'} 
           size={ P ? '100%' : 75 }
         />}
         

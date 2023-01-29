@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import HeaderInPlaylist from '@/Pages/Playlist/Header'
+import Header from '@/Pages/Playlist/Header'
 import PlaylistMain from '@/Pages/Playlist/PlaylistMain'
 import Loading from '@/components/Loading'
 import { useGetProfile } from '@/hooks/useGetProfile'
@@ -24,7 +24,7 @@ function Playlist() {
   
   return (
     <div ref={ref} key={playlist.id} className='playlist'>
-      <HeaderInPlaylist 
+      <Header 
         playlist={playlist}
         bgColor={bgColor} 
         validUser={validUser}
