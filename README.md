@@ -2,7 +2,7 @@
 
 ### Overview
 
-The main goal of this project is to create a music app inspired by [Spotify](https://open.spotify.com/), where users can listen to music, comment to playlists and follow each other.
+The main goal of this project is to create a music app with [reactjs](https://reactjs.org/), where users can listen to music, create custom playlist, comment to playlists and follow each other.
 
 
 ## Demo
