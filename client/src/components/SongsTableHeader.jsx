@@ -12,7 +12,7 @@ function SongsTableHeader({children}) {
         </h5>
       </div>
       {children}
-      <Icon name='Favorite' size={22}/>
+      <Icon name='add' size={22}/>
     </div>
   )
 }

@@ -1,7 +1,37 @@
 .actionBtns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
     padding-bottom: $PM;
 
+    @media only screen and (max-width: $md){
+        padding: $PS;
+        
+        .actionBtns{
+            padding-bottom: 0;
+        }
+    }
+
+    .mobileInfo{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    
+        &Title, &Subtitle, &ListLength{
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        &Subtitle, &ListLength{
+            font-size: .825rem;
+            color: rgba($WHITE, .7);
+        }
+    }
+
     &__play{
+        min-width: 3.5rem;
         width: 3.5rem;
         height: 3.5rem;
     }

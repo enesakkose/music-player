@@ -1,32 +1,22 @@
 import React from 'react'
+import GradientBg from '@/components/GradientBg'
+import TrackListWrapper from '@/components/Wrappers/TrackListWrapper'
 import ActionBtns from '@/components/ActionBtns'
-import SongsList from '@/Pages/Album/Main/SongsList'
-import SongsTableHeader from '@/components/SongsTableHeader'
+import List from '@/Pages/Album/Main/List'
+import styles from '@/Pages/Album/Album.module.scss'
 
-function Main({ findSongs, backgroundColor }) {
-  const filterFindSongs = findSongs.filter(f => f.hub.actions)
-
+function Main({ findSongs, findAlbum, backgroundColor, size }) {
   return (
-    <main className="album__content">
-      <ActionBtns findSongs={findSongs} />
-      <div className="album__content__songs">
-        <SongsTableHeader />
-        <div className="album__content__songs__list">
-          {filterFindSongs.map((song, index) => (
-            <SongsList
-              song={song}
-              findSongs={filterFindSongs}
-              index={index}
-              key={song.key}
-            />
-          ))}
-        </div>
-      </div>
-      <div
-        className="album__content__background"
-        style={{ backgroundColor: `#${backgroundColor}` }}
+    <TrackListWrapper className={styles.content}>
+      <ActionBtns
+        title={findAlbum.title}
+        subtitle={findAlbum.subtitle}
+        songLength={findSongs.length}
+        findSongs={findSongs}
       />
-    </main>
+      <List size={size} songs={findSongs} />
+      <GradientBg bgColor={backgroundColor} />
+    </TrackListWrapper>
   )
 }
 

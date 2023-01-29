@@ -6,9 +6,11 @@ export const useGetProfile = (userId) => {
     const [ profile, setProfile ] = useState(null)
     
     useEffect(() => {
-        (async () => {
-            await getProfile(userId, setProfile)
-        })()
+        if(userId){ // for don't throw an error
+            (async () => {
+                await getProfile(userId, setProfile)
+            })()
+        }
     }, [userId])
 
     return profile

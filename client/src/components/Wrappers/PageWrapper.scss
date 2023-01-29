@@ -1,4 +1,29 @@
 .pageWrapper{
     flex: 1;
     padding: $PM $PL;
+    overflow: overlay;
+    
+    @media only screen and (max-width: $md){
+        padding: $PXS $PS $mobilePB;
+    }
+
+    &::-webkit-scrollbar{
+        width: 1rem;
+
+        @media only screen and (max-width: $md){
+            width: 2px;
+        }
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+        
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba($WHITE, .3);
+
+        &:hover{
+            background-color: rgba($WHITE, .5);
+        }
+    }
 }

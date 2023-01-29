@@ -1,0 +1,12 @@
+.actions{
+    display: flex;
+    align-items: center;
+
+    .playBtn{
+        color: $WHITE;
+        background-color: transparent;
+        width: 1.5rem;
+        height: 1.5rem;
+        z-index: 1;
+    }
+}

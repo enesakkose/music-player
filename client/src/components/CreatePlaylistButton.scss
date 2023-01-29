@@ -1,0 +1,8 @@
+.createPlaylistBtn{
+    color: #fff;
+    transition: 300ms color ease-in-out;
+    
+    &:hover{
+        color: $GREEN;
+    }
+}

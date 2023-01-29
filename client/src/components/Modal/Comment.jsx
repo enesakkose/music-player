@@ -1,14 +1,14 @@
 import React from 'react'
 import Avatar from '@/components/Avatar'
 import { useNavigate } from 'react-router-dom'
-import { useGetTime } from '@/hooks/useTimeConvert'
+import { getTime } from '@/utils/number'
 import { closeModalHandle } from '@/utils'
 import { useGetProfile } from '@/hooks/useGetProfile'
 import '@/components/Modal/Comment.scss'
 
-function Comment({comment}) {
+function Comment({comment, ...props}) {
   const navigate = useNavigate()
-  const time = useGetTime(comment.createdAt)
+  const time = getTime(comment.createdAt)
   const profile = useGetProfile(comment.uid)
   
   if(profile === null) return
@@ -19,7 +19,7 @@ function Comment({comment}) {
   }
 
   return (
-    <div className='comment'>
+    <div className='comment' {...props}>
       <Avatar src={profile?.photoURL} size='32px'/>
       <div className="comment__text">
         <div className='comment__text__title'>

@@ -1,24 +1,40 @@
 import React from 'react'
-import SongsTableList from '@/components/SongsTableList'
-import DateAndRemoveBtn from '@/Pages/Playlist/PlaylistMain/SongList/List/DateAndRemoveBtn'
+import Row from '@/components/TrackList/Row'
+import TrackList from '@/components/TrackList'
+import DropdownMenuItem from '@/components/DropdownMenu/DropdownMenuItem'
+import moment from 'moment'
+import { removeFromAddedSongs } from '@/firebase/db'
 import '@/Pages/Playlist/PlaylistMain/SongList/List/List.scss'
 
 function List({ playlist }) {
+
+  const CustomPlaylistDropdownItem = ({song}) => {
+    return(
+      <DropdownMenuItem 
+        text='Remove from playlist' 
+        onClick={() => removeFromAddedSongs(playlist.id, song)}
+      />
+    )
+  }
+
+  //This component only have customPlaylist
+
   return (
-    <ul className='songList'>
+    <TrackList className='songList'>
       {playlist.addedSongs.map((song, index) => (
-        <li key={song.track.key} className='songList__item'>
-          <SongsTableList
+          <Row
+            key={song.id}
             index={index}
             song={song.track}
-            findSongs={playlist.addedSongs}
-            className='songList__item__content'
+            songs={playlist.addedSongs}
+            customPlaylist={<CustomPlaylistDropdownItem song={song}/>}
+            playlistId={playlist.id}
+            className='songList__item'
           >
-            <DateAndRemoveBtn song={song} playlist={playlist}/>
-          </SongsTableList>
-        </li>
+            <span>{moment(song.createdAt).fromNow()}</span>
+          </Row>
       ))}
-    </ul>
+    </TrackList>
   )
 }
 

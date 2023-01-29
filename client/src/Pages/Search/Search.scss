@@ -1,4 +1,5 @@
 .search{
-    flex: 1;
-    padding: $PL;
+    @media only screen and (max-width: $md){
+        padding-top: $PM;
+    }
 }

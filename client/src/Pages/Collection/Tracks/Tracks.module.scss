@@ -1,0 +1,28 @@
+.favTracks{
+    display: flex;
+    flex-direction: column;
+    // for empty field
+    
+    .header{
+        background-color: $purple;
+        background-image: $grayLinear;
+    }
+
+    .navBtn{
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        a{
+            font-weight: 700;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .favBg{
+        background-color: $purple;
+    }
+}

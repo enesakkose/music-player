@@ -1,0 +1,38 @@
+.player{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    inset: 0;
+    padding: $PS;
+    background-color: $GRAY;
+    background-image: $grayLinear;
+    z-index: 2;
+    transform: translateY(0);
+    transition: .3s background-color ease-in-out;
+
+    .info{
+        display: flex;
+        align-items: center;
+        padding: $PM $PS;
+        gap: 1.5rem;
+    }
+}
+
+.expand{
+    animation: showAnimation 600ms ease-in-out;
+    transform: translateY(0)
+}
+
+.shrink{
+    animation: showAnimation reverse 600ms ease-in-out;
+    transform: translateY(80%)
+}
+
+@keyframes showAnimation {
+    0%{
+        transform: translateY(50%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}

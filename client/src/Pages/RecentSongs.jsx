@@ -10,7 +10,8 @@ function RecentSongs() {
 
   return (
     <PageWrapper className='recentSongs'>
-      <CardListWrapper className="recentSongs__list">
+      <h3>Recent Songs</h3>
+      <CardListWrapper>
         {recentSongs.map((song, index) =>(
           <SongCard
             key={song.key} 

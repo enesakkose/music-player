@@ -1,10 +1,10 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { setOpenCover } from '@/store/playlist'
-import { Link } from 'react-router-dom'
-import FavoriteBtn from '@/components/FavoriteBtn'
+import MediaInfo from '@/components/MediaInfo/MediaInfo'
 import Icon from '@/components/Icon'
-import '@/components/Footer/MusicInfo.scss'
+import clsx from 'clsx'
+import { setOpenCover } from '@/store/playlist'
+import { useSelector, useDispatch } from 'react-redux'
+import styles from '@/components/Footer/MusicInfo.module.scss'
 
 function MusicInfo() {
   const dispatch = useDispatch()
@@ -13,33 +13,22 @@ function MusicInfo() {
 
   return (
     <>
-      {current.key && <div className={`footer__music__info ${openCover ? 'openCover' : ''}`}>
-        <div className='footer__music__info__cover'>
-          <img 
-            src={current?.images?.coverart} 
-            alt={current?.title} 
+      {current.key && <div className={clsx(styles.musicInfo, openCover ? styles.openCover : '')}>
+        <div className={styles.cover}>
+          <img
+            src={current?.images?.coverart}
+            alt={current?.title}
             loading='lazy'
           />
-          <button 
-            onClick={() => dispatch(setOpenCover(!openCover))} 
-            className="expandBtn"
+          <button
+            onClick={() => dispatch(setOpenCover(!openCover))}
+            className={styles.expandBtn}
           >
-            <Icon name='Left' size={20}/>
+            <Icon name='Left' size={20} />
           </button>
         </div>
-        <div className="footer__music__info__text">
-          <Link 
-            className='footer__music__info__text__songName' 
-            to={`/album/${current?.key}`}
-          >
-            <p>{current?.title}</p>
-          </Link>
-          <span className='footer__music__info__text__singerName'>
-            {current?.subtitle}
-          </span>
-        </div>
-        <FavoriteBtn song={current} className='footerFavBtn'/>
-    </div>}
+        <MediaInfo className={styles.info} as='h5' favBtn='22' song={current} />
+      </div>}
     </>
   )
 }

@@ -1,25 +1,17 @@
-import React, { useState, cloneElement } from 'react'
+import React, { Children, useState, cloneElement } from 'react'
 import clsx from 'clsx'
+import DropdownOpenBtn from '@/components/DropdownMenu/DropdownOpenBtn'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import '@/components/DropdownMenu/DropdownMenu.scss'
 
-export const DropdownMenuItem = ({text, ...props}) => {
-  return(
-    <li style={{ fontSize: '.875rem' }} {...props}>
-      {text}
-    </li>
-  )
-}
 
-export const DropdownOpenBtn = ({children, className, ...props}) => {
-  return (
-    <button className={className} {...props}>
-      {children}
-    </button>
-  )
-}
-
-export const DropdownMenu = ({ btn, btnClassName, children, className }) => {
+function DropdownMenu({ 
+    btn, 
+    btnClassName, 
+    children, 
+    className, 
+    onMouseOver = false 
+  }) {
   const [ openDropdownMenu, setOpenDropdownMenu] = useState(false)
 
   const clickOutside = useClickOutside(() => { 
@@ -32,29 +24,38 @@ export const DropdownMenu = ({ btn, btnClassName, children, className }) => {
 
   const handleClick = (propsClick) => {
     setOpenDropdownMenu(false)
-    propsClick()
+    propsClick() // this onClick method coming from props
   }
 
   return (
     <div ref={clickOutside} className='dropdownMenuContainer'>
-      <DropdownOpenBtn onClick={openDropdown} className={btnClassName}>
+      <DropdownOpenBtn 
+        onClick={openDropdown} 
+        onMouseOver={() => onMouseOver ? setOpenDropdownMenu(true) : undefined}
+        className={clsx('dropdownOpenBtn', btnClassName)}
+      >
         {btn}
       </DropdownOpenBtn>
       {openDropdownMenu && 
         <div className={clsx('dropdownMenu', className)}>
           <ul className='dropdownMenuList'>
-            {children.map((child, index) => (
-              cloneElement(child, { 
-                onClick: () => handleClick(child.props.onClick), 
-                key: index 
-              })
-            ))}
+            {Children.map(children, (child, index) => {
+              if(React.isValidElement(child)){
+                return (
+                  cloneElement(child, { 
+                    onClick: () => handleClick(child.props.onClick), 
+                    key: index
+                  })
+                )}}
+            )}
           </ul>
         </div>
       }
     </div>
   )
 }
+
+export default DropdownMenu
 
 /*
 1- DropdownMenu created with btn, btnClassName, children, className props for use in app, 

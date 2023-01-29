@@ -7,6 +7,10 @@
 
     &__text{
         font-size: 1.25rem;
+
+        @media only screen and (max-width: $md){
+            font-size: .825rem;
+        }
     }
 
     &__btns{

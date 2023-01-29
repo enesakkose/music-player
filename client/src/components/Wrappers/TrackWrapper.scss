@@ -1,0 +1,10 @@
+.trackListWrapper{
+    flex: 1;
+    padding: $PM $PL;
+    position: relative; //added for gradient bg 
+    z-index: 1;
+
+    @media only screen and (max-width: $md){
+        padding: 0 0 $mobilePB;
+    }
+}

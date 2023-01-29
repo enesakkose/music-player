@@ -1,6 +1,11 @@
 .searchInput{
     flex: 1;
     margin-left: 1rem;
+
+    @media only screen and (max-width: $md){
+        margin-left: 0;
+        margin-block: $PS;
+    }
     
     label{
         background-color: $WHITE;
@@ -13,6 +18,12 @@
         padding: $PXS $PXL $PXS $PS;
         position: relative;
         cursor: text;
+
+        @media only screen and (max-width: $md){
+            width: 100%;
+            border-radius: .5rem;
+            padding: $PXS;
+        }
 
         input{
             height: 100%;

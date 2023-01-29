@@ -1,11 +1,23 @@
-.resultList{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.resultTrackList{
+    padding: 0 !important;
 
     &__item{
-        .songsTableListItem__favBtn{
-            display: none;
+        .addToPlaylistBtn{
+            border: 1px solid rgba($WHITE, .6);
+            background-color: transparent;
+            border-radius: .875rem;
+            padding: $PXS $PS;
+            color: $WHITE;
+            font-weight: 100;
+        
+            &:active{
+                transform: translateY(1px);
+            }
+        
+            &:hover{
+                border-color: $WHITE;
+                transform: scale(1);
+            }
         }
     }
 }

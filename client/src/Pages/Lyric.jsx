@@ -1,6 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import Loading from '@/components/Loading'
+import PlaylistWrapper from '@/components/Wrappers/PlaylistWrapper'
+import { useSelector } from 'react-redux'
 import { useGetTrackDetailsQuery } from '@/services/music'
 import '@/Pages/Lyric.scss'
 
@@ -16,7 +17,7 @@ function Lyric() {
   const textColor = current?.images?.joecolor.slice(2,8)
   
   return (
-    <div className='lyrics' 
+    <PlaylistWrapper className='lyrics' 
       style={{ 
         backgroundColor: `#${backgroundColor}`, 
         color: `#${textColor}`
@@ -26,7 +27,7 @@ function Lyric() {
         <p key={i} className='lyrics__text'>{lyrics}</p>
       ))}
       {!track && <p className='lyrics__errorText'>Lyrics not found</p>}
-    </div>
+    </PlaylistWrapper>
   )
 }
 

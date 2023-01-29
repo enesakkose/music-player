@@ -1,0 +1,43 @@
+.mobileMenu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 100%;
+    background-color: $BLACK;
+    opacity: .7;
+    padding: $PM;
+    z-index: 20;
+    transition: .4s all cubic-bezier(1, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-y: scroll;
+
+    .mobileMenuCloseBtn{
+        margin-left: auto;
+    }
+
+    .mobileMenuList{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-bottom: 7.5rem;
+
+        a, button{
+            white-space: nowrap;
+            font-size: 1.5rem;
+            color: $WHITE;
+
+            &:active{
+                opacity: .7
+            }
+        }
+    }
+}
+
+.openMenu{
+    opacity: 1;
+    left: 0;
+    transition: .4s all cubic-bezier(1, 1.1, .8, 0.5);
+}

@@ -2,25 +2,14 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: overlay;
+    overflow: hidden;
     background-color: $secondaryColor;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
-    
-    &::-webkit-scrollbar{
-        width: 1rem;
-        
+
+    @media only screen and (max-width: $md){
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
     }
 
-    &::-webkit-scrollbar-track {
-        background: transparent;
-    }
-        
-    &::-webkit-scrollbar-thumb {
-        background-color: rgba($WHITE, .3);
-
-        &:hover{
-            background-color: rgba($WHITE, .5);
-        }
-    }
 }

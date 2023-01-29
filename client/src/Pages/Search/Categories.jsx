@@ -16,9 +16,9 @@ function Categories() {
             className='categories__list__card'
             style={{ backgroundColor: `${genre.joeColor}`}}
           >
-            <h3 className='categories__list__card__title'>
+            <h4 className='categories__list__card__title'>
               {genre.genre}
-            </h3>
+            </h4>
           </Link>
         ))}
       </CardListWrapper>

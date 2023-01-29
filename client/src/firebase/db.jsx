@@ -247,10 +247,10 @@ export const follow = async (profile, currentUser) => {
         const currentUserRef = doc(db, 'profiles', currentUser.uid)
 
         await updateDoc(profileRef, {
-            follower: arrayUnion(currentUser)
+            follower: arrayUnion(currentUser.uid)
         })
         await updateDoc(currentUserRef, {
-            following: arrayUnion(profile)
+            following: arrayUnion(profile.uid)
         })
     } catch (error) {
         toast.error(error.message)
@@ -263,10 +263,10 @@ export const unfollow = async (profile, currentUser) => {
         const currentUserRef = doc(db, 'profiles', currentUser.uid)
 
         await updateDoc(profileRef, {
-            follower: arrayRemove(currentUser)
+            follower: arrayRemove(currentUser.uid)
         })
         await updateDoc(currentUserRef, {
-            following: arrayRemove(profile)
+            following: arrayRemove(profile.uid)
         })
     } catch (error) {
         toast.error(error.message)
@@ -288,23 +288,26 @@ export const docExist = async (id) => {
     }
 }
 
-export const getComments = async (playlistId, setLastVisible, setItems, uid) => {
+export const getComments = async (playlistId, setLastVisible, setItems) => {
     try {
-        const q = query(collection(db, 'playlists', playlistId, 'comments'),where('uid', '!=', uid), orderBy('uid', 'asc'), limit(10))
-        const u = query(collection(db, 'playlists', playlistId, 'comments'), where('uid', '==', uid), orderBy('createdAt', 'desc'), limit(10))
-        const documentSnapshots = await getDocs(q)
-        const us = await getDocs(u)
-        const data = us.docs.concat(documentSnapshots.docs)
-        setLastVisible(documentSnapshots.docs[documentSnapshots.docs.length - 1])
-        setItems(data)
+        const q = query(collection(db, 'playlists', playlistId, 'comments'), orderBy('createdAt', 'desc'), limit(10))
+        
+        onSnapshot(q, (doc) => {
+            setTimeout(() => {
+                setItems(doc.docs)
+            }, 1000)
+            
+            setLastVisible(doc.docs[doc.docs.length - 1])
+        })
+
     } catch (error) {
-        console.log(error.message)
+        toast.error(error.message)
     }
 }
 
 export const getNextComments = async (playlistId, lastVisible, setLastVisible, setItems, items, uid) => {
     try {
-        const next = query(collection(db, 'playlists', playlistId, 'comments'), orderBy('createdAt', 'asc'), startAfter(lastVisible),
+        const next = query(collection(db, 'playlists', playlistId, 'comments'), orderBy('createdAt', 'desc'), startAfter(lastVisible),
             limit(10))
 
         const nextData = await getDocs(next)

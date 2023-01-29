@@ -1,9 +1,8 @@
 import React from 'react'
-import Footer from '@/components/Footer'
 import ErrorFallback from '@/components/ErrorFallback'
-import UnauthFooterBar from '@/components/Footer/UnauthFooterBar'
 import Loading from '@/components/Loading'
 import Main from '@/components/Main'
+import Footer from '@/components/Footer/Layout'
 import { useSelector } from 'react-redux'
 import { ErrorBoundary } from 'react-error-boundary'
 
@@ -15,7 +14,7 @@ function Layout() {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Main />
-      {user ? <Footer /> : <UnauthFooterBar />}
+      <Footer/>
     </ErrorBoundary>
   )
 }

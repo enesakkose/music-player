@@ -1,26 +1,27 @@
 import React, { useState } from 'react'
+import TrackListWrapper from '@/components/Wrappers/TrackListWrapper'
 import PlaylistSearch from '@/Pages/Playlist/PlaylistMain/Search'
 import SongList from '@/Pages/Playlist/PlaylistMain/SongList'
 import GradientBg from '@/components/GradientBg'
 import '@/Pages/Playlist/PlaylistMain/PlaylistMain.scss'
 
-function PlaylistMain({ playlist, validUser, bgColor }) {
+function PlaylistMain({ playlist, validUser, bgColor, size }) {
   const [show, setShow] = useState(true)
   const showPlaylist = playlist.addedSongs.length > 0 && show
-  
+
   return (
     <section className='playlist__main'>
-      <div className="playlist__main__content">
-        {showPlaylist && <SongList playlist={playlist}/>}
-        {validUser && 
+      <TrackListWrapper className="playlist__main__content">
+        {showPlaylist && <SongList playlist={playlist} size={size} />}
+        {validUser && !size &&
           <PlaylistSearch
             playlist={playlist}
             show={show}
             setShow={setShow}
           />
         }
-      </div>
-      <GradientBg size='40vh' bgColor={bgColor}/>
+        <GradientBg size='40vh' bgColor={bgColor} />
+      </TrackListWrapper>
     </section>
   )
 }

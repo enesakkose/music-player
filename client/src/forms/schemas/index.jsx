@@ -35,7 +35,7 @@ export const signupSchema = yup.object().shape({
       .required("Please enter a valid email"),
     username: yup
       .string()
-      .min(6, 'Username must be at least 6 characters')
+      .max(14, 'Username must be at max 14 characters')
       .required("Please enter an username"),
     password: yup
       .string()
@@ -49,7 +49,6 @@ export const signupSchema = yup.object().shape({
 export const playlistInfoSchema = yup.object().shape({
     playlistName: yup
       .string()
-      .max(14, 'Max 14 characters')
       .required('Playlist name is required')
 })
 

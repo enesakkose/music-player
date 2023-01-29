@@ -1,20 +1,23 @@
 import React from 'react'
-import PlaylistHeader from '@/components/PlaylistHeader'
+import styles from '@/Pages/Album/Album.module.scss'
+import Header from '@/components/Playlist/Header'
 
-function AlbumHeader({findAlbum, findSongs, backgroundColor}) {
+function AlbumHeader({ album, songs, backgroundColor, scrollTop }) {
   return (
-    <PlaylistHeader 
-      className='album__header' 
+    <Header 
+      className={styles.header} 
       style={{ backgroundColor: `#${backgroundColor}`}}
-      img={findAlbum?.images?.background}
-      infoTitle='SINGLE'
-      infoHeader={findAlbum?.title}
+      img={album?.images?.background}
+      type='SINGLE'
+      title={album?.title}
+      scrollTop={scrollTop}
+      bg={backgroundColor}
     >
-      <h6 className='album__header__singer'>
-        {findAlbum?.subtitle?.toUpperCase()} •
-        <span> {findSongs.length} Songs</span> 
-      </h6>
-    </PlaylistHeader>
+      <div className={styles.singer}>
+        <h6>{album?.subtitle?.toUpperCase()}</h6>
+        <span> • {songs.length} Songs</span> 
+      </div>
+    </Header>
   )
 }
 

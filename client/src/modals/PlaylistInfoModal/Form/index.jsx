@@ -23,7 +23,7 @@ function PlaylistInfoModalForm({playlistInfo}) {
     >
       {({ isSubmitting }) => (
         <Form className='playlistInfoModal__form'>
-          <Cover playlistInfo={playlistInfo}/>
+          <Cover playlistId={playlistInfo.id}/>
           <div className='playlistInfoModal__form__input'>
             <CustomInput
               labelClassName='playlistInfoModal__form__input__item'

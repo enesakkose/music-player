@@ -5,8 +5,7 @@ import { useSearchParams } from 'react-router-dom'
 import Icon from '@/components/Icon'
 import '@/Pages/Search/SearchInput.scss'
 
-function SearchInput() {
-
+function SearchInput({size}) {
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
   const { querySongs } = useSelector(state => state.song)
@@ -37,7 +36,7 @@ function SearchInput() {
       <label>
         <Icon className='searchIcon' name='Search' size={24}/>
         <input
-          autoFocus={true}
+          autoFocus={!size ? true : false}
           type="text"
           onChange={handleQueryChange}
           value={querySongs}

@@ -3,34 +3,28 @@ import PageWrapper from '@/components/Wrappers/PageWrapper'
 import CardListWrapper from '@/components/Wrappers/CardListWrapper'
 import EmptyField from '@/components/EmptyField'
 import FavoritesCard from '@/components/FavoritesCard'
-import LightBtn from '@/components/LightBtn'
 import PlaylistInfoCard from '@/components/PlaylistInfoCard'
-import { addPlaylistHandle } from '@/firebase/db'
-import { v4 as uuidv4 } from 'uuid'
+import CreatePlaylistBtn from '@/components/CreatePlaylistBtn'
+import { getMobileTabletSize } from '@/utils/size'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import '@/Pages/Collection/Playlists.scss'
 
 function Playlists() {
-  const id = uuidv4()
-  const navigate = useNavigate()
   const { playlists } = useSelector(state => state.playlist)
-  const { profile: { favorites, uid, displayName } } = useSelector(state => state.profiles)
-
-  const handleAdd = async() => {
-    await addPlaylistHandle(playlists, id, uid)
-    navigate(`/playlist/${id}`, { replace: true })
-  }
+  const { profile: { favorites, displayName } } = useSelector(state => state.profiles)
+  const size = getMobileTabletSize()
   
   return (
     <PageWrapper className='playlists'>
+      <h3>Your Playlists</h3>
       {playlists.length === 0 
         ? <EmptyField icon='Music'>
-            <LightBtn onClick={handleAdd} text='Create Playlist'/>
+            <CreatePlaylistBtn size={42}/>
           </EmptyField>  
 
         : <CardListWrapper className="playlists__cards">
-            <FavoritesCard favorites={favorites}/>
+            {!size && <FavoritesCard favorites={favorites}/>}
+            {size && <CreatePlaylistBtn size={42}/>}
             {playlists.map((playlist) => (
               <PlaylistInfoCard 
                 key={playlist.id} 

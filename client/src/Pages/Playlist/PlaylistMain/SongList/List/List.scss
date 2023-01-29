@@ -1,18 +1,16 @@
 .songList{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
     padding-bottom: $PL;
 
+    @media only screen and (max-width: $md){
+        padding-bottom: 0;
+    }
+
     &__item{
-
-        &__content{
-            display: grid;
-            grid-template-columns: 2.95fr 3fr 22px;
-
-            &:hover .remove{
-                opacity: 1;
-            }
+        
+        span{
+            justify-self: center;
+            color: rgba($WHITE, .6);
+            font-size: .875rem;
         }
     }
 }
