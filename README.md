@@ -6,7 +6,7 @@ The main goal of this project is to create a music app, inspired by [Spotify](ht
 
 ### Firebase
 
-This project uses to firebase for database management
+This project uses to firebase for database management and authentication process. Firab is a backend-services for
 
 ### Styling
 
