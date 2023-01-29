@@ -55,14 +55,14 @@
                 align-items: center;
                 justify-content: center;
             }
+        }
 
-            .playBtn{
-                position: absolute;
-                bottom: .5rem;
-                right: .5rem;
-                display: none !important;
-                cursor: default;
-            }
+        .playBtn{
+            position: absolute;
+            bottom: .5rem;
+            right: .5rem;
+            display: none !important;
+            cursor: default;
         }
 
         .showBtn{
@@ -116,7 +116,6 @@
         cursor: pointer;
     }
 }
-
 
 @keyframes btnFade {
     0%{
