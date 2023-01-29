@@ -1,5 +1,5 @@
 import React from 'react'
-import MediaInfo from '@/components/MediaInfo/MediaInfo'
+import MediaInfo from '@/components/MediaInfo'
 import Icon from '@/components/Icon'
 import clsx from 'clsx'
 import { setOpenCover } from '@/store/playlist'
