@@ -32,7 +32,7 @@ function Home() {
         />
       }
 
-      {playlists.length > 0 && user &&
+      {user &&
         <CardList 
           data={playlists.slice(0,6)}
           link='/collection/playlists'
