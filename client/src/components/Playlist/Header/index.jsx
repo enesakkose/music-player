@@ -38,7 +38,7 @@ function Header({
           referrerPolicy="no-referrer"
           src={img}
           alt="img"
-          loading='lazy'
+          /*loading='lazy'*/
         />}
         {validProfile && <span className={styles.pencil}>
           <Icon name='Pencil' size={48} className={styles.pencilIcon}/>

@@ -18,7 +18,7 @@ function MusicInfo() {
           <img
             src={current?.images?.coverart}
             alt={current?.title}
-            loading='lazy'
+            /*loading='lazy'*/
           />
           <button
             onClick={() => dispatch(setOpenCover(!openCover))}

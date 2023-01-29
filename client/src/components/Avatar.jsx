@@ -17,7 +17,6 @@ function Avatar({src, size, ...props}) {
           borderRadius: '50%', 
           ...props
         }}
-        loading='lazy'
       />}
     </>
   )

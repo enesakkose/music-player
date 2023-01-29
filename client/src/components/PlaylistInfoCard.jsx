@@ -36,10 +36,10 @@ function PlaylistInfoCard({playlist, userName = false}) {
       href={`/playlist/${playlist.id}`}
     >     
       {playlist.coverURL !== null 
-          ? (<img src={playlist.coverURL} alt="cover" loading='lazy'/>)
+          ? (<img src={playlist.coverURL} alt="cover" /*loading='lazy'*//>)
           
           : (validCoverImg 
-              ? <img src={coverImage} alt="cover" loading='lazy'/>  
+              ? <img src={coverImage} alt="cover" /*loading='lazy'*//>  
               : <Icon name='Music' size={52}/>
             )
       }
