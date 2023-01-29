@@ -4,6 +4,8 @@
 
 The main goal of this project is to create a music app, inspired by [Spotify](https://open.spotify.com/), where users can listen to music, comment to playlists and follow each other. 
 
+## Built With
+
 ### Firebase
 
 This project uses to firebase for database management and authentication process. Firab is a backend-services for
