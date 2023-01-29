@@ -28,7 +28,6 @@ function SongCard({ song, index, data, ...props }) {
     <Card
       style={{ backgroundColor: `#${backgroundColor}` }}
       onClick={updateCurrent}
-      className={isActiveBtn ? 'showBtn' : ''}
       playPause={isActiveBtn}
       title={song.title}
       name={song.subtitle}

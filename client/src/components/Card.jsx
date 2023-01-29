@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useNavigate } from 'react-router-dom'
 import { getMobileTabletSize } from '@/utils/size'
 import { Link } from 'react-router-dom'
-import '@/components/Card.scss'
+import styles from '@/components/Card/Card.module.scss'
 
 function Card({ 
   style = null,
@@ -21,27 +21,27 @@ function Card({
   const navigate = useNavigate()
 
   return (
-    <div className='card' {...props}>
-      <div className='cardImg' style={style}>
-        <div className='cardImgCont'>
-          <div 
-            onClick={() => size ? navigate(href) : undefined} 
-            className='img'/*this div created so it can come in svg */
-          >
+    <div className={styles.card} {...props}>
+      <div className={styles.cardImgContainer} style={style}>
+        <div className={styles.cardImg}>
+          <div onClick={() => size ? navigate(href) : undefined} className={styles.imgContainer}>
+            {/*this div created so it can come in svg */}
             {children}
             {playBtn && !size && <PlayBtn
               onClick={onClick}
               playPause={playPause}
-              className={clsx('cardImg__btn', className)}
+              className={clsx(styles.playBtn, playPause ? styles.showBtn : '', className)}
             />}
           </div>
         </div>
       </div>
-      <div className="cardInfo">
-        <h5 onClick={size ? onClick : undefined} className='cardInfo__title'>{title}</h5>
-        {!size && <span className='cardInfo__name'>{name}</span>}
+      <div className={styles.info}>
+        <h5 onClick={size ? onClick : undefined} className={styles.title}>
+          {title}
+        </h5>
+        {!size && <span className={styles.subtitle}>{name}</span>}
       </div>
-      {!size && <Link to={href} className='perde'/>}
+      {!size && <Link to={href} className={styles.href}/>}
     </div>
   )
 }
