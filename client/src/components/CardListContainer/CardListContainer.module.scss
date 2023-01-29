@@ -1,6 +1,6 @@
-.cardListLayout{
+.cardListContainer{
 
-    &__title{
+    .title{
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -12,5 +12,4 @@
             }
         }
     }
-
 }

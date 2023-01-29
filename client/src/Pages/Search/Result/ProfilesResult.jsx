@@ -1,20 +1,20 @@
 import React from 'react'
 import ProfileCard from '@/components/ProfileCard'
-import CardListLayout from '@/components/CardListLayout'
+import CardListContainer from '@/components/CardListContainer'
 import EmptyField from '@/components/EmptyField'
 
-function ProfilesResult({profiles}) {
+function ProfilesResult({ profiles }) {
   return (
     <>
-    <CardListLayout href={false} title='Profiles' className='profilesResult'>
-      {profiles.map((profile) => (
-        <ProfileCard 
-        key={profile.data().uid} 
-        userId={profile.data().uid} 
-        />
-      ))}
-    </CardListLayout>
-    {profiles?.length === 0 && <EmptyField icon='avatar'/>}
+      <CardListContainer href={false} title='Profiles' className='profilesResult'>
+        {profiles.map((profile) => (
+          <ProfileCard
+            key={profile.data().uid}
+            userId={profile.data().uid}
+          />
+        ))}
+      </CardListContainer>
+      {profiles?.length === 0 && <EmptyField icon='avatar' />}
     </>
   )
 }
