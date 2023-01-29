@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MediaInfo from '@/components/MediaInfo/MediaInfo'
+import MediaInfo from '@/components/MediaInfo'
 import PlaylistMenu from '@/components/MobilePlayer/Player/Menu/PlaylistMenu'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'

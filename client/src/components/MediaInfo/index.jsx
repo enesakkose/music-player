@@ -1,6 +1,7 @@
 import React, { createElement } from 'react'
 import clsx from 'clsx'
 import FavoriteBtn from '@/components/FavoriteBtn'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styles from '@/components/MediaInfo/MediaInfo.module.scss'
 
@@ -14,6 +15,7 @@ function MediaInfo({
   ...props 
   }) {
   const navigate = useNavigate()
+  const { user } = useSelector(state => state.auth)
   
   const navigateHandle = () => {
     navigate(`/album/${song?.key}`)
@@ -33,7 +35,7 @@ function MediaInfo({
         <h6 className={styles.singerName}>{song?.subtitle}</h6>
       </div>
       {children}
-      <FavoriteBtn className={styles.favBtn} song={song} size={favBtn}/>
+      {user && <FavoriteBtn className={styles.favBtn} song={song} size={favBtn}/>}
     </div>
   )
 }

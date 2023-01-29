@@ -1,6 +1,6 @@
 import React from 'react'
 import PlayBtn from '@/components/PlayBtn'
-import MediaInfo from '@/components/MediaInfo/MediaInfo'
+import MediaInfo from '@/components/MediaInfo'
 import { handlePlayPause } from '@/utils/player'
 import { useSelector } from 'react-redux'
 import styles from '@/components/MobilePlayer/Actions/Actions.module.scss'

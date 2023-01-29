@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import PlayBtn from '@/components/TrackList/Row/PlayBtn'
-import MediaInfo from '@/components/MediaInfo/MediaInfo'
+import MediaInfo from '@/components/MediaInfo'
 import ActionBtns from '@/components/TrackList/Row/ActionBtns'
 import { getMobileTabletSize } from '@/utils/size'
 import { modal } from '@/utils'
