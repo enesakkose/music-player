@@ -7,10 +7,7 @@
 
     @media only screen and (max-width: $md){
         padding: $PS;
-        
-        .actionBtns{
-            padding-bottom: 0;
-        }
+        padding-bottom: 0;
     }
 
     .mobileInfo{
@@ -18,19 +15,19 @@
         flex-direction: column;
         overflow: hidden;
     
-        &Title, &Subtitle, &ListLength{
+        .title, .subtitle, .songLength{
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
         }
         
-        &Subtitle, &ListLength{
+        .subtitle, .songLength{
             font-size: .825rem;
             color: rgba($WHITE, .7);
         }
     }
 
-    &__play{
+    .playBtn{
         min-width: 3.5rem;
         width: 3.5rem;
         height: 3.5rem;

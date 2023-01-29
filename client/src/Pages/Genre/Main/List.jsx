@@ -17,7 +17,7 @@ function List({ songs, song, title, bg }) {
         subtitle={song.subtitle}
         songLength={songs.length}
         findSongs={songs}
-        />
+      />
       {!size && <SongsTableHeader/>}
       <TrackList>
         {songs.map((song, index) => (
