@@ -1,6 +1,5 @@
 import React from 'react'
 import Icon from '@/components/Icon'
-import '@/components/Avatar.scss'
 
 function Avatar({src, size, ...props}) {
   const a = src === null || src === ''
