@@ -9,7 +9,7 @@
   font-family: "Gilroy", Arial, sans-serif;
 }
 
-html, #root{
+html, .App, #root{
   height: 100%;
 }
 
@@ -17,12 +17,6 @@ body, #root{
   font-size: 16px;
   font-weight: 400;
   height: 100%;
-}
-
-.App{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 h1{
