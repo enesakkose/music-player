@@ -1,19 +1,18 @@
 import React from 'react'
-import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import clsx from 'clsx'
-import CustomInput from '@/components/CustomInput'
-import LightBtn from '@/components/LightBtn'
 import Icon from '@/components/Icon'
-import ModalHeader from '@/components/Modal/ModalHeader'
 import Avatar from '@/components/Avatar'
-import { uploadImg, deleteImg } from '@/firebase/storage'
+import LightBtn from '@/components/LightBtn'
+import CustomInput from '@/components/CustomInput'
+import ModalHeader from '@/components/Modal/ModalHeader'
+import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import { Form, Formik } from 'formik'
+import { closeModalHandle } from '@/utils'
+import { useSelector } from 'react-redux'
 import { updateUser } from '@/firebase/auth'
 import { userInfoSchema } from '@/forms/schemas'
-import { useSelector } from 'react-redux'
-
-import { closeModalHandle } from '@/utils'
-import '@/modals/UserInfoModal.scss'
+import { uploadImg, deleteImg } from '@/firebase/storage'
+import styles from '@/modals/UserInfoModal/UserInfoModal.module.scss'
 
 function UserInfoModal({outClickRef}) {
   const { profile: userInfo } = useSelector(state => state.profiles)
@@ -38,37 +37,35 @@ function UserInfoModal({outClickRef}) {
   }
 
   return (
-    <ModalWrapper ref={outClickRef} className='userInfoModal'>
+    <ModalWrapper ref={outClickRef} className={styles.userInfoModal}>
       <ModalHeader title='User Details'/>
-      
       <Formik
         initialValues={{ displayName: userInfo.displayName }}
         onSubmit={onSubmit}
         validationSchema={userInfoSchema}
       >
         {({isSubmitting}) => (
-          <Form className='userInfoModal__form'>
-            <label htmlFor='file' className='profileImgChange'>
+          <Form className={styles.form}>
+            <label htmlFor='file' className={styles.profileImg}>
               <Avatar 
                 src={userInfo.photoURL} 
                 size='11.25rem'
               />
-              <div className="pencilBtn">
+              <div className={styles.pencilBtn}>
                 <Icon name='Pencil' size={50}/>
                 <button
                   disabled={userInfo.photoURL === null || userInfo.photoURL === ''} 
                   type='button'
                   onClick={removePrflImg} 
-                  className='pencilBtn__remove'
+                  className={styles.remove}
                 >
                   Remove Photo
                 </button>
               </div>
               <input id='file' type='file' onChange={handleUpload} accept="image/png, image/jpeg" hidden/>
             </label>
-            <div className="userInfoModal__form__inputs">
+            <div className={styles.inputs}>
               <CustomInput
-                labelClassName='userInfoModal__form__inputs__input'
                 type='text'
                 name='displayName'
                 inputTitle='Name'
@@ -77,10 +74,10 @@ function UserInfoModal({outClickRef}) {
               />
               <LightBtn 
                 type='submit' 
-                text='Save' 
-                className={clsx('submitBtn', isSubmitting ? 'submittingBtn' : '')}
+                text='Save'
+                disabled={isSubmitting}
+                className={styles.submitBtn}
               />
-
             </div>
           </Form>
         )}

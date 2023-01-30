@@ -1,0 +1,31 @@
+.switchBtnContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-top: $PS;
+    border-top: 2px solid $earlGray;
+    width: 100%;
+
+    .text{
+        font-weight: 700;
+    }
+
+    .switchBtn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        border: 1px solid $earlGray;
+        padding: $PXS;
+        width: 100%;
+        border-radius: 1rem;
+        background-color: rgba($earlGray, .1);
+        transition: 300ms background-color ease-in-out;
+        color: $BLACK;
+
+        &:hover{
+            background-color: transparent;
+        }
+    }
+}

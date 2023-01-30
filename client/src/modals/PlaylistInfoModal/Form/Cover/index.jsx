@@ -3,7 +3,7 @@ import Icon from '@/components/Icon'
 import { useSelector } from 'react-redux'
 import { updatePlaylist } from '@/firebase/db'
 import { uploadImg, deleteImg } from '@/firebase/storage'
-
+import styles from '@/modals/PlaylistInfoModal/Form/Form.module.scss'
 
 function Cover({ playlistId }) {
   const { playlists } = useSelector(state => state.playlist)
@@ -26,17 +26,17 @@ function Cover({ playlistId }) {
   const coverImage = addedSongs[0]?.track?.images?.coverart
 
   return (
-    <div className='playlistInfoModal__form__img'>
+    <div className={styles.imgContainer}>
       {coverURL === null
-        ? <Icon name='Music' size={64} />
-        : <img src={coverURL} alt="cover" />
+        ? <Icon name='Music' size={64}/>
+        : <img src={coverURL} alt="cover"/>
       }
       {coverURL === null && songsInPlaylist &&
-        <img src={coverImage} alt="cover" />
+        <img src={coverImage} alt="cover"/>
       }
-      <div className='imgChange'>
-        <label className='imgChange__btn'>
-          <Icon name='Pencil' size={20} />
+      <div className={styles.imgChange}>
+        <label className={styles.label}>
+          <Icon name='Pencil' size={20}/>
           <input 
             type='file' 
             onChange={handleUpload} 
@@ -48,7 +48,7 @@ function Cover({ playlistId }) {
           disabled={coverURL === null}
           type='button'
           onClick={deleteImgHandle}
-          className='imgChange__btn'
+          className={styles.imgChangeBtn}
         >
           <Icon name='Trash' size={20} />
         </button>

@@ -1,22 +1,15 @@
 import React, { useState } from 'react'
 import Login from '@/Pages/Auth/Login' 
 import Signup from '@/Pages/Auth/Signup'
-import '@/Pages/Auth/Auth.scss'
+import styles from '@/Pages/Auth/Auth.module.scss'
 
 function Auth() {
-
   const [ changeContent, setChangeContent ] = useState(true)
 
   return (
-    <div className='auth'>
-      {changeContent &&<Login 
-        changeContent={changeContent} 
-        setChangeContent={setChangeContent}
-      />}
-      {!changeContent && <Signup 
-        changeContent={changeContent} 
-        setChangeContent={setChangeContent}
-      />}
+    <div className={styles.auth}>
+      {changeContent && <Login setChangeContent={setChangeContent}/>}
+      {!changeContent && <Signup setChangeContent={setChangeContent}/>}
     </div>
   )
 }

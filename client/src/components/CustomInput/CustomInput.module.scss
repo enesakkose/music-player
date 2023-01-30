@@ -1,4 +1,4 @@
-.customInputLabel{
+.label{
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -19,7 +19,7 @@ input{
     }
 }
 
-.inputError{
+.error{
     border-bottom-color: red !important;
 }
 

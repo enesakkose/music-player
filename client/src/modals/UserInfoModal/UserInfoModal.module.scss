@@ -1,6 +1,6 @@
 .userInfoModal{
 
-    &__form{
+    .form{
         display: grid;
         grid-template-columns: 1fr 1.5fr;
         gap: 1.5rem;
@@ -11,16 +11,13 @@
             flex-direction: column;
         }
 
-        .profileImgChange{
+        .profileImg{
             position: relative;
             height: 11.25rem;
 
             .pencilBtn{
                 position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
+                inset: 0;
                 border-radius: 50%;
                 color: rgba($WHITE, .6);
                 background-color: rgba($GRAY, .5);
@@ -31,7 +28,7 @@
                 justify-content: center;
                 opacity: 0;
 
-                &__remove{
+                .remove{
                     font-weight: 700;
                     text-decoration: underline;
                     color: $WHITE;
@@ -43,23 +40,16 @@
             }
         }
 
-
-        &__inputs{
+        .inputs{
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: .875rem;
             
-            &__input{
+            input{
                 display: flex;
                 flex-direction: column;
                 gap: .25rem;
-
-                &__span{
-                    font-weight: 700;
-                    color: rgba($WHITE, .8);
-                }
-                
             }
 
             .submitBtn{

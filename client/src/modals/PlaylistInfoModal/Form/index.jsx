@@ -6,8 +6,10 @@ import { Form, Formik } from 'formik'
 import { updatePlaylist } from '@/firebase/db'
 import { closeModalHandle } from '@/utils'
 import { playlistInfoSchema } from '@/forms/schemas'
+import styles from '@/modals/PlaylistInfoModal/Form/Form.module.scss'
 
 function PlaylistInfoModalForm({playlistInfo}) {
+
   const onSubmit = async (values) => {
     const updatePlaylistProcess = await updatePlaylist(playlistInfo.id, {
       name: values.playlistName
@@ -22,11 +24,11 @@ function PlaylistInfoModalForm({playlistInfo}) {
         onSubmit={onSubmit}
     >
       {({ isSubmitting }) => (
-        <Form className='playlistInfoModal__form'>
+        <Form className={styles.form}>
           <Cover playlistId={playlistInfo.id}/>
-          <div className='playlistInfoModal__form__input'>
+          <div className={styles.inputContainer}>
             <CustomInput
-              labelClassName='playlistInfoModal__form__input__item'
+              labelClassName={styles.label}
               type='text'
               name='playlistName'
               inputTitle='Playlist Name'
@@ -36,7 +38,8 @@ function PlaylistInfoModalForm({playlistInfo}) {
             <LightBtn
               text='Save'
               type='submit'
-              className={`submitBtn ${isSubmitting ? 'isSubmitting' : ''}`}
+              disabled={isSubmitting}
+              className={styles.submitBtn}
             />
           </div>
         </Form>

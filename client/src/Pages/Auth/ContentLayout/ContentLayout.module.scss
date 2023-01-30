@@ -1,0 +1,14 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    border: 2px solid rgba($GRAY, .5);
+    border-radius: .5rem;
+    padding: $PS $PM;
+    background-color: $brokeWhite;
+    
+    a{
+        color: $BLACK;
+    }
+}

@@ -1,0 +1,17 @@
+.googleBtn{
+    color: $GRAY;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid $earlGray;
+    padding: $PXS $PL;
+    border-radius: 1.5rem;
+
+    .text{
+        font-weight: 400;
+    }
+
+    &:active{
+        transform: translateY(.5px);
+    }
+}

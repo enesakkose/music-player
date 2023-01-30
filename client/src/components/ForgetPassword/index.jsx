@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import CustomInput from '@/components/CustomInput'
-import LightBtn from '@/components/LightBtn'
 import clsx from 'clsx'
-import { resetPassword } from '@/firebase/auth'
+import LightBtn from '@/components/LightBtn'
+import CustomInput from '@/components/CustomInput'
 import { Formik, Form } from 'formik'
+import { resetPassword } from '@/firebase/auth'
 import { resetPasswordEmailSchema } from '@/forms/schemas'
-import '@/components/ForgetPassword.scss'
+import styles from '@/components/ForgetPassword/ForgetPassword.module.scss'
 
 function ForgetPassword({ className }) {
   const [showForm, setShowForm] = useState(false)
@@ -15,13 +15,13 @@ function ForgetPassword({ className }) {
     actions.resetForm()
   }
 
+  const handleShowForm = () => {
+    setShowForm(prev => !prev)
+  }
+
   return (
-    <div className={clsx('forgetPassword', className)}>
-      <button 
-        className='forgetPasswordBtn' 
-        type='button' 
-        onClick={() => setShowForm(!showForm)}
-      >
+    <div className={clsx(styles.forgetPassword, className)}>
+      <button className={styles.showFormBtn} type='button' onClick={handleShowForm}>
         Forgot Password?
       </button>
       <div>
@@ -31,9 +31,8 @@ function ForgetPassword({ className }) {
         validationSchema={resetPasswordEmailSchema}
       >
         {({isSubmitting}) => (
-          <Form className={clsx('forgetPassword__form', showForm ? 'showForm' : '')}>
+          <Form className={clsx(styles.form, showForm ? styles.showForm : '')}>
             <CustomInput
-              labelClassName='forgetPassword__form__label'
               type='email'
               name='email'
               inputTitle='Email'
@@ -43,7 +42,8 @@ function ForgetPassword({ className }) {
             <LightBtn 
               text='Send'
               type='submit'
-              className={clsx('submitBtn', isSubmitting ? 'submittingBtn' : '')} 
+              disabled={isSubmitting}
+              className={clsx(styles.submitBtn)} 
             />
           </Form>
         )}

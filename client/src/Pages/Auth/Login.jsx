@@ -1,62 +1,61 @@
 import React from 'react'
-import BrandLogo from '@/components/BrandLogo'
-import Or from '@/Pages/Auth/Or'
-import GoogleBtn from '@/Pages/Auth/GoogleBtn'
-import CustomInput from '@/components/CustomInput'
-import ForgetPassword from '@/components/ForgetPassword'
-import ContentChangeBtn from '@/Pages/Auth/ContentChangeBtn'
 import LightBtn from '@/components/LightBtn'
-import clsx from 'clsx'
+import CustomInput from '@/components/CustomInput'
 import PasswordInput from '@/components/PasswordInput'
-import { loginSchema } from '@/forms/schemas'
+import ForgetPassword from '@/components/ForgetPassword'
+import SwitchBtn from '@/components/SwitchBtn'
+import ContentLayout from '@/Pages/Auth/ContentLayout'
 import { Form, Formik } from 'formik'
+import { loginSchema } from '@/forms/schemas'
 import { handleLogin } from '@/firebase/auth'
 import { useNavigate } from 'react-router-dom'
+import styles from '@/Pages/Auth/Auth.module.scss'
 
 
-function Login({changeContent, setChangeContent}) {
+function Login({ setChangeContent }) {
   const navigate = useNavigate()
 
-  const onSubmit = async(values) => {
+  const onSubmit = async (values) => {
     const user = await handleLogin(values.username, values.password)
-    if(user) navigate('/', { replace: true })
+    if (user) navigate('/', { replace: true })
   }
-  
+
+  const handleChangeContent = () => {
+    setChangeContent(prev => !prev)
+  }
+
   return (
-    <div className='auth__content'>
-      <BrandLogo size={35}/>
-      <GoogleBtn text='CONTINUE WITH GOOGLE'/>
-      <Or/>
+    <ContentLayout>
       <Formik
-        initialValues={{ username: "", password: ""}}
+        initialValues={{ username: "", password: "" }}
         validationSchema={loginSchema}
         onSubmit={onSubmit}
       >
-        {({isSubmitting}) => (
-          <Form className='auth__content__inputs'>
+        {({ isSubmitting }) => (
+          <Form className={styles.inputs}>
             <CustomInput
-              labelClassName='auth__content__username inputContain'
               type='text'
               name='username'
               inputTitle='Email address or username'
               placeholder='Email address or username'
             />
             <PasswordInput title='Password' placeholder='Password'/>
-            <LightBtn 
+            <LightBtn
               type='submit'
               text='Login'
-              className={clsx('submitBtn', isSubmitting ? 'submittingBtn' : '')}
+              disabled={isSubmitting}
+              className={styles.submitBtn}
             />
           </Form>
         )}
       </Formik>
-      <ForgetPassword className='loginForgetPassword'/>
-      <ContentChangeBtn
+      <ForgetPassword className={styles.forgetPassword}/>
+      <SwitchBtn
         title="Don't have an account?"
         text='SIGN UP'
-        onClick={() => setChangeContent(!changeContent)}
+        onClick={handleChangeContent}
       />
-    </div>
+    </ContentLayout>
   )
 }
 

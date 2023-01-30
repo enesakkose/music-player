@@ -1,0 +1,11 @@
+button{
+    cursor: pointer;
+    background-color: transparent;
+    color: rgba($WHITE, .6);
+    display: flex;
+
+    &:disabled, &[disabled]{
+        opacity: .5;
+        pointer-events: none;
+    }
+}

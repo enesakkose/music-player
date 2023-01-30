@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from '@/Pages/Auth/Auth.module.scss'
 
 function Or() {
   return (
-    <div className='auth__content__or'>
+    <div className={styles.or}>
       <span>OR</span> 
     </div>
   )
