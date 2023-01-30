@@ -14,10 +14,10 @@
 
     &-handle-dragging{
         opacity: 1;
+        
         &:focus{
             cursor: default;
         }
-
     }
     
     &:hover .rc-slider-handle{
