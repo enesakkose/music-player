@@ -1,7 +1,7 @@
 import React from 'react'
 import App404 from '@/Pages/404'
 import { useNavigate } from 'react-router-dom'
-import '@/components/ErrorFallback.scss'
+import '@/components/ErrorFallback/ErrorFallback.scss'
 
 function ErrorFallback() {
   const navigate = useNavigate()

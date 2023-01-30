@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from 'rc-slider'
 import '@/assets/range.css'
-import '@/components/CustomRange.scss'
+import '@/components/CustomRange/CustomRange.scss'
 
 function CustomRange({ min, max, step, value, onChange, className, ...props }) {
   return (

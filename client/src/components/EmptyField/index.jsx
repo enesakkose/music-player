@@ -1,6 +1,6 @@
 import React from 'react'
 import Icon from '@/components/Icon'
-import '@/components/EmptyField.scss'
+import '@/components/EmptyField/EmptyField.scss'
 
 function EmptyField({icon, children}) {
   return (
