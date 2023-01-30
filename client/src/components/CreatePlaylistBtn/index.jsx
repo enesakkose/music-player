@@ -3,7 +3,7 @@ import Icon from '@/components/Icon'
 import { useSelector } from 'react-redux'
 import { addPlaylist } from '@/utils/playlist'
 import { useNavigate } from 'react-router-dom'
-import styles from '@/components/CreatePlaylistButton/CreatePlaylistButton.module.scss'
+import styles from '@/components/CreatePlaylistBtn/CreatePlaylistBtn.module.scss'
 
 function CreatePlaylistBtn({ size }) {
   const navigate = useNavigate()
