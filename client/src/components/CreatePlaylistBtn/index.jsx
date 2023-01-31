@@ -1,5 +1,6 @@
 import React from 'react'
 import Icon from '@/components/Icon'
+import Button from '@/components/Button'
 import { useSelector } from 'react-redux'
 import { addPlaylist } from '@/utils/playlist'
 import { useNavigate } from 'react-router-dom'
@@ -11,9 +12,9 @@ function CreatePlaylistBtn({ size }) {
   const { profile: { uid } } = useSelector(state => state.profiles)
 
   return (
-    <button onClick={() => addPlaylist(playlists, uid, navigate)} className={styles.createPlaylistBtn}>
+    <Button onClick={() => addPlaylist(playlists, uid, navigate)} className={styles.createPlaylistBtn}>
       <Icon name='add' size={size}/>
-    </button>
+    </Button>
   )
 }
 

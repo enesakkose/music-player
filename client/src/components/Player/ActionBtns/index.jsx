@@ -4,7 +4,7 @@ import Icon from '@/components/Icon'
 import PlayBtn from '@/components/PlayBtn'
 import { useSelector } from 'react-redux'
 import { handlePlayPause, handleNextSong, handlePrevSong } from '@/utils/player'
-import '@/components/Player/ActionBtns.scss'
+import styles from '@/components/Player/ActionBtns/ActionBtns.module.scss'
 
 function ActionBtns({ className, size= 36 }) {
   const { 
@@ -16,23 +16,23 @@ function ActionBtns({ className, size= 36 }) {
   } = useSelector(state => state.player)
 
   return (
-    <div className={clsx('playerActionBtns', className)}>
+    <div className={clsx(styles.actionBtns, className)}>
       <button
         disabled={!isActive}
         onClick={() => handlePrevSong(currentIndex, currentSongs)} 
-        className='previousBtn'
+        className={styles.previousBtn}
       >
         <Icon name='Previous' size={size}/>
       </button>
       <PlayBtn
         onClick={() => handlePlayPause(current, isPlaying)} 
         playPause={isPlaying && current.key} 
-        className='actionPlayBtn' 
+        className={styles.playBtn} 
       />
       <button
         disabled={!isActive} 
         onClick={() => handleNextSong(currentIndex, currentSongs)} 
-        className='nextBtn'
+        className={styles.nextBtn}
       >
         <Icon name='Next' size={size}/>
       </button>
