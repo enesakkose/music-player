@@ -1,7 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
 import Header from '@/components/MobilePlayer/Player/Header/Header'
-import FavoriteBtn from '@/components/FavoriteBtn'
 import ProgressBar from '@/components/Player/ProgressBar'
 import ActionBtns from '@/components/Player/ActionBtns'
 import MediaInfo from '@/components/MediaInfo'
