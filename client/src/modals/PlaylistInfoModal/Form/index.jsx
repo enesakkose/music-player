@@ -19,9 +19,9 @@ function PlaylistInfoModalForm({playlistInfo}) {
 
   return (
     <Formik
-        initialValues={{ playlistName: playlistInfo?.name }}
-        validationSchema={playlistInfoSchema}
-        onSubmit={onSubmit}
+      initialValues={{ playlistName: playlistInfo?.name }}
+      validationSchema={playlistInfoSchema}
+      onSubmit={onSubmit}
     >
       {({ isSubmitting }) => (
         <Form className={styles.form}>

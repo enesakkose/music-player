@@ -1,10 +1,11 @@
 import React from 'react'
 import Header from '@/components/Playlist/Header'
 import Main from '@/Pages/Collection/Tracks/Main'
+import Button from '@/components/Button'
+import PlaylistWrapper from '@/components/Wrappers/PlaylistWrapper'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styles from '@/Pages/Collection/Tracks/Tracks.module.scss'
-import PlaylistWrapper from '@/components/Wrappers/PlaylistWrapper'
 
 function Tracks() {
   const { profile: { favorites, uid, displayName } } = useSelector(state => state.profiles)
@@ -17,9 +18,9 @@ function Tracks() {
         title='LIKED SONGS'
       >
         <div className={styles.navBtn}>
-          <Link to={`/profile/${uid}`}>
+          <Button href={`/profile/${uid}`} className={styles.href}>
             {displayName}
-          </Link>
+          </Button>
           {favorites.length > 0 && <h6>• {favorites.length} songs</h6>}
         </div>
       </Header>

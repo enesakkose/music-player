@@ -11,7 +11,7 @@ function ProfileHeaderBtns({ profile, validProfile }) {
   const navigate = useNavigate()
   const { user } = useSelector(state => state.auth)
   const { profile: currentUserProfile } = useSelector(state => state.profiles)
-  const findInFollowers = user && profile?.follower?.find(p => p === currentUserProfile.uid)
+  const inFollowers = user && profile?.follower?.find(p => p === currentUserProfile.uid)
   
   const navigateToFollowers = () => {
     user
@@ -33,7 +33,7 @@ function ProfileHeaderBtns({ profile, validProfile }) {
       : modal('UnauthModal')
   }
 
-  const unFollowHandle = async () => {
+  const unFollowHandle = async() => {
     await unfollow(profile, currentUserProfile)
   }
 
@@ -55,8 +55,8 @@ function ProfileHeaderBtns({ profile, validProfile }) {
       </div>
       {!validProfile && user &&
         <FollowBtn
-          onClick={findInFollowers ? unFollowHandle : followHandle}
-          statement={findInFollowers}
+          onClick={inFollowers ? unFollowHandle : followHandle}
+          followers={inFollowers}
         />
       }
     </div>

@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { useNavigate } from 'react-router-dom'
 import { getMobileTabletSize } from '@/utils/size'
 import { Link } from 'react-router-dom'
+import Button from '@/components/Button'
 import styles from '@/components/Card/Card.module.scss'
 
 function Card({ 
@@ -41,7 +42,7 @@ function Card({
         </h5>
         {!size && <span className={styles.subtitle}>{name}</span>}
       </div>
-      {!size && <Link to={href} className={styles.href}/>}
+      {!size && <Button href={href} className={styles.href}/>}
     </div>
   )
 }

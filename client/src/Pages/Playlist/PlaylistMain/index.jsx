@@ -20,7 +20,7 @@ function PlaylistMain({ playlist, validUser, bgColor, size }) {
             setShow={setShow}
           />
         }
-        <GradientBg size='40vh' bgColor={bgColor} />
+        <GradientBg bgColor={bgColor}/>
       </TrackListWrapper>
     </section>
   )

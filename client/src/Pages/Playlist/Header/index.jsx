@@ -1,6 +1,7 @@
 import React from 'react'
 import CustomPlaylistHeader from '@/components/Playlist/Header'
 import PlaylistDropdownMenu from '@/Pages/Playlist/Header/PlaylistDropdownMenu'
+import Button from '@/components/Button'
 import { Link } from 'react-router-dom'
 import { modal } from '@/utils'
 import '@/Pages/Playlist/Header/Header.scss'
@@ -22,9 +23,9 @@ function Header({ playlist, bgColor, validUser, scrollTop, user }) {
     >
       <div className="subActions">
         <h6 className='subActionsLink'>
-          <Link to={`/profile/${user?.uid}`}>
+          <Button to={`/profile/${user?.uid}`}>
             {user?.displayName}
-          </Link>
+          </Button>
         </h6>
         {validUser && <PlaylistDropdownMenu playlist={playlist}/>}
       </div>

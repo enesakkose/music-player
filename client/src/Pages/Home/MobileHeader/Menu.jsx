@@ -1,6 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import Icon from '@/components/Icon'
+import Button from '@/components/Button'
 import { Link } from 'react-router-dom'
 import { modal } from '@/utils'
 import { handleLogout } from '@/firebase/auth'
@@ -9,16 +10,16 @@ import '@/Pages/Home/MobileHeader/Menu.scss'
 function Menu({ openMenu, setOpenMenu, profile }) {
   return (
     <div className={clsx('mobileMenu', openMenu ? 'openMenu' : '')}>
-      <button 
-        className='mobileMenuCloseBtn' 
+      <button
+        className='mobileMenuCloseBtn'
         onClick={() => setOpenMenu(false)}
       >
         <Icon name='close' size={30}/>
       </button>
       <div className="mobileMenuList">
-        <Link to={`/profile/${profile.uid}`}>
+        <Button href={`/profile/${profile.uid}`}>
           Profile
-        </Link>
+        </Button>
         <button onClick={() => modal('UserInfoModal')}>
           Edit Profile
         </button>

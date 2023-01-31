@@ -14,8 +14,8 @@ function Main({ findSongs, findAlbum, backgroundColor, size }) {
         songLength={findSongs.length}
         findSongs={findSongs}
       />
-      <List size={size} songs={findSongs} />
-      <GradientBg bgColor={backgroundColor} />
+      <List size={size} songs={findSongs}/>
+      <GradientBg bgColor={backgroundColor}/>
     </TrackListWrapper>
   )
 }

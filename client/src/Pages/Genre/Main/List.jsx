@@ -29,7 +29,7 @@ function List({ songs, song, title, bg }) {
           />
         ))}
       </TrackList>
-      <GradientBg bgColor={bg} />
+      <GradientBg bgColor={bg}/>
     </TrackListWrapper>
   )
 }
