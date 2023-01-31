@@ -1,6 +1,7 @@
 import React from 'react'
 import Icon from '@/components/Icon'
 import clsx from 'clsx'
+import Button from '@/components/Button'
 import { useSelector } from 'react-redux'
 import { addOrRemoveFavoriteSongs } from '@/firebase/db'
 import styles from '@/components/FavoriteBtn/FavoriteBtn.module.scss'
@@ -14,7 +15,7 @@ function FavoriteBtn({ className, song, size= 22 }) {
   }
 
   return (
-    <button 
+    <Button 
       onClick={addOrRemoveFavoriteHandle} 
       className={clsx(styles.favoriteBtn, favSong ? styles.liked : '', className)}
     >
@@ -23,7 +24,7 @@ function FavoriteBtn({ className, song, size= 22 }) {
         name={favSong ? 'FillFavorite' : 'Favorite' } 
         size={size}
       />
-    </button>
+    </Button>
   )
 }
 

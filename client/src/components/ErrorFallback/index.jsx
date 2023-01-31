@@ -1,16 +1,17 @@
 import React from 'react'
 import App404 from '@/Pages/404'
+import Button from '@/components/Button'
 import { useNavigate } from 'react-router-dom'
-import '@/components/ErrorFallback/ErrorFallback.scss'
+import styles from '@/components/ErrorFallback/ErrorFallback.module.scss'
 
 function ErrorFallback() {
   const navigate = useNavigate()
-  
+
   return (
-    <App404 className='errorFallback' errorMessage='Something went wrong'>
-      <button className='backBtn' onClick={() => navigate(0)}>
+    <App404 className={styles.errorFallback} errorMessage='Something went wrong'>
+      <Button className={styles.backBtn} onClick={() => navigate(0)}>
         TRY AGAIN
-      </button>
+      </Button>
     </App404>
   )
 }
