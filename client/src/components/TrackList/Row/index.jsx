@@ -16,7 +16,7 @@ function Row({
   song,
   songs,
   actionBtns = true,
-  customPlaylist = false
+  customPlaylistDropdownItem = false
 }) {
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.auth)
@@ -57,7 +57,7 @@ function Row({
           {children}
         </MediaInfo>
       </div>
-      {user && actionBtns && !size && <ActionBtns song={song} customPlaylist={customPlaylist} />}
+      {user && actionBtns && !size && <ActionBtns song={song} customPlaylistDropdownItem={customPlaylistDropdownItem} />}
       <div onClick={playSong} className={styles.playSong} />
     </li>
   )

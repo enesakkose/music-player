@@ -13,16 +13,16 @@ function UserAvatar() {
   const { profile: { photoURL, uid } } = useSelector(state => state.profiles)
 
   return (
-      <DropdownMenu 
-        btn={<Avatar src={photoURL} size='28px'/>} 
-        className="userAvatarMenu"
-        btnClassName='avatarBtn'
-      >
-        <DropdownMenuItem text='Account' onClick={() => modal('UserInfoModal')}/>
-        <DropdownMenuItem text='Profile' onClick={() => navigate(`/profile/${uid}`)}/>
-        <DropdownMenuItem text='Password Change' onClick={() => modal('PasswordChangeModal')}/>
-        <DropdownMenuItem text='Logout' onClick={() => handleLogout()}/>
-      </DropdownMenu>
+    <DropdownMenu
+      openBtn={<Avatar src={photoURL} size='28px' />}
+      className="userAvatarMenu"
+      openBtnClassName='avatarBtn'
+    >
+      <DropdownMenuItem text='Account' onClick={() => modal('UserInfoModal')} />
+      <DropdownMenuItem text='Profile' onClick={() => navigate(`/profile/${uid}`)} />
+      <DropdownMenuItem text='Password Change' onClick={() => modal('PasswordChangeModal')} />
+      <DropdownMenuItem text='Logout' onClick={() => handleLogout()} />
+    </DropdownMenu>
   )
 }
 

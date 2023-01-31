@@ -1,8 +1,8 @@
 import React from 'react'
 
-function DropdownOpenBtn({ children, className, ...props }) {
+function DropdownOpenBtn({ children, ...props }) {
   return (
-    <button className={className} {...props}>
+    <button {...props}>
       {children}
     </button>
   )

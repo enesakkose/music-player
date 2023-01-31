@@ -5,23 +5,23 @@ import DropdownMenuItem from '@/components/DropdownMenu/DropdownMenuItem'
 import { modal } from '@/utils'
 import { publishPlaylist } from '@/firebase/db'
 
-function PlaylistDropdownMenu({playlist}) {
+function PlaylistDropdownMenu({ playlist }) {
   return (
-    <DropdownMenu 
+    <DropdownMenu
       className='playlistActionMenu'
-      btnClassName='playlistDropdownBtn'
-      btn={<Icon name='ThreeDots' size={32}/>}
+      openBtnClassName='playlistDropdownBtn'
+      openBtn={<Icon name='ThreeDots' size={32} />}
     >
-      <DropdownMenuItem 
-        text='Edit Details' 
+      <DropdownMenuItem
+        text='Edit Details'
         onClick={() => modal('PlaylistInfoModal', playlist)}
       />
-      <DropdownMenuItem 
-        text={playlist.publish ? 'Remove from profile' : 'Add to profile'} 
+      <DropdownMenuItem
+        text={playlist.publish ? 'Remove from profile' : 'Add to profile'}
         onClick={() => publishPlaylist(playlist.id, !playlist.publish)}
       />
-      <DropdownMenuItem 
-        text='Delete' 
+      <DropdownMenuItem
+        text='Delete'
         onClick={() => modal('PlaylistDeleteModal', playlist)}
       />
     </DropdownMenu>

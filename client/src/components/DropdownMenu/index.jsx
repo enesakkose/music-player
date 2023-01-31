@@ -2,12 +2,12 @@ import React, { Children, useState, cloneElement } from 'react'
 import clsx from 'clsx'
 import DropdownOpenBtn from '@/components/DropdownMenu/DropdownOpenBtn'
 import { useClickOutside } from '@/hooks/useClickOutside'
-import '@/components/DropdownMenu/DropdownMenu.scss'
+import styles from '@/components/DropdownMenu/DropdownMenu.module.scss'
 
 
 function DropdownMenu({ 
-    btn, 
-    btnClassName, 
+    openBtn, 
+    openBtnClassName, 
     children, 
     className, 
     onMouseOver = false 
@@ -19,7 +19,7 @@ function DropdownMenu({
   })
 
   const openDropdown = () => {
-    setOpenDropdownMenu(!openDropdownMenu)
+    setOpenDropdownMenu(prev => !prev)
   }
 
   const handleClick = (propsClick) => {
@@ -28,28 +28,26 @@ function DropdownMenu({
   }
 
   return (
-    <div ref={clickOutside} className='dropdownMenuContainer'>
+    <div ref={clickOutside} className={styles.dropdownMenuContainer}>
       <DropdownOpenBtn 
         onClick={openDropdown} 
         onMouseOver={() => onMouseOver ? setOpenDropdownMenu(true) : undefined}
-        className={clsx('dropdownOpenBtn', btnClassName)}
+        className={clsx(styles.openBtn, openBtnClassName)}
       >
-        {btn}
+        {openBtn}
       </DropdownOpenBtn>
       {openDropdownMenu && 
-        <div className={clsx('dropdownMenu', className)}>
-          <ul className='dropdownMenuList'>
-            {Children.map(children, (child, index) => {
-              if(React.isValidElement(child)){
-                return (
-                  cloneElement(child, { 
-                    onClick: () => handleClick(child.props.onClick), 
-                    key: index
-                  })
-                )}}
-            )}
-          </ul>
-        </div>
+        <ul className={clsx(styles.dropdownMenu, className)}>
+          {Children.map(children, (child, index) => {
+            if(React.isValidElement(child)){
+              return (
+                cloneElement(child, { 
+                  onClick: () => handleClick(child.props.onClick), 
+                  key: index
+                })
+              )}}
+          )}
+        </ul>
       }
     </div>
   )

@@ -117,7 +117,7 @@
         }
     }
 
-    button{
+    button:not(.openPlaylistsDropdown){
         opacity: 0;
         z-index: 1;
     }
