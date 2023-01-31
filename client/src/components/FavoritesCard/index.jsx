@@ -1,17 +1,17 @@
 import React from 'react'
 import PlayBtn from '@/components/PlayBtn'
 import clsx from 'clsx'
-import { Link } from 'react-router-dom'
+import Button from '@/components/Button'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
-import '@/components/FavoritesCard.scss'
+import styles from '@/components/FavoritesCard/FavoritesCard.module.scss'
 
 function FavoritesCard({favorites}) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
   const inFavoritesPlaylist = favorites.some(song => song.key === current.key)
   
-  const favoritesCardPlayPause = () => {
+  const play = () => {
     if (!inFavoritesPlaylist){
       dispatch(setCurrent(favorites[0]))
       dispatch(setCurrentSongs(favorites))
@@ -21,18 +21,18 @@ function FavoritesCard({favorites}) {
   }
 
   return (
-    <div className='favoritesCard'>
-      <div className="favoritesCard__info">
+    <div className={styles.favoritesCard}>
+      <div className={styles.info}>
         <h3>Liked Songs</h3>
         <span>{favorites.length} liked songs</span>  
       </div>
       <PlayBtn 
         disabled={favorites.length === 0}
         playPause={inFavoritesPlaylist && isPlaying}
-        onClick={favoritesCardPlayPause} 
-        className={clsx('favoritesCard__playBtn', inFavoritesPlaylist && isPlaying ? 'currentFav' : 'notCurrentFav' )}
+        onClick={play} 
+        className={clsx( styles.playBtn, inFavoritesPlaylist && isPlaying ? styles.currentFav : styles.notCurrentFav )}
       />
-      <Link to='/collection/tracks' className='perde'/>
+      <Button href='/collection/tracks' className={styles.href}/>
     </div>
   )
 }

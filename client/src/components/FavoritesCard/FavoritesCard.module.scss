@@ -8,14 +8,14 @@
     justify-content: space-between;
     position: relative;
 
-    &__info{
+    .info{
 
         h3{
             padding-bottom: .5rem;
         }
     }
 
-    &__playBtn{
+    .playBtn{
         display: none;
         position: absolute;
         right: 1rem;
@@ -31,13 +31,10 @@
         display: block;
     }
 
-    .perde{
+    .href{
         position: absolute;
         content: '';
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         cursor: pointer;
     }
 }

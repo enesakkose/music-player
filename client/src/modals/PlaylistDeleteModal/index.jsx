@@ -4,7 +4,7 @@ import LightBtn from '@/components/LightBtn'
 import { closeModalHandle } from '@/utils'
 import { deletePlaylist } from '@/firebase/db'
 import { useNavigate } from 'react-router-dom'
-import '@/modals/PlaylistDeleteModal.scss'
+import styles from '@/modals/PlaylistDeleteModal/PlaylistDeleteModal.module.scss'
 
 function PlaylistDeleteModal({ data: playlistInfo, outClickRef }) {
   const navigate = useNavigate()
@@ -16,18 +16,17 @@ function PlaylistDeleteModal({ data: playlistInfo, outClickRef }) {
   }
 
   return (
-    <ModalWrapper ref={outClickRef} className='playlistDeleteModal'>
-      <h4 className='playlistDeleteModal__title'>
+    <ModalWrapper ref={outClickRef} className={styles.playlistDeleteModal}>
+      <h4 className={styles.title}>
         Delete {playlistInfo.name}?
       </h4>
-      <div className="playlistDeleteModal__actionBtns">
+      <div className={styles.actionBtns}>
         <LightBtn
-          className='cancel'
           text='CANCEL'
           onClick={() => closeModalHandle()}
         />
         <LightBtn
-          className='delete'
+          className={styles.delete}
           text='DELETE'
           onClick={() => deletePlaylistHandle(playlistInfo.id)}
         />

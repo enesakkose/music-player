@@ -1,10 +1,10 @@
 import React from 'react'
 import clsx from 'clsx'
-import '@/components/GradientBg.scss'
+import styles from '@/components/GradientBg/GradientBg.module.scss'
 
 function GradientBg({ bgColor, size = '40vh', className }) {
   return (
-    <div className={clsx('gradientBg', className)} 
+    <div className={clsx(styles.gradientBg, className)} 
       style={{ backgroundColor: `#${bgColor}`, height: `${size}` }}
     />
   )
