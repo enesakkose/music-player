@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
+import Icon from '@/components/Icon'
+import CloseBtn from '@/components/CloseBtn'
 import { useDispatch, useSelector } from 'react-redux'
 import { setQuerySongs } from '@/store/song'
 import { useSearchParams } from 'react-router-dom'
-import Icon from '@/components/Icon'
-import '@/Pages/Search/SearchInput.scss'
+import styles from '@/components/SearchInput/SearchInput.module.scss'
 
 function SearchInput({size}) {
   const dispatch = useDispatch()
@@ -32,9 +33,9 @@ function SearchInput({size}) {
   }
 
   return (
-    <form className='searchInput'>
+    <form className={styles.searchInput}>
       <label>
-        <Icon className='searchIcon' name='Search' size={24}/>
+        <Icon name='Search' size={24}/>
         <input
           autoFocus={!size ? true : false}
           type="text"
@@ -42,16 +43,9 @@ function SearchInput({size}) {
           value={querySongs}
           placeholder='What do you want to listen to ?'
         />
-        {querySongs && <button 
-          type='button' 
-          onClick={resetSearchInput} 
-          className='closeBtn'
-        >
-          <Icon name='Close' size={24}/>
-        </button>}
-      {querySongs.length === 1 && 
-        <p className='searchInput__error'>Please enter min 2 character</p>
-      }
+        {querySongs && <CloseBtn onClick={resetSearchInput} className={styles.closeBtn}/>}
+        {querySongs.length === 1 && !size && 
+        <p className={styles.error}>Please enter min 2 character</p>}
       </label>
     </form>
     

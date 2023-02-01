@@ -1,4 +1,4 @@
-.playlist__main{
+.main{
     flex: 1;
     position: relative;
     z-index: 1;
@@ -8,7 +8,7 @@
         overflow: unset;
     }
     
-    &__content{
+    .trackList{
         position: static;
         height: 100%;
         overflow: overlay;

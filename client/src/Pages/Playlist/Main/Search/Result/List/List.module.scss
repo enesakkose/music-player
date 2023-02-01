@@ -1,0 +1,20 @@
+.resultList{
+    padding: 0 !important;
+
+    .addBtn{
+        border: 1px solid rgba($WHITE, .6);
+        background-color: transparent;
+        padding: $PXS $PS;
+        color: $WHITE;
+        font-weight: 400;
+    
+        &:active{
+            transform: translateY(1px);
+        }
+    
+        &:hover{
+            border-color: $WHITE;
+            transform: scale(1);
+        }
+    }
+}

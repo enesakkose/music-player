@@ -1,10 +1,11 @@
 import React from 'react'
 import ActionBtns from '@/components/ActionBtns'
 import Icon from '@/components/Icon'
+import Button from '@/components/Button'
 import { useSelector } from 'react-redux'
 import { getNumberFormat } from '@/utils/number'
 import { modal } from '@/utils'
-import styles from '@/Pages/Playlist/PlaylistMain/SongList/HeaderBtns/HeaderBtns.module.scss'
+import styles from '@/Pages/Playlist/Main/SongList/HeaderBtns/HeaderBtns.module.scss'
 
 function HeaderBtns({ playlist }) {
   const { user } = useSelector(state => state.auth)
@@ -18,10 +19,10 @@ function HeaderBtns({ playlist }) {
 
   return (
     <ActionBtns className={styles.headerBtns} findSongs={onlyTracks}>
-      <button onClick={commentModal} className={styles.commentBtn}>
+      <Button onClick={commentModal} className={styles.commentBtn}>
         <Icon name='Comment' size={25} />
         <span>{getNumberFormat(playlist.commentsCount)}</span>
-      </button>
+      </Button>
     </ActionBtns>
   )
 }

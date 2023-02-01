@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import SearchHeader from '@/Pages/Playlist/PlaylistMain/Search/Header'
-import SearchResult from '@/Pages/Playlist/PlaylistMain/Search/Result'
 import clsx from 'clsx'
-import '@/Pages/Playlist/PlaylistMain/Search/Search.scss'
+import SearchHeader from '@/Pages/Playlist/Main/Search/Header'
+import SearchResult from '@/Pages/Playlist/Main/Search/Result'
+import styles from '@/Pages/Playlist/Main/Search/Search.module.scss'
 
 function Search({ playlist, show, setShow }) {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-      setSearch('')
+    setSearch('')
   }, [show])
 
   return (
-    <div className={clsx('playlistSearchSongs', show ? 'hide' : '')}>
+    <div className={clsx(styles.searchContainer, show ? styles.hide : '')}>
       <SearchHeader 
         show={show} 
         setShow={setShow} 

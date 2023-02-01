@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { modal } from '@/utils'
 import { follow, unfollow } from '@/firebase/db'
-import '@/Pages/Profile/ProfileHeader/ProfileHeaderBtns/ProfileHeaderBtns.scss'
+import styles from'@/Pages/Profile/ProfileHeader/ProfileHeaderBtns/ProfileHeaderBtns.module.scss'
 
 function ProfileHeaderBtns({ profile, validProfile }) {
   const navigate = useNavigate()
@@ -42,8 +42,8 @@ function ProfileHeaderBtns({ profile, validProfile }) {
   }
 
   return (
-    <div className='profileHeaderBtns'>
-      <div className="followBtns">
+    <div className={styles.profileHeaderBtns}>
+      <div className={styles.followBtns}>
         <NavigateBtn
           onClick={navigateToFollowers}
           text={`${profile.follower.length} Followers`}

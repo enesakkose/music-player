@@ -4,10 +4,9 @@ import TrackList from '@/components/TrackList'
 import DropdownMenuItem from '@/components/DropdownMenu/DropdownMenuItem'
 import moment from 'moment'
 import { removeFromAddedSongs } from '@/firebase/db'
-import '@/Pages/Playlist/PlaylistMain/SongList/List/List.scss'
+import '@/Pages/Playlist/Main/SongList/List/List.scss'
 
 function List({ playlist }) {
-
   const CustomPlaylistDropdownItem = ({song}) => {
     return(
       <DropdownMenuItem 

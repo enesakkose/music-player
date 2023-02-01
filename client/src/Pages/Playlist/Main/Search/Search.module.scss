@@ -1,4 +1,4 @@
-.playlistSearchSongs{
+.searchContainer{
     bottom: 6rem; //this value is assigned for animation 
     z-index: 100;
     background-color: transparent;
@@ -15,11 +15,4 @@
     border-top: 1px solid rgba($WHITE, .15);
     transition: .3s bottom ease-in-out;
     background-color: $secondaryColor;
-}
-
-.c{
-    //this class created for when list data in songlist class
-    transform: translateY(90%);
-    bottom: -1rem;
-    //todo will be checked
 }
