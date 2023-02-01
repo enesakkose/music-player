@@ -2,16 +2,15 @@ import React from 'react'
 import CustomPlaylistHeader from '@/components/Playlist/Header'
 import PlaylistDropdownMenu from '@/Pages/Playlist/Header/PlaylistDropdownMenu'
 import Button from '@/components/Button'
-import { Link } from 'react-router-dom'
 import { modal } from '@/utils'
-import '@/Pages/Playlist/Header/Header.scss'
+import styles from '@/Pages/Playlist/Header/Header.module.scss'
 
 function Header({ playlist, bgColor, validUser, scrollTop, user }) {
   const coverImage = playlist?.addedSongs[0]?.track?.images?.coverart
 
   return (        
     <CustomPlaylistHeader 
-      className="headerInPlaylist" 
+      className={styles.playlistHeader} 
       style={{ backgroundColor: `#${bgColor}`}}
       onClick={() => validUser ? modal('PlaylistInfoModal', playlist) : undefined}
       type='PLAYLIST'
@@ -21,8 +20,8 @@ function Header({ playlist, bgColor, validUser, scrollTop, user }) {
       bg={bgColor}
       scrollTop={scrollTop}
     >
-      <div className="subActions">
-        <h6 className='subActionsLink'>
+      <div className={styles.subActions}>
+        <h6 className={styles.link}>
           <Button href={`/profile/${user?.uid}`}>
             {user?.displayName}
           </Button>
