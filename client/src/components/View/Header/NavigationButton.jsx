@@ -1,5 +1,6 @@
 import React from 'react'
 import Icon from '@/components/Icon'
+import Button from '@/components/Button'
 import { useNavigate, useLocation } from 'react-router-dom'
 import '@/components/View/Header/NavigationButton.scss'
 
@@ -10,16 +11,16 @@ function NavigationButton() {
 
   return (
     <div className="navigationButton">
-      <button 
+      <Button 
         disabled={homePath && window.history.state.idx === 0} 
         className={window.history.state.idx === 0 ? 'disabled': ''} 
         onClick={() => navigate(-1)}
       >
         <Icon name='Left' size={24}/>
-      </button>
-      <button onClick={() => navigate(1)}>
+      </Button>
+      <Button onClick={() => navigate(1)}>
         <Icon name='Right' size={24}/>
-      </button>
+      </Button>
     </div>
   )
 }

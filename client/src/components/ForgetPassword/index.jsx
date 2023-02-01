@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import clsx from 'clsx'
 import LightBtn from '@/components/LightBtn'
 import CustomInput from '@/components/CustomInput'
+import Button from '@/components/Button'
 import { Formik, Form } from 'formik'
 import { resetPassword } from '@/firebase/auth'
 import { resetPasswordEmailSchema } from '@/forms/schemas'
@@ -21,9 +22,9 @@ function ForgetPassword({ className }) {
 
   return (
     <div className={clsx(styles.forgetPassword, className)}>
-      <button className={styles.showFormBtn} type='button' onClick={handleShowForm}>
+      <Button className={styles.showFormBtn} onClick={handleShowForm}>
         Forgot Password?
-      </button>
+      </Button>
       <div>
       <Formik
         initialValues={{ email: '' }}

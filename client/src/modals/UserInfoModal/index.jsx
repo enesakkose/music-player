@@ -1,10 +1,11 @@
 import React from 'react'
 import clsx from 'clsx'
+import Button from '@/components/Button'
 import Icon from '@/components/Icon'
 import Avatar from '@/components/Avatar'
 import LightBtn from '@/components/LightBtn'
 import CustomInput from '@/components/CustomInput'
-import ModalHeader from '@/components/Modal/ModalHeader'
+import Header from '@/components/Modal/Header'
 import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import { Form, Formik } from 'formik'
 import { closeModalHandle } from '@/utils'
@@ -38,7 +39,7 @@ function UserInfoModal({outClickRef}) {
 
   return (
     <ModalWrapper ref={outClickRef} className={styles.userInfoModal}>
-      <ModalHeader title='User Details'/>
+      <Header title='User Details'/>
       <Formik
         initialValues={{ displayName: userInfo.displayName }}
         onSubmit={onSubmit}
@@ -53,14 +54,14 @@ function UserInfoModal({outClickRef}) {
               />
               <div className={styles.pencilBtn}>
                 <Icon name='Pencil' size={50}/>
-                <button
+                <Button
                   disabled={userInfo.photoURL === null || userInfo.photoURL === ''} 
                   type='button'
                   onClick={removePrflImg} 
                   className={styles.remove}
                 >
                   Remove Photo
-                </button>
+                </Button>
               </div>
               <input id='file' type='file' onChange={handleUpload} accept="image/png, image/jpeg" hidden/>
             </label>

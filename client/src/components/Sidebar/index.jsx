@@ -4,7 +4,7 @@ import Navbar from '@/components/Sidebar/Navbar'
 import Library from '@/components/Sidebar/Library'
 import Playlist from '@/components/Sidebar/Playlist'
 import BrandLogo from '@/components/BrandLogo'
-import SidebarAlbumCover from '@/components/Sidebar/SidebarAlbumCover'
+import SidebarAlbumCover from '@/components/Sidebar/AlbumCover'
 import { useSelector } from 'react-redux'
 import '@/components/Sidebar/Sidebar.scss'
 

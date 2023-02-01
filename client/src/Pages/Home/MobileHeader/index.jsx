@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import Icon from '@/components/Icon'
-import Menu from '@/Pages/Home/MobileHeader/Menu'
-import '@/Pages/Home/MobileHeader/MobileHeader.scss'
+import Button from '@/components/Button'
+import Menu from '@/Pages/Home/MobileHeader/Menu/Menu'
+import styles from '@/Pages/Home/MobileHeader/MobileHeader.module.scss'
 
 function MobileHeader({profile}) {
   const [ openMenu, setOpenMenu ] = useState(false)
 
   return (
     <>
-    <header className='mobileHeader'>
+    <header className={styles.mobileHeader}>
       <Icon name='Logo' size={30}/>
-      <button onClick={() => setOpenMenu(true)}>
+      <Button onClick={() => setOpenMenu(true)}>
         <Icon name='Double' size={30}/>
-      </button> 
+      </Button> 
     </header>
     <Menu setOpenMenu={setOpenMenu} openMenu={openMenu} profile={profile}/>
     </>

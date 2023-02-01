@@ -1,11 +1,12 @@
 import React from 'react'
+import Button from '@/components/Button'
+import LightBtn from '@/components/LightBtn'
 import styles from '@/components/FollowBtn/FollowBtn.module.scss'
 
 function FollowBtn({ followers, ...props }) {
   return (
-    <button className={styles.followBtn} {...props}>
-      {followers ? 'Unfollow' : 'Follow'}
-    </button>
+    <LightBtn text={followers ? 'Unfollow' : 'Follow'} className={styles.followBtn} {...props}/>
+      
   )
 }
 

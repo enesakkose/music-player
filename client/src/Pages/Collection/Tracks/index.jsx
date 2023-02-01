@@ -4,7 +4,6 @@ import Main from '@/Pages/Collection/Tracks/Main'
 import Button from '@/components/Button'
 import PlaylistWrapper from '@/components/Wrappers/PlaylistWrapper'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 import styles from '@/Pages/Collection/Tracks/Tracks.module.scss'
 
 function Tracks() {

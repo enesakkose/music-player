@@ -1,5 +1,6 @@
 import React from 'react'
-import CloseBtn from '@/components/Modal/CloseBtn'
+import CloseBtn from '@/components/CloseBtn'
+import { closeModalHandle } from '@/utils'
 import styles from '@/components/Modal/Header/Header.module.scss'
 
 function Header({title}) {
@@ -8,7 +9,11 @@ function Header({title}) {
       <h3 className={styles.title}>
         {title}
       </h3>
-      <CloseBtn/>
+      <CloseBtn 
+        className={styles.closeBtn} 
+        onClick={() => closeModalHandle()}
+        size={30} 
+      />
     </header>
   )
 }

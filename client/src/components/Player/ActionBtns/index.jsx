@@ -2,6 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import Icon from '@/components/Icon'
 import PlayBtn from '@/components/PlayBtn'
+import Button from '@/components/Button'
 import { useSelector } from 'react-redux'
 import { handlePlayPause, handleNextSong, handlePrevSong } from '@/utils/player'
 import styles from '@/components/Player/ActionBtns/ActionBtns.module.scss'
@@ -17,25 +18,25 @@ function ActionBtns({ className, size= 36 }) {
 
   return (
     <div className={clsx(styles.actionBtns, className)}>
-      <button
+      <Button
         disabled={!isActive}
         onClick={() => handlePrevSong(currentIndex, currentSongs)} 
         className={styles.previousBtn}
       >
         <Icon name='Previous' size={size}/>
-      </button>
+      </Button>
       <PlayBtn
         onClick={() => handlePlayPause(current, isPlaying)} 
         playPause={isPlaying && current.key} 
         className={styles.playBtn} 
       />
-      <button
+      <Button
         disabled={!isActive} 
         onClick={() => handleNextSong(currentIndex, currentSongs)} 
         className={styles.nextBtn}
       >
         <Icon name='Next' size={size}/>
-      </button>
+      </Button>
     </div>
   )
 }

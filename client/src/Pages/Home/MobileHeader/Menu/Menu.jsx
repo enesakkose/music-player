@@ -1,20 +1,19 @@
 import React from 'react'
 import clsx from 'clsx'
-import Icon from '@/components/Icon'
 import Button from '@/components/Button'
+import CloseBtn from '@/components/CloseBtn'
 import { modal } from '@/utils'
 import { handleLogout } from '@/firebase/auth'
 import styles from '@/Pages/Home/MobileHeader/Menu/Menu.module.scss'
 
 function Menu({ openMenu, setOpenMenu, profile }) {
+  const openMenuHandle = () => {
+    setOpenMenu(false)
+  }
+
   return (
     <div className={clsx(styles.mobileMenu, openMenu ? styles.openMenu : '')}>
-      <Button
-        className={styles.closeBtn}
-        onClick={() => setOpenMenu(false)}
-      >
-        <Icon name='close' size={30}/>
-      </Button>
+      <CloseBtn className={styles.closeBtn} onClick={openMenuHandle} size={30}/>
       <div className={styles.menuList}>
         <Button href={`/profile/${profile.uid}`}>
           Profile

@@ -42,21 +42,18 @@
             flex: 1;
         }
         
-        .input{
+        input{
             height: 3rem;
             background-color: transparent;
             border: none;
         }
-
-        button{
-            padding: $PXS;
-            border-radius: 50%;
-        }
         
         .submitBtn{
+            padding: $PXS;
             background-color: $GREEN;
             color: $WHITE;
             margin-inline: $PXS;
+            border-radius: 50%;
         }
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import ModalWrapper from '@/components/Wrappers/ModalWrapper'
-import ModalHeader from '@/components/Modal/ModalHeader'
+import Header from '@/components/Modal/Header'
 import Main from '@/modals/CommentModal/Main'
 import { useGetPlaylist } from '@/hooks/useGetPlaylist'
 
@@ -11,7 +11,7 @@ function CommentModal({ outClickRef, data: playlistId }) {
 
   return (
     <ModalWrapper ref={outClickRef}>
-      <ModalHeader title='Comments'/>
+      <Header title='Comments'/>
       <Main playlist={playlist}/>
     </ModalWrapper>
   )

@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react'
 import clsx from 'clsx'
+import Button from '@/components/Button'
 import Icon from '@/components/Icon'
 import CustomInput from '@/components/CustomInput'
 import { addComment } from '@/firebase/db'
@@ -25,23 +26,18 @@ const CommentModalForm = forwardRef(function CommentModalForm({playlistId}, ref)
         <Form className={styles.form}>
           <CustomInput
             labelClassName={styles.label}
-            className={styles.input}
             type='text'
             name='comment'
             placeholder='Comment'
             autoComplete='off'
           />
-          <button
-            disabled={values.comment.trim().length < 1}
+          <Button
+            disabled={values.comment.trim().length < 1 || isSubmitting}
             type='submit' 
-            className={clsx(
-              styles.submitBtn, 
-              isSubmitting ? 'submittingBtn' : '',
-              values.comment.trim().length < 1 ? 'submittingBtn' : ''
-            )}
+            className={styles.submitBtn}
           >
             <Icon name='Send' size={20}/>
-          </button>
+          </Button>
         </Form>
       )}
     </Formik>

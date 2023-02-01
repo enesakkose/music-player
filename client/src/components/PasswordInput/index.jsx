@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Icon from '@/components/Icon'
 import CustomInput from '@/components/CustomInput'
+import Button from '@/components/Button'
 import styles from '@/components/PasswordInput/PasswordInput.module.scss'
 
 function PasswordInput({title, name='password', ...props}) {
@@ -18,9 +19,9 @@ function PasswordInput({title, name='password', ...props}) {
         inputTitle={title}
         {...props}
       />
-      <button className={styles.eyeBtn} type="button" onClick={handleShowPassword}>
+      <Button className={styles.eyeBtn} type="button" onClick={handleShowPassword}>
         <Icon name={showPassword ? 'CloseEye' : 'Eye'} size={22}/>
-      </button>
+      </Button>
     </div>
   )
 }

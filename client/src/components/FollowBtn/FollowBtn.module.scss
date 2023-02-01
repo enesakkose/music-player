@@ -1,12 +1,12 @@
 .followBtn{
     padding: $PXS $PS;
-    border-radius: .5rem !important;
-    border: 1px solid rgba($WHITE, .3);
+    border-radius: .5rem;
     background-color: $WHITE;
     color: $BLACK;
     font-weight: 700;
 
     &:hover{
         opacity: .9;
+        transform: scale(1);
     }
 }

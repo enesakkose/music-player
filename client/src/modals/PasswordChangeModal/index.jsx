@@ -2,7 +2,7 @@ import React from 'react'
 import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import CustomInput from '@/components/CustomInput'
 import ForgetPassword from '@/components/ForgetPassword'
-import ModalHeader from '@/components/Modal/ModalHeader'
+import Header from '@/components/Modal/Header'
 import LightBtn from '@/components/LightBtn'
 import { useSelector } from 'react-redux'
 import { updateUserPassword, updateMail } from '@/firebase/auth'
@@ -26,7 +26,7 @@ function PasswordChangeModal({ outClickRef }) {
 
   return (
     <ModalWrapper ref={outClickRef} className={styles.passwordChangeModal}>
-      <ModalHeader title='Personal Info Change'/>
+      <Header title='Personal Info Change'/>
       <div className={styles.content}>
         <div className={styles.password}>
           <Formik

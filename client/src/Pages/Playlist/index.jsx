@@ -1,14 +1,13 @@
 import React, { useRef } from 'react'
 import Header from '@/Pages/Playlist/Header'
-import PlaylistMain from '@/Pages/Playlist/PlaylistMain'
-import Loading from '@/components/Loading'
+import Main from '@/Pages/Playlist/Main'
 import { useGetProfile } from '@/hooks/useGetProfile'
 import { getMobileTabletSize } from '@/utils/size'
 import { useValidUser } from '@/hooks/useValidUser'
 import { useHandleScroll } from '@/hooks/useScroll'
 import { useGetPlaylist } from '@/hooks/useGetPlaylist'
 import { useParams } from 'react-router-dom'
-import '@/Pages/Playlist/Playlist.scss'
+import styles from '@/Pages/Playlist/Playlist.module.scss'
 
 function Playlist() {
   const { playlistId } = useParams()
@@ -23,7 +22,7 @@ function Playlist() {
   if(playlist === null || user === null) return
   
   return (
-    <div ref={ref} key={playlist.id} className='playlist'>
+    <div ref={ref} key={playlist.id} className={styles.playlist}>
       <Header 
         playlist={playlist}
         bgColor={bgColor} 
@@ -31,7 +30,7 @@ function Playlist() {
         scrollTop={scrollTop}
         user={user}
       />
-      <PlaylistMain 
+      <Main 
         playlist={playlist} 
         validUser={validUser} 
         bgColor={bgColor}

@@ -1,5 +1,6 @@
 import React from 'react'
 import Icon from '@/components/Icon'
+import Button from '@/components/Button'
 import { useSelector } from 'react-redux'
 import { updatePlaylist } from '@/firebase/db'
 import { uploadImg, deleteImg } from '@/firebase/storage'
@@ -44,14 +45,13 @@ function Cover({ playlistId }) {
             hidden 
           />
         </label>
-        <button
+        <Button
           disabled={coverURL === null}
-          type='button'
           onClick={deleteImgHandle}
           className={styles.imgChangeBtn}
         >
           <Icon name='Trash' size={20} />
-        </button>
+        </Button>
       </div>
     </div>
   )

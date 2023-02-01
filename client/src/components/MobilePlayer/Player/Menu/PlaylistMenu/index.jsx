@@ -1,5 +1,6 @@
 import React from 'react'
 import Icon from '@/components/Icon'
+import Button from '@/components/Button'
 import { useSelector } from 'react-redux'
 import { addToPlaylist } from '@/utils/song'
 import styles from '@/components/MobilePlayer/Player/Menu/PlaylistMenu/PlaylistMenu.module.scss'
@@ -16,9 +17,9 @@ function PlaylistMenu({setOpenPlaylist, setOpenMenu}) {
 
   return (
     <ul className={styles.playlists}>
-      <button onClick={() => setOpenPlaylist(false)}>
+      <Button onClick={() => setOpenPlaylist(false)}>
         <Icon name='left' size={26}/>
-      </button>
+      </Button>
       {playlists.map((playlist) => (
         <li onClick={() => addToPlaylistHandle(playlist.id)} key={playlist.id}>
           {playlist.name}
