@@ -2,33 +2,32 @@ import React from 'react'
 import clsx from 'clsx'
 import Icon from '@/components/Icon'
 import Button from '@/components/Button'
-import { Link } from 'react-router-dom'
 import { modal } from '@/utils'
 import { handleLogout } from '@/firebase/auth'
-import '@/Pages/Home/MobileHeader/Menu.scss'
+import styles from '@/Pages/Home/MobileHeader/Menu/Menu.module.scss'
 
 function Menu({ openMenu, setOpenMenu, profile }) {
   return (
-    <div className={clsx('mobileMenu', openMenu ? 'openMenu' : '')}>
-      <button
-        className='mobileMenuCloseBtn'
+    <div className={clsx(styles.mobileMenu, openMenu ? styles.openMenu : '')}>
+      <Button
+        className={styles.closeBtn}
         onClick={() => setOpenMenu(false)}
       >
         <Icon name='close' size={30}/>
-      </button>
-      <div className="mobileMenuList">
+      </Button>
+      <div className={styles.menuList}>
         <Button href={`/profile/${profile.uid}`}>
           Profile
         </Button>
-        <button onClick={() => modal('UserInfoModal')}>
+        <Button onClick={() => modal('UserInfoModal')}>
           Edit Profile
-        </button>
-        <button onClick={() => modal('PasswordChangeModal')}>
+        </Button>
+        <Button onClick={() => modal('PasswordChangeModal')}>
           Password Change
-        </button>
-        <button onClick={() => handleLogout()}>
+        </Button>
+        <Button onClick={() => handleLogout()}>
           Logout
-        </button>
+        </Button>
       </div>
     </div>
   )

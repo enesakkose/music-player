@@ -1,9 +1,10 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import Icon from '@/components/Icon'
 import CustomRange from '@/components/CustomRange'
+import Button from '@/components/Button'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import '@/components/Footer/MusicTool.scss'
+import styles from '@/components/Footer/MusicTool/MusicTool.module.scss'
 
 function MusicTool({ volume, setVolume, muted, setMuted }) {
   const { isActive } = useSelector(state => state.player)
@@ -29,18 +30,19 @@ function MusicTool({ volume, setVolume, muted, setMuted }) {
   }
 
   return (
-    <div className="footer__music__tool">
-      {isActive && <NavLink to='/lyrics' className='footer__music__tool__lyricsBtn'>
+    <div className={styles.musicTool}>
+      {isActive && <NavLink to='/lyrics' className={styles.lyricsBtn}>
         <Icon name='Microphone' size={22}/>
       </NavLink>}
-      <div className="footer__music__tool__range">
-        <button className='volumeBtn' onClick={handleVolumeBtn}>
+      <div className={styles.range}>
+        <Button className={styles.volumeBtn} onClick={handleVolumeBtn}>
           <Icon 
             name={volumeIcon} 
             size={24}
           />
-        </button>
+        </Button>
         <CustomRange
+          className={styles.slider}
           value={muted ? mutedVolume : volume}
           onChange={value => handleChangeVolume(value)}
           min={0} 

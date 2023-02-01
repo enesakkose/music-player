@@ -23,7 +23,7 @@ function Header({ playlist, bgColor, validUser, scrollTop, user }) {
     >
       <div className="subActions">
         <h6 className='subActionsLink'>
-          <Button to={`/profile/${user?.uid}`}>
+          <Button href={`/profile/${user?.uid}`}>
             {user?.displayName}
           </Button>
         </h6>

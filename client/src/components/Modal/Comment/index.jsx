@@ -1,10 +1,11 @@
 import React from 'react'
 import Avatar from '@/components/Avatar'
+import Button from '@/components/Button'
 import { useNavigate } from 'react-router-dom'
 import { getTime } from '@/utils/number'
 import { closeModalHandle } from '@/utils'
 import { useGetProfile } from '@/hooks/useGetProfile'
-import '@/components/Modal/Comment.scss'
+import styles from '@/components/Modal/Comment/Comment.module.scss'
 
 function Comment({comment, ...props}) {
   const navigate = useNavigate()
@@ -19,16 +20,16 @@ function Comment({comment, ...props}) {
   }
 
   return (
-    <div className='comment' {...props}>
+    <div className={styles.commentContainer} {...props}>
       <Avatar src={profile?.photoURL} size='32px'/>
-      <div className="comment__text">
-        <div className='comment__text__title'>
-          <button className='navBtn' onClick={commentNavBtn}>
+      <div className={styles.content}>
+        <div className={styles.title}>
+          <Button className={styles.navBtn} onClick={commentNavBtn}>
             {profile?.displayName}
-          </button>
+          </Button>
           <span>• {time}</span>
         </div>
-        <p className='comment__text__content'>{comment.comment}</p>
+        <p className={styles.comment}>{comment.comment}</p>
       </div>
     </div>
   )

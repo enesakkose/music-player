@@ -14,7 +14,7 @@
         inset: 0;
         border-radius: 0;
 
-        .unauthSongModal__closeBtn{
+        .closeBtn{
             display: flex;
         }
     }
@@ -30,7 +30,7 @@
         }
     }
 
-    &__info{
+    .info{
         max-width: 18.75rem;
         display: flex;
         align-items: center;
@@ -46,7 +46,7 @@
             text-align: center;
         }
 
-        &__signBtn{
+        .signUpBtn{
             background-color: transparent;
             color: $WHITE;
             border: 1px solid rgba($WHITE, .4);
@@ -56,12 +56,12 @@
             }
         }
 
-        &__logBtn{
+        .logInBtn{
             background-color: $GREEN;
         }
     }
 
-    &__closeBtn{
+    .closeBtn{
         display: none;
     }
 }

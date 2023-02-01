@@ -41,6 +41,7 @@
             border-radius: 50%;
             opacity: 0;
             transition: 100ms opacity ease-in-out;
+            color: $PRIMARY-500;
 
             &:hover{
                 color: $WHITE;

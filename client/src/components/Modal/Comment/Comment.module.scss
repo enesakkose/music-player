@@ -1,14 +1,14 @@
-.comment{
+.commentContainer{
     border-bottom: 1px solid rgba($WHITE, .3);
     padding: $PXS;
     display: flex;
     gap: 1.5rem;
     align-items: center;
 
-    &__text{
+    .content{
         flex: 1;
 
-        &__title{
+        .title{
             display: flex;
             align-items: center;
             gap: .5rem;
@@ -29,7 +29,7 @@
             }
         }
 
-        &__content{
+        .comment{
             word-break: break-all;
             max-width: 18rem;
         }

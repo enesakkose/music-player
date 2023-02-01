@@ -9,4 +9,8 @@
 .hideHeader{
     align-items: inherit;
     border-top: 0;
+
+    button{
+        align-items: unset;
+    }
 }

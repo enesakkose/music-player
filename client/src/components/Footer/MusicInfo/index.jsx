@@ -2,9 +2,10 @@ import React from 'react'
 import MediaInfo from '@/components/MediaInfo'
 import Icon from '@/components/Icon'
 import clsx from 'clsx'
+import Button from '@/components/Button'
 import { setOpenCover } from '@/store/playlist'
 import { useSelector, useDispatch } from 'react-redux'
-import styles from '@/components/Footer/MusicInfo.module.scss'
+import styles from '@/components/Footer/MusicInfo/MusicInfo.module.scss'
 
 function MusicInfo() {
   const dispatch = useDispatch()
@@ -19,12 +20,12 @@ function MusicInfo() {
             src={current?.images?.coverart}
             alt={current?.title}
           />
-          <button
+          <Button
             onClick={() => dispatch(setOpenCover(!openCover))}
             className={styles.expandBtn}
           >
-            <Icon name='Left' size={20} />
-          </button>
+            <Icon name='Left' size={20}/>
+          </Button>
         </div>
         <MediaInfo className={styles.info} as='h5' favBtn='22' song={current} />
       </div>}
