@@ -8,6 +8,7 @@ import auth from '@/store/auth'
 import modal from '@/store/modal'
 import popup from '@/store/popup'
 import profiles from '@/store/profiles'
+import volume from '@/store/volume'
 import audio from '@/store/audio'
 
 //SERVICES
@@ -23,6 +24,7 @@ export const store = configureStore({
     modal,
     popup,
     profiles,
+    volume,
     [musicApi.reducerPath]: musicApi.reducer
   },
   middleware: (getDefaultMiddleware) => 

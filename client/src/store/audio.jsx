@@ -1,4 +1,3 @@
-import { auth } from "@/firebase/auth"
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {

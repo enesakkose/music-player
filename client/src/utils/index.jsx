@@ -20,11 +20,9 @@ export const popup = (open, text = false) => {
     }))
 }
 
-export const unauthModal = (e,user) => {
-    if(!user) {
-        e.preventDefault()
-        modal('UnauthModal')
-    }
+export const unauthModal = (e) => {
+    e.preventDefault()
+    modal('UnauthModal')
 }
 
 export const navigateAuth = () => {
