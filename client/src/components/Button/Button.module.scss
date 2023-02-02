@@ -1,8 +1,9 @@
-button{
+.button{
     cursor: pointer;
     background-color: transparent;
-    color: rgba($WHITE, .6);
+    color: $NEUTRAL-500;
     display: flex;
+    align-items: center;
 
     &:disabled, &[disabled]{
         opacity: .5;
