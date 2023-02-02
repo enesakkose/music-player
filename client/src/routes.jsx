@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 import Home from '@/Pages/Home'
 import Search from '@/Pages/Search'
-import ProfileLayout from "@/Pages/Profile/ProfileLayout"
+import ProfileLayout from "@/Pages/Profile/Layout"
 import Profile from '@/Pages/Profile'
 import ProfilesResult from "@/Pages/Search/Result/ProfilesResult"
 import CollectionLayout from '@/Pages/Collection'

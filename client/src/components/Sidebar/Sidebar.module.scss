@@ -3,6 +3,8 @@
     background-color: $BLACK;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    grid-area: sidebar;
+    overflow: hidden;
     
     .content{
         display: flex;

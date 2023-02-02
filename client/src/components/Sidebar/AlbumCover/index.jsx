@@ -11,13 +11,13 @@ function SidebarAlbumCover() {
     
   return (
     <div className={styles.albumCover}>
-        <img src={current?.images.coverart} alt={current?.title}/>
-        <Button 
-          className={styles.closeBtn} 
-          onClick={() => dispatch(setOpenCover(false))}
-        >
-          <Icon name='Left' size={20}/>
-        </Button>
+      <img src={current?.images.coverart} alt={current?.title}/>
+      <Button 
+        className={styles.closeBtn} 
+        onClick={() => dispatch(setOpenCover(false))}
+      >
+        <Icon name='Left' size={20}/>
+      </Button>
     </div>
   )
 }

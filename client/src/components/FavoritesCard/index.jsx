@@ -6,13 +6,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setCurrent, playPause, setCurrentSongs } from '@/store/player'
 import styles from '@/components/FavoritesCard/FavoritesCard.module.scss'
 
-function FavoritesCard({favorites}) {
+function FavoritesCard({ favorites }) {
   const dispatch = useDispatch()
   const { current, isPlaying } = useSelector(state => state.player)
   const inFavoritesPlaylist = favorites.some(song => song.key === current.key)
-  
+
   const play = () => {
-    if (!inFavoritesPlaylist){
+    if(!inFavoritesPlaylist){
       dispatch(setCurrent(favorites[0]))
       dispatch(setCurrentSongs(favorites))
     }else{
@@ -24,13 +24,13 @@ function FavoritesCard({favorites}) {
     <div className={styles.favoritesCard}>
       <div className={styles.info}>
         <h3>Liked Songs</h3>
-        <span>{favorites.length} liked songs</span>  
+        <span>{favorites.length} liked songs</span>
       </div>
-      <PlayBtn 
+      <PlayBtn
         disabled={favorites.length === 0}
         playPause={inFavoritesPlaylist && isPlaying}
-        onClick={play} 
-        className={clsx( styles.playBtn, inFavoritesPlaylist && isPlaying ? styles.currentFav : styles.notCurrentFav )}
+        onClick={play}
+        className={clsx(styles.playBtn, inFavoritesPlaylist && isPlaying ? styles.currentFav : styles.notCurrentFav)}
       />
       <Button href='/collection/tracks' className={styles.href}/>
     </div>

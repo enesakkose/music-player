@@ -3,10 +3,12 @@ import Icon from '@/components/Icon'
 import CloseBtn from '@/components/CloseBtn'
 import { useDispatch, useSelector } from 'react-redux'
 import { setQuerySongs } from '@/store/song'
+import { getMobileTabletSize } from '@/utils/size'
 import { useSearchParams } from 'react-router-dom'
 import styles from '@/components/SearchInput/SearchInput.module.scss'
 
-function SearchInput({size}) {
+function SearchInput() {
+  const size = getMobileTabletSize()
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
   const { querySongs } = useSelector(state => state.song)
@@ -33,6 +35,8 @@ function SearchInput({size}) {
   }
 
   return (
+    <>
+    {size && <h2>Search</h2>}
     <form className={styles.searchInput}>
       <label>
         <Icon name='Search' size={24}/>
@@ -48,7 +52,7 @@ function SearchInput({size}) {
         <p className={styles.error}>Please enter min 2 character</p>}
       </label>
     </form>
-    
+    </>
   )
 }
 

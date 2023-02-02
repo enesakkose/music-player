@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import ErrorFallback from '@/components/ErrorFallback'
 import { routes } from '@/routes'
 import { useRoutes } from 'react-router-dom'
-import { Toaster } from 'react-hot-toast'
+import { ErrorBoundary } from 'react-error-boundary'
 
 function App() {
   return (
     <div className="App">
-      <Toaster/>
-      {useRoutes(routes)}
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        {useRoutes(routes)}
+      </ErrorBoundary>
     </div>
   )
 }

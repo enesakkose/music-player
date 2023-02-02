@@ -4,9 +4,10 @@ import PublishPlaylists from '@/Pages/Profile/ProfileMain/PublishPlaylists'
 import PageWrapper from '@/components/Wrappers/PageWrapper'
 import '@/Pages/Profile/ProfileMain/ProfileMain.scss'
 
-function ProfileMain({ profile, publishPlaylists}) {
+function ProfileMain({ profile, publishPlaylists }) {
   const favLength = profile?.favorites?.length > 0
   const publishLength = publishPlaylists.length > 0
+
   return (
     <PageWrapper as='div' className='profileMain'>
       {favLength && <Favorites profile={profile}/>}

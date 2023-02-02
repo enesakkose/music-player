@@ -7,7 +7,7 @@ import PlaylistInfoCard from '@/components/PlaylistInfoCard'
 import CreatePlaylistBtn from '@/components/CreatePlaylistBtn'
 import { getMobileTabletSize } from '@/utils/size'
 import { useSelector } from 'react-redux'
-import '@/Pages/Collection/Playlists.scss'
+import styles from '@/Pages/Collection/Playlists/Playlists.module.scss'
 
 function Playlists() {
   const { playlists } = useSelector(state => state.playlist)
@@ -15,14 +15,14 @@ function Playlists() {
   const size = getMobileTabletSize()
   
   return (
-    <PageWrapper className='playlists'>
+    <PageWrapper className={styles.playlists}>
       <h3>Your Playlists</h3>
       {playlists.length === 0 
         ? <EmptyField icon='Music'>
             <CreatePlaylistBtn size={42}/>
           </EmptyField>  
 
-        : <CardListWrapper className="playlists__cards">
+        : <CardListWrapper className={styles.cards}>
             {!size && <FavoritesCard favorites={favorites}/>}
             {size && <CreatePlaylistBtn size={42}/>}
             {playlists.map((playlist) => (

@@ -1,35 +1,36 @@
 import React, { useState } from 'react'
-import { Resizable } from 're-resizable'
 import Navbar from '@/components/Sidebar/Navbar'
 import Library from '@/components/Sidebar/Library'
-import Playlist from '@/components/Sidebar/Playlist'
+import Playlists from '@/components/Sidebar/Playlists'
 import BrandLogo from '@/components/BrandLogo'
 import SidebarAlbumCover from '@/components/Sidebar/AlbumCover'
+import { Resizable } from 're-resizable'
 import { useSelector } from 'react-redux'
-import '@/components/Sidebar/Sidebar.scss'
+import styles from '@/components/Sidebar/Sidebar.module.scss'
 
 function Sidebar() {
-  const [ width, setWidth ] = useState(300)
+  const [width, setWidth] = useState(300)
   const { openCover } = useSelector(state => state.playlist)
   const { user } = useSelector(state => state.auth)
 
   return (
-    <aside className='sidebar'>
+    <aside className={styles.sidebar}>
       <Resizable
-        className='resizeable'
+        className={styles.resizeable}
         maxWidth={400}
         defaultSize={{ width }}
         minWidth={300}
         enable={{ right: true }}
-        handleWrapperClass='sidebar__resizer'
+        handleWrapperClass={styles.resizer}
         onResizeStop={(d) => {
-        setWidth({ width: width + d.width})}}
+          setWidth({ width: width + d.width })
+        }}
       >
-        <div className="sidebar__content">
-          <BrandLogo size={35} className='sidebar__content__logo'/>
-          <Navbar user={user}/>
-          <Library user={user}/>
-          {user && <Playlist/>}
+        <div className={styles.content}>
+          <BrandLogo size={35}/>
+          <Navbar/>
+          <Library/>
+          {user && <Playlists/>}
           {openCover && <SidebarAlbumCover/>}
         </div>
       </Resizable>

@@ -5,7 +5,7 @@ import ActionBtns from '@/components/ActionBtns'
 import List from '@/Pages/Album/Main/List'
 import styles from '@/Pages/Album/Album.module.scss'
 
-function Main({ findSongs, findAlbum, backgroundColor, size }) {
+function Main({ findSongs, findAlbum, backgroundColor }) {
   return (
     <TrackListWrapper className={styles.content}>
       <ActionBtns
@@ -14,7 +14,7 @@ function Main({ findSongs, findAlbum, backgroundColor, size }) {
         songLength={findSongs.length}
         findSongs={findSongs}
       />
-      <List size={size} songs={findSongs}/>
+      <List songs={findSongs}/>
       <GradientBg bgColor={backgroundColor}/>
     </TrackListWrapper>
   )

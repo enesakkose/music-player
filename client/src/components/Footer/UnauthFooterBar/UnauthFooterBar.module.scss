@@ -5,6 +5,7 @@
     background-image: $unauthBar;
     height: 4.375rem;
     padding: $PS $PL;
+    grid-area: footer;
 
     .text{
         color: $WHITE;

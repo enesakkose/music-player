@@ -23,7 +23,7 @@ function Tracks() {
           {favorites.length > 0 && <h6>• {favorites.length} songs</h6>}
         </div>
       </Header>
-      <Main favorites={favorites}/>
+      <Main/>
     </PlaylistWrapper>
   )
 }

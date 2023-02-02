@@ -5,12 +5,12 @@ import LightBtn from '@/components/LightBtn'
 import { addToPlaylist } from '@/utils/song'
 import styles from '@/Pages/Playlist/Main/Search/Result/List/List.module.scss'
 
-function List({ result, isSuccess, isFetching, playlist, show }) {
+function List({ result, playlist, show }) {
   const resultSong = show ? [] : result?.tracks?.hits?.slice(1,11)
 
   return (
     <TrackList className={styles.resultList}>
-      {isSuccess && !isFetching && resultSong.map((song,index) => (
+      {resultSong.map((song,index) => (
         <Row
           key={song.track.key}
           index={index}

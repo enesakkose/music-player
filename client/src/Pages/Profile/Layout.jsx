@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-function ProfileLayout() {
+function Layout() {
   return (
     <>
     <Outlet/>
@@ -9,4 +9,4 @@ function ProfileLayout() {
   )
 }
 
-export default ProfileLayout
+export default Layout

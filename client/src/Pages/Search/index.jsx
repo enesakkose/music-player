@@ -5,20 +5,17 @@ import PageWrapper from '@/components/Wrappers/PageWrapper'
 import SearchInput from '@/components/SearchInput'
 import { getMobileTabletSize } from '@/utils/size'
 import { useSelector } from 'react-redux'
-import '@/Pages/Search/Search.scss'
+import styles from '@/Pages/Search/Search.module.scss'
 
 function Search() {
-  const { querySongs } = useSelector(state => state.song)
   const size = getMobileTabletSize()
+  const { querySongs } = useSelector(state => state.song)
 
   return (
-    <PageWrapper className='search'>
-      {size && <> 
-        <h2>Search</h2>
-        <SearchInput size={size}/>
-      </>}
+    <PageWrapper className={styles.search}>
+      {size && <SearchInput/>}
       {querySongs.length < 2 && <Categories/>}
-      {querySongs.length > 1 && <Result size={size} querySongs={querySongs}/>}
+      {querySongs.length > 1 && <Result querySongs={querySongs}/>}
     </PageWrapper>
   )
 }

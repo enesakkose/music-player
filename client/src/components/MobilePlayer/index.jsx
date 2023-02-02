@@ -12,7 +12,7 @@ function MobilePlayer() {
   const bg = current?.images?.joecolor?.slice(18,24)
 
   return (
-    <div style={{ '--bg': `#${bg}`}} className={styles.mobilePlayer}>
+    <div style={{ '--bg': `#${bg}` }} className={styles.mobilePlayer}>
       <Actions/>
       <Audio time={false} mobile={true} muted={false}/>
       {expand && <Player expand={expand} setExpand={setExpand}/>}

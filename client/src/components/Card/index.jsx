@@ -7,16 +7,16 @@ import { Link } from 'react-router-dom'
 import Button from '@/components/Button'
 import styles from '@/components/Card/Card.module.scss'
 
-function Card({ 
+function Card({
   style = null,
-  name, 
-  title, 
-  href, 
-  playBtn= true, 
+  name,
+  title,
+  href,
+  playBtn = true,
   playPause,
-  onClick, 
+  onClick,
   className,
-  children, 
+  children,
   ...props }) {
   const size = getMobileTabletSize()
   const navigate = useNavigate()

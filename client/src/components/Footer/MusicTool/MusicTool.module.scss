@@ -6,15 +6,8 @@
     grid-area: tool;
 
     .lyricsBtn{
-        color: rgba($WHITE, .6);
-    }
-
-    button, .lyricsBtn{
         width: 1.875rem;
         height: 1.875rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
 
         &:hover{
             color: $WHITE;
@@ -23,22 +16,9 @@
 
     .active{
         color: $GREEN;
-        //microphone link when active
+
         &:hover{
             color: $GREEN;
         }
-        
-    }
-
-    .range{
-        display: flex;
-        align-items: center;
-        gap: .5rem;
-
-        .slider{
-            width: 6.25rem;
-            height: .75rem;
-        }
-        
     }
 }

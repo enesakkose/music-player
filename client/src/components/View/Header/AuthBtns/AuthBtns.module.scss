@@ -3,12 +3,12 @@
     align-items: center;
     gap: 1.5rem;
 
-    &__signup{
+    .signup{
         color: $WHITE;
         background-color: transparent;
     }
 
-    &__login{
+    .login{
         color: $BLACK;
     }
 }
