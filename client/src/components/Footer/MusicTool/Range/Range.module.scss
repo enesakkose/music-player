@@ -1,0 +1,20 @@
+.rangeContainer{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    .volumeBtn{
+        width: 1.875rem;
+        height: 1.875rem;
+
+        &:hover{
+            color: $WHITE;
+        }
+    }
+
+    .range{
+        width: 6.25rem;
+        height: .75rem;
+    }
+    
+}

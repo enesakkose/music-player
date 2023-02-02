@@ -1,0 +1,40 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: $PL;
+
+    @media only screen and (max-width: $md) {
+        background-color: $secondaryColor;
+        justify-content: space-around;
+        padding-right: 0;
+        padding: $PS;
+        border-top: 1px solid $earlGray;
+
+        a{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            color: $brokeGray;
+            transition: 300ms color ease-in-out;
+                
+            span{
+                font-size: .6875rem;
+                display: none;
+            }
+        }
+    }
+
+    a{
+        flex-direction: column;
+        gap: .250rem;
+
+        &:hover{
+            color: $WHITE;
+        }
+    }
+
+    .active{
+        color: $WHITE;
+    }
+}

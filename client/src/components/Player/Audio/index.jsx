@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addSongToRecentSong } from '@/firebase/db'
 import { setSongTime, setDuration } from '@/store/audio'
 
-function Audio({ mobile = false, muted, volume = .3, time, ...props }) {
+function Audio({ mobile = false, time, ...props }) {
   const dispatch = useDispatch()
   const audioRef = useRef(null)
   const { 
@@ -17,6 +17,7 @@ function Audio({ mobile = false, muted, volume = .3, time, ...props }) {
     currentSongs
   } = useSelector(state => state.player)
   const { profile } = useSelector(state => state.profiles) || {}
+  const { volume, muted } = useSelector(state => state.volume)
   const [seekTime, setSeekTime] = useState(0)
 
   if(audioRef.current){
@@ -90,7 +91,7 @@ function Audio({ mobile = false, muted, volume = .3, time, ...props }) {
         src={current?.hub?.actions[1]?.uri}
         ref={audioRef}
         //onLoop={true}
-        onEnded={() => handleNextSong(currentIndex, currentSongs)}
+        onEnded={() => isActive ? handleNextSong(currentIndex, currentSongs) : undefined}
         muted={muted}
         autoPlay={isPlaying ? true : false}
         onTimeUpdate={onTimeUpdate}

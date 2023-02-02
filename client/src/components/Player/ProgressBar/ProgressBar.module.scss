@@ -3,12 +3,11 @@
     align-items: center;
     gap: .5rem;
     
-    .duration{
+    span{
         font-size: .875rem;
         max-width: 1.5rem;
         min-width: 1.5rem;
     }
-
     
     .range{
         width: 100%;
@@ -22,7 +21,7 @@
         align-items: center;
         justify-content: space-between;
 
-        .duration{
+        span{
             font-size: .6875rem;
         }
     }

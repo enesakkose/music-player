@@ -5,17 +5,13 @@ import Navbar from '@/components/Navbar'
 import { getMobileTabletSize } from '@/utils/size'
 import { useSelector } from 'react-redux'
 
-
 function Layout() {
   const size = getMobileTabletSize()
   const { user } = useSelector(state => state.auth)
 
   return (
     <>
-      {size
-        ? <Navbar/> 
-        : user ? <Footer /> : <UnauthFooterBar/>
-      }
+      {size ? <Navbar/> : user ? <Footer /> : <UnauthFooterBar/>}
     </>
   )
 }

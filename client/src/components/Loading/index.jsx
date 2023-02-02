@@ -1,10 +1,10 @@
 import React from 'react'
 import Icon from '@/components/Icon'
-import '@/components/Loading.scss'
+import styles from '@/components/Loading/Loading.module.scss'
 
 function Loading() {
   return (
-    <div className='loading'>
+    <div className={styles.loading}>
       <Icon className='loading' name='Logo' size={50}/>
     </div>
   )
