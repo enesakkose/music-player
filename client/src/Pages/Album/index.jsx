@@ -28,8 +28,8 @@ function Album() {
         scrollTop={scrollTop}
       />
       <Main
-        findAlbum={data[0]}
-        findSongs={data}
+        album={data[0]}
+        songs={data}
         backgroundColor={backgroundColor}
       />
     </PlaylistWrapper>

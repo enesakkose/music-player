@@ -6,10 +6,10 @@ import { useSelector } from 'react-redux'
 import { usePlaySong } from '@/hooks/usePlaySong'
 import styles from '@/components/ActionBtns/ActionBtns.module.scss'
 
-function ActionBtns({ findSongs, title, subtitle, songLength, children, className }) {
+function ActionBtns({ songs, title, subtitle, songLength, children, className }) {
   const { current, isPlaying } = useSelector(state => state.player)
   const { user } = useSelector(state => state.auth)
-  const inSongs = findSongs.some(f => f.key === current.key)
+  const inSongs = songs.some(f => f.key === current.key)
   const size = getMobileTabletSize()
 
   return (
@@ -26,7 +26,7 @@ function ActionBtns({ findSongs, title, subtitle, songLength, children, classNam
         </span>
       </div>}
       <PlayBtn
-        onClick={() => usePlaySong(findSongs, inSongs, current, isPlaying, user)}
+        onClick={() => usePlaySong(songs, inSongs, current, isPlaying, user)}
         className={styles.playBtn}
         playPause={isPlaying && inSongs}
       />

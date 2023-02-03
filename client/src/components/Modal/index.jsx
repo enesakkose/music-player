@@ -14,10 +14,7 @@ function Modal() {
 
   return (
     <div className='modal'>
-      <modal.element
-        data={data}
-        outClickRef={outClickRef}
-      />
+      <modal.element data={data} outClickRef={outClickRef}/>
     </div>
   )
 }

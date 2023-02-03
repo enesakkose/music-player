@@ -12,7 +12,7 @@ function List({ songs, song, title, bg }) {
         title={title}
         subtitle={song.subtitle}
         songLength={songs.length}
-        findSongs={songs}
+        songs={songs}
       />
       <TrackList>
         {songs.map((song, index) => (

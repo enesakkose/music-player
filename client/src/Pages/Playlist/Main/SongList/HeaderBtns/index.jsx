@@ -18,7 +18,7 @@ function HeaderBtns({ playlist }) {
   }
 
   return (
-    <ActionBtns className={styles.headerBtns} findSongs={onlyTracks}>
+    <ActionBtns className={styles.headerBtns} songs={onlyTracks}>
       <Button onClick={commentModal} className={styles.commentBtn}>
         <Icon name='Comment' size={25} />
         <span>{getNumberFormat(playlist.commentsCount)}</span>

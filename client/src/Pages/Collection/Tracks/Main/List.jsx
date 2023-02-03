@@ -6,7 +6,7 @@ import Row from '@/components/TrackList/Row'
 function List({ favorites }) {
   return (
     <>
-      <ActionBtns findSongs={favorites}/>
+      <ActionBtns songs={favorites}/>
       <TrackList>
         {favorites.map((favorite, index) => (
           <Row
