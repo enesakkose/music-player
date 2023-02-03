@@ -21,11 +21,9 @@ function Header({ playlist, bgColor, validUser, scrollTop, user }) {
       scrollTop={scrollTop}
     >
       <div className={styles.subActions}>
-        <h6 className={styles.link}>
-          <Button href={`/profile/${user?.uid}`}>
-            {user?.displayName}
-          </Button>
-        </h6>
+        <Button href={`/profile/${user?.uid}`} variant='underline'>
+          {user?.displayName}
+        </Button>
         {validUser && <PlaylistDropdownMenu playlist={playlist}/>}
       </div>
     </CustomPlaylistHeader>

@@ -11,17 +11,8 @@
         padding: $PS;
         border-top: 1px solid $earlGray;
 
-        a{
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            color: $brokeGray;
-            transition: 300ms color ease-in-out;
-                
-            span{
-                font-size: .6875rem;
-                display: none;
-            }
+        span{
+            display: none;
         }
     }
 

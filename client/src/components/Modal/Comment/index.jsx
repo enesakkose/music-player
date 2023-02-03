@@ -21,7 +21,7 @@ function Comment({comment, ...props}) {
 
   return (
     <div className={styles.commentContainer} {...props}>
-      <Avatar src={profile?.photoURL} size='32px'/>
+      <Avatar src={profile?.photoURL} size='2rem'/>
       <div className={styles.content}>
         <div className={styles.title}>
           <Button className={styles.navBtn} onClick={commentNavBtn}>

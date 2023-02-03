@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from '@/components/Icon'
 
-function Avatar({src, size, ...props}) {
+function Avatar({ src, size, ...props }) {
   const a = src === null || src === ''
 
   return (
@@ -14,8 +14,8 @@ function Avatar({src, size, ...props}) {
           width: `${size}`,
           height: `${size}`, 
           borderRadius: '50%', 
-          ...props
         }}
+        {...props}
       />}
     </>
   )

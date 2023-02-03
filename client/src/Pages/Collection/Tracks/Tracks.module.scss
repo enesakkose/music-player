@@ -13,12 +13,8 @@
         align-items: center;
         gap: .5rem;
 
-        .href{
-            font-weight: 700;
-
-            &:hover{
-                text-decoration: underline;
-            }
+        .avatar{
+            margin-right: $PXS;
         }
     }
 

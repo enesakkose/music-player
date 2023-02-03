@@ -8,7 +8,7 @@ function CardListContainer({ href = true, title, children, ...props }) {
     <div className={styles.cardListContainer}>
       <div className={styles.title}>
         <h3>{title}</h3>
-        {href && <Button href={href} state={{...props}}>See All</Button>}
+        {href && <Button href={href} variant='underline' state={{...props}}>See All</Button>}
       </div>
       <CardListWrapper>
         {children}

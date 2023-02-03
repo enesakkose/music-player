@@ -4,7 +4,7 @@ import styles from '@/Pages/Profile/ProfileHeader/ProfileHeaderBtns/NavigateBtn/
 
 function NavigateBtn({ text, ...props }) {
   return (
-    <Button className={styles.navigateBtn} {...props}>
+    <Button variant='underline' className={styles.navigateBtn} {...props}>
       {text}
     </Button>
   )

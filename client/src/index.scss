@@ -44,18 +44,3 @@ h6{
   font-weight: 700;
   letter-spacing: 1px;
 }
-
-
-
-
-
-@media only screen and (max-width: $md){
-  button, a {
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-  }
-
-  a{
-    font-size: .825rem;
-  }
-}

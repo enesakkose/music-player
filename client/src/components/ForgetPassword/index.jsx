@@ -22,7 +22,7 @@ function ForgetPassword({ className }) {
 
   return (
     <div className={clsx(styles.forgetPassword, className)}>
-      <Button className={styles.showFormBtn} onClick={handleShowForm}>
+      <Button variant='underline' onClick={handleShowForm}>
         Forgot Password?
       </Button>
       <div>

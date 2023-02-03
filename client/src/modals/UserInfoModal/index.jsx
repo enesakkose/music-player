@@ -58,7 +58,7 @@ function UserInfoModal({outClickRef}) {
                   disabled={userInfo.photoURL === null || userInfo.photoURL === ''} 
                   type='button'
                   onClick={removePrflImg} 
-                  className={styles.remove}
+                  variant='underline'
                 >
                   Remove Photo
                 </Button>

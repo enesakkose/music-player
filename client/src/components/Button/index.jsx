@@ -3,15 +3,15 @@ import clsx from 'clsx'
 import { Link } from 'react-router-dom'
 import styles from '@/components/Button/Button.module.scss'
 
-function Button({ children, className, href, ...props }) {
+function Button({ children, className, variant, href, ...props }) {
   if(href) return (
-    <Link to={href} className={clsx(styles.button, className)} {...props}>
+    <Link to={href} className={clsx(styles.button, styles[variant], className)} {...props}>
       {children}
     </Link>
   ) 
     
   return (
-    <button type='button' className={clsx(styles.button, className)} {...props}>
+    <button type='button' className={clsx(styles.button, styles[variant], className)} {...props}>
       {children}
     </button>
   )

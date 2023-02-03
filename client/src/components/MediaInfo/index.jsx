@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom'
 import styles from '@/components/MediaInfo/MediaInfo.module.scss'
 
 function MediaInfo({ 
-  children, 
-  as, 
-  className, 
-  img, 
-  favBtn = '30',
-  song,
-  ...props 
+    children,
+    as,
+    className,
+    img,
+    favBtn = '30',
+    song,
+    ...props
   }) {
   const navigate = useNavigate()
   const { user } = useSelector(state => state.auth)

@@ -5,5 +5,5 @@ export const addPlaylist = (playlists, uid, navigate) => {
   const id = uuidv4()
 
   addPlaylistHandle(playlists, id, uid)
-  navigate(`/playlist/${id}`, { replace: true })
+  navigate(`/playlist/${id}`)
 }
