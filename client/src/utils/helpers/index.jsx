@@ -1,4 +1,4 @@
-import  { store } from "@/store"
+import { store } from "@/store"
 import { setOpenPopup } from "@/store/popup"
 import { closeModal, openModal } from "@/store/modal"
 
