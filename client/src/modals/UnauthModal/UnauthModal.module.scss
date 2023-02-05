@@ -1,11 +1,12 @@
 .unauthModal{
     background-color: $purple;
+    background-image: $grayLinear;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     animation: .5s dd ease-in-out;
 
-    &__text{
+    .text{
         font-size: 1.25rem;
 
         @media only screen and (max-width: $md){
@@ -13,16 +14,11 @@
         }
     }
 
-    &__btns{
+    .btns{
         display: flex;
         align-items: center;
         gap: 1rem;
-        align-self: flex-end;
-
-        .closeBtn{
-            background-color: transparent;
-            color: $WHITE;
-        }
+        align-self: end;
     }
 }
 
