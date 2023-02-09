@@ -7,7 +7,7 @@ The main goal of this project is to create a music app with [reactjs](https://re
 
 ## Demo
 
-## Built With
+### Built With
 
 ### Firebase
 
