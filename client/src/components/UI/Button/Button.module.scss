@@ -1,0 +1,76 @@
+.button{
+    cursor: pointer;
+    background-color: transparent;
+    color: $NEUTRAL-300;
+    display: flex;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    
+    @media only screen and (max-width: $md){
+        font-size: .875rem;
+    }
+
+    &:disabled, &[disabled]{
+        opacity: .5;
+        pointer-events: none;
+    }
+
+    &:is(.outline, .contained){
+        font-weight: 700;
+        padding: $PXS $PM;
+        border-radius: 1.5rem;
+        font-size: 1rem;
+        justify-content: center;
+        
+        &:hover{
+            transform: scale(1.02);
+        }
+
+        @media only screen and (max-width: $md){
+            font-size: .875rem;
+
+            &:hover{
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+.primary{
+    background-color: $WHITE;
+    color: $SECONDARY;
+}
+
+.secondary{
+    background-color: $GREEN;
+    color: $SECONDARY;
+}
+
+.tertiary{
+    background-color: $SECONDARY;
+}
+
+.outline{
+    border: 1px solid rgba($WHITE, .6);
+    background-color: transparent;
+}
+
+.start{
+    align-self: start;
+}
+
+.center{
+    align-self: center;
+}
+
+.end{
+    align-self: end;
+}
+
+.underline{
+
+    &:hover{
+        text-decoration: underline;
+    }    
+}
