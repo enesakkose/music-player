@@ -1,0 +1,33 @@
+.popup{
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 6.25rem;
+    background-color: $purple;
+    padding: $PS $PL;
+    border-radius: .875rem;
+    z-index: 1000;
+    animation: a 2500ms ease-in-out;
+
+    @media only screen and (max-width: $md){
+        left: 0;
+        right: 0;
+        background-color: $WHITE;
+        color: $BLACK;
+        transform: translate(0, -50%);
+        margin-inline: $MS;
+
+        h5{
+            font-weight: 400;
+        }
+    }
+}
+
+@keyframes a {
+    75%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}

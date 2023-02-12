@@ -1,10 +1,9 @@
 import React from 'react'
-import LightBtn from '@/components/LightBtn'
-import CustomInput from '@/components/CustomInput'
+import Button from '@/components/UI/Button'
+import CustomInput from '@/components/UI/CustomInput'
 import PasswordInput from '@/components/PasswordInput'
 import ForgetPassword from '@/components/ForgetPassword'
-import SwitchBtn from '@/components/SwitchBtn'
-import ContentLayout from '@/Pages/Auth/ContentLayout'
+import Layout from '@/Pages/Auth/Layout'
 import { Form, Formik } from 'formik'
 import { loginSchema } from '@/forms/schemas'
 import { handleLogin } from '@/firebase/auth'
@@ -25,7 +24,7 @@ function Login({ setChangeContent }) {
   }
 
   return (
-    <ContentLayout>
+    <Layout>
       <Formik
         initialValues={{ username: "", password: "" }}
         validationSchema={loginSchema}
@@ -39,23 +38,24 @@ function Login({ setChangeContent }) {
               inputTitle='Email address or username'
               placeholder='Email address or username'
             />
-            <PasswordInput title='Password' placeholder='Password'/>
-            <LightBtn
+            <PasswordInput title='Password' placeholder='Password' />
+            <Button
               type='submit'
-              text='Login'
+              variant='contained'
+              color='secondary'
               disabled={isSubmitting}
               className={styles.submitBtn}
-            />
+            >
+              Login
+            </Button>
           </Form>
         )}
       </Formik>
-      <ForgetPassword className={styles.forgetPassword}/>
-      <SwitchBtn
-        title="Don't have an account?"
-        text='SIGN UP'
-        onClick={handleChangeContent}
-      />
-    </ContentLayout>
+      <ForgetPassword className={styles.forgetPassword} />
+      <Button color='primary' variant='contained' onClick={handleChangeContent}>
+        Don't have an account?
+      </Button>
+    </Layout>
   )
 }
 

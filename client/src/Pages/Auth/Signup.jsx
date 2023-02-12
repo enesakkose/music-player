@@ -1,9 +1,8 @@
 import React from 'react'
-import CustomInput from '@/components/CustomInput'
+import CustomInput from '@/components/UI/CustomInput'
 import PasswordInput from '@/components/PasswordInput'
-import SwitchBtn from '@/components/SwitchBtn'
-import LightBtn from '@/components/LightBtn'
-import ContentLayout from '@/Pages/Auth/ContentLayout'
+import Button from '@/components/UI/Button'
+import Layout from '@/Pages/Auth/Layout'
 import { signupSchema } from '@/forms/schemas'
 import { Form, Formik } from 'formik'
 import { createUser, updateUser } from '@/firebase/auth'
@@ -24,7 +23,7 @@ function Signup({ setChangeContent }) {
   }
 
   return (
-    <ContentLayout>
+    <Layout>
       <Formik
         initialValues={{
           email: "",
@@ -58,21 +57,21 @@ function Signup({ setChangeContent }) {
               name='confirmPassword'
               placeholder='Confirm password'
             />
-            <LightBtn
+            <Button
               type='submit'
-              text='Signup'
+              variant='contained'
+              color='secondary'
               disabled={isSubmitting}
-              className={styles.submitBtn}
-            />
+            >
+              Signup
+            </Button>
           </Form>
         )}
       </Formik>
-      <SwitchBtn
-        title="Do you have an account?"
-        text='LOGIN'
-        onClick={handleChangeContent}
-      />
-    </ContentLayout>
+      <Button color='primary' variant='contained' onClick={handleChangeContent}>
+        Do you have an account?
+      </Button>
+    </Layout>
   )
 }
 

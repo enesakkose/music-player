@@ -42,15 +42,6 @@
         }
     }
 
-    .submitBtn{
-        display: block;
-        background-color: $GREEN;
-
-        &:hover{
-            transform: scale(1.01);
-        }
-    }
-
     .forgetPassword{
         align-self: flex-start;
         width: 100%;
