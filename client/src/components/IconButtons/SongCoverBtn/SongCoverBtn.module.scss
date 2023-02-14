@@ -1,0 +1,20 @@
+.songCoverBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: .25rem;
+    top: .25rem;
+    z-index: 2;
+    background-color: $SECONDARY-500;
+    padding: .125rem;
+    border-radius: 50%;
+    opacity: 0;
+    transition: 100ms opacity ease-in-out;
+    color: $NEUTRAL-300;
+
+    &:hover{
+        color: $PRIMARY;
+        transform: scale(1.1);
+    }
+}

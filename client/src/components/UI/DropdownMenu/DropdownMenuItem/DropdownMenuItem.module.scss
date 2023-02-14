@@ -1,0 +1,16 @@
+.listItem{
+    color: $PRIMARY;
+    padding: $PS;
+    cursor: default;
+    text-align: start;
+    font-size: .875rem;
+
+    @media only screen and (min-width: $md){
+        min-width: 12rem;
+    }
+
+    &:hover{
+        border-radius: .250rem;
+        background-color: $PRIMARY-100;
+    }
+}
