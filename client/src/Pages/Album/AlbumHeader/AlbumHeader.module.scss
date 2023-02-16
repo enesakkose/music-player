@@ -1,0 +1,9 @@
+.singer{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    
+    span{
+        color: $NEUTRAL-400;
+    }
+}

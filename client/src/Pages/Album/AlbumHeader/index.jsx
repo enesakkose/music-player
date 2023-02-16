@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from '@/Pages/Album/Album.module.scss'
 import Header from '@/components/Playlist/Header'
+import styles from '@/Pages/Album/AlbumHeader/AlbumHeader.module.scss'
 
 function AlbumHeader({ album, songs, backgroundColor, scrollTop }) {
   return (

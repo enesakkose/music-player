@@ -3,13 +3,13 @@
     margin-left: 1rem;
 
     @media only screen and (max-width: $md){
-        margin-left: 0;
+        margin-left: $M-0;
         margin-block: $PS;
     }
     
     label{
-        background-color: $WHITE;
-        color: $darkGray;
+        background-color: $PRIMARY;
+        color: $NEUTRAL-500;
         border-radius: 1.5rem;
         display: flex;
         align-items: center;
@@ -30,8 +30,12 @@
             width: 100%;
             font-size: .875rem;
             letter-spacing: .5px;
-            color: $BLACK;
-            padding: 0;
+            color: $SECONDARY;
+            padding: $P-0;
+
+            &:focus{
+                border-color: transparent;
+            }
         }
     }
 
@@ -39,12 +43,10 @@
         position: absolute;
         top: .5rem;
         right: .875rem;
-        color: black;
     }
 
     .error{
         position: absolute;
-        font-size: 1rem;
         letter-spacing: 1px;
         bottom: -2rem;
         left: 1.5rem;
