@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { profileQuery } from "firebase/db"
+import { profileQuery } from "@/firebase/db"
 
 
 export const useGetProfiles = (query) => {

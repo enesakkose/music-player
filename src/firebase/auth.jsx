@@ -1,4 +1,4 @@
-import { app } from 'firebase'
+import { app } from '@/firebase'
 import {
     getAuth,
     signInWithEmailAndPassword,
@@ -17,7 +17,7 @@ import {
 import { getFirestore, doc, updateDoc } from 'firebase/firestore'
 import { store } from "@/store"
 import { login, logout } from "@/store/auth"
-import { userProfile, docExist } from 'firebase/db'
+import { userProfile, docExist } from '@/firebase/db'
 import toast from "react-hot-toast"
 
 export const db = getFirestore(app)

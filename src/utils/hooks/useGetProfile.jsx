@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getProfile } from "firebase/db"
+import { getProfile } from "@/firebase/db"
 
 
 export const useGetProfile = (userId) => {

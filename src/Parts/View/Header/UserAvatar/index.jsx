@@ -4,7 +4,7 @@ import DropdownMenu from '@/components/UI/DropdownMenu'
 import DropdownMenuItem from '@/components/UI/DropdownMenu/DropdownMenuItem'
 import { useSelector } from 'react-redux'
 import { modal } from '@/utils/helpers'
-import { handleLogout } from 'firebase/auth'
+import { handleLogout } from '@/firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import styles from '@/Parts/View/Header/UserAvatar/UserAvatar.module.scss'
 

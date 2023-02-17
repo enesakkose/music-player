@@ -1,4 +1,4 @@
-import { app } from "firebase"
+import { app } from "@/firebase"
 import {
     getStorage,
     ref,
@@ -6,8 +6,8 @@ import {
     getDownloadURL,
     deleteObject
 } from 'firebase/storage'
-import { updatePlaylist } from "firebase/db"
-import { updateUser } from "firebase/auth"
+import { updatePlaylist } from "@/firebase/db"
+import { updateUser } from "@/firebase/auth"
 import { toast } from 'react-hot-toast'
 
 const storage = getStorage(app)

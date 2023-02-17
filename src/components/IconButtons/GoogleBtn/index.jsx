@@ -2,7 +2,7 @@ import React from 'react'
 import Icon from '@/components/UI/Icon'
 import Button from '@/components/UI/Button'
 import { useNavigate } from 'react-router-dom'
-import { loginWithGoogle } from 'firebase/auth'
+import { loginWithGoogle } from '@/firebase/auth'
 
 function GoogleBtn({ text }) {
   const navigate = useNavigate()

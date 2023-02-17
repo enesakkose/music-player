@@ -3,7 +3,7 @@ import Row from '@/components/TrackList/Row'
 import TrackList from '@/components/TrackList'
 import DropdownMenuItem from '@/components/UI/DropdownMenu/DropdownMenuItem'
 import moment from 'moment'
-import { removeFromAddedSongs } from 'firebase/db'
+import { removeFromAddedSongs } from '@/firebase/db'
 import styles from '@/Pages/Playlist/Main/SongList/List/List.module.scss'
 
 function List({ playlist }) {

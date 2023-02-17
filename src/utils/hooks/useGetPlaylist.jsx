@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getPlaylist } from "firebase/db"
+import { getPlaylist } from "@/firebase/db"
 
 export const useGetPlaylist = (playlistId) => {
     const [playlist, setPlaylist] = useState(null)

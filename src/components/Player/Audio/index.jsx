@@ -3,7 +3,7 @@ import ProgressBar from '@/components/Player/ProgressBar'
 import { handleNextSong } from '@/utils/helpers/player'
 import { playPause } from '@/store/player'
 import { useDispatch, useSelector } from 'react-redux'
-import { addSongToRecentSong } from 'firebase/db'
+import { addSongToRecentSong } from '@/firebase/db'
 import { setSongTime, setDuration } from '@/store/audio'
 
 function Audio({ mobile = false, time, ...props }) {

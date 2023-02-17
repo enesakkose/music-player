@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getComments, getNextComments } from 'firebase/db'
+import { getComments, getNextComments } from '@/firebase/db'
 
 export const useGetComments = (playlistId, uid, scrollEnd = false, commentCount) => {
   const [items, setItems] = useState(null)
