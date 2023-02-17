@@ -4,9 +4,9 @@
 
 The main goal of this project is to create a music app with [reactjs](https://reactjs.org/), where users can listen to music, create custom playlist, comment to playlists and follow each other.
 
+## [Live](https://musicea.vercel.app/)
 
 ## Demo
-[Live](musicea.vercel.app)
 
 ### Built With
 
