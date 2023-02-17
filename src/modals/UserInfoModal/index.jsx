@@ -8,9 +8,9 @@ import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import { Form, Formik } from 'formik'
 import { closeModalHandle } from '@/utils/helpers'
 import { useSelector } from 'react-redux'
-import { updateUser } from '@/firebase/auth'
+import { updateUser } from 'firebase/auth'
 import { userInfoSchema } from '@/forms/schemas'
-import { uploadImg, deleteImg } from '@/firebase/storage'
+import { uploadImg, deleteImg } from 'firebase/storage'
 import styles from '@/modals/UserInfoModal/UserInfoModal.module.scss'
 
 function UserInfoModal({ outClickRef }) {

@@ -2,7 +2,7 @@ import React from 'react'
 import Icon from '@/components/UI/Icon'
 import Button from '@/components/UI/Button'
 import { useNavigate } from 'react-router-dom'
-import { loginWithGoogle } from '@/firebase/auth'
+import { loginWithGoogle } from 'firebase/auth'
 
 function GoogleBtn({ text }) {
   const navigate = useNavigate()
@@ -14,7 +14,7 @@ function GoogleBtn({ text }) {
 
   return (
     <Button variant='google' onClick={continueGoogle}>
-      <Icon name='Google' size={30}/>
+      <Icon name='Google' size={30} />
       {text}
     </Button>
   )

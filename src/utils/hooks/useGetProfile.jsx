@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"
-import { getProfile } from "@/firebase/db"
+import { getProfile } from "firebase/db"
 
 
 export const useGetProfile = (userId) => {
-    const [ profile, setProfile ] = useState(null)
-    
+    const [profile, setProfile] = useState(null)
+
     useEffect(() => {
-        if(userId){ // for don't throw an error
+        if (userId) { // for don't throw an error
             (async () => {
                 await getProfile(userId, setProfile)
             })()

@@ -1,4 +1,4 @@
-import { addPlaylistHandle, addToAddedSongs } from "@/firebase/db"
+import { addPlaylistHandle, addToAddedSongs } from "firebase/db"
 import { v4 as uuidv4 } from "uuid"
 
 export const addPlaylist = (playlists, uid, navigate) => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getComments, getNextComments } from '@/firebase/db'
+import { getComments, getNextComments } from 'firebase/db'
 
 export const useGetComments = (playlistId, uid, scrollEnd = false, commentCount) => {
   const [items, setItems] = useState(null)
@@ -8,9 +8,9 @@ export const useGetComments = (playlistId, uid, scrollEnd = false, commentCount)
   useEffect(() => {
     getComments(playlistId, setLastVisible, setItems)
   }, [])
-  
+
   useEffect(() => {
-    if(scrollEnd === true && commentCount !== items?.length){
+    if (scrollEnd === true && commentCount !== items?.length) {
       getNextComments(playlistId, lastVisible, setLastVisible, setItems, items)
     }
   }, [scrollEnd])

@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import CustomInput from '@/components/UI/CustomInput'
 import Button from '@/components/UI/Button'
 import { Formik, Form } from 'formik'
-import { resetPassword } from '@/firebase/auth'
+import { resetPassword } from 'firebase/auth'
 import { resetPasswordEmailSchema } from '@/forms/schemas'
 import styles from '@/components/ForgetPassword/ForgetPassword.module.scss'
 

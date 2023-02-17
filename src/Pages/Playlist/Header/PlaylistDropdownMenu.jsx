@@ -3,7 +3,7 @@ import Icon from '@/components/UI/Icon'
 import DropdownMenu from '@/components/UI/DropdownMenu'
 import DropdownMenuItem from '@/components/UI/DropdownMenu/DropdownMenuItem'
 import { modal } from '@/utils/helpers'
-import { publishPlaylist } from '@/firebase/db'
+import { publishPlaylist } from 'firebase/db'
 
 function PlaylistDropdownMenu({ playlist }) {
   return (

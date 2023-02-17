@@ -3,8 +3,8 @@ import Icon from '@/components/UI/Icon'
 import Button from '@/components/UI/Button'
 import CustomInput from '@/components/UI/CustomInput'
 import { useSelector } from 'react-redux'
-import { updatePlaylist } from '@/firebase/db'
-import { uploadImg, deleteImg } from '@/firebase/storage'
+import { updatePlaylist } from 'firebase/db'
+import { uploadImg, deleteImg } from 'firebase/storage'
 import styles from '@/modals/PlaylistInfoModal/Form/Form.module.scss'
 
 function Cover({ playlistId }) {

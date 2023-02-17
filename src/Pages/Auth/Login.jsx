@@ -6,7 +6,7 @@ import ForgetPassword from '@/components/ForgetPassword'
 import Layout from '@/Pages/Auth/Layout'
 import { Form, Formik } from 'formik'
 import { loginSchema } from '@/forms/schemas'
-import { handleLogin } from '@/firebase/auth'
+import { handleLogin } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import styles from '@/Pages/Auth/Auth.module.scss'
 

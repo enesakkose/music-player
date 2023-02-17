@@ -3,7 +3,7 @@ import Button from '@/components/UI/Button'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { modal } from '@/utils/helpers'
-import { follow, unfollow } from '@/firebase/db'
+import { follow, unfollow } from 'firebase/db'
 import styles from '@/Pages/Profile/ProfileHeader/ProfileHeaderBtns/ProfileHeaderBtns.module.scss'
 
 function ProfileHeaderBtns({ profile, validProfile }) {

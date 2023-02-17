@@ -5,7 +5,7 @@ import Button from '@/components/UI/Button'
 import Layout from '@/Pages/Auth/Layout'
 import { signupSchema } from '@/forms/schemas'
 import { Form, Formik } from 'formik'
-import { createUser, updateUser } from '@/firebase/auth'
+import { createUser, updateUser } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import styles from '@/Pages/Auth/Auth.module.scss'
 

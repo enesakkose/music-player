@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import Button from '@/components/UI/Button'
 import CloseBtn from '@/components/IconButtons/CloseBtn'
 import { modal } from '@/utils/helpers'
-import { handleLogout } from '@/firebase/auth'
+import { handleLogout } from 'firebase/auth'
 import styles from '@/Pages/Home/MobileHeader/Menu/Menu.module.scss'
 
 function Menu({ openMenu, setOpenMenu, profile }) {

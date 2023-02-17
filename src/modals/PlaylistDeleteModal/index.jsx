@@ -2,7 +2,7 @@ import React from 'react'
 import ModalWrapper from '@/components/Wrappers/ModalWrapper'
 import Button from '@/components/UI/Button'
 import { closeModalHandle } from '@/utils/helpers'
-import { deletePlaylist } from '@/firebase/db'
+import { deletePlaylist } from 'firebase/db'
 import { useNavigate } from 'react-router-dom'
 import styles from '@/modals/PlaylistDeleteModal/PlaylistDeleteModal.module.scss'
 

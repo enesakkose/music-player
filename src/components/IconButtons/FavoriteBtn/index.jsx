@@ -3,7 +3,7 @@ import Icon from '@/components/UI/Icon'
 import clsx from 'clsx'
 import Button from '@/components/UI/Button'
 import { useSelector } from 'react-redux'
-import { addOrRemoveFavoriteSongs } from '@/firebase/db'
+import { addOrRemoveFavoriteSongs } from 'firebase/db'
 import styles from '@/components/IconButtons/FavoriteBtn/FavoriteBtn.module.scss'
 
 function FavoriteBtn({ className, song, size = 22 }) {
