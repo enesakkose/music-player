@@ -1,0 +1,28 @@
+.commentContainer{
+    border-bottom: 1px solid $NEUTRAL-800;
+    padding: $PXS;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+
+    .content{
+        flex: 1;
+
+        .title{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            color: $PRIMARY;
+            margin-bottom: $PXS;
+
+            span{
+                font-size: .875rem;
+            }
+        }
+
+        .comment{
+            word-break: break-all;
+            max-width: 18rem;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.musicInfo{
+    display: flex;
+    align-items: center;    
+    transform: translateX(0);
+    animation: closeCover .3s ease-in-out;
+    gap: 1.5rem;
+    height: 100%;
+    grid-area: info;
+    overflow: hidden;
+
+    .info{
+        width: max-content;
+        gap: 1.5rem;
+    }
+}
+
+.openCover{
+    transform: translateX(-5rem);
+    animation: openCover .3s ease-in-out;
+}
+
+@keyframes openCover {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-5rem);
+    }
+}
+
+@keyframes closeCover {
+    0%{
+        transform: translateX(-5rem);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,9 @@
+.layout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    border-radius: .5rem;
+    padding: $PS $PM;
+    background-color: $PRIMARY;
+}

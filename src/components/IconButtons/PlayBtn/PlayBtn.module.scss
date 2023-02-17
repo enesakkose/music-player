@@ -1,0 +1,47 @@
+.playBtn{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    color: $SECONDARY;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: $PLAY-BTN;
+
+    &:hover{
+        transform: scale(1.07);
+    }
+
+    &:active{
+        transform: translateY(2px);
+    }
+}
+
+.primary{
+    background-color: $BRAND;
+}
+
+.secondary{
+    background-color: $PRIMARY;
+}
+
+.tertiary{
+    background-color: transparent;
+    color: $PRIMARY;
+}
+
+.xsmall{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.small{
+    width: 2rem;
+    height: 2rem;
+}
+
+.large{
+    min-width: 3.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+}

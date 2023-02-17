@@ -1,0 +1,27 @@
+.rc-slider{
+    &-track{
+        background-color: $PRIMARY;
+    }
+    
+    &-rail{
+        background-color: $PRIMARY-400;
+    }
+    
+    &-handle{
+        cursor: default;
+        opacity: 0;
+    }
+
+    &-handle-dragging{
+        opacity: 1;
+        
+        &:focus{
+            cursor: default;
+        }
+    }
+    
+    &:hover .rc-slider-handle{
+        opacity: 1;
+    }
+}
+

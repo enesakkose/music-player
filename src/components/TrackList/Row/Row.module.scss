@@ -1,0 +1,113 @@
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $PXS $PXS $PXS $PM;
+    position: relative;
+    cursor: default;
+    border-radius: .250rem;
+    user-select: none;
+
+    @media only screen and (max-width: $md){
+        padding: $PS;
+    }
+
+    &:hover{
+        background-color: $PRIMARY-100;
+    }
+
+    .rowInfo{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        overflow: hidden;
+        flex: 1;
+    }
+
+    .playBtnContent{
+        min-width: 1.188rem;
+        width: 1.188rem;
+        height: 1.188rem;
+
+        @media only screen and (max-width: $md){
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .index{
+            font-size: 1.25rem;
+            
+            @media only screen and (max-width: $md){
+                font-size: .875rem;
+            }
+        }
+
+        .playBtn{
+            display: none;
+            color: $PRIMARY;
+            cursor: default;
+        }
+        
+    }
+    .dropdownMenu{
+        right: 0;
+        bottom: 100%;
+    
+        .playlistsDropdownMenu{
+            overflow-y: overlay;
+            height: 22rem;
+            top: -150%;
+            left: -100%;
+
+            &::-webkit-scrollbar{
+                width: .125rem;
+            }
+        }
+    }
+
+    &:hover .playBtnContent{
+        .index{
+            display: none;
+        }
+
+        .playBtn{
+            display: block;
+        }
+    }
+
+    button:not(.openPlaylistsDropdown){
+        opacity: 0;
+        z-index: $ROW-EXCEPT-DROPDOWNBTN;
+    }
+
+    &:hover{
+        button{
+            opacity: 1;
+        }
+    }
+
+    .playSong{
+        position: absolute;
+        inset: 0;
+    }
+
+}
+
+.playingRow{
+    background-color: $PRIMARY-100;
+
+    .playBtnContent{
+        .index{
+            display: none;
+        }
+
+        .playBtn{
+            display: block;
+        }
+    }
+
+    button{
+        opacity: 1 !important;
+    }
+}

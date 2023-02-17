@@ -1,0 +1,15 @@
+.playlists{
+    position: fixed;
+    inset: 0;
+    padding: $PL;
+    z-index: $MOBILE-PLAYER-PLAYLIST-MENU;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: $GRAY-900;
+    overflow: scroll;
+
+    li{
+        padding: $PS $PM;
+    }
+}

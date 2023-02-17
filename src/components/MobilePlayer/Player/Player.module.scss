@@ -1,0 +1,36 @@
+.player{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    inset: 0;
+    padding: $PS;
+    background-color: $GRAY-900;
+    background-image: $GRAY-GRADIENT;
+    z-index: $MOBILE-PLAYER-PLAYER;
+    transform: translateY(0);
+    transition: .3s background-color ease-in-out;
+
+    .info{
+        padding: $PM $PS;
+        padding-right: 0;
+    }
+}
+
+.expand{
+    animation: showAnimation 600ms ease-in-out;
+    transform: translateY(0)
+}
+
+.shrink{
+    animation: showAnimation reverse 600ms ease-in-out;
+    transform: translateY(80%)
+}
+
+@keyframes showAnimation {
+    0%{
+        transform: translateY(50%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}

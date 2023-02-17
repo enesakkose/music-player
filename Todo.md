@@ -1,4 +1,1 @@
-//findları temizle
-//delete music for mobil custom playlist
-//playlist custom dropdown bak
-button link h tagleri  
+navlink ve link uyuşmuyor çünkü different comp 

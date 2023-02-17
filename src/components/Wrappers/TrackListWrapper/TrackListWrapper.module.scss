@@ -1,0 +1,10 @@
+.trackListWrapper{
+    flex: 1;
+    padding: $PM $PL;
+    position: relative; 
+    z-index: $GRADIENT-BG-PLUS;
+
+    @media only screen and (max-width: $md){
+        padding: $P-0 $P-0 $MOBILEPB;
+    }
+}

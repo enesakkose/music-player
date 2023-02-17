@@ -1,0 +1,27 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: $PL;
+
+    @media only screen and (max-width: $md) {
+        background-color: $SECONDARY-900;
+        justify-content: space-around;
+        padding-right: 0;
+        padding: $PS;
+        border-top: 1px solid $GRAY-900;
+
+        span{
+            display: none;
+        }
+    }
+
+    a{
+        flex-direction: column;
+        gap: .250rem;
+    }
+
+    .active{
+        color: $PRIMARY;
+    }
+}

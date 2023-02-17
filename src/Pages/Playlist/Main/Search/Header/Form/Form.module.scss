@@ -1,0 +1,37 @@
+.searchForm{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    label{
+        position: relative;
+        display: flex;
+        align-items: center;
+        
+        input{
+            background-color: $PRIMARY-100;
+            height: 3rem;
+            border-radius: .25rem;
+            color: $NEUTRAL-300;
+            width: 100%;
+            padding: $P-0 $PL;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            
+            &::placeholder{
+                color: $NEUTRAL-300;
+            }
+        }
+
+        .searchIcon{
+            position: absolute;
+            left: .625rem;
+            cursor: text;
+        }
+
+        .resetBtn{
+            position: absolute;
+            right: .625rem;
+        }
+    }
+}

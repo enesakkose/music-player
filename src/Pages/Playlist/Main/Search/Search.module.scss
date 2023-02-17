@@ -1,0 +1,18 @@
+.searchContainer{
+    bottom: 6rem; //this value is assigned for animation 
+    z-index: $CUSTOM-PLAYLIST-SEARCH-CONTAINER;
+    background-color: transparent;
+}
+
+.hide{
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -4.6rem;
+    padding: $P-0 $PL;
+    border-top-right-radius: 4.688rem;
+    border-top-left-radius: 4.688rem;
+    border-top: 1px solid $NEUTRAL-800;
+    transition: .3s bottom ease-in-out;
+    background-color: $SECONDARY-900;
+}

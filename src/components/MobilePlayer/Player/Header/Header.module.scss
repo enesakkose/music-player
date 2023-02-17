@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $PM;
+
+    button{
+        color: $NEUTRAL-100;
+    }
+}

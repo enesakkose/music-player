@@ -1,0 +1,15 @@
+.searchHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $PM 0;
+}
+
+.hideHeader{
+    align-items: inherit;
+    border-top: 0;
+
+    button{
+        align-items: start;
+    }
+}
