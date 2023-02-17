@@ -6,6 +6,7 @@ The main goal of this project is to create a music app with [reactjs](https://re
 
 
 ## Demo
+[Live](musicea.vercel.app)
 
 ### Built With
 
