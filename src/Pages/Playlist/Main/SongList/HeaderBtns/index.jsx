@@ -2,7 +2,7 @@ import React from 'react'
 import ActionBtns from '@/components/ActionBtns'
 import CommentBtn from '@/components/IconButtons/CommentBtn'
 import { useSelector } from 'react-redux'
-import { getCommentCountFormat } from '@/utils/helpers/number'
+import { getCountFormat } from '@/utils/helpers/number'
 import { modal } from '@/utils/helpers'
 import styles from '@/Pages/Playlist/Main/SongList/HeaderBtns/HeaderBtns.module.scss'
 
@@ -19,7 +19,7 @@ function HeaderBtns({ playlist }) {
   return (
     <ActionBtns className={styles.headerBtns} songs={onlyTracks}>
       <CommentBtn onClick={commentModal}>
-        <span>{getCommentCountFormat(playlist.commentsCount)}</span>
+        <span>{getCountFormat(playlist.commentsCount)}</span>
       </CommentBtn>
     </ActionBtns>
   )

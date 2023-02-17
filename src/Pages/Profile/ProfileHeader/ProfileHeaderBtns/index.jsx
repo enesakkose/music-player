@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@/components/UI/Button'
+import { getCountFormat } from '@/utils/helpers/number'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { modal } from '@/utils/helpers'
@@ -44,10 +45,10 @@ function ProfileHeaderBtns({ profile, validProfile }) {
     <div className={styles.profileHeaderBtns}>
       <div className={styles.followBtns}>
         <Button variant='underline' onClick={navigateToFollowers}>
-          {`${profile.follower.length} Followers`}
+          {getCountFormat(profile.follower.length)} Followers
         </Button>
         <Button variant='underline' onClick={navigateToFollowing}>
-          {`${profile.following.length} Following`}
+          {getCountFormat(profile.following.length)} Following
         </Button>
       </div>
       {!validProfile && user &&

@@ -8,7 +8,7 @@ export const getTime = (date) => {
   return moment(date).format('HH:mm')
 }
 
-export const getCommentCountFormat = (num) => {
+export const getCountFormat = (num) => {
   return Intl.NumberFormat('en-EN', {
       notation: 'compact',
       maximumFractionDigits: 1
