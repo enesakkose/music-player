@@ -1,1 +1,0 @@
-navlink ve link uyuşmuyor çünkü different comp 
