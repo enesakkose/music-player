@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { getComments, getNextComments } from '@/firebase/db'
 
-export const useGetComments = (playlistId, uid, scrollEnd = false, commentCount) => {
+export const useGetComments = (playlistId, scrollEnd = false, commentCount) => {
   const [items, setItems] = useState(null)
   const [lastVisible, setLastVisible] = useState(null)
 

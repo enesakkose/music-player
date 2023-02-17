@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '@/components/UI/Button'
 import NavigateBtn from '@/components/IconButtons/NavigateBtn'
 import { useSelector } from 'react-redux'
 import { addToCustomPlaylist } from '@/utils/helpers/playlist'
@@ -18,9 +19,9 @@ function PlaylistMenu({ setOpenPlaylist, setOpenMenu }) {
     <ul className={styles.playlists}>
       <NavigateBtn onClick={() => setOpenPlaylist(false)} />
       {playlists.map((playlist) => (
-        <li onClick={() => addToPlaylistHandle(playlist.id)} key={playlist.id}>
+        <Button onClick={() => addToPlaylistHandle(playlist.id)} key={playlist.id}>
           {playlist.name}
-        </li>
+        </Button>
       ))}
     </ul>
   )

@@ -14,6 +14,7 @@ function Avatar({ src, size, ...props }) {
           width: `${size}`,
           height: `${size}`,
           borderRadius: '50%',
+          objectFit: 'cover'
         }}
         {...props}
       />}

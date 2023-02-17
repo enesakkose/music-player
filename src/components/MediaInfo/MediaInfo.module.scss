@@ -24,23 +24,24 @@
         flex-direction: column;
         gap: .25rem;
         overflow: hidden;
-
+        
         .songName, .singerName{
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
             letter-spacing: 0;
             max-width: 100%; 
-            width: max-content;
+            width: max-content; //for open play and play song
             display: inline;
             z-index: $MEDIA-INFO-SONG;
             font-weight: 500;
             user-select: none;
-            font-size: clamp(.8125rem, 2.25vw, 1rem);
+            font-size: clamp(.875rem, 2.25vw, 1rem);
         }
 
         .singerName{
             color: $NEUTRAL-400;
+            pointer-events: none;
         }
     }
 

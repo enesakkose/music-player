@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { getBreakPoint } from '@/utils/helpers/media'
 import styles from '@/components/Card/Info/Info.module.scss'
 
-function Info({ title, name, href }) {
+function Info({ title, name, onClick }) {
   const navigate = useNavigate()
   const SM = getBreakPoint('SM')
 
   const SmTitleBtn = () => {
     return(
-      <Button className={styles.title} onClick={() => navigate(href)}>
+      <Button className={styles.title} onClick={onClick}>
         {title}
       </Button>
     )

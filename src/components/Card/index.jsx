@@ -22,7 +22,7 @@ function Card({
 
   return (
     <div className={styles.card} {...props}>
-      <ImgBox className={className} style={style} onClick={onClick}>
+      <ImgBox className={className} style={style} href={href}>
         {children}
         {playBtn && !SM && <PlayBtn
           onClick={onClick}
@@ -30,7 +30,7 @@ function Card({
           className={clsx(styles.playBtn, playPause ? styles.showBtn : '')}
         />}
       </ImgBox>
-      <Info name={name} href={href} title={title}/>
+      <Info name={name} onClick={onClick} title={title}/>
       {!SM && <Button href={href} className={styles.href}/>}
     </div>
   )

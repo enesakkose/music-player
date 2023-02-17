@@ -4,12 +4,12 @@ import Button from '@/components/UI/Button'
 import { getBreakPoint } from '@/utils/helpers/media'
 import styles from '@/components/Card/ImgBox/ImgBox.module.scss'
 
-function ImgBox({ children, style, className, onClick }) {
+function ImgBox({ children, style, className, href }) {
   const SM = getBreakPoint('SM')
   
   const SmImgContainer = () => {
     return (
-      <Button onClick={onClick} className={styles.imgContainer}>
+      <Button href={href} className={styles.imgContainer}>
         {children}
       </Button>
     )

@@ -24,10 +24,7 @@ function UnauthSongModal({ outClickRef, data: songData }) {
           LOG IN ACCOUNT
         </Button>
       </div>
-      <Button
-        onClick={() => closeModalHandle()}
-        className={styles.closeBtn}
-      >
+      <Button onClick={() => closeModalHandle()} className={styles.closeBtn}>
         CLOSE
       </Button>
     </ModalWrapper>
