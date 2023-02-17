@@ -1,0 +1,11 @@
+.playlistDeleteModal{
+    color: $SECONDARY;
+    background-color: $PRIMARY;
+
+    .actionBtns{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding-top: $PM;
+    }
+}

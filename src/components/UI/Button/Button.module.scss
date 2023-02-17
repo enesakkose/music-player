@@ -1,0 +1,103 @@
+.button{
+    cursor: pointer;
+    background-color: transparent;
+    color: $NEUTRAL-500;
+    display: flex;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    font-size: clamp(.875rem, 2.5vw, 1rem);
+
+    &:disabled, &[disabled]{
+        opacity: .5;
+        pointer-events: none;
+    }
+
+    &:is(.underline, .outline){
+        color: $NEUTRAL-100;
+    }
+
+    &:is(.outline, .contained, .google){
+        font-weight: 700;
+        padding: $PXS $PM;
+        border-radius: 1.5rem;
+        justify-content: center;
+
+        &:hover{
+            transform: scale(1.013);
+        }
+
+        &:active{
+            transform: scale(1);
+        }
+
+        @media only screen and (max-width: $md){
+
+            &:hover{
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+.primary{
+    background-color: $PRIMARY;
+    color: $SECONDARY;
+}
+
+.secondary{
+    background-color: $BRAND;
+    color: $SECONDARY;
+}
+
+.tertiary{
+    background-color: $SECONDARY;
+    color: $PRIMARY;
+}
+
+.outline{
+    border: 1px solid $NEUTRAL-600;
+    background-color: transparent;
+}
+
+.google{
+    border: 1px solid $NEUTRAL-400;
+    color: $SECONDARY;
+    gap: 1rem;
+    font-weight: 400 !important;
+}
+
+.start{
+    align-self: start;
+}
+
+.center{
+    align-self: center;
+}
+
+.end{
+    align-self: end;
+}
+
+.h-primary{
+
+    &:hover{
+        color: $PRIMARY;
+    }
+}
+
+.h-secondary{
+
+    &:hover{
+        color: $BRAND;
+    }
+}
+
+.underline{
+    
+    @media only screen and (min-width: $md){
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

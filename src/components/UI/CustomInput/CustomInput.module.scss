@@ -1,0 +1,33 @@
+.label{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+input{
+    background-color: $PRIMARY-100;
+    padding: $P-0 $PS;
+    height: 2.5rem;
+    border-radius: .25rem;
+    color: $PRIMARY;
+    font-size: 1rem;
+    border: 1px solid transparent;
+
+    &:focus{
+        background-color: $PRIMARY-150;
+        border-color: $NEUTRAL-700;
+    }
+}
+
+.error{
+    border-bottom-color: red !important;
+}
+
+.errorText{
+    color: red;
+}
+
+.submittingBtn{
+    opacity: .5;
+    cursor: not-allowed;
+}

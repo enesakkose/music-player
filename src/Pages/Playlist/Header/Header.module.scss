@@ -1,0 +1,18 @@
+.playlistHeader{
+    background: $NEUTRAL-500;
+    background-image: $GRAY-GRADIENT;
+    transition: .5s background ease-in-out;
+    position: relative; //for dropdown
+    
+    .subActions{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        min-height: 2rem;
+
+        @media only screen and (max-width: $md){
+            flex-direction: column;
+            gap: .5rem;
+        }
+    }
+}

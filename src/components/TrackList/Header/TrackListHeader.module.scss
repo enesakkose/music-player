@@ -1,0 +1,19 @@
+.trackListHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    color: $NEUTRAL-400;
+    padding: $PS $PM;
+    border-bottom: 1px solid $PRIMARY-100;
+    
+    span{
+        letter-spacing: 1px;
+    }
+
+    .title{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+}

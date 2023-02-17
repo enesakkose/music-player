@@ -1,0 +1,10 @@
+.footer{
+    height: 6.25rem;
+    background-color: $SECONDARY;
+    padding: $P-0 $PM;
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1.5fr;
+    grid-template-areas: "info player tool";
+    z-index: $FOOTER;
+    grid-area: footer;
+}

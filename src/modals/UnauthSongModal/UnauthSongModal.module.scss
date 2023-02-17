@@ -1,0 +1,62 @@
+.unauthSongModal{
+    padding: $PXXL;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto 1fr;
+    gap: 1.5rem 3rem;
+    background-image: $LIGHT-GRAY-GRADIENT;
+    background-color: $GRAY-900;
+    animation: modalAnimation 500ms ease-in-out;
+
+    @media only screen and (max-width: $md){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        border-radius: 0; //from modalWrapper
+    }
+
+    img{
+        width: 18.75rem;
+        height: 18.75rem;
+        border-radius: .5rem;
+
+        @media only screen and (max-width: $md){
+            width: 10.5rem;
+            height: 10.5rem;
+        }
+    }
+
+    .info{
+        max-width: 18.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1.25rem;
+
+        @media only screen and (max-width: $md){
+            max-width: 14rem;
+        }
+
+        h3{
+            text-align: center;
+        }
+    }
+
+    .closeBtn{
+        grid-column: 1 / 3;
+        justify-self: center;
+    }
+}
+
+@keyframes modalAnimation {
+    0%{
+        translate: 0 30px;
+    }
+    100%{
+        translate: 0;
+    }
+}

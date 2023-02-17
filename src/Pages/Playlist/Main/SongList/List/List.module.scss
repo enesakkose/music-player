@@ -1,0 +1,15 @@
+.list{
+    padding-bottom: $PL;
+
+    @media only screen and (max-width: $md){
+        padding-bottom: 0;
+    }
+
+    .row{
+        
+        span{
+            color: $NEUTRAL-500;
+            font-size: .875rem;
+        }
+    }
+}

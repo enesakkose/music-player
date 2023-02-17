@@ -1,0 +1,15 @@
+.musicTool{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    grid-area: tool;
+
+    .active{
+        color: $BRAND;
+
+        &:hover{
+            color: $BRAND;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+.progressBar{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    
+    span{
+        font-size: .875rem;
+        max-width: 1.5rem;
+        min-width: 1.5rem;
+        color: $NEUTRAL-500;
+    }
+    
+    .range{
+        width: 100%;
+    }
+}
+
+.mobileProgressBar{
+
+    .mobileDuration{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        span{
+            font-size: .6875rem;
+        }
+    }
+}

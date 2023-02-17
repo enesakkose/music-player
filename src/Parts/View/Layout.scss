@@ -1,0 +1,15 @@
+.viewLayout{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: $SECONDARY-900;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    grid-area: view;
+
+    @media only screen and (max-width: $md){
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        height: 100%;
+    }
+}

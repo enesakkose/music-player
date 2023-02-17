@@ -1,0 +1,21 @@
+.menu{
+    top: 90%;
+    right: 1rem;
+    bottom: auto;
+    left: auto;
+}
+
+.avatarBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: $NEUTRAL-900;
+    border-radius: 50%;
+    transition: 300ms background-color ease-in-out;
+
+    &:hover{
+        background-color: $NEUTRAL-800;
+    }
+}

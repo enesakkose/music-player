@@ -1,0 +1,28 @@
+.actionBtns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    padding-bottom: $PM;
+
+    @media only screen and (max-width: $md){
+        padding: $PS;
+        padding-bottom: $P-0;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    
+        .title, .subtitle, .songLength{
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        .subtitle, .songLength{
+            color: $NEUTRAL-400;
+        }
+    }
+}

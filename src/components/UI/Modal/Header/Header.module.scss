@@ -1,0 +1,15 @@
+.modalHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: $PM;
+
+    .closeBtn{
+        padding: $PXS;
+        border-radius: 50%;
+
+        &:hover{
+            background-color: $GRAY-800;
+        }
+    }
+}

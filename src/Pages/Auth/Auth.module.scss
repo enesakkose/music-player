@@ -1,0 +1,59 @@
+.auth{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $GRAY-900;
+
+    .or{
+        width: 100%; 
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        &::before{
+            content: '';
+            width: 100%;
+            height: 1px;
+            flex: 1;
+            background-color: $NEUTRAL-400;
+        }
+        
+        &::after{
+            content: '';
+            width: 100%;
+            height: 1px;
+            background-color: $NEUTRAL-400;
+            flex: 1;
+        }
+    }
+
+    .inputs{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        input{
+            border-color: $NEUTRAL-400;
+            color: $SECONDARY;
+            padding: $PM $PS;
+            font-size: .875rem;
+        }
+    }
+
+    .forgetPassword{
+        align-self: flex-start;
+        width: 100%;
+        
+        button{
+            color: inherit;
+        }
+
+        input{
+            border-color: $NEUTRAL-400;
+            padding: $PM $PS;
+            color: $SECONDARY;
+        }
+    }
+}

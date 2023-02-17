@@ -1,0 +1,23 @@
+.categories{
+
+    .list{
+        height: 100%;
+        padding: $PL 0;
+
+        @media only screen and (max-width: $md){
+            display: grid;
+            padding: $P-0;
+        }
+
+        .card{
+            box-shadow: $COVER-SHADOW;
+            border-radius: .5rem;
+            height: clamp(6rem, 30vw, 14.5rem);
+
+            .title{
+                padding: $PS $PM;
+                letter-spacing: 1px;
+            }
+        }
+    }
+}

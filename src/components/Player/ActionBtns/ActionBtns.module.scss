@@ -1,0 +1,23 @@
+.actionBtns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    @media only screen and (max-width: $md){
+        margin-top: $PXL;
+        margin-bottom: $PM;
+        gap: 2.5rem;
+    }
+
+    .previousBtn, .nextBtn{
+        @media only screen and (max-width: $md){
+            color: $PRIMARY;
+        }
+
+        &:active{
+            transform: translateY(.5px);
+            color: $NEUTRAL-500;
+        }            
+    }
+}

@@ -1,0 +1,49 @@
+.library{
+    padding-right: $PL;
+
+    .title{
+        padding-bottom: $PM;
+        color: $PRIMARY;
+    }
+
+    .links{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-bottom: $MS;
+        border-bottom: 2px solid $GRAY-900;
+        
+        a{
+            letter-spacing: 1px;
+            gap: 1rem;
+            padding: $PXS $PM;
+            border-radius: 1.5rem;
+            transition: 300ms background-color ease-in-out;
+        }
+
+        .favsLink{
+
+            &:hover{
+                background-color: $PURPLE-150;
+            }
+        }
+
+        .songsLink{
+
+            &:hover{
+                background-color: $BRAND-100;
+                color: $BRAND;
+            }
+        }
+
+        .activeSongsLink{
+            background-color: $BRAND-100;
+            color: $BRAND;
+        }
+
+        .activeFavsLink{
+            color: $PRIMARY;
+            background-color: $PURPLE-150;
+        }
+    }
+}

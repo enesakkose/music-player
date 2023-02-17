@@ -1,0 +1,34 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    max-height: 20rem;
+    background-color: $GRAY-800;
+    border-radius: .5rem;
+    
+    .list{
+        width: clamp(20rem, 30vw, 25rem);
+        flex: 1;
+        overflow: overlay;
+        padding: $PXS;
+        scroll-behavior: smooth;
+    }
+    
+    .form{
+        display: flex;
+        align-items: center;
+        border-top: 1px solid $NEUTRAL-800;
+        background-color: $GRAY-800;
+        border-radius: .5rem;
+        
+        label{
+            flex: 1;
+        }
+
+        input{
+            height: 3rem;
+            background-color: transparent;
+            border: none;
+        }
+    }
+}

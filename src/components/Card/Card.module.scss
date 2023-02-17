@@ -1,0 +1,60 @@
+.card{
+    padding: $PS;
+    border-radius: .5rem;
+    background-color: $GRAY-900;
+    transition: .3s all ease-in-out;
+    position: relative;
+    user-select: none;
+
+    &:hover{
+        background-color: $GRAY-800;
+    }
+
+    @media only screen and (max-width: $md){
+        padding: $P-0;
+        background-color: unset;
+
+        &:hover{
+            background-color: unset;
+        }
+    }
+
+    .playBtn{
+        position: absolute;
+        bottom: .5rem;
+        right: .5rem;
+        display: none !important;
+        cursor: default;
+    }
+
+    .showBtn{
+        display: block !important;
+        bottom: .9rem;
+        animation: btnFade .3s ease-in-out;
+    }
+
+    &:hover .playBtn{
+        display: block !important;
+        bottom: .9rem;
+        animation: btnFade .3s ease-out;
+    }
+
+    .href{
+        position: absolute;
+        content: '';
+        inset: 0;
+        cursor: pointer;
+    }
+}
+
+@keyframes btnFade {
+    0%{
+        opacity: 0;
+        bottom: .5rem;
+    }
+
+    100%{
+        opacity: 1;
+        bottom: .9rem;
+    }
+}

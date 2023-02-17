@@ -1,0 +1,41 @@
+.imgBox{
+    border-radius: .875rem;
+    box-shadow: $COVER-SHADOW;
+    background-color: $NEUTRAL-900;
+    position: relative;
+    //SOURCE https://www.youtube.com/shorts/S_PxKm9SnNs Prototürk
+
+    @media only screen and (max-width: $md){
+        border-radius: 0;
+    }
+
+    .cardImg{
+        padding-top: 100%;
+        position: relative;
+
+        @media only screen and (max-width: $md){
+            width: clamp(8.75rem, 30vw, 14.5rem);
+        }
+        
+        .imgContainer, img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: .5rem;
+            object-fit: cover;
+
+            @media only screen and (max-width: $md){
+                border-radius: 0;
+            }
+        }
+
+        .imgContainer{//for svg icons
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $PRIMARY;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+.dropdownMenuContainer{
+    z-index: $DROPDOWN;
+
+    .dropdownMenu{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background-color: $GRAY-900;
+        border-radius: .5rem;
+        padding: .250rem;
+    }
+}

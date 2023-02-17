@@ -1,0 +1,28 @@
+.unauthModal{
+    background-color: $PURPLE;
+    background-image: $GRAY-GRADIENT;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: .5s dd ease-in-out;
+
+    .text{
+        font-size: clamp(.825rem, 2.5vw, 1.25rem)
+    }
+
+    .btns{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        align-self: end;
+    }
+}
+
+@keyframes dd {
+    0%{
+        opacity: 0.7;
+    }
+    100%{
+        opacity: 1;
+    }
+}

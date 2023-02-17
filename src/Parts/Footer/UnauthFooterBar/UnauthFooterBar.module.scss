@@ -1,0 +1,13 @@
+.unauthFooterBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: $LIGHT-PURPLE-GRADIENT;
+    height: 4.375rem;
+    padding: $PS $PL;
+    grid-area: footer;
+
+    .text{
+        letter-spacing: .5px;
+    }
+}

@@ -1,0 +1,9 @@
+.closeBtn{
+    padding: $PXS;
+    border-radius: 50%;
+    color: red;
+
+    &:hover{
+        background-color: $GRAY-800;
+    }
+}

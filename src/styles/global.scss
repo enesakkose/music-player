@@ -1,0 +1,51 @@
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  font-family: "Gilroy", Arial, sans-serif;
+}
+
+html, .App, #root, body{
+  height: 100%;
+}
+
+body, #root{
+  font-size: 16px;
+  font-weight: 400;
+}
+
+h1{
+  font-size: clamp(2rem, 8vw, 6rem);
+}
+
+h2{
+  font-size: clamp(1.5rem, 2.25vw, 2.25rem);
+}
+
+h3{
+  font-size: clamp(1.125rem, 2.25vw, 1.75rem);
+}
+
+h4{
+  font-size: clamp(.825rem, 2.25vw, 1.125rem);
+}
+
+h5{
+  font-size: clamp(.825rem, 2.25vw, 1rem);;
+  letter-spacing: 1px;
+}
+
+h6{
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+p{
+  font-size: 1rem;
+  color: $PRIMARY;
+}
