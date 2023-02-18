@@ -14,6 +14,7 @@ function Dropdown({ song, children }) {
   const { playlists } = useSelector(state => state.playlist)
   const { profile: { favorites } } = useSelector(state => state.profiles)
   const favSong = favorites?.some(f => f.key === song.key)
+  const playlistsLength = playlists.length > 0
 
   const addOrDeleteFavorite = () => {
     addOrRemoveFavoriteSongs(song, favSong)
@@ -33,7 +34,7 @@ function Dropdown({ song, children }) {
         text='Go to Album'
         onClick={() => navigate(`/album/${song.key}`)}
       />
-      {!children && playlists && <DropdownMenu
+      {!children && playlistsLength && <DropdownMenu
         openBtn={<DropdownMenuItem text='Add to playlist' className={styles.addToPlaylistBtn} />}
         onMouseOver={true}
         className={styles.playlistsDropdownMenu}
