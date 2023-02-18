@@ -1,14 +1,8 @@
-.profileHeaderBtns{
+.followBtns{
     display: flex;
     align-items: center;
-    gap: 1rem;
-    min-height: 2rem;
-
-    .followBtns{
-        display: flex;
-        align-items: center;
-        gap: 1.5rem
-    }
+    gap: 1.5rem;
+    padding-inline: $PXS;
 
     @media only screen and (max-width: $md){
         flex-direction: column;

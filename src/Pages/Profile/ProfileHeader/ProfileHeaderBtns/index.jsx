@@ -42,15 +42,13 @@ function ProfileHeaderBtns({ profile, validProfile }) {
   }
 
   return (
-    <div className={styles.profileHeaderBtns}>
-      <div className={styles.followBtns}>
-        <Button variant='underline' onClick={navigateToFollowers}>
-          {getCountFormat(profile.follower.length)} Followers
-        </Button>
-        <Button variant='underline' onClick={navigateToFollowing}>
-          {getCountFormat(profile.following.length)} Following
-        </Button>
-      </div>
+    <div className={styles.followBtns}>
+      <Button variant='underline' onClick={navigateToFollowers}>
+        {getCountFormat(profile.follower.length)} Followers
+      </Button>
+      <Button variant='underline' onClick={navigateToFollowing}>
+        {getCountFormat(profile.following.length)} Following
+      </Button>
       {!validProfile && user &&
         <Button variant='outline' onClick={inFollowers ? unFollowHandle : followHandle}>
           {inFollowers ? 'Unfollow' : 'Follow'}
