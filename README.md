@@ -26,7 +26,6 @@ The main goal of this project is to create a music app with [reactjs](https://re
   <img src="https://user-images.githubusercontent.com/80388350/219878814-0d529878-9714-4075-947a-e87776d943c1.png" width="200" height="432"/>
   <img src="https://user-images.githubusercontent.com/80388350/219878084-a137ae48-1b8f-463e-afd5-b04a925491be.png" width="200" height="432"/>
   <img src="https://user-images.githubusercontent.com/80388350/219878181-808459a1-fcc2-4131-87d4-1397ce3d1bc2.png" width="200" height="432"/>
-  <img src="https://user-images.githubusercontent.com/80388350/219878867-3ba2af1d-0f29-4cd3-9ee4-7bd5a3068538.png" width="192" height="432"/>
 </div>
 
 ## Built With
