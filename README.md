@@ -1,10 +1,15 @@
 # Music-player
 
-### Overview
+## Overview
 
 The main goal of this project is to create a music app with [reactjs](https://reactjs.org/), where users can listen to music, create custom playlist, comment to playlists and follow each other.
 
-## [Live Site](https://musicea.vercel.app/)
+You can login to the site with the following information:
+
+Username: `test@test.com` <br/>
+Password: `123456`
+
+### [Live Site](https://musicea.vercel.app/)  
 
 ## Demo
 [screen-recording+(1)_out.webm](https://user-images.githubusercontent.com/80388350/219875767-774b09d9-82b1-4d5c-bc8f-a5207a67893e.webm)
