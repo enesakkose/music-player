@@ -50,7 +50,7 @@ function ProfileHeaderBtns({ profile, validProfile }) {
         {getCountFormat(profile.following.length)} Following
       </Button>
       {!validProfile && user &&
-        <Button variant='outline' onClick={inFollowers ? unFollowHandle : followHandle}>
+        <Button className={styles.followBtn} variant='outline' onClick={inFollowers ? unFollowHandle : followHandle}>
           {inFollowers ? 'Unfollow' : 'Follow'}
         </Button>
       }

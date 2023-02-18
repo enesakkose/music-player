@@ -5,6 +5,11 @@
     padding-inline: $PXS;
 
     @media only screen and (max-width: $md){
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .followBtn{
+            grid-column: 1/3;
+        }
     }
 }
