@@ -26,12 +26,11 @@ function FavoritesCard({ favorites }) {
         <h3>Liked Songs</h3>
         <span>{favorites.length} liked songs</span>
       </div>
-      <PlayBtn
-        disabled={favorites.length === 0}
+      {favorites.length !== 0 && <PlayBtn
         playPause={inFavoritesPlaylist && isPlaying}
         onClick={play}
         className={clsx(styles.playBtn, inFavoritesPlaylist && isPlaying ? styles.currentFav : styles.notCurrentFav)}
-      />
+      />}
       <Button href='/collection/tracks' className={styles.href} />
     </div>
   )
