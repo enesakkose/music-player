@@ -4,11 +4,32 @@
 
 The main goal of this project is to create a music app with [reactjs](https://reactjs.org/), where users can listen to music, create custom playlist, comment to playlists and follow each other.
 
-## [Live](https://musicea.vercel.app/)
+## [Live Site](https://musicea.vercel.app/)
 
 ## Demo
+[screen-recording+(1)_out.webm](https://user-images.githubusercontent.com/80388350/219875767-774b09d9-82b1-4d5c-bc8f-a5207a67893e.webm)
 
-### Built With
+[mobile_out.webm](https://user-images.githubusercontent.com/80388350/219875880-59cc7e10-7e61-4542-a49e-8886878206b8.webm)
+
+## Screenshots
+### Desktop
+<div style="display:flex">
+  <img src="https://user-images.githubusercontent.com/80388350/219880098-158d063d-fa41-4bda-becf-8f7fddeb5867.png" width="500" height="250"/>
+  <img src="https://user-images.githubusercontent.com/80388350/219881945-52f6f3a2-0b33-4a4f-88cc-65d34ff74b8e.png" width="500" height="250"/>
+  <img src="https://user-images.githubusercontent.com/80388350/219882092-dff24467-7fc5-4080-ad77-2aff74317f3c.png" width="500" height="250"/>
+  <img src="https://user-images.githubusercontent.com/80388350/219882182-79acffd8-eea9-41a5-a4df-3f7b9e905cd1.png" width="500" height="250"/>
+</div>
+
+### Mobile Devices
+<div style="display:flex">
+  <img src="https://user-images.githubusercontent.com/80388350/219878867-3ba2af1d-0f29-4cd3-9ee4-7bd5a3068538.png" width="200" height="432"/>
+  <img src="https://user-images.githubusercontent.com/80388350/219878814-0d529878-9714-4075-947a-e87776d943c1.png" width="200" height="432"/>
+  <img src="https://user-images.githubusercontent.com/80388350/219878084-a137ae48-1b8f-463e-afd5-b04a925491be.png" width="200" height="432"/>
+  <img src="https://user-images.githubusercontent.com/80388350/219878181-808459a1-fcc2-4131-87d4-1397ce3d1bc2.png" width="200" height="432"/>
+  <img src="https://user-images.githubusercontent.com/80388350/219878867-3ba2af1d-0f29-4cd3-9ee4-7bd5a3068538.png" width="192" height="432"/>
+</div>
+
+## Built With
 
 ### Firebase
 
