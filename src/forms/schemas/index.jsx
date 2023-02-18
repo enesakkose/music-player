@@ -49,6 +49,7 @@ export const signupSchema = yup.object().shape({
 export const playlistInfoSchema = yup.object().shape({
     playlistName: yup
       .string()
+      .max(25, 'Max 25 characters')
       .required('Playlist name is required')
 })
 
