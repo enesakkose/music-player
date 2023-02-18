@@ -33,7 +33,7 @@ function Dropdown({ song, children }) {
         text='Go to Album'
         onClick={() => navigate(`/album/${song.key}`)}
       />
-      {!children && <DropdownMenu
+      {!children && playlists && <DropdownMenu
         openBtn={<DropdownMenuItem text='Add to playlist' className={styles.addToPlaylistBtn} />}
         onMouseOver={true}
         className={styles.playlistsDropdownMenu}

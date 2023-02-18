@@ -4,6 +4,7 @@
     cursor: default;
     text-align: start;
     font-size: .875rem;
+    max-width: 12rem;
 
     @media only screen and (min-width: $md){
         min-width: 12rem;
