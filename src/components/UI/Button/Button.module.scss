@@ -1,4 +1,4 @@
-.button{
+button, a{
     cursor: pointer;
     background-color: transparent;
     color: $NEUTRAL-500;
@@ -13,91 +13,91 @@
         pointer-events: none;
     }
 
-    &:is(.underline, .outline){
+    &:is([variant='underline'], [variant='outline']){
         color: $NEUTRAL-100;
     }
-
-    &:is(.outline, .contained, .google){
+    
+    &:is([variant='outline'], [variant='contained'], [variant='google']){
         font-weight: 700;
         padding: $PXS $PM;
         border-radius: 1.5rem;
         justify-content: center;
-
+    
         &:hover{
             transform: scale(1.013);
         }
-
+    
         &:active{
             transform: scale(1);
         }
-
+    
         @media only screen and (max-width: $md){
-
+    
             &:hover{
                 transform: scale(1);
             }
         }
     }
-}
 
-.primary{
-    background-color: $PRIMARY;
-    color: $SECONDARY;
-}
-
-.secondary{
-    background-color: $BRAND;
-    color: $SECONDARY;
-}
-
-.tertiary{
-    background-color: $SECONDARY;
-    color: $PRIMARY;
-}
-
-.outline{
-    border: 1px solid $NEUTRAL-600;
-    background-color: transparent;
-}
-
-.google{
-    border: 1px solid $NEUTRAL-400;
-    color: $SECONDARY;
-    gap: 1rem;
-    font-weight: 400 !important;
-}
-
-.start{
-    align-self: start;
-}
-
-.center{
-    align-self: center;
-}
-
-.end{
-    align-self: end;
-}
-
-.h-primary{
-
-    &:hover{
+    &[color='primary']{
+        background-color: $PRIMARY;
+        color: $SECONDARY;
+    }
+    
+    &[color='secondary']{
+        background-color: $BRAND;
+        color: $SECONDARY;
+    }
+    
+    &[color='tertiary']{
+        background-color: $SECONDARY;
         color: $PRIMARY;
     }
-}
-
-.h-secondary{
-
-    &:hover{
-        color: $BRAND;
-    }
-}
-
-.underline{
     
-    @media only screen and (min-width: $md){
+    &[variant='outline']{
+        border: 1px solid $NEUTRAL-600;
+        background-color: transparent;
+    }
+    
+    &[variant='google']{
+        border: 1px solid $NEUTRAL-400;
+        color: $SECONDARY;
+        gap: 1rem;
+        font-weight: 400 !important;
+    }
+    
+    &[align='start']{
+        align-self: start;
+    }
+    
+    &[align='center']{
+        align-self: center;
+    }
+    
+    &[align='end']{
+        align-self: end;
+    }
+    
+    &[hover='h-primary']{
+    
         &:hover{
-            text-decoration: underline;
+            color: $PRIMARY;
+        }
+    }
+    
+    &[hover='h-secondary']{
+    
+        &:hover{
+            color: $BRAND;
+        }
+    }
+    
+    &[variant='underline']{
+        
+        @media only screen and (min-width: $md){
+            &:hover{
+                text-decoration: underline;
+            }
         }
     }
 }
