@@ -11,6 +11,7 @@ const popup = createSlice({
         setOpenPopup: (state,action) => {
             state.openPopup = action.payload.open
             state.text = action.payload.text || null
+            state.id = crypto.randomUUID()
         }
     }
 })
