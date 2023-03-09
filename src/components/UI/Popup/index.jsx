@@ -10,7 +10,7 @@ function Popup() {
     const t = setTimeout(() => popup(false), 2500)
 
     return () => clearTimeout(t)
-  }, [text])
+  }, [id])
 
   return (
     //key added, React will mount component and in this way refresh animation time in css 
