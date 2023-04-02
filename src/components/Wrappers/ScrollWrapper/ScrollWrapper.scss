@@ -1,15 +1,4 @@
-.scrollWrapper{
-    scrollbar-width: 1rem; /* For Firefox */scrollbar-color: $PRIMARY-300 transparent;
-
-    @media only screen and (max-width: $md){
-        scrollbar-width: .125rem;
-    }
-
-    &:hover{
-        background-color: $PRIMARY-500;
-    }
-
-    &::-webkit-scrollbar{
+    ::-webkit-scrollbar{
         width: 1rem;
     
         @media only screen and (max-width: $md){
@@ -17,17 +6,17 @@
         }
     }
     
-    &::-webkit-scrollbar-track {
+    ::-webkit-scrollbar-track {
         background: transparent;
     }
         
-    &::-webkit-scrollbar-thumb {
+    ::-webkit-scrollbar-thumb {
         background-color: $PRIMARY-300;
     
         &:hover{
             background-color: $PRIMARY-500;
         }
     }
-}
+
 
 
