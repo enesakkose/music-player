@@ -12,6 +12,7 @@
         position: static;
         height: 100%;
         overflow: overlay;
+        overflow: auto;
         
         @media only screen and (max-width: $md){
             overflow: unset;

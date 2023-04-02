@@ -55,6 +55,7 @@
     
         .playlistsDropdownMenu{
             overflow-y: overlay;
+            overflow-y: auto;
             max-height: 22rem;
             top: -150%;
             left: -100%;
