@@ -1,19 +1,33 @@
-::-webkit-scrollbar{
-    width: 1rem;
+.scrollWrapper{
+    scrollbar-width: 1rem; /* For Firefox */scrollbar-color: $PRIMARY-300 transparent;
 
     @media only screen and (max-width: $md){
-        width: .125rem;
+        scrollbar-width: .125rem;
     }
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-    
-::-webkit-scrollbar-thumb {
-    background-color: $PRIMARY-300;
 
     &:hover{
         background-color: $PRIMARY-500;
     }
+
+    &::-webkit-scrollbar{
+        width: 1rem;
+    
+        @media only screen and (max-width: $md){
+            width: .125rem;
+        }
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+        
+    &::-webkit-scrollbar-thumb {
+        background-color: $PRIMARY-300;
+    
+        &:hover{
+            background-color: $PRIMARY-500;
+        }
+    }
 }
+
+
