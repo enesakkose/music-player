@@ -1,8 +1,8 @@
 .pageWrapper{
     flex: 1;
     padding: $PM $PL;
-    overflow: overlay;
     overflow: auto;
+    overflow: overlay;
     
     @media only screen and (max-width: $md){
         padding: $PM $PS $MOBILEPB;

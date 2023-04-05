@@ -9,8 +9,8 @@
     .list{
         width: clamp(20rem, 30vw, 25rem);
         flex: 1;
-        overflow: overlay;
         overflow: auto;
+        overflow: overlay;
         padding: $PXS;
         scroll-behavior: smooth;
     }
