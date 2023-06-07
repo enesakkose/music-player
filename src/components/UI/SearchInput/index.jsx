@@ -29,8 +29,9 @@ function SearchInput() {
     setSearchParams(searchParams, { replace: true })
   }
 
-  const onSubmit = (e) => {
-    e.preventDefault()
+
+  const onSubmit = (event) => {
+    event.preventDefault()
   }
 
   const resetSearchInput = () => {
