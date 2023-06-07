@@ -18,16 +18,19 @@ function SearchInput() {
   }, [searchParams])
 
   const handleQueryChange = (e) => {
-    e.preventDefault()
     dispatch(setQuerySongs(e.target.value))
 
     if (e.target.value.length === 0) {
       searchParams.delete('')
-      setSearchParams(searchParams, { replace: true })
     } else {
       searchParams.set('', e.target.value)
-      setSearchParams(searchParams, { replace: true })
     }
+
+    setSearchParams(searchParams, { replace: true })
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
   }
 
   const resetSearchInput = () => {
@@ -38,7 +41,7 @@ function SearchInput() {
   return (
     <>
       {SM && <h2>Search</h2>}
-      <form className={styles.searchInput}>
+      <form className={styles.searchInput} onSubmit={onSubmit}>
         <label>
           <Icon name='Search' size={24} />
           <input
