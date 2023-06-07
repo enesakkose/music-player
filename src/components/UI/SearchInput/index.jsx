@@ -18,6 +18,7 @@ function SearchInput() {
   }, [searchParams])
 
   const handleQueryChange = (e) => {
+    e.preventDefault()
     dispatch(setQuerySongs(e.target.value))
 
     if (e.target.value.length === 0) {
